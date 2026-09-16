@@ -123,6 +123,22 @@ const COORDINATOR_MODE_2_1_257_MAP = {
 const CURATED_IDENTIFIER_MAPS = {
   'system-prompt-worker-agent': [
     {
+      // CC 2.1.273 reversed 2.1.269: the commit/PR-skill routing ternary is
+      // gone and the commit line is plain literal text, so the three leading
+      // slots left and only the spawn-depth predicate and the Agent tool name
+      // remain. The map carries by INDEX, so the 2.1.269 names landed on the
+      // wrong two slots and the override rendered the fan-out bullet off the
+      // skill flag. Resolved from the binary, not from position: the site is a
+      // code-split module importing `bE` from chunk-6bqmgxzc.js (returns
+      // CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH, else the GrowthBook value) and
+      // `St` from chunk-x4zvdyx6.js (the literal "Agent").
+      identifiers: [0, 1],
+      identifierMap: {
+        0: 'MAX_SUBAGENT_SPAWN_DEPTH_FN',
+        1: 'AGENT_TOOL_NAME',
+      },
+    },
+    {
       // CC 2.1.269 wrapped the commit line in the commit/PR-skill routing
       // ternary `${q0e()?`…\`/${kP}\` skill…\`/${zR}\` skill…`:"…"}`, which
       // puts three NEW distinct vars AHEAD of the spawn-depth predicate. The
@@ -5126,6 +5142,13 @@ if (require.main === module) {
   // Curated/real names always win (this only fills blanks).
   for (const p of mergedResult.prompts) {
     if (!p.identifierMap) continue;
+    // Two sites of one collision-disambiguated id inherit the SAME carried map
+    // object by reference, so the slot-pruning below runs twice over one object:
+    // the site with fewer slots deletes names its sibling still uses, and that
+    // sibling's override then binds nothing and is skipped whole. Seen 2.1.273
+    // on tool-description-artifact-watching-unavailable, whose `-2` site
+    // (identifiers [0,1,2]) deleted VAR_3 from the 4-slot base site.
+    p.identifierMap = { ...p.identifierMap };
     const slug =
       String(p.id || 'prompt')
         .replace(/[^A-Za-z0-9]+/g, '_')

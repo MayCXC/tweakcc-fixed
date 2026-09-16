@@ -174,11 +174,31 @@ const asciiRunsOnLine = line => {
 // Longest single-line ASCII runs from mid-body. One generic 32-char SDK
 // snippet matching the bundle is not evidence the prompt survived; the
 // distinctive sentences are.
+// `pieces` carry the interpolation SYNTAX, not just the prose: every piece but
+// the last ends with the opening `${`, and every piece but the first opens with
+// the slot's expression source up to its closing `}`. Probing that text against
+// the bundle can only ever fail, and because a failing probe RETURNS `gone`
+// before the window scan below runs, a prompt whose distinctive sentence happens
+// to abut a slot is reported as removed while it is still shipping to the model.
+// CC 2.1.273 had one: the /update transcript-path-drift refusal, whose only
+// prose run ended `…on the latest version${` after Anthropic dropped its
+// trailing auto-replies clause. Strip the syntax before building probes.
+const proseOfPiece = (piece, i, n) => {
+  let out = piece;
+  if (i > 0) {
+    const close = out.indexOf('}');
+    out = close >= 0 ? out.slice(close + 1) : out;
+  }
+  if (i < n - 1) out = out.replace(/\$\{$/, '');
+  return out;
+};
+
 const midBodyProbes = p => {
   const lines = [];
-  for (const piece of p.pieces || []) {
-    if (typeof piece !== 'string') continue;
-    for (const line of piece.split('\n')) {
+  const pieces = p.pieces || [];
+  for (let i = 0; i < pieces.length; i++) {
+    if (typeof pieces[i] !== 'string') continue;
+    for (const line of proseOfPiece(pieces[i], i, pieces.length).split('\n')) {
       lines.push(...asciiRunsOnLine(line));
     }
   }
