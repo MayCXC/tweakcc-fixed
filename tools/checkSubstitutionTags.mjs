@@ -13,28 +13,40 @@
 // must carry it too. Tags are discovered from the binary, not hardcoded, so a new one added by
 // Anthropic is covered the run it appears.
 //
-// Usage: node tools/checkSubstitutionTags.mjs [--cli <cli.js>] [--json <prompts.json>] [--lcc <dir>]
+// Usage: node tools/checkSubstitutionTags.mjs [--cli <cli.js>] [--json <prompts.json>]
+//                                             [--overrides <dir>]... [--lcc <dir>]
+//
+// With no --overrides, audits the system-prompts folder `--apply` actually reads.
+// --overrides may be repeated to audit specific folders instead, for a setup that
+// keeps several side by side.
 import fs from 'node:fs';
 import path from 'node:path';
-import os from 'node:os';
+import { getConfigDir, getAppliedSystemPromptsDir } from './lib/configDir.mjs';
 
 const arg = (n, d) => {
   const i = process.argv.indexOf(n);
   return i === -1 ? d : process.argv[i + 1];
 };
-const HOME = os.homedir();
-const LCC = arg('--lcc', path.join(HOME, '.tweakcc/lobotomized-claude-code'));
-const CLI = arg('--cli', path.join(HOME, '.tweakcc/native-claudejs-orig.js'));
-const REPO = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+// Repeatable: every `--overrides <dir>` occurrence, in order.
+const argAll = n =>
+  process.argv.flatMap((a, i) =>
+    a === n && process.argv[i + 1] ? [process.argv[i + 1]] : []
+  );
+const CONFIG_DIR = getConfigDir();
+const LCC = arg('--lcc', path.join(CONFIG_DIR, 'lobotomized-claude-code'));
+const CLI = arg('--cli', path.join(CONFIG_DIR, 'native-claudejs-orig.js'));
+const OVERRIDES = argAll('--overrides');
+const REPO = path.resolve(
+  path.dirname(new URL(import.meta.url).pathname),
+  '..'
+);
 
 const promptsJson =
   arg('--json') ??
   fs
     .readdirSync(path.join(REPO, 'data/prompts'))
     .filter(f => /^prompts-\d+\.\d+\.\d+\.json$/.test(f))
-    .sort((a, b) =>
-      a.localeCompare(b, undefined, { numeric: true })
-    )
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
     .pop();
 const jsonPath = path.isAbsolute(promptsJson)
   ? promptsJson
@@ -85,13 +97,40 @@ for (const p of [cliPath, jsonPath]) {
 // here explicitly rather than widening the pattern.
 const cli = fs.readFileSync(cliPath, 'utf8');
 const tags = new Set();
-for (const m of cli.matchAll(/\.replace\(\s*"(<[a-z0-9_]{3,60}>)"/g)) tags.add(m[1]);
+for (const m of cli.matchAll(/\.replace\(\s*"(<[a-z0-9_]{3,60}>)"/g))
+  tags.add(m[1]);
 
 const { prompts } = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
-const sets = fs
-  .readdirSync(LCC)
-  .filter(d => d.startsWith('system-prompts-'))
-  .filter(d => fs.statSync(path.join(LCC, d)).isDirectory());
+// What to audit, in order of specificity: the folders named with --overrides, then
+// the system-prompts folder the patcher reads (the only override location `--apply`
+// consults), then the multi-model layout under --lcc for a tree that keeps
+// system-prompts-<model> subdirs instead of one applied set.
+const applied = getAppliedSystemPromptsDir();
+const lccSets = () =>
+  fs.existsSync(LCC)
+    ? fs
+        .readdirSync(LCC)
+        .filter(d => d.startsWith('system-prompts-'))
+        .filter(d => fs.statSync(path.join(LCC, d)).isDirectory())
+        .map(d => path.join(LCC, d))
+    : [];
+
+const setDirs = OVERRIDES.length
+  ? OVERRIDES.map(d => path.resolve(d))
+  : applied
+    ? [applied]
+    : lccSets();
+
+if (setDirs.length === 0) {
+  console.error(
+    `✖ substitution tags: nothing to audit. No --overrides given, no system-prompts folder under ${CONFIG_DIR}, and no system-prompts-* under ${LCC}.`
+  );
+  process.exit(1);
+}
+if (OVERRIDES.length) {
+  console.error(`Auditing ${setDirs.length} override folder(s):`);
+  for (const d of setDirs) console.error(`  ${d}`);
+}
 
 const body = file => {
   const t = fs.readFileSync(file, 'utf8');
@@ -105,28 +144,36 @@ for (const p of prompts) {
   const pristine = (p.pieces ?? []).filter(x => typeof x === 'string').join('');
   const need = [...tags].filter(t => pristine.includes(t));
   if (need.length === 0) continue;
-  for (const set of sets) {
-    const file = path.join(LCC, set, `${p.id}.md`);
+  for (const setDir of setDirs) {
+    const set = path.basename(setDir);
+    const file = path.join(setDir, `${p.id}.md`);
     if (!fs.existsSync(file)) continue; // no override: pristine passes through, fine
     checked += 1;
     const b = body(file);
     if (b === '') {
-      failures.push({ set, id: p.id, why: `suppressed, but pristine carries ${need.join(' ')}` });
+      failures.push({
+        set,
+        id: p.id,
+        why: `suppressed, but pristine carries ${need.join(' ')}`,
+      });
       continue;
     }
     const missing = need.filter(t => !b.includes(t));
-    if (missing.length) failures.push({ set, id: p.id, why: `drops ${missing.join(' ')}` });
+    if (missing.length)
+      failures.push({ set, id: p.id, why: `drops ${missing.join(' ')}` });
   }
 }
 
 const label = 'substitution tags';
 if (failures.length === 0) {
   console.log(
-    `✓ ${label}: ${checked} override(s) across ${sets.length} set(s) keep every runtime injection site (${tags.size} tag(s) tracked)`
+    `✓ ${label}: ${checked} override(s) across ${setDirs.length} set(s) keep every runtime injection site (${tags.size} tag(s) tracked)`
   );
   process.exit(0);
 }
-console.error(`✗ ${label}: ${failures.length} override(s) drop a site CC substitutes into`);
+console.error(
+  `✗ ${label}: ${failures.length} override(s) drop a site CC substitutes into`
+);
 for (const f of failures) console.error(`    ${f.set}/${f.id} — ${f.why}`);
 console.error(
   '  A string .replace() finds nothing and silently injects nothing; the prompt still applies and boots.'
