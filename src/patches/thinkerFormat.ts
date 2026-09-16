@@ -38,6 +38,31 @@ const getThinkerFormatLocation = (oldFile: string): LocationResult | null => {
       ? ''
       : oldFile.slice(searchStart, searchStart + 20000);
 
+  // CC >= 2.1.273: the ellipsis became conditional so a label that already ends
+  // in one isn't given a second: `,ue=Mn.test(vt)?vt:vt+"…"`, where `vt`
+  // holds the resolved label and `Mn` is a module-level regex. The label is no
+  // longer built inside the declaration, so every earlier pattern (which
+  // expects the expression and the `+"…"` in one place) misses and the patch
+  // returned null against the real bundle while `--apply` stayed silent about
+  // it — the toggle is off by default, so only `pnpm test:pristine` saw it.
+  const formatPatternCond =
+    /,([$\w]+)(=[$\w]+\.test\(([$\w]+)\)\?\3:\3\+"(?:…|\\u2026)")/;
+  const formatMatchCond = searchSection.match(formatPatternCond);
+
+  if (formatMatchCond && formatMatchCond.index != undefined) {
+    return {
+      startIndex:
+        searchStart! + formatMatchCond.index + formatMatchCond[1].length + 1, // + 1 for the comma
+      endIndex:
+        searchStart! +
+        formatMatchCond.index +
+        formatMatchCond[1].length +
+        formatMatchCond[2].length +
+        1, // + 1 for the comma
+      identifiers: [formatMatchCond[3]],
+    };
+  }
+
   // New nullish format: N=(Y??C?.activeForm??L)+"…"
   const formatPatternOld = /,([$\w]+)(=\(([^;]{1,200}?)\)\+"(?:…|\\u2026)")/;
   const formatMatchOld = searchSection.match(formatPatternOld);

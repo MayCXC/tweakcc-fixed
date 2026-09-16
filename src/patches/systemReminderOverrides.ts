@@ -130,6 +130,71 @@ const toolNameSlot = (placeholder: string): ReminderSlot => ({
     null,
 });
 
+// What a matched registry entry yields: where to splice, and the pristine
+// `content:` expression the slot resolvers read the real interpolations out of.
+interface MatchedEntry {
+  index: number;
+  length: number;
+  hParam: string;
+  wrapFn: string;
+  metaFn: string;
+  template: string;
+}
+
+const matchSimpleEntry = (
+  content: string,
+  key: string
+): MatchedEntry | null => {
+  const m = content.match(simpleEntryPattern(key));
+  if (!m || m.index === undefined) return null;
+  return {
+    index: m.index,
+    length: m[0].length,
+    hParam: m[1],
+    wrapFn: m[2],
+    metaFn: m[3],
+    template: m[4],
+  };
+};
+
+// The same entry when `content:` is not one bare template literal. CC 2.1.273
+// rewrote `pdf_reference` into a two-branch ternary whose shared tail is a
+// concatenated double-quoted string — `content:(e.pageCount===null?`…`:`…`)+"…"`
+// — so the single-template anchor missed and the patch returned null. The
+// override body is one body regardless of how many branches pristine has, so
+// the whole expression is replaced by one template, exactly as the multi-branch
+// `edited_text_file` entry already collapses. Passing the entire expression as
+// the `template` keeps `slotExpr`/`toolNameSlot` working unchanged: they search
+// it for the interpolation they need and so see every branch's slots.
+const matchComposedEntry = (
+  content: string,
+  key: string
+): MatchedEntry | null => {
+  const head = new RegExp(
+    `${key}:\\(([$\\w]+)\\)=>([$\\w]+)\\(\\[([$\\w]+)\\(\\{content:`
+  );
+  const m = content.match(head);
+  if (!m || m.index === undefined) return null;
+  const objOpen = m.index + m[0].length - 'content:'.length - 1;
+  if (content[objOpen] !== '{') return null;
+  const objClose = matchingBrace(content, objOpen);
+  if (objClose < 0) return null;
+  const tail = ',isMeta:!0';
+  const objBody = content.slice(objOpen + 1, objClose);
+  if (!objBody.startsWith('content:') || !objBody.endsWith(tail)) return null;
+  const close = ')])';
+  if (content.slice(objClose + 1, objClose + 1 + close.length) !== close)
+    return null;
+  return {
+    index: m.index,
+    length: objClose + 1 + close.length - m.index,
+    hParam: m[1],
+    wrapFn: m[2],
+    metaFn: m[3],
+    template: objBody.slice('content:'.length, objBody.length - tail.length),
+  };
+};
+
 const applySimpleEntry = (
   content: string,
   key: string,
@@ -138,14 +203,15 @@ const applySimpleEntry = (
   isSuppressed: boolean
 ): string | null => {
   const patchName = key.replace(/_/g, '-');
-  const match = content.match(simpleEntryPattern(key));
-  if (!match || match.index === undefined) {
+  const found =
+    matchSimpleEntry(content, key) ?? matchComposedEntry(content, key);
+  if (!found) {
     if (new RegExp(`${key}:\\([$\\w]+\\)=>\\[\\]`).test(content))
       return content;
     console.error(`patch: reminder ${patchName}: failed to find anchor`);
     return null;
   }
-  const [, hParam, wrapFn, metaFn, template] = match;
+  const { index, length, hParam, wrapFn, metaFn, template } = found;
   let replacement: string;
   if (isSuppressed) {
     replacement = `${key}:(${hParam})=>[]`;
@@ -168,16 +234,8 @@ const applySimpleEntry = (
     replacement = `${key}:(${hParam})=>${wrapFn}([${metaFn}({content:\`${built}\`,isMeta:!0})])`;
   }
   const newContent =
-    content.slice(0, match.index) +
-    replacement +
-    content.slice(match.index + match[0].length);
-  showDiff(
-    content,
-    newContent,
-    replacement,
-    match.index,
-    match.index + replacement.length
-  );
+    content.slice(0, index) + replacement + content.slice(index + length);
+  showDiff(content, newContent, replacement, index, index + replacement.length);
   return newContent;
 };
 

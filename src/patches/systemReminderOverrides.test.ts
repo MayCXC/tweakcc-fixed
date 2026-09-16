@@ -329,3 +329,57 @@ describe('verify-plan reminder removed-feature handling', () => {
     expect(verifyPlan.apply(drifted, 'body', false)).toBeNull();
   });
 });
+
+const pdfRef = REMINDER_REGISTRY.find(r => r.id === 'pdf-reference')!;
+
+// CC 2.1.273 rewrote the pdf_reference registry entry: `content:` is no longer
+// one template literal but a two-branch ternary (page count known / unknown)
+// whose shared tail is a concatenated double-quoted string, and the filename is
+// wrapped in an escaper. The single-template anchor missed all of it and the
+// patch returned null. Shape copied from the real bundle, names minified the
+// same way.
+const MOCK_PDF_COMPOSED =
+  'pdf_reference:(e)=>gc([Ce({content:(e.pageCount===null?' +
+  '`PDF file: ${ou(e.filename)} (page count unknown, ${Mt(e.fileSize)}). ' +
+  'It was not attached because it may be too long. Use the ${nt} tool with the pages parameter. `:' +
+  '`PDF file: ${ou(e.filename)} (${e.pageCount} pages, ${Mt(e.fileSize)}). ' +
+  'This PDF is too large to read all at once. You MUST use the ${nt} tool. `)' +
+  '+"Start by reading the first few pages. Maximum 20 pages per request.",isMeta:!0})]),' +
+  'selected_lines_in_ide:(e)=>gc([Ce({content:`x`,isMeta:!0})])';
+
+// The pre-2.1.273 single-template shape, which must keep working.
+const MOCK_PDF_SIMPLE =
+  'pdf_reference:(e)=>gc([Ce({content:`PDF file: ${ou(e.filename)} ' +
+  '(${e.pageCount} pages, ${Mt(e.fileSize)}). Use the ${nt} tool.`,isMeta:!0})])';
+
+describe('pdf-reference reminder composed-expression handling', () => {
+  it('matches a ternary+concat `content:` and rebinds every slot from it', () => {
+    const result = pdfRef.apply(
+      MOCK_PDF_COMPOSED,
+      'PDF ${H.filename}: ${H.pageCount} pages, ${l7(H.fileSize)}. Use ${uq}.',
+      false
+    );
+    expect(result).not.toBeNull();
+    // Slots resolve to the real pristine expressions, escaper included.
+    expect(result).toContain('${ou(e.filename)}');
+    expect(result).toContain('${e.pageCount}');
+    expect(result).toContain('${Mt(e.fileSize)}');
+    expect(result).toContain('${nt}');
+    // The whole composed expression is replaced by one template, and the
+    // neighbouring registry entry is untouched.
+    expect(result).not.toContain('page count unknown');
+    expect(result).toContain('selected_lines_in_ide:(e)=>gc([Ce({content:`x`');
+  });
+
+  it('suppresses the composed shape to an empty emit', () => {
+    const result = pdfRef.apply(MOCK_PDF_COMPOSED, '', true);
+    expect(result).toContain('pdf_reference:(e)=>[]');
+    expect(result).not.toContain('page count unknown');
+  });
+
+  it('still handles the pre-2.1.273 single-template shape', () => {
+    const result = pdfRef.apply(MOCK_PDF_SIMPLE, 'PDF ${H.filename}.', false);
+    expect(result).not.toBeNull();
+    expect(result).toContain('${ou(e.filename)}');
+  });
+});

@@ -83,3 +83,33 @@ describe('writeThinkerFormat', () => {
     errSpy.mockRestore();
   });
 });
+
+// CC 2.1.273 anchor + conditional-ellipsis format shape:
+//   …overrideMessage:X,isCompacting:…,compactingHintText:…,compactingStartTime:…,
+//     spinnerSuffix:Y,verbose:Z,<300 chars>…
+//   …,ue=Mn.test(vt)?vt:vt+"…"…
+// The label is resolved into `vt` before the declaration and the ellipsis is
+// only appended when it isn't already there, so no earlier pattern matches.
+const ANCHOR_2273 =
+  'overrideMessage:gn,isCompacting:uo,compactingHintText:mo,' +
+  'compactingStartTime:fo,spinnerSuffix:sS,verbose:vB,' +
+  'z'.repeat(320);
+const FORMAT_COND = ',ue=Mn.test(vt)?vt:vt+"\\u2026"';
+const FIXTURE_2273 = `pre();{${ANCHOR_2273}};mid();${FORMAT_COND};tail()`;
+
+describe('writeThinkerFormat — CC 2.1.273 conditional ellipsis', () => {
+  it('rewrites the conditional-ellipsis decl, binding {} to the label var', () => {
+    const out = writeThinkerFormat(FIXTURE_2273, '{}');
+
+    expect(out).not.toBeNull();
+    expect(out).toContain(',ue=`${vt}`');
+    expect(out).not.toContain('Mn.test(vt)');
+    expect(out).toContain('tail()');
+  });
+
+  it('keeps a custom format around the bound label', () => {
+    const out = writeThinkerFormat(FIXTURE_2273, '>> {} <<');
+
+    expect(out).toContain(',ue=`>> ${vt} <<`');
+  });
+});
