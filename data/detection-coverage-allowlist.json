@@ -953,5 +953,15 @@
     "why": "commander .option(\"--max-cost-usd <usd>\", ...) help text on the `claude plugin eval` CLI (CC 2.1.269 @15025165); printed by --help, never sent to the model",
     "shape": "concat",
     "excerpt": "Optional hard cost ceiling; abort and report partial results if hit (exit 2). The ceiling is checked before each run launches, so overrun is"
+  },
+  "fea6f7a6e4ae8f89": {
+    "verdict": "internal",
+    "shape": "concat",
+    "excerpt": "Price usage at your organization's contracted rates instead of list price. Affects every spend figure Claude Code reports — /cost, the statu"
+  },
+  "9a33c855c224f2bb": {
+    "verdict": "internal",
+    "shape": "array",
+    "excerpt": "Re-authorize your GitHub CLI login with the repo and workflow scopes Authorize the organization when GitHub prompts for single sign-on, then"
   }
 }

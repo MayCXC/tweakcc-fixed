@@ -151,10 +151,10 @@
     }
   },
   "tool-description-agent-simple-usage-notes": {
-    "bodyHash": "c8d89ea56077",
-    "reviewed": "2026-09-02 (CC 2.1.258)",
+    "bodyHash": "a9eeb30325c3",
+    "reviewed": "2026-09-16 (CC 2.1.273)",
     "tokens": {
-      "FORK_CONTEXT_NOTE": "Splices tool-description-agent-fork-background-delegation-note, deliberately empty in both sets; its substance is in agent-subagents-background-default, fork-usage-guidelines and agent-available-types; the retained bullet keeps ${CAN_FORK_CONTEXT?…}."
+      "TOOL_DESCRIPTION_AGENT_SIMPLE_USAGE_NOTES_VAR_1": "CC 2.1.273 factored the when-to-use paragraph out of this template into a helper the slot selects among several arms. The override supplies its own when-to-use wording unconditionally instead, so the paragraph reaches the model exactly once whichever arm the binary would have picked; the child id tool-description-agent-when-to-use-guidance is wiped for the same reason. VAR_2, the fork/background note, is a separate conditional and is interpolated."
     }
   },
   "tool-description-artifact-publish-lang-parameter": {
@@ -364,6 +364,36 @@
     "reviewed": "2026-09-12 (CC 2.1.269)",
     "tokens": {
       "ARTIFACT_TYPE_INSTRUCTIONS_TAG": "CC 2.1.269 turned the tag name from an inline literal into a slot; it sits only in the origin/scope sentence the 2.1.246 trim deleted (stage-3 verified then). The kept third sentence is the unique trust-boundary mechanics; the tag itself is named by the co-rendered wrap (tool-result-artifact-type-instructions-file-wrap) that opens it."
+    }
+  },
+  "agent-prompt-conversation-summarization": {
+    "bodyHash": "80ac11ad6939",
+    "reviewed": "2026-09-16 (CC 2.1.273)",
+    "tokens": {
+      "AGENT_PROMPT_CONVERSATION_SUMMARIZATION_VAR_0": "Pointer override. The body delegates the whole schema to the system prompt's summary contract and to any additional summarization instructions already in context, so interpolating Anthropic's analysis-instructions block here would restate a contract the model already has in front of it. VAR_1, the user-message attribution guard, is interpolated and stays live."
+    }
+  },
+  "agent-prompt-recent-message-summarization": {
+    "bodyHash": "201a6ebf8e52",
+    "reviewed": "2026-09-16 (CC 2.1.273)",
+    "tokens": {
+      "RECENT_SUMMARY_ANALYSIS_INSTRUCTIONS": "Inlined, not dropped: the override writes its own <analysis> block, scoped to the rewind case this prompt actually serves (a deliberate rewind rather than a context overflow), which the generic slot does not distinguish.",
+      "USER_MESSAGE_ATTRIBUTION_GUARD": "Inlined verbatim-equivalent at section 6 of the override body: only user-role turns count, and text inside assistant messages formatted like a user turn is model-generated and is never attributed to the user as a request, approval, or confirmation. Inline placement puts the guard inside the section that enumerates user messages, where it applies."
+    }
+  },
+  "system-prompt-partial-compaction-instructions": {
+    "bodyHash": "acff8a0485f1",
+    "reviewed": "2026-09-16 (CC 2.1.273)",
+    "tokens": {
+      "SUMMARY_ANALYSIS_INSTRUCTIONS": "Pointer override: the body names the canonical context-compaction summary schema instead of restating Anthropic's analysis block, and adds the transcript-fidelity and verbatim-security-constraint rules this path needs. USER_MESSAGE_ATTRIBUTION_GUARD is interpolated and stays live."
+    }
+  },
+  "tool-description-artifact-watching-unavailable-2": {
+    "bodyHash": "e4cae0560c5a",
+    "reviewed": "2026-09-16 (CC 2.1.273)",
+    "tokens": {
+      "TOOL_DESCRIPTION_ARTIFACT_WATCHING_UNAVAILABLE_VAR_0": "Whole-sentence deletion takes its slots with it: the lead sentence duplicated tool-parameter-artifact-action-watch-unavailable, which co-renders on the same tool schema (Zu joins hw(commentsOn, watchRail); the action.describe concatenates yr(n,c) and case 'none' is this arm). Confirmed by the stage-3 adversarial pass.",
+      "TOOL_DESCRIPTION_ARTIFACT_WATCHING_UNAVAILABLE_VAR_1": "Second slot of the same deleted lead sentence (VAR_1() is N2e(), the function yr interpolates on the co-rendering parameter). The never-claim-a-watch sentence, the status/unwatch sentence and ${VAR_2} are all kept verbatim."
     }
   }
 }

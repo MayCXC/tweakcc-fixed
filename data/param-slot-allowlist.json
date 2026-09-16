@@ -395,5 +395,12 @@
     "param": "n",
     "text": "the session is not in auto mode",
     "verdict": "catalogue"
+  },
+  "4d15d2d6e8bd18e5": {
+    "builder": "gn",
+    "param": "e",
+    "note": "Reason clause rendering into the catalogued artifact publish-settling tool_result through gn()'s parameter slot. Catalogued via a classification-cache model verdict (this gate has no extractor hook of its own); see data/prompt-classification.json.",
+    "verdict": "catalogue",
+    "text": "the first attempt reached claude.ai and its content is still being stored"
   }
 }

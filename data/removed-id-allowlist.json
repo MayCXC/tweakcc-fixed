@@ -1096,5 +1096,40 @@
     "verdict": "archived",
     "version": "2.1.269",
     "why": "The list scope parameter no longer carries a separate assets clause; asset listing is described in the rewritten action surface. Pristine stub, archived. Archived to ~/.tweakcc/orphans-removed-for-2.1.269/."
+  },
+  "system-prompt-coordinator-git-worker-skills": {
+    "verdict": "archived",
+    "version": "2.1.273",
+    "why": "CC 2.1.273 reversed the 2.1.269 commit/PR-skill routing: the conditional that fed workers the /commit and /create-pr skill names is gone and the coordinator brief states the commit instruction as plain literal text. No mid-body probe survives in the bundle."
+  },
+  "tool-parameter-artifact-lang": {
+    "verdict": "archived",
+    "version": "2.1.273",
+    "why": "Artifact lang parameter retired; no distinctive run of the previous body appears in the 2.1.273 bundle, the catalogue or the classify sidecar."
+  },
+  "tool-parameter-artifact-lang-2": {
+    "verdict": "archived",
+    "version": "2.1.273",
+    "why": "Second site of the retired Artifact lang parameter; gone with its sibling."
+  },
+  "tool-result-artifact-comments-notification-triggered-ask-reason": {
+    "verdict": "archived",
+    "version": "2.1.273",
+    "why": "Comment-notification ask-reason clause removed; absent from the bundle, the catalogue and the sidecar."
+  },
+  "tool-result-artifact-list-by-type-curated-empty-clause": {
+    "verdict": "archived",
+    "version": "2.1.273",
+    "why": "Curated-empty clause dropped from the list-by-type result; absent from the bundle, the catalogue and the sidecar."
+  },
+  "tool-result-artifact-live-subscription-session-context": {
+    "verdict": "archived",
+    "version": "2.1.273",
+    "why": "Superseded by the reshaped live-subscription reason table. The surviving publish-context text is catalogued this run as tool-result-artifact-live-subscription-publish-context and its short reason-table sibling -publish-context-reason; this id's own body is gone."
+  },
+  "tool-result-bash-edit-deny-rule-write-undetermined": {
+    "verdict": "archived",
+    "version": "2.1.273",
+    "why": "Deny-rule undetermined-write result removed; absent from the bundle, the catalogue and the sidecar. Its near sibling tool-result-bash-deny-rules-unjudged-explicit-approval was NOT removed — that text survives and was re-catalogued this run as the seven tool-result-bash-dangerous-op-* prompts."
   }
 }
