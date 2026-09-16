@@ -168,6 +168,21 @@ describe.runIf(CORPUS)(
           fs.readFileSync(file, 'utf8')
         ).prompts;
 
+        // This case runs for ~11 minutes on a 35MB bundle and vitest prints
+        // nothing until a test settles, so a working run and a hung one look
+        // identical from outside. On CC 2.1.273 that cost four relaunches and a
+        // wrong "the gate is broken" call in the run dispatch — the gate was
+        // passing the whole time. Emit progress so a long run is observably
+        // alive, and so a genuine hang shows WHERE it stopped.
+        const started = Date.now();
+        const elapsed = () => `${((Date.now() - started) / 1000).toFixed(0)}s`;
+        const total = prompts.filter(
+          p => Array.isArray(p.pieces) && p.pieces.length > 0
+        ).length;
+        console.log(
+          `real-bundle differential: ${total} prompt(s) vs ${(content.length / 1e6).toFixed(1)}MB of ${version} — expect ~11min`
+        );
+
         const mismatches: string[] = [];
         let checked = 0;
         for (const p of prompts) {
@@ -201,7 +216,14 @@ describe.runIf(CORPUS)(
               `${JSON.stringify(pieces).slice(0, 90)}\n  ${e}\n  ${a}`
             );
           }
+          if (checked % 500 === 0)
+            console.log(
+              `  ${checked}/${total} checked, ${mismatches.length} mismatch(es), ${elapsed()}`
+            );
         }
+        console.log(
+          `real-bundle differential: ${checked}/${total} checked, ${mismatches.length} mismatch(es), ${elapsed()}`
+        );
         expect(checked).toBeGreaterThan(2000);
         expect(mismatches, mismatches.join('\n\n')).toEqual([]);
       },

@@ -1,17 +1,20 @@
 #!/usr/bin/env node
 // Run a gate command and FAIL when it produced no verdict.
 //
-// CC 2.1.273: `pnpm test:matcher` died immediately after vitest's `RUN` banner
-// under every pool mode (threads, forks, single-thread, 8 GB heap), with the
-// real bundle present and nothing else on the machine — no test output, no
-// summary, and an exit code of 0 from the pipeline around it. An empty log is
-// indistinguishable from a vacuous pass, which is the one thing a gate must
-// never be: the showtime bar reads "exit 0" as green. The differential itself
-// was fine (7,925/7,925, 0 mismatches) when the same logic was run directly.
+// The invariant: a gate that did not REPORT must not read as a gate that found
+// nothing. `pnpm test:matcher` takes ~11 minutes against a 35MB bundle and
+// vitest prints nothing until a test settles, so a run that is killed part-way
+// — by a harness timeout, a competing invocation, a pre-commit hook — leaves a
+// log holding only the `RUN` banner while the surrounding pipeline still sees
+// exit 0. On CC 2.1.273 that happened four times and was written up as "the
+// gate is broken"; the gate was passing the whole time (7,925/7,925, 0
+// mismatches), and the real defect was that a working run and a dead one were
+// indistinguishable from outside.
 //
-// So the wrapper asserts the gate SPOKE, not merely that it exited: vitest must
-// emit its "Test Files"/"Tests" summary. Anything else exits 2 and says the
-// output was empty, which is the truthful report.
+// Two fixes, and this is the backstop half: the corpus test now streams
+// progress so a long run is observably alive, and this wrapper asserts vitest
+// actually emitted its summary. Anything else exits 2 naming the signal, which
+// is the truthful report.
 import { spawn } from 'node:child_process';
 
 const [, , ...cmd] = process.argv;
