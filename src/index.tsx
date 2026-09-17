@@ -27,6 +27,7 @@ import {
   preloadStringsFile,
   getSystemPromptDefinitions,
 } from './systemPromptSync';
+import { newestLocalPromptsVersion } from './systemPromptDownload';
 import { migrateConfigIfNeeded } from './migration';
 import { completeStartupCheck, startupCheck } from './startup';
 import {
@@ -224,6 +225,10 @@ const main = async () => {
       'list all available system prompts for a CC version'
     )
     .option(
+      '--fetch-system-prompts [version]',
+      'download a Claude Code version’s system prompts into the cache, then print that version (defaults to the newest prompt data available)'
+    )
+    .option(
       '--validate-system-prompts [cliJsPath]',
       'dry-run the apply preflight over the system-prompt overrides (no writes)'
     )
@@ -279,6 +284,49 @@ const main = async () => {
         await handleValidateSystemPrompts(
           options.validateSystemPrompts as string | true
         );
+        return;
+      }
+
+      // Handle --fetch-system-prompts: download a version's prompts into the
+      // cache, then print that version. Only the version reaches stdout, so
+      // `claude install "$(tweakcc-fixed --fetch-system-prompts)"` is safe;
+      // progress and errors go to stderr, and a failed download exits non-zero
+      // having printed nothing. Printing after the download is what makes the
+      // version a receipt: the prompts are on disk, so a later --apply cannot
+      // fail for want of them even if the network has gone by then.
+      if (options.fetchSystemPrompts !== undefined) {
+        const requested =
+          typeof options.fetchSystemPrompts === 'string'
+            ? options.fetchSystemPrompts
+            : undefined;
+
+        // No version given: take the newest the prompt data covers, the same
+        // default the repo's own tools use. Falling back to the installed
+        // Claude Code matches --list-system-prompts, and keeps this working on
+        // a published install, whose tarball ships no data/prompts.
+        let version = requested ?? newestLocalPromptsVersion() ?? undefined;
+        if (!version) {
+          try {
+            const result = await startupCheck({ interactive: false });
+            version = result.startupCheckInfo?.ccInstInfo?.version;
+          } catch {
+            // Detection failed; reported below.
+          }
+        }
+        if (!version) {
+          console.error(
+            'Error: no version given, no prompt data to take the newest from, and no Claude Code installation to read one off. Pass a version, e.g. --fetch-system-prompts 2.1.276.'
+          );
+          process.exit(1);
+        }
+
+        console.error(`Fetching system prompts for Claude Code ${version}...`);
+        const fetched = await preloadStringsFile(version);
+        if (!fetched.success) {
+          console.error(`Error: ${fetched.errorMessage}`);
+          process.exit(1);
+        }
+        console.log(version);
         return;
       }
 
