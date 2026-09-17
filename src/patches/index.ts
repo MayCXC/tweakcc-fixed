@@ -49,6 +49,7 @@ import { writeShowMoreItemsInSelectMenus } from './showMoreItemsInSelectMenus';
 import { writeThemes } from './themes';
 import { writeContextLimit } from './contextLimit';
 import { writeInputBoxBorder } from './inputBorderBox';
+import { writeInputChevronColor } from './inputChevronColor';
 import { writeThinkerFormat } from './thinkerFormat';
 import { writeThinkerSymbolMirrorOption } from './thinkerMirrorOption';
 import { writeThinkerSymbolChars } from './thinkerSymbolChars';
@@ -332,6 +333,13 @@ const PATCH_DEFINITIONS = [
     group: PatchGroup.MISC_CONFIGURABLE,
     description:
       "Your custom styles to the main input box's border will be applied",
+  },
+  {
+    id: 'input-chevron-color',
+    name: 'Input chevron idle color',
+    group: PatchGroup.MISC_CONFIGURABLE,
+    description:
+      'The idle input chevron will use your chosen theme color instead of the default',
   },
   {
     id: 'subagent-models',
@@ -1118,6 +1126,17 @@ export const applyCustomization = async (
         config.settings.inputBox.removeBorder !==
           DEFAULT_SETTINGS.inputBox.removeBorder
       ),
+    },
+    'input-chevron-color': {
+      fn: c => {
+        const themeColorKey = config.settings.inputBox!.chevronIdleThemeColor!;
+        const theme = config.settings.themes?.[0];
+        const resolved =
+          (theme?.colors as Record<string, string>)?.[themeColorKey] ??
+          themeColorKey;
+        return writeInputChevronColor(c, resolved);
+      },
+      condition: !!config.settings.inputBox?.chevronIdleThemeColor,
     },
     'subagent-models': {
       fn: c => writeSubagentModels(c, config.settings.subagentModels!),

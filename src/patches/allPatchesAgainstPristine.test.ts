@@ -32,6 +32,7 @@ import { writeFixSummarizeFromHere } from './fixSummarizeFromHere';
 import { writeFixRewindSummaryHeader } from './fixRewindSummaryHeader';
 import { writeStatuslineUpdateThrottle } from './statuslineUpdateThrottle';
 import { writeClearScreen } from './clearScreen';
+import { writeInputChevronColor } from './inputChevronColor';
 import { writePatchesAppliedIndication } from './patchesAppliedIndication';
 import { writeModelCustomizations } from './modelSelector';
 import { writeShowMoreItemsInSelectMenus } from './showMoreItemsInSelectMenus';
@@ -319,6 +320,7 @@ const INVOCATIONS: Record<PatchId, (src: string) => string | null> = {
   'statusline-update-throttle': c =>
     writeStatuslineUpdateThrottle(c, 300, false),
   'clear-screen': c => writeClearScreen(c),
+  'input-chevron-color': c => writeInputChevronColor(c, 'green'),
   'strip-empty-system-reminders': c => writeStripEmptySystemReminders(c),
   'model-customizations': c => writeModelCustomizations(c),
   'show-more-items-in-select-menus': c =>

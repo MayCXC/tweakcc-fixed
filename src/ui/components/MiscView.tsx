@@ -200,7 +200,10 @@ export function MiscView({ onSubmit }: MiscViewProps) {
         toggle: () => {
           updateSettings(settings => {
             if (!settings.inputBox) {
-              settings.inputBox = { removeBorder: false };
+              settings.inputBox = {
+                removeBorder: false,
+                chevronIdleThemeColor: null,
+              };
             }
             settings.inputBox.removeBorder = !settings.inputBox.removeBorder;
           });

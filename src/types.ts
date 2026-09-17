@@ -105,6 +105,8 @@ export interface UserMessageDisplayConfig {
 
 export interface InputBoxConfig {
   removeBorder: boolean;
+  // Theme color key applied to the idle input chevron (null = leave default).
+  chevronIdleThemeColor: string | null;
 }
 
 export type TableFormat = 'default' | 'ascii' | 'clean' | 'clean-top-bottom';
