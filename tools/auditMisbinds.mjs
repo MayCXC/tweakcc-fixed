@@ -67,8 +67,15 @@ try {
 // slots 7/8/9, so the LCC override's ${PR_GENERATED_WITH_CLAUDE_CODE} bound to a
 // FUNCTION and the patcher rendered its source text into the Bash tool
 // description. Verified against the pristine 2.1.206 cli.js.
+//
+// system-prompt-harness-instructions: upstream's 2.1.274 map puts the security
+// policy at slot 4 and output-style names on slots 0/1; the builder's template
+// emits the hoisted intro, then the security-policy const, then the reminder
+// guidance call, tool context, and the pasted-content bullet. Verified against
+// the pristine 2.1.274 cli.js.
 const CURATED_DIVERGENCES = new Set([
   'tool-description-bash-git-commit-and-pr-creation-instructions',
+  'system-prompt-harness-instructions',
 ]);
 
 const invert = m => {

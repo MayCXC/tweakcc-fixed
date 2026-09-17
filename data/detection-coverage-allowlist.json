@@ -963,5 +963,17 @@
     "verdict": "internal",
     "shape": "array",
     "excerpt": "Re-authorize your GitHub CLI login with the repo and workflow scopes Authorize the organization when GitHub prompts for single sign-on, then"
+  },
+  "85112dc4a289ce92": {
+    "note": "not model-facing: /ultraplan usage text sent with display:\"system\" (TUI only)",
+    "verdict": "internal",
+    "shape": "array",
+    "excerpt": "Remote plan mode with rich web editing experience. Runs in a cloud session. When the plan is ready, you can execute it there or send it back"
+  },
+  "f478ca1f53dbb4d1": {
+    "note": "not model-facing: /ultraplan usage text sent with display:\"system\" (TUI only)",
+    "verdict": "internal",
+    "shape": "array",
+    "excerpt": "Advanced multi-agent plan mode. Runs in a cloud session. When the plan is ready, you can execute it there or send it back here. You can cont"
   }
 }

@@ -121,6 +121,43 @@ const COORDINATOR_MODE_2_1_257_MAP = {
 };
 
 const CURATED_IDENTIFIER_MAPS = {
+  'system-prompt-harness-instructions': [
+    {
+      // CC 2.1.274 hoisted the intro ternary into a local, so slot 0 is its
+      // resolved value, then security policy (H9e), reminder-guidance fn,
+      // tool context, and a new tengu_virtual_pancake-gated pasted-content
+      // bullet. Upstream's map for this shape names slots 0/1/4 wrongly and
+      // adoption runs after NEW_PROMPT_ASSIGNMENTS, so it must be curated.
+      identifiers: [0, 1, 2, 3, 4],
+      identifierMap: {
+        0: 'AGENT_INTRO_LINE',
+        1: 'SECURITY_POLICY_INSTRUCTIONS',
+        2: 'SYSTEM_REMINDER_TAG_GUIDANCE_FN',
+        3: 'TOOL_CONTEXT',
+        4: 'PASTED_CONTENT_GUIDANCE_BULLET',
+      },
+    },
+  ],
+  'tool-description-code-review-command': [
+    {
+      // CC 2.1.274 reworded the body, so fuzzy carryover dropped the id and the
+      // classification cache restored it with generated slot names. The slots
+      // are unchanged: the cloud-review gate fn, then the claude.ai access fn.
+      identifiers: [0, 1],
+      identifierMap: {
+        0: 'IS_CLOUD_CODE_REVIEW_ENABLED_FN',
+        1: 'HAS_CLAUDE_AI_ACCESS_FN',
+      },
+    },
+  ],
+  'tool-description-claude-in-chrome-bridge-timeout-error': [
+    {
+      // CC 2.1.274 moved the trailing advice out of this template; the one slot
+      // is still the Chrome tool name, but the reword dropped the carried map.
+      identifiers: [0],
+      identifierMap: { 0: 'CHROME_TOOL_NAME' },
+    },
+  ],
   'system-prompt-worker-agent': [
     {
       // CC 2.1.273 reversed 2.1.269: the commit/PR-skill routing ternary is
@@ -596,10 +633,12 @@ const NEW_PROMPT_ASSIGNMENTS = [
   // merged prompt extracts anonymous (its opening is now the intro ternary, not
   // "# Harness", so fuzzy carryover misses). Piebald keeps the id
   // `system-prompt-harness-instructions` for it; we match, so the harness override
-  // stays bound. The map below is the 2.1.251+ seven-slot shape (intro
-  // ternary: config / output-style intro fn / collaborative gate fn /
-  // collaborative intro; then security policy, reminder-guidance fn, tool
-  // context). overlayAssignmentMap refuses it if the live shape moves again.
+  // stays bound. The map below is the 2.1.274 five-slot shape: the intro
+  // ternary moved into a local, so slot 0 is its resolved value; then the
+  // security policy, reminder-guidance fn, tool context, and a new flag-gated
+  // (tengu_virtual_pancake) pasted-content bullet. Upstream's map for this
+  // shape names slots 0/1/4 wrongly. overlayAssignmentMap refuses it if the
+  // live shape moves again.
   {
     matcher: t =>
       t.includes('# Harness') &&
@@ -611,13 +650,11 @@ const NEW_PROMPT_ASSIGNMENTS = [
     description:
       'Core interactive-agent identity and harness instructions for the lean system-prompt arm: terminal Markdown output, permission modes, hook feedback, parallel tools, clickable file refs.',
     identifierMap: {
-      0: 'OUTPUT_STYLE_CONFIG',
-      1: 'OUTPUT_STYLE_AGENT_INTRO_FN',
-      2: 'USE_COLLABORATIVE_AGENT_INTRO_FN',
-      3: 'COLLABORATIVE_AGENT_INTRO',
-      4: 'SECURITY_POLICY_INSTRUCTIONS',
-      5: 'SYSTEM_REMINDER_TAG_GUIDANCE_FN',
-      6: 'TOOL_CONTEXT',
+      0: 'AGENT_INTRO_LINE',
+      1: 'SECURITY_POLICY_INSTRUCTIONS',
+      2: 'SYSTEM_REMINDER_TAG_GUIDANCE_FN',
+      3: 'TOOL_CONTEXT',
+      4: 'PASTED_CONTENT_GUIDANCE_BULLET',
     },
   },
   // 2.1.257 — the region-anchor row of the artifact comment list. Its text is a

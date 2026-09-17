@@ -1131,5 +1131,35 @@
     "verdict": "archived",
     "version": "2.1.273",
     "why": "Deny-rule undetermined-write result removed; absent from the bundle, the catalogue and the sidecar. Its near sibling tool-result-bash-deny-rules-unjudged-explicit-approval was NOT removed — that text survives and was re-catalogued this run as the seven tool-result-bash-dangerous-op-* prompts."
+  },
+  "data-artifact-from-type-files-classifier-qualifier": {
+    "verdict": "archived",
+    "version": "2.1.274",
+    "why": "Artifact from-type files classifier qualifier removed with the quickstart classifier-input rework; absent from bundle, catalogue and sidecar."
+  },
+  "data-artifact-type-index-path-with-root-fallback": {
+    "verdict": "archived",
+    "version": "2.1.274",
+    "why": "Type index path root-fallback note removed; absent from bundle, catalogue and sidecar."
+  },
+  "system-reminder-artifact-watch-ended": {
+    "verdict": "archived",
+    "version": "2.1.274",
+    "why": "Artifact watch-ended reminder removed: republishes no longer notify the session (starts no turn)."
+  },
+  "tool-parameter-artifact-auto-open-omit-for-repl": {
+    "verdict": "archived",
+    "version": "2.1.274",
+    "why": "REPL omit clause dropped from the auto_open parameter; absent from bundle."
+  },
+  "tool-result-artifact-read-public-files-not-readable-this-way": {
+    "verdict": "archived",
+    "version": "2.1.274",
+    "why": "Public-files-not-readable result removed with the read-file rework; absent from bundle."
+  },
+  "tool-result-memory-write-tombstone-identical-recreate-refused": {
+    "verdict": "archived",
+    "version": "2.1.274",
+    "why": "Memory write tombstone identical-recreate refusal removed; absent from bundle, catalogue and sidecar."
   }
 }

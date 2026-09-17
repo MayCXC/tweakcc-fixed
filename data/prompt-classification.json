@@ -69745,5 +69745,1855 @@
     "id": "tool-result-artifact-publish-settling-first-attempt-stored",
     "name": "Tool Result: Artifact publish settling — first attempt stored",
     "desc": "Reason clause gn() renders into the artifact publish 409 publish_settling tool_result, telling the model the first publish already reached claude.ai and is still being stored, so a retry is not a fresh publish."
+  },
+  "f9d4c77f377803350cbc30617712572d086653be": {
+    "facing": "model",
+    "id": "data-task-notification-session-inbox-unread-renotify",
+    "name": "Task Notification: Session Inbox Unread Renotify",
+    "desc": "One-shot task-notification body from InboxPointerTracker.renotifyUnfetched when a delivered session-inbox file_id was not fetched, telling the model to call FetchInboxMessage with that file_id before other work."
+  },
+  "0bbdf3f5e8a9983d740e7e96242fa16d17cfedc7": {
+    "facing": "model",
+    "id": "tool-parameter-artifact-action-watch",
+    "name": "Tool parameter: Artifact action — watch/unwatch/status",
+    "desc": "Addendum to the Artifact tool's live-rail action parameter describing watch, unwatch, status, live-update subscriptions, comment-wake behavior, and resume_replies."
+  },
+  "dbf00b9f5443ffadf8b3e0ca86c0383085d79fa0": {
+    "facing": "model",
+    "id": "system-prompt-project-thread-in-thread-message-provenance",
+    "name": "System Prompt: Project thread in-thread message provenance",
+    "desc": "Explains that a message the person sends in the project thread arrives as its own marked user turn, and that a bare approval there answers only what the session sent through the reply tool and clears no SOFT BLOCK unless it names the action and its target"
+  },
+  "828160321e6803b81c05996810b291c021210bee": { "facing": "ui" },
+  "95a89d1e508c96b34bda61329d0e5372e2711411": { "facing": "ui" },
+  "da03c218fef7e229da9e3e32dba101d78a6f3713": { "facing": "internal" },
+  "de3894bfaf602d032e5a0130166b2044719cfa01": { "facing": "ui" },
+  "9140f298048432a8ea25a70d2b5bceb2581d9a1b": { "facing": "ui" },
+  "5aca17388cd92973a2d131ff02796056a7b978af": {
+    "facing": "model",
+    "id": "data-compaction-summary-not-user-speaking",
+    "name": "Compaction Summary Not User Speaking",
+    "desc": "Prefix injected above a compaction summary in a user-role API message stating the summary was written by the assistant and is not the user speaking or lifting a restriction."
+  },
+  "260cc976faae0fdd27a46e17de7bc263eac29e33": {
+    "facing": "model",
+    "id": "tool-result-request-interrupted-by-user-for-tool-use",
+    "name": "Tool Result: Request Interrupted By User For Tool Use",
+    "desc": "Error tool_result (and interrupted-turn user text) when the user stops a turn that had in-flight tool use."
+  },
+  "8dfc5f4893d35e47343eff1b690903e16b78e9c5": {
+    "facing": "model",
+    "id": "tool-result-artifact-read-newer-version-merge-before-publish",
+    "name": "Tool Result: Artifact Read Newer Version Merge Before Publish",
+    "desc": "Notice prepended to an Artifact tool_result when the live artifact is newer than the held read, telling the model to merge local edits before publishing."
+  },
+  "b5ec49562c1784358ea89e8c5a7937ec2e007c8b": {
+    "facing": "model",
+    "id": "tool-result-artifact-version-published-after-held",
+    "name": "Tool Result: Artifact Version Published After Held",
+    "desc": "Notice prepended to an Artifact tool_result naming the live version published after the held one, telling the model to fetch again and merge before publishing."
+  },
+  "b14836dfadc41424222efddbad721e5be11fd433": { "facing": "ui" },
+  "c4f024d7f17dec15b6462b5fa22962e142a6776b": {
+    "facing": "model",
+    "id": "tool-result-artifact-asset-read-saved",
+    "name": "Tool Result: Artifact Asset Saved",
+    "desc": "Artifact read_asset result naming the saved path, size, content type and sha256, and marking the file's content as writer-uploaded data rather than instructions."
+  },
+  "72cc3fb9c8bbea4e57158f50ac2e077d26772e8b": { "facing": "internal" },
+  "16d2e923d24c674f4653262577699bc0294df40b": {
+    "facing": "model",
+    "id": "tool-result-claude-in-chrome-timeout-remote-machine",
+    "name": "Tool Result: Claude In Chrome Timeout Remote Machine",
+    "desc": "Error tool_result when a Chrome tool times out after a routing ack, suggesting the remote computer may be asleep and to try a lighter operation."
+  },
+  "9953781cc5ce321983b9d23a7efb6b2b0a7aba3b": { "facing": "internal" },
+  "c1525ae9022a62178e07c4792bf54cdee400b993": {
+    "facing": "model",
+    "id": "tool-result-mcp-first-party-auth-rejected-login-403-missing-scope",
+    "name": "Tool Result: MCP First-Party Auth Rejected Login 403 Missing Scope",
+    "desc": "Failed MCP client .error when a /login token is HTTP 403, likely missing a required scope."
+  },
+  "a0c9c6833e62ae4a84aa16325498e4b2306c3978": {
+    "facing": "model",
+    "id": "tool-result-claude-in-chrome-timeout-page-unresponsive",
+    "name": "Tool Result: Claude In Chrome Timeout Page Unresponsive",
+    "desc": "Error tool_result when a Chrome tool times out with no routing ack, telling the model the page or Chrome may be unresponsive and to try a lighter operation."
+  },
+  "9ccb007c4d5ca3b629276061dbb827b04efe858f": {
+    "facing": "model",
+    "id": "tool-result-artifact-login-required-remote-session",
+    "name": "Tool Result: Artifact login required (remote session)",
+    "desc": "Artifact tool validation/call error returned to the model when the remote session's launching machine is not signed in to claude.ai."
+  },
+  "dcaefe14788fd33265798023670e0f9dfb8a0a0b": {
+    "facing": "model",
+    "id": "tool-result-artifact-login-required-host-managed",
+    "name": "Tool Result: Artifact login required (host-managed credential)",
+    "desc": "Artifact tool error returned to the model when a host-injected credential takes precedence and claude.ai login cannot be changed in-session."
+  },
+  "9391424f50d7e927449d8be7b73de363e5bd8117": {
+    "facing": "model",
+    "id": "tool-result-artifact-login-required",
+    "name": "Tool Result: Artifact login required",
+    "desc": "Default Artifact tool error returned to the model when the session has no claude.ai credentials and needs /login."
+  },
+  "050fa6f15314726e785ce0c56042e44e1120ce7c": {
+    "facing": "model",
+    "id": "tool-result-artifact-login-required-env-quad",
+    "name": "Tool Result: Artifact login required (federation env quad)",
+    "desc": "Artifact tool error returned to the model when API access comes from managed settings or the ANTHROPIC_FEDERATION_RULE_ID / ANTHROPIC_ORGANIZATION_ID variables and a claude.ai login is still needed."
+  },
+  "be1a6d20941b17a1506734874b9b86ff4c81aaac": {
+    "facing": "model",
+    "id": "tool-description-chrome-multiple-browsers-none-selected",
+    "name": "Tool Result: Multiple Browsers None Selected",
+    "desc": "Chrome MCP tool result: multiple browsers connected and none selected for this session; lists connected browsers."
+  },
+  "9240ecdaeecd618ba66f1932a0ce0c5a1bff4d4a": { "facing": "ui" },
+  "85dcfcabc14bd048c0a6b45284f09c9a9f632831": { "facing": "internal" },
+  "3b0fba8b592af88ab476b0f93c1ffe62f2dd816a": {
+    "facing": "model",
+    "id": "tool-result-artifact-watch-relatch-keep-track",
+    "name": "Tool Result: Artifact Watch Relatch Keep-Track",
+    "desc": "Permission-ask fragment: approving a previously stopped artifact watch resumes tracking new versions for the rest of the session, with the optional comment-reply clause."
+  },
+  "b0661fc9dff7398b1e39e9ee431f5ac47d869f01": { "facing": "ui" },
+  "e8bebc7ccef81282b07759b25bb56975f9a115a3": { "facing": "ui" },
+  "2313745f47c2ec2b68c70ede2b1bb96f066899d8": {
+    "facing": "model",
+    "id": "system-prompt-claude-in-chrome-browser-selection-instructions",
+    "name": "System Prompt: Claude in Chrome browser selection instructions",
+    "desc": "Instructs the agent to ask the user to choose among multiple connected Chrome browsers before using browser automation tools"
+  },
+  "140caf207507e5f790ef27f0ec851f6ce32ad35f": {
+    "facing": "model",
+    "id": "skill-claude-test-when-to-use-skip-docs-only",
+    "name": "Skill: Claude Test whenToUse Skip Docs-Only",
+    "desc": "Tail of the Claude Test skill whenToUse: never begin setup on your own, and skip docs-only or test-only changes."
+  },
+  "be437241930b27dd388382e45157abde43aa696b": {
+    "facing": "model",
+    "id": "tool-result-artifact-login-required-schema-steer",
+    "name": "Tool Result: Artifact Login Required Schema Steer",
+    "desc": "Artifact schema-steer note: every Artifact call is refused until a claude.ai login exists, so the schema error only matters after login."
+  },
+  "94532e5db0e5dfb7352aef5034f43fa900161e55": {
+    "facing": "model",
+    "id": "skill-claude-test-description",
+    "name": "Skill: Claude Test Description",
+    "desc": "Lead of the Claude Test skill description: check that the web app in this repo still works with Claude Test."
+  },
+  "62789d78d3775f90d2526027c248fc3cb7a960be": { "facing": "ui" },
+  "fd9a732267f0bfeabb3288bb7734366a7956e367": { "facing": "ui" },
+  "f5b0e18792269e9631617c8c3b7a8e67f25945ee": { "facing": "ui" },
+  "7040f76ecf4b23775ef349bcadfba81717cff569": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-helper-file-differs",
+    "name": "System Prompt: Claude Test Helper File Differs",
+    "desc": "Claude Test skill/command prompt when a helper file does not match what this Claude Code version ships."
+  },
+  "2ff08d56857c760f4bf2511d5ff60cf915b2675b": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-helper-symlink",
+    "name": "System Prompt: Claude Test Helper Symlink",
+    "desc": "Claude Test skill/command prompt when the helper path is a symlink rather than a real folder."
+  },
+  "e17a51463ffcfc1ae1245b8b85d6d495af0de333": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-helper-unwritable",
+    "name": "System Prompt: Claude Test Helper Unwritable",
+    "desc": "Claude Test skill/command prompt when the helper directory cannot be written."
+  },
+  "9063e7efab82bea450b8303eb72ea811d62c69f4": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-helper-timeout",
+    "name": "System Prompt: Claude Test Helper Timeout",
+    "desc": "Claude Test skill/command prompt when the browser helper does not come up within 7 seconds of plugin reload."
+  },
+  "815f4a24e592683ef4ea136cb3180b2b4e698566": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-tools-already-listed",
+    "name": "System Prompt: Claude Test Tools Already Listed",
+    "desc": "Claude Test skill/command prompt when another claude-test plugin or MCP server already owns the browser tools."
+  },
+  "d4cce1ee35ccd4c23e803e1f2cf8f734fb34dcc0": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-starting-tell-user",
+    "name": "System Prompt: Claude Test Starting Tell User",
+    "desc": "Skill prompt while the Claude Test helper is starting: tell the user in one line and end the turn."
+  },
+  "7027b30b4c8c94e9a3d1814dcf6069edafcb0b3b": {
+    "facing": "model",
+    "id": "system-reminder-nested-agents-md-contents",
+    "name": "System Reminder: Nested AGENTS.md contents",
+    "desc": "Attaches a nested AGENTS.md file's contents to a Read tool result when the agents-md plugin finds instruction files below the session's working directory"
+  },
+  "def9edd2bca32d8ce04b9a45e534a1eccb332ade": { "facing": "internal" },
+  "b201dddfbac8b0710324304d0f4d9f2d03e8a74f": { "facing": "internal" },
+  "ee86b64c8293747f5ab402ff26cbf02ad209794e": { "facing": "ui" },
+  "23ff0dd2372035632f45c029e46a85ba0c689631": {
+    "facing": "model",
+    "id": "tool-result-artifact-created-from-type",
+    "name": "Tool Result: Artifact Created From Type",
+    "desc": "Tool result after creating a new Artifact from an Artifact type, listing own versus type files and that it stays private until shared."
+  },
+  "10cab82a49d00be25821a0391cb9ff994f2d0722": {
+    "facing": "model",
+    "id": "tool-result-artifact-create-also-created-docs-document",
+    "name": "Tool Result: Artifact Create Also Created Docs Document",
+    "desc": "Tool result after creating an Artifact that also created an empty Claude Docs document, warning not to repeat a connector create."
+  },
+  "f395d860e283d3accb0f9ec94187f8de07d81cba": {
+    "facing": "model",
+    "id": "tool-result-async-agent-running-check-progress",
+    "name": "Tool Result: Async Agent Running (check progress)",
+    "desc": "Tool_result note when a spawned async agent is still running without an output file: do not spawn a duplicate; check progress or message it."
+  },
+  "fd6711a14cb98c263e3c76d87d8841bda21c8fe2": { "facing": "internal" },
+  "504f254e47edee65e26e6aa7c659858cc4e3c08e": { "facing": "ui" },
+  "aaff822d527e6ee0d5bbb23709626e087d87cd37": { "facing": "ui" },
+  "6080721bb3f8e4229d7ab4864c41d6f097824e83": { "facing": "ui" },
+  "18c2783e85f37eab1a6029f0edc95ec98027ddb6": {
+    "facing": "model",
+    "id": "tool-result-mcp-oauth-flow-failed",
+    "name": "Tool Result: MCP OAuth flow failed",
+    "desc": "Tool result when an MCP authenticate stub fails to start the OAuth flow, directing the user to /mcp."
+  },
+  "9a7443386afe3da85abc2cb2cb740689fa0184c0": { "facing": "ui" },
+  "ec098e31caa8b6da04149239522f0cc3a2a4b4e8": { "facing": "internal" },
+  "23a5a7837bf0717a47457ffd47b5bd7b28c3e0f0": { "facing": "ui" },
+  "9b42a70d16022e4cab5b4b8704cf569843e625e3": {
+    "facing": "model",
+    "id": "tool-result-artifact-live-subscription-publish-context",
+    "name": "Tool Result: Artifact Live Subscription Publish Context",
+    "desc": "Live-subscription status line when this is a print, cloud, subagent, or teammate session that is not notified of artifact republishes."
+  },
+  "2bce378bdab89e95259d9012e44a3aee98ca5fc4": {
+    "facing": "model",
+    "id": "data-mcp-connect-endpoint-not-found",
+    "name": "Data: MCP Connect Endpoint Not Found",
+    "desc": "HTTP MCP connect error quoted into the failed-servers system reminder when the endpoint returns 404."
+  },
+  "5bfd207ee1d69847b9722adfda0227d2067a7106": {
+    "facing": "model",
+    "id": "tool-result-memory-sync-paused-after-failures",
+    "name": "Memory Sync Paused After Failures",
+    "desc": "PostToolUse additionalContext injected after a memory write warning the model that memory sync is paused after repeated failures and recent writes are saved locally but not persisted; model-facing."
+  },
+  "d76cdae5f43192026cce814976b30fc95b3eb196": {
+    "facing": "model",
+    "id": "skill-claude-test-description-spec-runner",
+    "name": "Skill: Claude Test Description Spec Runner",
+    "desc": "Body of the Claude Test skill description: specs run in a fenced headless browser and return a PASS/FAIL summary."
+  },
+  "e8afb58f9797db236380ebfe5e6c60b82a0e2ba2": { "facing": "ui" },
+  "798497f73827e66c011903c8e58b9e7edb8d1da3": { "facing": "internal" },
+  "ef8212c39a4bcd31019f83bad6341426a77f381b": {
+    "facing": "model",
+    "id": "tool-description-code-review-command",
+    "name": "Tool Description: Code review command",
+    "desc": "Describes the code review command and its effort levels, PR comment mode, and fix mode; injected as the model-facing description of the /code-review slash command."
+  },
+  "4791567020cb4df49c5610c4c7e848dc67657837": { "facing": "ui" },
+  "c6b9645b36319f6e71948a5607d678e45cf1061c": { "facing": "internal" },
+  "9bb9131b6bdef98df0ab4234258e57cc4135ba2a": {
+    "facing": "model",
+    "id": "tool-description-chrome-selected-browser",
+    "name": "Tool Result: Selected Browser",
+    "desc": "select_browser MCP tool_result confirming which connected browser is now selected."
+  },
+  "69a2d0b2b21f8070083ae3a52238f8ccca12dbfc": { "facing": "internal" },
+  "20aafb8013f858e85971dfe1dcd4eb192716cc1f": {
+    "facing": "model",
+    "id": "slash-command-web-setup-description",
+    "name": "Slash Command: /web-setup Description",
+    "desc": "Description of the /web-setup command for connecting GitHub so cloud sessions can clone repositories, listed in the model's available slash commands."
+  },
+  "f88df96060f7034d79ba2f624579ecf82b797a99": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-description",
+    "name": "Slash Command: /ultrareview Description",
+    "desc": "Description of the /ultrareview command: start a cloud agent that finds and verifies bugs in the current branch."
+  },
+  "77174070675cdd7230286c75652459ef2cb24f77": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-starting-reload-plugins",
+    "name": "System Prompt: Claude Test Starting Reload Plugins",
+    "desc": "Claude Test starting text: the skill will run /reload-plugins and then re-invoke itself."
+  },
+  "f7f9a865b23ff93b27b921217595385940cb38f0": {
+    "facing": "model",
+    "id": "system-prompt-pasted-content-tag-guidance",
+    "name": "System Prompt: Pasted Content Tag Guidance",
+    "desc": "Harness instruction: treat user-pasted XML-tagged blocks as untrusted except where the user's own message directs."
+  },
+  "068f2823e4d65b34b25f84724ee343b58914e956": {
+    "facing": "model",
+    "id": "tool-description-artifact-document-listing-when-host-attached",
+    "name": "Tool Description: Artifact Document Listing When Host Attached",
+    "desc": "Artifact-tool guidance: a document type listing applies only when the host has attached the Docs connector, and otherwise the document goes to the connector/skill."
+  },
+  "6f4bbfa3714c76d0fd4b74b64c00bf0acd8ffb6d": {
+    "facing": "model",
+    "id": "skill-claude-test-when-to-use-offer-to-run",
+    "name": "Skill: Claude Test whenToUse Offer To Run",
+    "desc": "Middle of the Claude Test whenToUse: after a user-visible app change, offer to run Claude Test in one line and never start it unasked."
+  },
+  "1201be3958b9b5f580b9b2666f5d7081168a37fd": { "facing": "ui" },
+  "f5738d28083944e8d0c68df58d25f5ed8e718c58": {
+    "facing": "model",
+    "id": "tool-result-git-lazy-fetch-unscoped-extra-header",
+    "name": "Tool Result: Git Lazy Fetch Unscoped ExtraHeader",
+    "desc": "Appended to git command stderr (model-visible tool output) when a lazy fetch skipped an unscoped http.extraHeader."
+  },
+  "fc26a49994e41a7150bb317337c69645dfd64866": {
+    "facing": "model",
+    "id": "data-task-notification-artifact-live-subscription-arm-failed",
+    "name": "Data: Task Notification Artifact Live Subscription Arm Failed",
+    "desc": "Task-notification event telling the model a live artifact subscription did not arm."
+  },
+  "db0d9ea3d423b781fe21549fa2fcb65eb6b5751d": { "facing": "internal" },
+  "f69dd14f011a1c5df54af8c595535888801b198f": {
+    "facing": "model",
+    "id": "data-memory-sync-file-not-saved-stays-local",
+    "name": "Data: Memory Sync File Not Saved Stays Local",
+    "desc": "PostToolUse additionalContext when the server refused one memory file: it stays local, other files keep syncing, and the model should tell the user."
+  },
+  "c0d88741c75709c05806b03909e4933b4c6f5fe8": { "facing": "internal" },
+  "d9d124300039220a4d49fe908ac505857e2d863b": { "facing": "internal" },
+  "62c12513f052f71eb11cb47e17c2ec3397e0cb42": { "facing": "internal" },
+  "0a7121ca14b6469c3faccc99d8f2a3d19d21c31c": { "facing": "ui" },
+  "297255b613da6ad73d730e32ac83dc79c239fae3": { "facing": "internal" },
+  "5b5888a5c685d8bc3236d9092367dd841e59f1cc": {
+    "facing": "model",
+    "id": "data-memory-sync-index-too-large",
+    "name": "Data: Memory Sync Index Too Large",
+    "desc": "Reason fragment spliced into a memory-sync pause notice when the server rejects MEMORY.md over its index size cap."
+  },
+  "d01157122a2d7ee1c5be67b332c0c5d216c1076b": {
+    "facing": "model",
+    "id": "data-task-notification-agent-stopped-with-background-work",
+    "name": "Data: Task Notification Agent Stopped With Background Work",
+    "desc": "Task-notification body when a completed agent still has its own background work running, so the result may be interim."
+  },
+  "a409ff92bc5de35b9fb984b0e6acfd5d2f84065e": {
+    "facing": "model",
+    "id": "system-prompt-artifact-created-from-type-publisher-untrusted",
+    "name": "System Prompt: Artifact Created From Type Publisher Untrusted",
+    "desc": "Trust-boundary wrapper on artifact content created from an Artifact type, telling the model the page and type instructions are publisher-written data."
+  },
+  "dc8361b38d49dd94b34fe51e4e9afec148c46065": {
+    "facing": "model",
+    "id": "system-prompt-artifact-content-authored-by-others-created-outside-org",
+    "name": "System Prompt: Artifact Content Authored By Others Created Outside Org",
+    "desc": "Trust-boundary wrapper when an artifact was created outside the user's organization, possibly by anyone on the internet."
+  },
+  "4c62e6e6290f85a1671d5e5ed86c94d25b46a10c": {
+    "facing": "model",
+    "id": "system-reminder-background-command-stopped-under-memory-pressure",
+    "name": "System Reminder: Background command stopped under memory pressure",
+    "desc": "Explains that Claude Code reaped an idle session's background shell because the system was critically low on memory, that this says nothing about the command, and that it must not be restarted unprompted"
+  },
+  "e06526a0291ae2814e0649d3b860202bb8dc6ffd": {
+    "facing": "model",
+    "id": "slash-command-session-already-cloud-session",
+    "name": "Slash Command: Session Already Cloud Session",
+    "desc": "local-command-stdout returned for /session when this session is already a cloud session, telling the model to continue locally with claude --teleport."
+  },
+  "1e363c9765a5b81f77671ce6f1a2ab1042ec7d25": {
+    "facing": "model",
+    "id": "tool-result-artifact-watch-ask-live-background-connection",
+    "name": "Tool Result: Artifact Watch Ask Live Background Connection",
+    "desc": "Live-session paragraph in the artifact-watch permission ask (and tool description) explaining republish tracking over a background connection."
+  },
+  "5d322b85b9fcfa585501e7d7a47244ce04822748": {
+    "facing": "model",
+    "id": "data-task-notification-artifact-watches-dropped-signed-out",
+    "name": "Data: Task Notification Artifact Watches Dropped Signed Out",
+    "desc": "Task-notification event body when artifact watches opened as the signed-out account are dropped."
+  },
+  "df91750006dd23cfc5bdf4c9f0c481b59a41ee4d": {
+    "facing": "model",
+    "id": "data-task-notification-artifact-watches-dropped-account-changed",
+    "name": "Data: Task Notification Artifact Watches Dropped Account Changed",
+    "desc": "Task-notification event body when artifact watches opened as the previous account are dropped after a sign-in change."
+  },
+  "e148b170a52a987c58d17aa36c3e0fd9c9ea2e0f": { "facing": "ui" },
+  "1e8841eb63ee01cd6f46328a01c1a7c5699927a1": { "facing": "ui" },
+  "202015c8299d87a18ede45c50a6a22776b617447": {
+    "facing": "model",
+    "id": "tool-result-artifact-watch-ask-resume-live-after-stopped",
+    "name": "Tool Result: Artifact Watch Ask Resume Live After Stopped",
+    "desc": "Permission-ask stem when watching was stopped earlier this session and a live session would resume tracking new versions."
+  },
+  "82ed2e1b89d0b85f9ad43291dcc7581acd50d61a": { "facing": "internal" },
+  "b04fe2b16610daa88238817c7c7fa10ae78d63fe": {
+    "facing": "model",
+    "id": "skill-claude-test-when-to-use",
+    "name": "Skill: Claude Test When To Use",
+    "desc": "whenToUse metadata for the user-invocable claude-test run skill, limiting unsolicited offers to projects that already have specs after a user-visible app change."
+  },
+  "5ea5c7c4975d99edcb86a966e0792abe38af087a": { "facing": "internal" },
+  "31886112bc5c9c1185a9ca35caf568b824ccf3f8": { "facing": "internal" },
+  "d755bb8d164d42f9caa446ec9252e0baa5cdbf37": { "facing": "internal" },
+  "8c816ef5881590cd60b20822020cf22e8bc4c324": {
+    "facing": "model",
+    "id": "system-prompt-interactive-intro-short",
+    "name": "System Prompt: Interactive agent intro (short)",
+    "desc": "Minimal opening system-prompt line for software-engineering sessions"
+  },
+  "1e11fb132f068887131741625c8299b6341fa4a8": {
+    "facing": "model",
+    "id": "system-prompt-self-hosted-runner-doctor",
+    "name": "System Prompt: Self-hosted runner doctor",
+    "desc": "Instructs an agent to diagnose self-hosted runner authentication, network, lifecycle, queue, hooks, metrics, and escalation issues"
+  },
+  "1c3f1e7257965bf2b529e21481846e30f983639b": {
+    "facing": "model",
+    "id": "system-prompt-self-hosted-runner-setup",
+    "name": "System Prompt: Self-hosted runner setup",
+    "desc": "Guides an operator through creating, verifying, learning, and documenting a self-hosted runner deployment"
+  },
+  "6156a05542313630fdd7c8c815efd390b0d1f82b": { "facing": "ui" },
+  "abbc7b8d6feba63716067b8478d9a2e3eca6a5cb": {
+    "facing": "model",
+    "id": "tool-description-list-connected-browsers-browser-picker-guidance",
+    "name": "Tool Description: list_connected_browsers (browser picker guidance)",
+    "desc": "Appended to the list_connected_browsers tool description: when to ask the user to pick among several connected browsers, how to label the options, and to call select_browser or switch_browser rather than choosing one unilaterally"
+  },
+  "0ed098bb41189d7d44c0d55c81cb244cccf8fbda": { "facing": "ui" },
+  "1c1951b2ff66f140f17657691daad7b2ce2b11e1": { "facing": "ui" },
+  "c97441bae617eb25a7d2bdbdf2d695f5c7736e6b": { "facing": "ui" },
+  "c0167d3ad34bd0dd752d9ba3f1073519d9fd6bfd": { "facing": "internal" },
+  "6e17204dd71a33b06c983cd940d6c3efbfe2c2c4": { "facing": "internal" },
+  "15583660b36d90ffff9fd4f6ef963b41077b1641": { "facing": "internal" },
+  "c60ddd25cc21cd669a2a378bd6fd1d72f3cf20f6": { "facing": "internal" },
+  "46eeb00175aba264d6801efe8ad1da30b0095169": { "facing": "internal" },
+  "4e44e0a99e1a10255a6a27ce39a1685253295055": {
+    "facing": "model",
+    "id": "tool-result-artifact-login-retry-note",
+    "name": "Tool Result: Artifact Login Retry Note",
+    "desc": "Instructs the model not to retry Artifact calls until a claude.ai login exists and to tell the user what is needed."
+  },
+  "0d3ec0afaff230b9dfcd9aee5b0555a02f271c68": {
+    "facing": "model",
+    "id": "tool-result-artifact-login-blocked-by-credential",
+    "name": "Tool Result: Artifact Login Blocked By Credential",
+    "desc": "Explains that Artifact calls are blocked because a non-claude.ai credential takes precedence and tells the model how to get a subscription login."
+  },
+  "365f42e3e7a45de232e73d281e243bcdb02cab4c": {
+    "facing": "model",
+    "id": "data-artifact-own-type-instance-classifier-label",
+    "name": "Data: Artifact Own-Type Instance Classifier Label",
+    "desc": "Classifier mark appended when the artifact is an instance made from an Artifact type whose files were written by the type's publisher."
+  },
+  "e45bee39b834922c91c0984f066cdc20ec60d6ac": {
+    "facing": "model",
+    "id": "data-artifact-screened-destination-classifier-label",
+    "name": "Data: Artifact Screened Destination Classifier Label",
+    "desc": "Classifier mark appended when a save destination is a filename Claude Code screens (git, hook, tool, or agent settings)."
+  },
+  "57358f3523dd1b5ec254d3be5a7df5b2a4c778da": { "facing": "internal" },
+  "df733eb040a1901df0c9252fbe76b44a1bfa888e": {
+    "facing": "model",
+    "id": "tool-result-read-automounter-lookup-path-deny",
+    "name": "Tool Result: Read Automounter Lookup Path Deny",
+    "desc": "Permission deny message when a read path is a darwin automounter lookup whose resolution would itself be a network request."
+  },
+  "a63c4fa7261ff8ff19b6e562848bb1c821a4858f": {
+    "facing": "model",
+    "id": "tool-result-read-symlink-resolution-changed-after-permission",
+    "name": "Tool Result: Read Symlink Resolution Changed After Permission",
+    "desc": "Refuses a read when symlink resolution changed after the permission check and tells the model to stop concurrent rewrites and retry."
+  },
+  "6af65026d81bf11bd87cf741f8fe727192f7dc01": {
+    "facing": "model",
+    "id": "tool-result-artifact-public-outside-org-unapproved-not-fetched",
+    "name": "Tool Result: Artifact Public Outside Org Unapproved Not Fetched",
+    "desc": "Artifact tool error when a public extra-org artifact is not fetched because no person approved reading it in this session."
+  },
+  "f4e29e53f6336be0ae617641f9bb0a3aa5fbc8d7": {
+    "facing": "model",
+    "id": "tool-result-artifact-public-outside-org-read-not-watch",
+    "name": "Tool Result: Artifact Public Outside Org Read Not Watch",
+    "desc": "Tells the model a public extra-org artifact can be read but cannot be watched."
+  },
+  "4d9ce008987f51a9a520a48936a3a57b720b656e": {
+    "facing": "model",
+    "id": "tool-result-artifact-public-outside-org-unasked-page-not-fetched",
+    "name": "Tool Result: Artifact Public Outside Org Unasked Page Not Fetched",
+    "desc": "Artifact read error when a public extra-org page is fetched only after a user-approved read and this call has no such approval."
+  },
+  "cb4093df88d530a474e658ff04ebaf61e9a5760c": {
+    "facing": "model",
+    "id": "tool-result-git-config-unsafe-key-remedy",
+    "name": "Tool Result: Git Config Unsafe Key Remedy",
+    "desc": "Advice spliced into git-config refusal text: move an unsafe key to global config or remove it if untrusted."
+  },
+  "2f32aa7010f50ca8f8def836b98a9d819efb10c0": {
+    "facing": "model",
+    "id": "tool-result-git-config-conditional-include",
+    "name": "Tool Result: Git Config Conditional Include",
+    "desc": "Explains git was not run because the repository config has an includeIf, so spawn-time config cannot be determined."
+  },
+  "ec3b01c72962016af3fd02ac5bbe7364de3f8ee8": {
+    "facing": "model",
+    "id": "tool-result-git-config-unsafe-lfs-key",
+    "name": "Tool Result: Git Config Unsafe Lfs Key",
+    "desc": "Explains git was not run because repo config names a git-lfs program that would run on checkout and status."
+  },
+  "da8cef8ac5d380c4fea74b60fecac7853aa12bb8": {
+    "facing": "model",
+    "id": "tool-result-git-config-lfs-key-alias-entry",
+    "name": "Tool Result: Git Config Lfs Key Alias Entry",
+    "desc": "Inner interpolation naming a git config key as the entry git-lfs reads under an alias."
+  },
+  "29d3d789eaee19c10e9efb3d7fa33047c73c6797": {
+    "facing": "model",
+    "id": "tool-result-worktree-submodule-nested-repository",
+    "name": "Tool Result: Worktree Submodule Nested Repository",
+    "desc": "ExitWorktree refusal clause when a nested git repository inside the worktree, not a submodule checkout, makes submodule work unverifiable."
+  },
+  "5b1fb9c781b56eda7e290c64de05737cbc48b753": {
+    "facing": "model",
+    "id": "tool-result-worktree-submodule-gitdir-outside-modules",
+    "name": "Tool Result: Worktree Submodule Gitdir Outside Modules",
+    "desc": "ExitWorktree refusal clause when a submodule points at a git directory outside this worktree so its contents cannot be vouched for."
+  },
+  "c7c6c6d998cec3c13d8406129719448ee9fa87dd": {
+    "facing": "model",
+    "id": "tool-result-worktree-submodule-nested-submodules",
+    "name": "Tool Result: Worktree Submodule Nested Submodules",
+    "desc": "ExitWorktree refusal clause when a submodule holds nested submodules that cannot be inspected."
+  },
+  "2b75178e54cfd811cf7de2b674d55901470d3bff": {
+    "facing": "model",
+    "id": "tool-result-worktree-submodule-too-many",
+    "name": "Tool Result: Worktree Submodule Too Many",
+    "desc": "ExitWorktree refusal clause when the worktree records more submodules than can be inspected."
+  },
+  "5bbf1442311bfb3ea0e963385ce3131035ea7893": { "facing": "internal" },
+  "f06a2820968d2b17d49f99d74af90cf5af3e9412": { "facing": "internal" },
+  "5e1cd4845a86c1719f93eaeaa339fca396065c68": { "facing": "internal" },
+  "390c8b2125551a53f06647ff4af6bafe306350de": { "facing": "internal" },
+  "ca96f6ae5317cbcbac01645d622db13f807382e7": {
+    "facing": "model",
+    "id": "system-prompt-project-owner-in-thread-attested-marker",
+    "name": "System Prompt: Project Owner In-Thread Attested Marker",
+    "desc": "Lead marker for a project-owner/member message sent in this thread (not relayed), with server attestation and received time."
+  },
+  "47f1270b2af7cbf40a00367b0cb790f1e0b2ab79": {
+    "facing": "model",
+    "id": "system-prompt-project-timeline-coordinator-chosen-root-marker",
+    "name": "System Prompt: Project Timeline Coordinator Chosen Root Marker",
+    "desc": "Lead marker for a timeline message chosen by the coordinator as this thread's root, attested as owner/member-authored."
+  },
+  "95a76c9845407fc1360577bebb7a4e3e29c9bc30": {
+    "facing": "model",
+    "id": "system-prompt-cross-session-messages-three-ways",
+    "name": "System Prompt: Cross-Session Messages Three Ways",
+    "desc": "System-prompt clause describing three paths owner/member messages reach the agent, including in-thread sends."
+  },
+  "af3ce6bb706c08a1324efc800def9192287c70aa": {
+    "facing": "model",
+    "id": "system-prompt-cross-session-messages-two-ways",
+    "name": "System Prompt: Cross-Session Messages Two Ways",
+    "desc": "System-prompt clause describing two paths owner/member messages reach the agent when in-thread send is off."
+  },
+  "89ec20908c398d8dd068947ec58231ff0b2b3c06": {
+    "facing": "model",
+    "id": "system-prompt-cross-session-messages-provenance-with-thread",
+    "name": "System Prompt: Cross-Session Messages Provenance With Thread",
+    "desc": "System-prompt clause on how the marker states owner/member authorship when in-thread messages omit an account id."
+  },
+  "4e8b1c2dd459db705c7a498968ae59e32d3860e5": {
+    "facing": "model",
+    "id": "system-prompt-cross-session-messages-provenance",
+    "name": "System Prompt: Cross-Session Messages Provenance",
+    "desc": "System-prompt clause on how the marker states owner/member authorship and arrival when in-thread send is off."
+  },
+  "680edc46f97d1506e2637f2c62a841456324709a": {
+    "facing": "model",
+    "id": "system-prompt-cross-session-timeline-soft-block",
+    "name": "System Prompt: Cross-Session Timeline Soft Block",
+    "desc": "System-prompt rule that a marked timeline yes/ok does not clear a SOFT BLOCK unless it names the action and target."
+  },
+  "59d9f9e03056d5d903fca8373a5815e13b0e2500": {
+    "facing": "model",
+    "id": "system-prompt-cross-session-reply-indented-no-lead",
+    "name": "System Prompt: Cross-Session Reply Indented No Lead",
+    "desc": "System-prompt fragment describing a recorded timeline reply as indented under the marked message with no lead."
+  },
+  "f7132421dee5514dd7acf9e1fbaede0cda32f2ff": {
+    "facing": "model",
+    "id": "system-prompt-cross-session-reply-like-typed-here",
+    "name": "System Prompt: Cross-Session Reply Like Typed Here",
+    "desc": "System-prompt fragment describing a recorded timeline reply as formatted like a message typed in this thread."
+  },
+  "fc15bad36c37a0fa7c7913c7855f896962dc73bc": { "facing": "internal" },
+  "60d3a7878a8350c2e3a0afaa9b97bc9e67875a99": { "facing": "internal" },
+  "984d1236f20ad97de2249f51e9b8b7604d74f3fc": { "facing": "ui" },
+  "0893f4a7adb0c922f998bc01af05ce783c6b7c7e": {
+    "facing": "model",
+    "id": "tool-result-git-promisor-lazy-fetch-forgone",
+    "name": "Tool Result: Git Promisor Lazy Fetch Forgone",
+    "desc": "Appended to git stderr when a partial clone is not retried with a constrained lazy fetch, including the forgone reason."
+  },
+  "18fb0930b8a2aebede8ad6627073818fc95628c0": { "facing": "internal" },
+  "051431747f3f459a3515dc878d1771da29d6abf9": {
+    "facing": "model",
+    "id": "agent-prompt-security-monitor-pasted-text-in-user-turn",
+    "name": "Agent Prompt: Security Monitor Pasted Text In User Turn",
+    "desc": "Security-monitor instruction that backtick-tagged pasted blocks in a user turn establish intent only where the user's own words outside the tags direct the agent."
+  },
+  "6820c962151ef4910bf47a89b1cd1fcd8c98efcb": { "facing": "ui" },
+  "de4b2325a73e88cefc6cc032f0422bfa89bb6961": { "facing": "ui" },
+  "32a45927ba081a33d20f4443d2a5255f4bd21a67": { "facing": "ui" },
+  "cace06ac31517f4c448f08e4f27ceef90fe4b535": { "facing": "ui" },
+  "2cb25c05617f1e9f5725dc77fe17a8ee250de496": { "facing": "internal" },
+  "a723a306530e836c5fe86e477d228a4d0568c280": { "facing": "internal" },
+  "910c9f59915bbfa360d2b8d07956201c097ff594": { "facing": "internal" },
+  "e5111c002654ad81297e9cfbb1da4192048b6c2e": { "facing": "internal" },
+  "81a148c2b9e60fee5d9e41956ebd24e7a425e8e8": { "facing": "internal" },
+  "9291cd277a077bbc59ae5e5b8529e2c195e23703": { "facing": "internal" },
+  "65554324ae00c3b884d73b9aadb08a6421f262d8": { "facing": "internal" },
+  "6ddc0a84ed9de3ee76dc8ca805918787c83e3357": { "facing": "internal" },
+  "563132b23abe581b4c7e04620f3254aed840e2b3": { "facing": "internal" },
+  "b2aea4d502a9037a9b820ef369698a1503cf1735": { "facing": "internal" },
+  "8f840bffc57670a28e18f0c462186481945ecd63": { "facing": "internal" },
+  "35c8d1bb88da08175fff3f079d86327cbe805b75": {
+    "facing": "model",
+    "id": "data-memory-sync-content-screened",
+    "name": "Data: Memory Sync Content Screened",
+    "desc": "Copy for when the server's safety check rejects a memory file's content without naming the offending part."
+  },
+  "3e8befd529e447df7d469ec299272fb15fe029d0": {
+    "facing": "model",
+    "id": "data-memory-sync-unrecognized-http-refusal",
+    "name": "Data: Memory Sync Unrecognized HTTP Refusal",
+    "desc": "Prefix naming the memory file when the server refuses a change with no reason this client recognizes."
+  },
+  "978c07485434486325fdb16a73f5c091d14f096d": {
+    "facing": "model",
+    "id": "system-reminder-memory-sync-paused",
+    "name": "System Reminder: Memory Sync Paused",
+    "desc": "Notice that memory sync is paused for a store so local writes are not persisted to shared memory."
+  },
+  "e6084641c25b33cdd67bced382c22c26e78979c1": {
+    "facing": "model",
+    "id": "data-memory-sync-recovered-refused-files-tail",
+    "name": "Data: Memory Sync Recovered Refused Files Tail",
+    "desc": "Tail on a recovered-sync notice that some previously refused memory files still stay local only."
+  },
+  "b18c20c1cdad2f4a2f741ebb0fd366e57d37d916": {
+    "facing": "model",
+    "id": "tool-result-bash-worktree-guard-operand-unlocated-program",
+    "name": "Tool Result: Bash Worktree Guard Unlocated Program",
+    "desc": "Worktree-guard denial when a computed argument sits where the program operand cannot be located."
+  },
+  "8c45ec4096ded173f0d7bb6d17bb06f40e5f9a13": {
+    "facing": "model",
+    "id": "tool-result-bash-worktree-guard-operand-computed-after-script",
+    "name": "Tool Result: Bash Worktree Guard Computed After Script",
+    "desc": "Inner parenthetical of the unlocated-program denial naming a computed argument that belongs after the script or --."
+  },
+  "cae9aa7c00730c9331e373e3cff0fb61d737b82c": {
+    "facing": "model",
+    "id": "tool-result-bash-worktree-guard-operand-runtime-script",
+    "name": "Tool Result: Bash Worktree Guard Runtime Script",
+    "desc": "Worktree-guard denial when the script operand is computed at runtime."
+  },
+  "01facb6514de46036f1ec5320949754509755155": {
+    "facing": "model",
+    "id": "tool-result-bash-worktree-isolation-descriptor-holds-program",
+    "name": "Tool Result: Bash Worktree Isolation Descriptor Holds Program",
+    "desc": "Isolation denial when the program comes from a descriptor so it cannot be shown not to be git."
+  },
+  "c09621a2685675a461210f2e8ec7ea4187bda656": { "facing": "internal" },
+  "64a01647e59cb80ba044b01dfb2d7ade02cdf483": { "facing": "ui" },
+  "9112449da99c21f1c5a8214d198dbc8e896ac1d0": { "facing": "ui" },
+  "ba9b56416cddaa51eab813ee125cc48ac079e97b": { "facing": "ui" },
+  "34cbb2aa5adf0ec275633dc15e7ab432b9d2af79": { "facing": "ui" },
+  "a3999594cbbe986b8bff5abb57be6c3c01ed0ae5": { "facing": "ui" },
+  "5d09ce3b4b8c9d882caaeae5671cf0f551fe3406": { "facing": "internal" },
+  "5f53c1727d92a230326d641acfef06531ca093c4": { "facing": "internal" },
+  "dfcb2ac8126d32ae27bf153d480aabe760126a34": {
+    "facing": "model",
+    "id": "tool-result-webfetch-someone-elses-artifact-ask",
+    "name": "Tool Result: WebFetch Someone Else's Artifact Ask",
+    "desc": "Permission-ask message when WebFetch would read someone else's artifact into the conversation."
+  },
+  "b5a936ced286b41b6b7bdc29acbfcaeb5487ba71": {
+    "facing": "model",
+    "id": "tool-result-gettask-cancelled-output-so-far",
+    "name": "Tool Result: GetTask Cancelled Output So Far",
+    "desc": "GetTask statusMessage when a background shell was killed, including output-so-far path."
+  },
+  "56344140e685889707fb16e0920ee94023c68c92": { "facing": "internal" },
+  "24d6b7f478b25fe1d3379dddf1b52ff280b973a6": { "facing": "internal" },
+  "0778ef98983f6dab19816f6232afadc55b99301c": { "facing": "ui" },
+  "b09abc868bd04ba23d5818d2bce26ba565923b27": { "facing": "internal" },
+  "fffa212fd2763add81dafcc5c9ff4424e1af4ccd": { "facing": "internal" },
+  "496f617fe8332637f90979919a03c2b24d34ba3f": { "facing": "internal" },
+  "dde3e0ef5856fd9f0cf15353a17f62e6a5625b3d": { "facing": "internal" },
+  "912cd06417f656fd4242bafa0e4b51a3e1ba7771": { "facing": "internal" },
+  "77f24c7e4aff4119bf72ed6dde7bc1e93f3a1b04": { "facing": "internal" },
+  "36183233d586a24285c129996cf4e2e4dc7181d9": { "facing": "ui" },
+  "1098c5eb721402ffdd801746b53935381cec666a": { "facing": "ui" },
+  "b63aac843c3bce3a5bd8212a131b414187c4a605": { "facing": "internal" },
+  "a845208e9a36cf64bacedb41b6efbbbe3e65958a": { "facing": "internal" },
+  "8d50cdfb35108210716376d9f0f72d70bf24e328": { "facing": "ui" },
+  "23e3b02a5a0138e5b11f7ee2819ae0261a6d2344": {
+    "facing": "model",
+    "id": "data-task-notification-agent-stop-resume-note",
+    "name": "Data: Task Notification Agent Stop Resume Note",
+    "desc": "Note in an agent-stop task-notification that the same task-id may notify more than once if the user resumes it."
+  },
+  "aee7517ccf3cda0db2aa1db16c98c8dcd8ead0b2": { "facing": "internal" },
+  "42106b9b08ad3320e02f044a09d1d9336e48990a": { "facing": "internal" },
+  "95fa552373880a6391b2751f22c4751bfc206fd0": {
+    "facing": "model",
+    "id": "data-task-notification-ultrareview-post-data-residency",
+    "name": "Data: Task Notification Ultrareview Post Data Residency",
+    "desc": "Ultrareview post-failure reason that cloud sessions are unavailable on third-party providers."
+  },
+  "644706211f35096834a729bb3fdd426636e2d8a9": {
+    "facing": "model",
+    "id": "data-task-notification-ultrareview-post-essential-traffic-only",
+    "name": "Data: Task Notification Ultrareview Post Essential Traffic Only",
+    "desc": "Ultrareview post-failure reason that cloud sessions are unavailable in essential-traffic-only mode."
+  },
+  "5e9e7d0274f71abd621908c839d50ca6ef2696e5": { "facing": "internal" },
+  "b8962618f45280c9a68a65cc13f1728f6e8e7220": { "facing": "ui" },
+  "ed9df284589136cfba75cdea5df908076fc9a11f": { "facing": "internal" },
+  "09e6f328c98ade5707fe98ab6d73d457e9826fce": {
+    "facing": "model",
+    "id": "data-ultraplan-approved-executing-cloud",
+    "name": "Data: Ultraplan Approved Executing Cloud",
+    "desc": "Task notification that ultraplan was approved and is executing in the cloud session, with a follow-along URL."
+  },
+  "f61ac7138b5c0a3e9bebdde5052ea55c4ba4de6a": { "facing": "ui" },
+  "dce0c5b8935d2b46bfd231f639a183e8ef563157": { "facing": "ui" },
+  "fc9a8f7b9f2bda99ffd9785752bb230cb11fa6a5": {
+    "facing": "model",
+    "id": "slash-command-ultraplan-description",
+    "name": "Slash Command: Ultraplan Description",
+    "desc": "Description of the /ultraplan command that drafts an editable plan in a cloud session."
+  },
+  "ff60e364e55997690432c7f00300e7812afd14f8": {
+    "facing": "model",
+    "id": "system-reminder-task-stopped-by-user",
+    "name": "System Reminder: Task Stopped By User",
+    "desc": "Meta reminder that a background task was stopped by the user."
+  },
+  "ffe1cbca1e949d41ad4a558d6cd4b6d489447ea5": {
+    "facing": "model",
+    "id": "tool-result-agent-output-file",
+    "name": "Tool Result: Agent Output File",
+    "desc": "Instruction to read the agent's output file to retrieve the result."
+  },
+  "3d1cd735c5ea37117ca3d06464af73f20c33b366": { "facing": "internal" },
+  "ef4f33ceac06b55d489f600ac50189829f310871": { "facing": "internal" },
+  "afbbed7a8e47aed3373846f4c110ea3b3e2fee99": { "facing": "internal" },
+  "57eb371db64b738147cdb55cc8ac1f38ec511709": { "facing": "internal" },
+  "4890d3e14c0cbf3cec066137d623ac0c71ca4292": { "facing": "internal" },
+  "e354d198dbf2aac81045235836ee3b9e28cf335a": { "facing": "internal" },
+  "56d01a86f7ca2fbbedc78b5fa84822217a03ebd4": { "facing": "internal" },
+  "8a7e9a615096ad933671d68e686578ba53ae3a04": { "facing": "internal" },
+  "8daaff84c987297d6ad6cb683dc25a45e79e0150": { "facing": "internal" },
+  "a22e81e393b87673cc228fb8ed4efa8e850325c7": { "facing": "internal" },
+  "2ee66bc2984fbc9f9f5c22f41fb82bf797dda129": { "facing": "ui" },
+  "f47f0aa7eac6a9db69bc0a4ee2b6c304ff535e94": { "facing": "ui" },
+  "c4534c64cfd6ed0813cb9dd2e0bd158768b8040e": { "facing": "ui" },
+  "a8ec7afa46893b3681f4cecdceba1a51e9b9eb4a": { "facing": "ui" },
+  "62d9df82cdabcebf2c38985b6525029bfa15bcf8": { "facing": "ui" },
+  "64e1154e2d10dfa803a64a3bbd879e60e07371ea": { "facing": "ui" },
+  "348c4e3a072cb673c897ddb65906ff85b4abe48e": { "facing": "ui" },
+  "bddcfd3f73cac27f80356764949ec65a7b01363d": { "facing": "ui" },
+  "bced7072843088ed4c01e6efebada593382dab03": { "facing": "ui" },
+  "bbcd991a93b02f16292bb186d049fd916f9c53cc": { "facing": "ui" },
+  "ad6581ff4f81ff8d6ba0fbd68bbe67beed25c1f7": { "facing": "ui" },
+  "5cf8194a57b768f1b37c4727e1a2bf81cfd1a6b9": { "facing": "ui" },
+  "1ecec3c164941170254056941b7f30a970cfe344": { "facing": "ui" },
+  "c10706c973d8b93a14f2d2624879e76f4e4124ce": { "facing": "ui" },
+  "48119363849b80b3edb55e6f6a1e4674531d578a": {
+    "facing": "model",
+    "id": "data-task-notification-artifact-watch-ended-event",
+    "name": "Artifact Watch Ended Event",
+    "desc": "Task-notification body wrapping a watch-ended notice in <event> tags."
+  },
+  "37364b6956f844ae69c08cda4d9b821c5f731b9a": {
+    "facing": "model",
+    "id": "data-task-notification-artifact-watch-ended",
+    "name": "Artifact Watch Ended",
+    "desc": "Inner watch-ended notice that the session no longer tracks new versions of the artifact."
+  },
+  "b7f2087a2d8ccde5edcc2ae8fd0c8b6f72207595": {
+    "facing": "model",
+    "id": "tool-result-artifact-live-subscription-comment-wake-clause",
+    "name": "Artifact Live Subscription Comment Wake Clause",
+    "desc": "Clause that a Claude-directed comment still reaches this session while plain comments never notify."
+  },
+  "0a1f6a6df92d470be11278e841451f784c8c7e96": {
+    "facing": "model",
+    "id": "tool-result-artifact-live-subscription-flag-off",
+    "name": "Artifact Live Subscription Flag Off",
+    "desc": "Live-subscribe skipped because the feature flag is off in this session's cached config."
+  },
+  "dec6576b537e6405f40dfdce28f94b9f894e7b82": {
+    "facing": "model",
+    "id": "tool-result-artifact-live-subscription-egress-denied",
+    "name": "Artifact Live Subscription Egress Denied",
+    "desc": "Live-subscribe skipped because network egress to the claude.ai edge is denied by policy."
+  },
+  "04cb1b0150ecd258240898213bec1dd18a7e1370": {
+    "facing": "model",
+    "id": "tool-result-artifact-live-subscription-already-connected",
+    "name": "Artifact Live Subscription Already Connected",
+    "desc": "Watch result stating the session is already connected and tracks new versions without starting a turn."
+  },
+  "7ca2da9bfae84a3b89861aa792f8d8271c82a749": {
+    "facing": "model",
+    "id": "tool-result-artifact-live-subscription-publish-adopted",
+    "name": "Artifact Live Subscription Publish Adopted",
+    "desc": "Watch result that a subagent holds no watch and the launching session takes over live updates."
+  },
+  "efa1ef9b88346edbaa1e16dd8216724d179590c7": {
+    "facing": "model",
+    "id": "tool-result-artifact-watch-public-outside-org-read-instead",
+    "name": "Artifact Watch Public Outside Org Read Instead",
+    "desc": "Advice that a public extra-org artifact cannot be re-watched and should be read instead."
+  },
+  "6f09a0ec29170d3fa365840f586cda5b02f9dfe8": { "facing": "internal" },
+  "8ccbec57d8aabb6f52e878173a53a7983feea98a": { "facing": "internal" },
+  "e474d5e4f9ff8678f5681bb412cd9725b5add5a6": {
+    "facing": "model",
+    "id": "tool-result-subagent-spawn-hook-rewrite-ruled",
+    "name": "Subagent Spawn Hook Rewrite Ruled",
+    "desc": "Error when a plugin agent.spawn hook rewrites a spawn into a permission-ruled dispatch."
+  },
+  "39713a49059d9fb6ce4c33bec1f562ab8c84fb01": {
+    "facing": "model",
+    "id": "data-artifact-type-published-files-are-types",
+    "name": "Artifact Type Published Files Are Type's",
+    "desc": "Note that every file published so far is the type's listed files."
+  },
+  "adffe8ab5868b141791fb30ce1f713e4bd2ab339": {
+    "facing": "model",
+    "id": "data-artifact-type-new-empty-on-files-note",
+    "name": "Artifact Type New Empty On Files Note",
+    "desc": "Guidance that a new files-backed Artifact is still empty and has nothing of its own to list or read."
+  },
+  "79450695d743cab9ae83a52c421c2ca63951a37e": {
+    "facing": "model",
+    "id": "data-artifact-type-no-own-file-yet-older-store-note",
+    "name": "Artifact Type No Own File Yet Older Store Note",
+    "desc": "Guidance that the Artifact has no file of its own yet and older content may live in a prior store."
+  },
+  "a50d4363b72f9de4dfbc098dfed16be1d74fb73c": {
+    "facing": "model",
+    "id": "data-artifact-type-older-store-unreadable-ask-user",
+    "name": "Artifact Type Older Store Unreadable Ask User",
+    "desc": "Fallback telling the model to ask the user what the older store held when no read call exists."
+  },
+  "192a4285d59383ab7c964e29cf83e0c39c70ff51": {
+    "facing": "model",
+    "id": "data-artifact-type-older-store-read-via-data-tool",
+    "name": "Artifact Type Older Store Read Via Data Tool",
+    "desc": "How to list or get documents in the older data-tool store."
+  },
+  "4c451462b9b73b0ee342197abf65350f575c7d1b": {
+    "facing": "model",
+    "id": "data-artifact-type-older-store-read-via-read-db",
+    "name": "Artifact Type Older Store Read Via Read Db",
+    "desc": "How to list or get rows in the older write_db store via read_db."
+  },
+  "e66abd295e2c87ee0f766ca7fe09c3a23c56d091": {
+    "facing": "model",
+    "id": "data-artifact-type-existing-content-on-files-note",
+    "name": "Artifact Type Existing Content On Files Note",
+    "desc": "After-type-instructions note that existing Artifact content lives in project/ files, not a store document."
+  },
+  "138b9a3a37e9a9c2bf32a36454ddd5f92fbc67e1": {
+    "facing": "model",
+    "id": "tool-result-artifact-data-outside-org-public-deny",
+    "name": "Artifact Data Outside Org Public Deny",
+    "desc": "Permission deny that a public extra-org artifact's endpoints and database are unavailable to this login."
+  },
+  "4e7ee03c2eb9f2eabb2c7914145121ade28e9ae6": {
+    "facing": "model",
+    "id": "tool-result-artifact-plan-mode-also-lasting-change",
+    "name": "Artifact Plan Mode Also Lasting Change",
+    "desc": "Permission-ask suffix that an additional action also makes a lasting plan-mode change only the user can approve."
+  },
+  "89dc6fa0c5aed782cc881bec61716dfd2c202f65": {
+    "facing": "model",
+    "id": "tool-result-artifact-asset-read-egress-blocked",
+    "name": "Artifact Asset Read Egress Blocked",
+    "desc": "Asset-read error when the environment allowlist blocks the content host."
+  },
+  "33688cc98b1d1eb541d8372c937f7bd0fa753e90": {
+    "facing": "model",
+    "id": "tool-result-artifact-content-read-egress-blocked-public-outside-org",
+    "name": "Artifact Content Read Egress Blocked Public Outside Org",
+    "desc": "Extra clause that public extra-org artifacts are fetched from the content host directly and that host must be allowlisted."
+  },
+  "3a5fc474233bbf60005a217757c1bf8bb9c67c72": {
+    "facing": "model",
+    "id": "tool-result-artifact-content-read-public-internal-unrouted",
+    "name": "Artifact Content Read Public Internal Unrouted",
+    "desc": "Internal error when a public artifact read was routed where it cannot be served."
+  },
+  "21e8c5aea6c447f14a3036cd9dd0e17e50027684": {
+    "facing": "model",
+    "id": "tool-result-artifact-asset-read-public-refused",
+    "name": "Artifact Asset Read Public Refused",
+    "desc": "Public-reader 403 meaning no asset with that id is served outside the org, or the artifact is no longer public."
+  },
+  "ebfed83e5f49df3b72565562144aaf9e8122cff7": {
+    "facing": "model",
+    "id": "tool-result-artifact-file-read-egress-blocked",
+    "name": "Artifact File Read Egress Blocked",
+    "desc": "File-read error when the environment allowlist blocks the content host."
+  },
+  "8c7103cab88cf5357f23792c510308f8f256e625": {
+    "facing": "model",
+    "id": "tool-result-artifact-file-list-public-single-page",
+    "name": "Artifact File List Public Single Page",
+    "desc": "Public file-list error that the artifact is a single page with no separately published files."
+  },
+  "771c38c8eab79c40a3f2db9f2668b219d5538397": {
+    "facing": "model",
+    "id": "tool-result-artifact-file-list-public-refused",
+    "name": "Artifact File List Public Refused",
+    "desc": "Public file-list 403 when files are not available to extra-org readers or the artifact was taken down."
+  },
+  "142b5a7fd75574f152a93899733cb06e3729953b": {
+    "facing": "model",
+    "id": "tool-result-artifact-file-read-public-refused",
+    "name": "Artifact File Read Public Refused",
+    "desc": "Public file-read error that no file at that path is served outside the organization."
+  },
+  "6b20bc6a33a2d725be37c365a1077cdbbc51d753": {
+    "facing": "model",
+    "id": "tool-parameter-artifact-action-watch-unavailable",
+    "name": "Artifact Action Watch Unavailable",
+    "desc": "Action-parameter description that watch/unwatch/status live subscriptions are unavailable in this session."
+  },
+  "75c4ed4f500438b606e11eb754ed5e85ad4eab02": {
+    "facing": "model",
+    "id": "tool-parameter-artifact-action-watch-unavailable-comment-clause",
+    "name": "Artifact Action Watch Unavailable Comment Clause",
+    "desc": "Optional clause that no comment notification reaches the session when watch is unavailable."
+  },
+  "965ffe159560d11c4b7609d065b2daff0a228264": { "facing": "ui" },
+  "618c6b2477c4210eaa020aec8fd01944c882771e": {
+    "facing": "model",
+    "id": "tool-result-attachment-not-delivered-no-project-thread",
+    "name": "Attachment Not Delivered No Project Thread",
+    "desc": "Upload error when the session is not on a project thread so a file has nowhere to be placed."
+  },
+  "89b00ac2e75b0595d8a1bd8fc77246b184e7c60e": {
+    "facing": "model",
+    "id": "tool-result-attachment-not-delivered-plan-mode",
+    "name": "Attachment Not Delivered Plan Mode",
+    "desc": "Upload error that the project folder is not written in plan mode until the plan is approved."
+  },
+  "69578c41bf001f77d7d865ff7f71971c5a59d2ed": {
+    "facing": "model",
+    "id": "tool-result-attachment-not-placed-in-project-folder",
+    "name": "Attachment Not Placed In Project Folder",
+    "desc": "Partial error when the file reached chat viewers but was not placed in the project folder."
+  },
+  "f7dcf95dc7abc757f65eba7ff672d48b8bf30525": {
+    "facing": "model",
+    "id": "tool-result-attachment-not-sent-to-chat-viewers",
+    "name": "Attachment Not Sent To Chat Viewers",
+    "desc": "Partial error when the file was placed in the project folder but not sent to chat viewers."
+  },
+  "179a8ed155cd61b8b9e2d1f7039351f31325dc65": {
+    "facing": "model",
+    "id": "tool-result-attachment-not-sent-path-not-approved",
+    "name": "Attachment Not Sent Path Not Approved",
+    "desc": "Path-check error that the resolved path is not the one that was approved."
+  },
+  "94766a084662e56bd7bc2c3db5284f74edde32bb": {
+    "facing": "model",
+    "id": "tool-result-exitworktree-uncommitted-files-count",
+    "name": "Exit Worktree Uncommitted Files Count",
+    "desc": "Count fragment naming uncommitted files (including hidden submodule work) in the ExitWorktree refusal."
+  },
+  "6b517e054d52b276345c690177b8bde3f6edb3cc": {
+    "facing": "model",
+    "id": "tool-result-exitworktree-uncommitted-submodule-hidden-from-status",
+    "name": "Exit Worktree Uncommitted Submodule Hidden From Status",
+    "desc": "Parenthetical that submodule work is included even though git status in the worktree does not show it."
+  },
+  "190bee97763482a339e0930305ae71be74e84ca0": { "facing": "internal" },
+  "b803fe7e933ddd9838149109c02364aa522bfe71": { "facing": "internal" },
+  "c8e9d4a35a4c0bc06fb381d975a5cbabec6132d4": { "facing": "internal" },
+  "becf0f81561d90eff773dba2c9a67e78b0b94691": {
+    "facing": "model",
+    "id": "tool-result-list-connected-browsers-grouped-by-computer",
+    "name": "List Connected Browsers Grouped By Computer",
+    "desc": "Tool-result listing that splits connected Chrome browsers into this computer versus other machines."
+  },
+  "6fb98b3b44729b89cae15fd0871d2a4ccb24382b": {
+    "facing": "model",
+    "id": "tool-description-claude-in-chrome-bridge-timeout-error",
+    "name": "Claude In Chrome Bridge Timeout Error",
+    "desc": "Lead sentence that a Chrome-bridge tool did not respond in time, then completed with routing-specific advice."
+  },
+  "34af2c9973aea8c37f4908d13813ca22bf5b4657": {
+    "facing": "model",
+    "id": "tool-result-list-connected-browsers-already-selected",
+    "name": "List Connected Browsers Already Selected",
+    "desc": "Follow-on tool-result text when several browsers are connected and one is already selected."
+  },
+  "759c6cd1c1b3dbbe44d6841ee84cb8cabb0226ee": {
+    "facing": "model",
+    "id": "tool-result-list-connected-browsers-none-selected-local",
+    "name": "List Connected Browsers None Selected Local",
+    "desc": "Follow-on text when browsers include local ones and none is selected, telling the model to list local browsers first."
+  },
+  "bd90094dc9b3bb0221eadc3fdabfcec8420b08fe": {
+    "facing": "model",
+    "id": "tool-result-list-connected-browsers-none-selected",
+    "name": "List Connected Browsers None Selected",
+    "desc": "Follow-on text when browsers are connected and none is selected for this session."
+  },
+  "885cdc9ef3cc7424c82a4a20c401a6d6b6d14655": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-not-saved-still-on-artifact",
+    "name": "Artifact Quickstart Not Saved Still On Artifact",
+    "desc": "Prefix labeling files that were not saved locally and must be read with the Artifact tool."
+  },
+  "51a43d69a971a605e5a3269548d771a85f3beae2": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-install-tokens-json",
+    "name": "Artifact Quickstart Install Tokens Json",
+    "desc": "Tells the model how to attach a saved design-system tokens.json (and unpin slides) when creating an artifact."
+  },
+  "9f1a69003b417a07f3247dc55b2b0a25aab3f5ae": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-install-other-files-content-types",
+    "name": "Artifact Quickstart Install Other Files Content Types",
+    "desc": "Lists contentTypes for the other saved design-system files the install should send with the artifact."
+  },
+  "72797ee63c6899c9927b27c3e7ce75c634a4778b": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-install-not-saved-files",
+    "name": "Artifact Quickstart Install Not Saved Files",
+    "desc": "Points the model at design-system-components.md for files marked NOT SAVED during a design-system install."
+  },
+  "a5710d2e0bc7548651b4430e5be08b8d27484b08": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-install-other-files-and-not-saved",
+    "name": "Artifact Quickstart Install Other Files And Not Saved",
+    "desc": "Combined design-system install lines for other-file contentTypes and NOT SAVED handling."
+  },
+  "bd4a862eabd09b8a5a140e15d44c11e794239abb": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-from-sends-saved-files",
+    "name": "Artifact Quickstart From Sends Saved Files",
+    "desc": "Tells the model to send saved files via files.from without Read or retyping."
+  },
+  "65d7b9687713b87d4dd296738584cbe25a0d31f5": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-next-create-and-read",
+    "name": "Artifact Quickstart Next Create And Read",
+    "desc": "NEXT line for create-mode Artifact quickstart: create and read in one turn, then build."
+  },
+  "744d84e5753c89825b84ada6678876d9a2678a6d": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-next-read-then-build",
+    "name": "Artifact Quickstart Next Read Then Build",
+    "desc": "NEXT line for read-mode Artifact quickstart: read the artifact and files in one turn, then build."
+  },
+  "f509b65021a267edd6dd79ebe67ef12b275fab96": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-turn-1-create",
+    "name": "Artifact Quickstart Turn 1 Create",
+    "desc": "Turn 1 create-mode instruction, now with optional auto_open and a dynamic file list instead of Bash."
+  },
+  "fb96c7320a0d97d6f43c2bca20d6645719c66776": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-turn-1-read",
+    "name": "Artifact Quickstart Turn 1 Read",
+    "desc": "Turn 1 read-mode instruction to open the artifact by url and read the listed files."
+  },
+  "0179ef7a4f16604adc20cf739328c5ad9ec27bc3": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-parallel-read-or-bash",
+    "name": "Artifact Quickstart Parallel Read Or Bash",
+    "desc": "Instructs parallel Read or Bash calls in the same turn when loading quickstart files."
+  },
+  "fec624aa79c66047a5a90ce97ff35f9cd3250328": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-skill-md-in-result",
+    "name": "Artifact Quickstart Skill Md In Result",
+    "desc": "Notes that SKILL.md is already in the Artifact tool result so it should not be read again."
+  },
+  "c31d6f0b30dfe20bc0e2d86399436bfbf6959e5b": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-skill-md-cut-short",
+    "name": "Artifact Quickstart Skill Md Cut Short",
+    "desc": "Notes that SKILL.md in the Artifact result is truncated so the file should still be read."
+  },
+  "80c18481fd176bb6298ca646c765fc57ba10ae2c": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-read-other-files-when-needed",
+    "name": "Artifact Quickstart Read Other Files When Needed",
+    "desc": "Limits extra file reads to cases where the artifact type actually needs them."
+  },
+  "78359ec656500ecc264c9c4a42bcc8db2a14ed4c": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-after-that-build",
+    "name": "Artifact Quickstart After That Build",
+    "desc": "After the read/create turn, tells the model to build from the create-or-read result using the files it read."
+  },
+  "7126303315a50b4b8940faf75e1c841cc8b83e45": {
+    "facing": "model",
+    "id": "tool-result-artifact-outside-org-unasked-retry",
+    "name": "Artifact Outside Org Unasked Retry",
+    "desc": "Outside-org public-artifact deny fragment when no one was asked: retry so the user is prompted."
+  },
+  "bfa6cfb065da4ea1990523d2fc7d21048db06d50": {
+    "facing": "model",
+    "id": "tool-result-artifact-outside-org-cannot-ask",
+    "name": "Artifact Outside Org Cannot Ask",
+    "desc": "Outside-org public-artifact deny fragment when no one in this session can be asked; do not retry."
+  },
+  "35061511b0eb1179391498e8dc89da31119f10f2": {
+    "facing": "model",
+    "id": "tool-result-artifact-outside-org-hook-answered",
+    "name": "Artifact Outside Org Hook Answered",
+    "desc": "Outside-org deny fragment when a PermissionRequest hook answered instead of the user."
+  },
+  "c5a3556e3bef3944d6a9f26b202cbe049f8b564e": {
+    "facing": "model",
+    "id": "tool-result-artifact-outside-org-public-unasked",
+    "name": "Artifact Outside Org Public Unasked",
+    "desc": "Wrapper Sit() sentence that a public outside-org artifact was not returned, plus the ask/hook/cannot-ask fragment."
+  },
+  "02eb86559291bdba9f6fb2aa6420c9a52163e042": {
+    "facing": "model",
+    "id": "tool-result-artifact-created-outside-organization",
+    "name": "Artifact Created Outside Organization",
+    "desc": "Note included in the permission-ask message when the artifact was created outside the user's organization."
+  },
+  "8f107c67677e0b1d1c7cc5f6af643d0211d441b9": {
+    "facing": "model",
+    "id": "slash-command-effort-saved-despite-org-default",
+    "name": "Effort Saved Despite Org Default",
+    "desc": "Parenthetical on /effort success when the value is saved but the org default still starts new sessions at another effort."
+  },
+  "618caaa820dd5ac6239c37116c13893f40aa3015": { "facing": "ui" },
+  "0c4dbaac9f7c1711fe9a57618fbe941f32fc0842": { "facing": "ui" },
+  "2d08b34c1b4c29f94a9cfa0b8c5f963b96a1e2e8": { "facing": "ui" },
+  "7a45319b8805775d8416920fc5baef7488d50f5d": { "facing": "ui" },
+  "d2929d89df4d9561444357154f0e017dad29db23": {
+    "facing": "model",
+    "id": "tool-result-artifact-claude-docs-existing-document",
+    "name": "Artifact Claude Docs Existing Document",
+    "desc": "Tells the model an Artifact already binds a Claude Docs project and how to read/write it instead of creating another."
+  },
+  "f93f2936edaf8549f442e921ae729e9b019a613c": {
+    "facing": "model",
+    "id": "tool-result-artifact-claude-docs-instructions-below-replace-bind",
+    "name": "Artifact Claude Docs Instructions Below Replace Bind",
+    "desc": "Suffix that type instructions about creating/binding a doc are replaced by the existing Claude Docs binding."
+  },
+  "a395e9d52752981d050f3b28840375a75d977a67": {
+    "facing": "model",
+    "id": "tool-result-artifact-claude-docs-land-outline-batch",
+    "name": "Artifact Claude Docs Land Outline Batch",
+    "desc": "Instructs a single Claude Docs batch update to the prose root, then fill section by section."
+  },
+  "ec5e3cf8998161d0032189b193dce1593fc1210f": {
+    "facing": "model",
+    "id": "tool-result-artifact-claude-docs-address-and-fill",
+    "name": "Artifact Claude Docs Address And Fill",
+    "desc": "Instructs addressing the Claude Docs project, reading tab/root ids, then filling the document."
+  },
+  "27322a3a9f16801e83684723e8ab5db929794901": {
+    "facing": "model",
+    "id": "tool-result-artifact-claude-docs-auto-open-cannot-wait",
+    "name": "Artifact Claude Docs Auto Open Cannot Wait",
+    "desc": "Explains that auto_open after_first_write cannot wait for a connector-filled Claude Docs document."
+  },
+  "517342c3548c7b0be6b67d9d21113bec5544f70e": {
+    "facing": "model",
+    "id": "tool-result-artifact-claude-docs-shown-on-create",
+    "name": "Artifact Claude Docs Shown On Create",
+    "desc": "Tells the model the user already sees a new Claude Docs Artifact, so action open may be omitted."
+  },
+  "b097a1d66ac6ecd0fbc7f1f833fe19f71e0413b4": {
+    "facing": "model",
+    "id": "tool-result-artifact-claude-docs-open-after-first-write",
+    "name": "Artifact Claude Docs Open After First Write",
+    "desc": "When auto_open cannot wait, tells the model to pass action open with the URL after the first connector write."
+  },
+  "dc6dda0536be6a025564a272223e5c36f5dde008": {
+    "facing": "model",
+    "id": "tool-result-artifact-claude-docs-give-url-after-first-write",
+    "name": "Artifact Claude Docs Give Url After First Write",
+    "desc": "When auto_open cannot wait and open is not served, tells the model to give the user the URL after the first write."
+  },
+  "20858dee647ca5eafa2941397d8901c09f7df78b": {
+    "facing": "model",
+    "id": "tool-result-artifact-public-outside-org-files-not-inline",
+    "name": "Artifact Public Outside Org Files Not Inline",
+    "desc": "403 Artifact tool result that files of a public outside-org artifact are not returned inline, with an optional download hint."
+  },
+  "4a5f59cd4a0888debe06894fef98f40467b497c0": {
+    "facing": "model",
+    "id": "tool-result-artifact-public-outside-org-files-download-instead",
+    "name": "Artifact Public Outside Org Files Download Instead",
+    "desc": "Optional suffix pointing at the download tool when public outside-org files are withheld from the Artifact result."
+  },
+  "84392d6ac82cb29321b428d7ec9067346dcbe1ee": { "facing": "internal" },
+  "1e80b89b854a51a0f668a5512d433ab1f01a7c5c": {
+    "facing": "model",
+    "id": "data-task-notification-session-inbox-unread-summary",
+    "name": "Data: Session Inbox Unread Summary",
+    "desc": "Summary field of the session-inbox-unread task notification that reminds the model an announced inbox file was never fetched."
+  },
+  "823a20d3530bdc756bbbb734c91cdef5e9102588": { "facing": "internal" },
+  "42818235143b425547f135a1c211ab99a9a1c3fc": { "facing": "ui" },
+  "57db4e3f894b4cab987d65a65fa72dd857b735a2": { "facing": "internal" },
+  "ae3f9e548bfa8f4908fa9de33ff18c8f0cc05d54": { "facing": "internal" },
+  "8da42cc9accb9afec1006905deb2e3bf9695007f": { "facing": "ui" },
+  "bb7d11465725979466f5198da8abbfc4527efaf1": { "facing": "internal" },
+  "d2f7b777ff75ff84c51666b4cc38b9971f2a853b": { "facing": "internal" },
+  "973c6e494b31f1e21e5b5f9395298b6a20d61e0d": { "facing": "internal" },
+  "2520fb1fd35b805fa5ed67d743840af6f185cef3": { "facing": "internal" },
+  "5c989a21324e8a28e39deef77bcfc96cfa050823": { "facing": "internal" },
+  "8ea2cfbc87b55eedd5eab926d8e5ed0abfe54a22": { "facing": "internal" },
+  "99c59b8c6b942921372e9ddf2cd9584850cbcc59": { "facing": "internal" },
+  "eefc6ccfd153c6f48f15d4a07abb2fe1edaa6947": { "facing": "internal" },
+  "ddf12526571fb1ee2ec699ebd35f393c63b363de": {
+    "facing": "model",
+    "id": "slash-command-remote-control-unavailable-in-web-session",
+    "name": "Remote Control Unavailable In Web Session",
+    "desc": "Tells the model /remote-control cannot run because this session is already a cloud session."
+  },
+  "0cb24b176b68bd4c91e2c8ef001e2a5d13c6faa1": { "facing": "ui" },
+  "c68b374262a2158d3a69f7c8845793b79caae325": { "facing": "ui" },
+  "be3756d0849469c7eb957d91733130bdfdb123ee": { "facing": "ui" },
+  "d4f0429a5e4b69611f382643f285d8e0934d3af5": { "facing": "ui" },
+  "7a2f97d78f53b83398b424eab85b3bb6323d1b3d": { "facing": "ui" },
+  "31443aaed305285fa143a9a76b87b7dbf2cc1d7b": { "facing": "ui" },
+  "66e28a4a0478cb9c3fcf7be8c301b1e38f72a8ea": { "facing": "internal" },
+  "f1c31392218eef49091c6e4eaa8371936c5dc30e": { "facing": "internal" },
+  "eaccd9aa326719c8f2cc0cac4e0a88ebf12692a2": { "facing": "internal" },
+  "1ea31da27f35230990e83a859a466a604769c9f1": {
+    "facing": "model",
+    "id": "tool-result-artifact-hard-linked-file-same-bytes",
+    "name": "Artifact Hard Linked File Same Bytes",
+    "desc": "Path qualifier appended to Artifact permission-ask / description text when the local file is hard-linked."
+  },
+  "30b0525226df735f6100361c5ad4e7d6d242707e": {
+    "facing": "model",
+    "id": "data-artifact-hard-linked-file-same-bytes-note",
+    "name": "Data: Artifact Hard-Linked File Same Bytes Note",
+    "desc": "Path-examination note that a file is hard-linked so the same bytes may live elsewhere, interpolated into artifact auto-classifier input and the publish classifier's per-file hidden notes."
+  },
+  "a48d9e9d84fe18aa8a8cef1079ae111cf0729834": {
+    "facing": "model",
+    "id": "tool-result-artifact-local-file-user-must-approve",
+    "name": "Tool Result: Artifact Local File User Must Approve",
+    "desc": "Permission-ask suffix for a single local file whose path, symlink, or hard-link requires a human approval."
+  },
+  "e083a60d846402a31e175ec2781c67899a4acf93": {
+    "facing": "model",
+    "id": "tool-result-artifact-local-files-mixed-user-must-approve",
+    "name": "Tool Result: Artifact Local Files Mixed User Must Approve",
+    "desc": "Permission-ask suffix when copied local files mix outside-read, symlink-escape, and hard-link reasons."
+  },
+  "9b7f6a66fbf803158e897ef0f0a2d513f8979003": {
+    "facing": "model",
+    "id": "tool-result-artifact-read-db-outside-working-paths-user-approval-required",
+    "name": "Tool Result: Artifact read_db Outside Working Paths Requires User Approval",
+    "desc": "safetyCheck decisionReason when read_db would write database documents outside the allowed working paths, so the auto-permission classifier must not approve it."
+  },
+  "f3f5b601ba36f9baf34c7a9899e308358da4d537": {
+    "facing": "model",
+    "id": "tool-result-artifact-db-read-not-saved-line",
+    "name": "Artifact Db Read Not Saved Line",
+    "desc": "Per-reason line on a read_db tool_result listing documents that were returned but not saved."
+  },
+  "8355efffcd7c607ecc431317f4457ac52a0b5607": {
+    "facing": "model",
+    "id": "tool-result-artifact-design-system-files-not-on-disk-list-them",
+    "name": "Tool Result: Design System Files Not On Disk List Them",
+    "desc": "Unavailable-design-system instruction telling the model to list files on that url and read the ones it needs."
+  },
+  "d8fa675421ac9f3d8cb72aa9524cb170dab29296": {
+    "facing": "model",
+    "id": "tool-result-artifact-design-system-opening-named-skip-list",
+    "name": "Tool Result: Design System Opening Named Skip List",
+    "desc": "Note that opening context already named the design system, so none is listed or attached here."
+  },
+  "8642ffdf4e715fecafbd58194b06d857733ec83c": {
+    "facing": "model",
+    "id": "tool-result-artifact-design-systems-already-listed-below",
+    "name": "Tool Result: Design Systems Already Listed Below",
+    "desc": "Note that listing design systems (and reading the default README) is already done below, so the model must not repeat those calls."
+  },
+  "a49520c08c90278ed8f11f7abcdaa54b0e19c564": {
+    "facing": "model",
+    "id": "data-artifact-quickstart-auto-classifier-input-document",
+    "name": "Artifact Quickstart Auto-Classifier Input (Document)",
+    "desc": "toAutoClassifierInput line for quickstart with intent document: lists published Artifact types (titles and descriptions)."
+  },
+  "ebcbffd2e915a4170aea05dd9add44eec6cf7108": {
+    "facing": "model",
+    "id": "data-artifact-quickstart-auto-classifier-input-design-systems-off",
+    "name": "Artifact Quickstart Auto-Classifier Input (Design Systems Off)",
+    "desc": "toAutoClassifierInput line for quickstart when design systems are left out, summarizing a types-only listing and optional scratchpad files."
+  },
+  "bff5c4b0054b91be945e4a8a783a34237a538562": {
+    "facing": "model",
+    "id": "data-artifact-quickstart-auto-classifier-scratchpad-files-clause",
+    "name": "Data: Artifact Quickstart Auto-Classifier Scratchpad Files Clause",
+    "desc": "Clause on the design-systems-off quickstart classifier line that the matched type's published files are saved to the scratchpad where they can be."
+  },
+  "60886c39b5bdd0384bba850d0e90d256b0610890": {
+    "facing": "model",
+    "id": "data-artifact-quickstart-auto-classifier-input",
+    "name": "Artifact Quickstart Auto-Classifier Input",
+    "desc": "toAutoClassifierInput line for quickstart listing published Artifact types and design systems the user can open."
+  },
+  "39516ccc72f1a485784668367f204dd1101af595": {
+    "facing": "model",
+    "id": "data-artifact-quickstart-auto-classifier-default-readme-clause",
+    "name": "Data: Artifact Quickstart Auto-Classifier Default README Clause",
+    "desc": "Slides/design clause on the quickstart classifier line that the default design system's README is read, skipped where that read would need approval."
+  },
+  "2e908bb8958abaeb0e06673489721f46b891cd83": {
+    "facing": "model",
+    "id": "data-artifact-quickstart-auto-classifier-scratchpad-instead-of-readme-clause",
+    "name": "Data: Artifact Quickstart Auto-Classifier Scratchpad Instead Of README Clause",
+    "desc": "Follow-on classifier clause that scratchpad-saved design-system and type files are listed instead of the README."
+  },
+  "eeb213f7fe882b603975d0cfdbf132f6574a3969": {
+    "facing": "model",
+    "id": "tool-description-artifact-quickstart-document",
+    "name": "Tool Description: Artifact Quickstart (Document)",
+    "desc": "quickstart action description for intent document: published Artifact types will be read into the conversation."
+  },
+  "8d0740724f4245cb07f7c7cd3023a229f1d8f3e8": {
+    "facing": "model",
+    "id": "tool-description-artifact-quickstart-design-systems-off",
+    "name": "Tool Description: Artifact Quickstart (Design Systems Off)",
+    "desc": "quickstart action description when design systems are left out: types will be read into the conversation, with optional scratchpad files."
+  },
+  "ee4b86eff112b9d8094a1a8c4d0b8282e4f0bff3": {
+    "facing": "model",
+    "id": "tool-description-artifact-quickstart-scratchpad-files-clause",
+    "name": "Tool Description: Artifact Quickstart Scratchpad Files Clause",
+    "desc": "Optional sentence on the design-systems-off quickstart description that the type's published files are saved to the scratchpad and listed."
+  },
+  "3e84eb0f2b35e097d1f6bcd4e56076b928bc8cc9": {
+    "facing": "model",
+    "id": "tool-description-artifact-quickstart",
+    "name": "Tool Description: Artifact Quickstart",
+    "desc": "quickstart action description: look up published Artifact types and design systems (and the default README) before making a new artifact."
+  },
+  "fa173698ba0f42d45561cd3a558249b96880b5ce": {
+    "facing": "model",
+    "id": "tool-description-artifact-quickstart-scratchpad-instead-of-readme-clause",
+    "name": "Tool Description: Artifact Quickstart Scratchpad Instead Of README Clause",
+    "desc": "Optional sentence on the full quickstart description that design-system and type files are saved to the scratchpad instead of the README."
+  },
+  "e5d7f1ff1be4bdf81ab5f2e36320558e335737df": {
+    "facing": "model",
+    "id": "data-artifact-document-quickstart-first-party-connector",
+    "name": "Data: Artifact Document Quickstart First-Party Connector",
+    "desc": "Noun phrase naming the host-asserted first-party documents connector (Claude Docs), interpolated into document-quickstart routing."
+  },
+  "94f5624617eeecf9be2954e7f376b77b41f350bb": {
+    "facing": "model",
+    "id": "data-artifact-document-quickstart-no-connector-intent",
+    "name": "Data: Artifact Document Quickstart No-Connector Intent",
+    "desc": "Instruction to call quickstart with intent other (or design) when no first-party documents connector is attached."
+  },
+  "fbaf4c866336eddfd6cbc8e353acc7dc35c5be6b": {
+    "facing": "model",
+    "id": "data-artifact-document-quickstart-docs-type-without-connector",
+    "name": "Data: Artifact Document Quickstart Docs Type Without Connector",
+    "desc": "Warning that a Docs type cannot be filled without the connector, so the model must not start from one."
+  },
+  "b29e3268ce3a279ea4b0e847640833280364680f": {
+    "facing": "model",
+    "id": "data-artifact-document-quickstart-docx-stays-with-skill",
+    "name": "Data: Artifact Document Quickstart Docx Stays With Skill",
+    "desc": "Rule that a user-requested .docx document stays with the file-format skill rather than an Artifact."
+  },
+  "d41c2aa39fde458683b823b5bfbaba5324aaca96": {
+    "facing": "model",
+    "id": "data-artifact-document-quickstart-routing",
+    "name": "Data: Artifact document quickstart routing",
+    "desc": "Routes document creation to an attached first-party document connector, a requested file-format skill, or an Artifact quickstart intent."
+  },
+  "af1e9244205ff5cc9750718be0d1ba7f905012cb": {
+    "facing": "model",
+    "id": "data-artifact-document-quickstart-title-no-auto-open",
+    "name": "Data: Artifact Document Quickstart Title No Auto Open",
+    "desc": "Publish-argument phrase for a document: title, no files, and no auto_open because no Artifact write follows."
+  },
+  "e1c594b649a6904c963abf2e1f3b6914524a0237": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-start-from-picked-type",
+    "name": "Tool Result: Quickstart Start From Picked Type",
+    "desc": "Quickstart tool_result line telling the model to publish from the user's picked type_url with title and no auto_open."
+  },
+  "a391e4b7fd292e2be6b6d31cc73051170ada028d": {
+    "facing": "model",
+    "id": "data-artifact-document-quickstart-types-listing-rest",
+    "name": "Data: Artifact Document Quickstart Types Listing Rest",
+    "desc": "Preface on an ambiguous document type listing: .docx stays with the skill, and the rest applies only when the host attached the documents connector."
+  },
+  "5ffaf68fd5008b7d9a2227c160a4760dd7ea45be": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-document-start-from-type-via-connector",
+    "name": "Tool Result: Quickstart Document Start From Type Via Connector",
+    "desc": "Instructs the model to start a document from the matched type_url but fill it through the connector, not by publishing a page."
+  },
+  "c60532bded3a457b572b2a86f2e432f41b924d93": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-start-from-type",
+    "name": "Tool Result: Quickstart Start From Type",
+    "desc": "Instructs the model to publish a new Artifact from the matched type_url with title and no files, then follow the create result."
+  },
+  "299d3139fc2f2afa89f6139bab09996cec40c63f": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-no-matching-type-document",
+    "name": "Tool Result: Quickstart No Matching Type (Document)",
+    "desc": "Document quickstart tool_result when the account lists no matching type, then applying the connector/docx routing."
+  },
+  "c0e980ab93964357d6f893765c4ae122f97ac694": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-type-to-start-from-document",
+    "name": "Tool Result: Quickstart Type To Start From (Document)",
+    "desc": "Document quickstart success header naming the Artifact type to start from, including the connector-routing rest clause."
+  },
+  "ae632ed6eb7afcf8168fc229263e2f84db75f759": {
+    "facing": "model",
+    "id": "tool-result-artifact-watching-auto-reply-armed-clause",
+    "name": "Tool Result: Watching Auto-Reply Armed Clause",
+    "desc": "Armed-state clause appended to the watching tool_result explaining that to-Claude comments reach this session."
+  },
+  "0763510f34b1f3603b8269f3e2e33b3329b0875f": {
+    "facing": "model",
+    "id": "tool-result-artifact-watch-failed-to-arm",
+    "name": "Artifact watch status — failed to arm",
+    "desc": "Status-row line reporting the live subscription failed to arm, so the model should not treat the artifact as watched."
+  },
+  "6a47ab2600eb6570998fe32aaf52550232ff8a9f": {
+    "facing": "model",
+    "id": "tool-result-artifact-watch-status-ended",
+    "name": "Tool Result: Artifact Watch Status Ended",
+    "desc": "Status-list row telling the model a watch ended and how to watch again if needed."
+  },
+  "8e90ab13b1b96ac6deec8649bc362f5e83f7d0f3": {
+    "facing": "model",
+    "id": "tool-description-artifact-watch-stop-latched-dynamic",
+    "name": "Artifact Watch Stop-Latched Dynamic Description",
+    "desc": "Dynamic description for action watch when this session already stop-latched that artifact."
+  },
+  "6ca9ade7ef4b12b0b548bf0b433fa7f6c59886b7": {
+    "facing": "model",
+    "id": "tool-description-artifact-unwatch-dynamic-live",
+    "name": "Tool Description: Artifact Unwatch Dynamic (Live)",
+    "desc": "Per-call description for action unwatch in a live-watching session: stop tracking new versions published elsewhere and stop automatic comment replies."
+  },
+  "c591d9b389407a1eecf23686b5c3eb3b4e954ec3": {
+    "facing": "model",
+    "id": "tool-result-artifact-watching-armed-status",
+    "name": "Tool Result: Artifact Watching Armed Status",
+    "desc": "Watch tool_result explaining the live watch is armed, including auto-reply state branches."
+  },
+  "098126507ad78dea177eea47abca64428e4f9a46": {
+    "facing": "model",
+    "id": "tool-result-artifact-resume-replies-public-outside-org",
+    "name": "Tool Result: Artifact Resume Replies Public Outside Org",
+    "desc": "resume_replies tool_result when auto-replies cannot be re-armed because no account signed in outside its organization can do so."
+  },
+  "f4f566d5c764fc4f1cae221b58bf93e025579c3b": {
+    "facing": "model",
+    "id": "tool-result-artifact-watches-list-watching-off-empty",
+    "name": "Watches List - Live Watching Off Empty",
+    "desc": "Empty watches tool_result for a session where live artifact watching is disabled, so it does not track versions published elsewhere."
+  },
+  "01ec815a8ed41675452166d71165c6d9d62a7f6b": {
+    "facing": "model",
+    "id": "tool-result-artifact-read-shared-consent-ask",
+    "name": "Artifact read consent ask (shared artifact)",
+    "desc": "Permission ask message for reading an artifact whose content will enter the conversation."
+  },
+  "ec62471a7e9b03c7f5464689daa053bbd80b4a2a": {
+    "facing": "model",
+    "id": "tool-result-artifact-asset-delete-user-approval-required",
+    "name": "Asset delete approval reason",
+    "desc": "safetyCheck decisionReason on the delete_asset ask stating approval must come from the user, not the auto-permission classifier."
+  },
+  "ea97d09c25682e54750e255cc9cca7a15982a9e1": {
+    "facing": "model",
+    "id": "tool-result-artifact-create-from-type-user-approval-required",
+    "name": "Tool Result: Artifact Create-From-Type User Approval Required",
+    "desc": "safetyCheck decisionReason that creating an Artifact is a durable claude.ai change the auto-permission classifier must not approve."
+  },
+  "57eccf749df95a371c2125cfdfefdb408a0f5d95": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-symlink-base-user-approval-required",
+    "name": "Artifact publish base is a symlink — user approval required",
+    "desc": "safetyCheck decisionReason on the publish ask when the publish base resolves through a symlink to a different directory."
+  },
+  "7718192e0fd3470fde6960b40f69833841426b98": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-source-mismatch-user-approval-required",
+    "name": "Publish source mismatch approval reason",
+    "desc": "safetyCheck decisionReason requiring the full consent dialog when the publish source does not verifiably match its spelling."
+  },
+  "a0d756af9611141f08a1f0d050a1818dd311c5ea": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-unexamined-links-user-approval-required",
+    "name": "Tool Result: Artifact Publish Unexamined Links User Approval Required",
+    "desc": "safetyCheck decisionReason requiring the full consent dialog when publish-listed files are unexaminable, over-limit, from an unverified uploads folder, or ambiguously spelled."
+  },
+  "3bde8c8078673dc6de12dda6f01ac9e65413905a": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-unverified-uploads-folder-file",
+    "name": "Tool Result: Artifact Publish Unverified Uploads Folder File",
+    "desc": "Publish safetyCheck branch: the publish reads a file from an uploads folder that is not a verified attachment of this conversation."
+  },
+  "b4200c7571b1d01ebae80994035ae3438a1da121": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-ambiguous-file-spelling",
+    "name": "Tool Result: Artifact Publish Ambiguous File Spelling",
+    "desc": "Publish safetyCheck fallback: a listed file's name does not say whether it sends a link, a hard link, or an ambiguous spelling."
+  },
+  "c24606b753c66ad74ee42242c2d280f17fd14f73": {
+    "facing": "model",
+    "id": "data-artifact-upload-asset-auto-classifier-input",
+    "name": "Upload-asset auto-classifier input",
+    "desc": "One-line summary of an upload_asset call handed to the auto-permission classifier model."
+  },
+  "5e5f1e5a131c1461c101adab42e432aaeb601a92": {
+    "facing": "model",
+    "id": "data-artifact-read-file-auto-classifier-paths",
+    "name": "Artifact Read-File Auto-Classifier Paths",
+    "desc": "Auto-permission classifier input for a resolved multi-path read_file, including the outside-scratchpad note when any dest is outside."
+  },
+  "199c5dc5b5ee729a5c8f5eb6dfe54e9ddb1bc87d": {
+    "facing": "model",
+    "id": "data-artifact-read-file-auto-classifier-input",
+    "name": "Artifact read_file classifier input",
+    "desc": "Auto-permission classifier input line describing a read_file save of one published artifact file to a local path."
+  },
+  "eefdc38e44e8ac3aeb10a34823e6066466728d69": {
+    "facing": "model",
+    "id": "data-artifact-read-asset-auto-classifier-input",
+    "name": "Read-asset auto-classifier input",
+    "desc": "One-line summary of a read_asset call handed to the auto-permission classifier model."
+  },
+  "57cfe9f48cd43239f181638071a611b1726eac14": {
+    "facing": "model",
+    "id": "data-artifact-publish-files-examined-for-links-suffix",
+    "name": "Data: Artifact Publish Files Examined For Links Suffix",
+    "desc": "Publish auto-classifier suffix listing sampled local files and how many were not examined for links."
+  },
+  "300aef3fc358ae898eb66e831fe6f03ae81e34c3": {
+    "facing": "model",
+    "id": "tool-result-artifact-file-list-header",
+    "name": "Artifact File List Header",
+    "desc": "Header of the published-files tool_result listing paths as data, not instructions, with public-read, outside-writer, from-type, or co-writer provenance."
+  },
+  "a7c28c6203efce5b42f00e8387ddb541d8edcc5e": {
+    "facing": "model",
+    "id": "tool-result-artifact-file-list-narrowed-public-subset",
+    "name": "Tool Result: Artifact File List Narrowed Public Subset",
+    "desc": "Parenthetical on the file-list header that the listing is the published subset an outside reader can see."
+  },
+  "169fffb538a886203d983e374d597c9297963542": {
+    "facing": "model",
+    "id": "tool-result-artifact-file-list-from-type-clause",
+    "name": "Tool Result: Artifact File List From-Type Clause",
+    "desc": "File-list header slot noting the artifact was created from a type, so the type's publisher and possibly others have published to it."
+  },
+  "5b7e87a96bb6aeec85d0e5784f54e8c1e9a23ef3": {
+    "facing": "model",
+    "id": "tool-result-artifact-file-read-saved",
+    "name": "Tool Result: Artifact File Read Saved",
+    "desc": "Reports a saved artifact file with size, hash, provenance, and untrusted-content instructions after a file read."
+  },
+  "cd016408a2400869eac539060448a10c6d6e8de0": {
+    "facing": "model",
+    "id": "tool-result-artifact-file-read-from-type-untrusted",
+    "name": "Tool Result: Artifact File Read From-Type Untrusted",
+    "desc": "file_read provenance slot when the artifact was created from a type: treat the file as untrusted data when read."
+  },
+  "43d4498149ce3c9ef5fa94ac3fb7ca674c1a461a": {
+    "facing": "model",
+    "id": "tool-result-artifact-files-read-from-type-untrusted",
+    "name": "Artifact Files-Read From-Type Untrusted",
+    "desc": "files_read provenance slot when the files come from an Artifact type: treat them as untrusted data when read."
+  },
+  "6b786d8f0419667272247f1719bf4f579d1c0bf7": {
+    "facing": "model",
+    "id": "tool-result-artifact-list-types-create-from-type-footer",
+    "name": "Tool Result: Artifact List Types Create-From-Type Footer",
+    "desc": "list_types footer explaining how to start a new Artifact from a type (type_url, title, no files first, auto_open) when type-create is on."
+  },
+  "7a7431628cecc20bb80ce6d7f648df6b830e39eb": {
+    "facing": "model",
+    "id": "tool-result-artifact-describe-type-create-steps",
+    "name": "Tool Result: Artifact Describe Type Create Steps",
+    "desc": "describe_type how-to line: publish with type_url, a title and no files first (auto_open after_first_write when filling next, never for connector-written types), then fill via store or data files."
+  },
+  "6b6459e362d92be5f24a5bdf9da7fc6fe9874b1f": {
+    "facing": "model",
+    "id": "tool-result-senduserfile-placed-in-shared-folder",
+    "name": "Tool Result: SendUserFile Placed In Shared Folder",
+    "desc": "SendUserFile tool_result line counting files written into the project's shared Library folder and listing path mappings."
+  },
+  "038d0d427dedd16e7def2957de016e6d9fa08282": {
+    "facing": "model",
+    "id": "tool-result-senduserfile-declare-attached-outputs",
+    "name": "Tool Result: SendUserFile Declare Attached Outputs",
+    "desc": "SendUserFile tool_result instruction to declare each shared-folder path on the reply via attached_outputs file refs."
+  },
+  "6ff02654da47adef28e82f14e30bace1517bf95b": {
+    "facing": "model",
+    "id": "tool-result-senduserfile-disabled",
+    "name": "Tool Result: SendUserFile Disabled",
+    "desc": "SendUserFile checkPermissions deny message when the SendUserFile action is disabled by rule."
+  },
+  "79586618d9a09df3e83f6247aeca132a920add38": {
+    "facing": "model",
+    "id": "tool-result-senduserfile-permission-ask",
+    "name": "Tool Result: SendUserFile Permission Ask",
+    "desc": "SendUserFile checkPermissions ask prompt to send N files, noting that SendUserFile reads file contents."
+  },
+  "81c7e73ac7211161d26262c2649a80029e162b63": {
+    "facing": "model",
+    "id": "tool-result-senduserfile-plan-mode-ask",
+    "name": "Tool Result: SendUserFile Plan Mode Ask",
+    "desc": "SendUserFile checkPermissions ask in plan mode that placing files in the shared folder requires plan approval first."
+  },
+  "5054caf2f260d278f363e645ddfb1a07cff72ef1": {
+    "facing": "model",
+    "id": "tool-result-teammate-runtime-agent-type-cannot-run-in-pane",
+    "name": "Tool Result: Teammate Runtime Agent Type Cannot Run In Pane",
+    "desc": "Subagent-launch error that a plugin-registered runtime agent type cannot run as a pane teammate and must be spawned with the named tool or in-process."
+  },
+  "8ca5eb8deeaf84beadec85581a3fd585c79c892f": {
+    "facing": "model",
+    "id": "skill-claude-test-needs-terminal",
+    "name": "Skill Claude Test Needs Terminal",
+    "desc": "Claude Test skill.prompt/command.run failure telling the model to relay that the browser helper only starts from an interactive terminal session."
+  },
+  "b07730d63fe696412decd7be9064cc3ceb6016e2": {
+    "facing": "model",
+    "id": "skill-claude-test-helper-not-loaded",
+    "name": "Skill Claude Test Helper Not Loaded",
+    "desc": "Claude Test failure that this session did not load the built-in browser-helper module, usually because another claude-test plugin is installed."
+  },
+  "0378a7f2e7fbf72423531d9dafa5a3c84b3c090c": {
+    "facing": "model",
+    "id": "skill-claude-test-helper-not-started",
+    "name": "Skill Claude Test Helper Not Started",
+    "desc": "Claude Test failure that the browser helper is not running and the user must type /claude-test to start it."
+  },
+  "8e93ea7e5776f2f9372b8b5e5712ba146f003e5b": {
+    "facing": "model",
+    "id": "skill-claude-test-cannot-check-files",
+    "name": "Skill Claude Test Cannot Check Files",
+    "desc": "Claude Test failure that this build cannot verify helper files so the browser helper is not started."
+  },
+  "3a367614a634110d82629615131557c8a33ea849": {
+    "facing": "model",
+    "id": "skill-claude-test-relay-and-stop",
+    "name": "Skill Claude Test Relay And Stop",
+    "desc": "Claude Test waitPrompt wrapper instructing the model to tell the person the helper status verbatim and end the turn without running anything."
+  },
+  "295580b7335f1be5374a8a66e3e7a606f1bf08c2": { "facing": "ui" },
+  "8a8a8edb1d48ed8e6af7c358d89ccea15518a3ec": {
+    "facing": "model",
+    "id": "skill-claude-test-draft-description-started-by-run",
+    "name": "Skill: Claude Test draft description (started by run)",
+    "desc": "Tail of the claude-test draft skill description: first run only, started only by the run skill."
+  },
+  "ae5d3fa19cba0b7c7bae4bb5e24f1ca67aab5c58": {
+    "facing": "model",
+    "id": "skill-claude-test-draft-description",
+    "name": "Skill Claude Test Draft Description",
+    "desc": "Description of the non-invocable claude-test:author fork skill that drafts spec files in the background on a first run."
+  },
+  "d4a109c63cb6179028f8550d9bb75ae26e062f2b": {
+    "facing": "model",
+    "id": "skill-claude-test-execute-description",
+    "name": "Skill: Claude Test execute description",
+    "desc": "Description of the non-user-invocable claude-test \"execute\" fork skill (agent claude-test:runner) that runs specs in a background browser."
+  },
+  "2c23d0d15181af5cff4facad759d874ea960b589": {
+    "facing": "model",
+    "id": "skill-claude-test-execute-description-started-by-run",
+    "name": "Skill: Claude Test execute description (started by run)",
+    "desc": "Tail of the claude-test execute skill description: started only by the run skill."
+  },
+  "775ab36eb9f5b02b5ac17d3de424c4ca3b8283eb": {
+    "facing": "model",
+    "id": "skill-claude-test-execute-description",
+    "name": "Skill Claude Test Execute Description",
+    "desc": "Description of the non-invocable claude-test:runner fork skill that runs specs in a background browser."
+  },
+  "b93932b6006db6b8cf206fefa55e9c069264404c": { "facing": "ui" },
+  "222823d3be7f68752e8018b11431084a827ac49d": {
+    "facing": "model",
+    "id": "skill-base-directory-claude-test-run",
+    "name": "Skill Base Directory Claude Test Run",
+    "desc": "Prefix prepended to the claude-test run skill prompt naming the skill base directory as <root>/skills/run; a different interpolation than skill-base-directory-prompt-prefix."
+  },
+  "73016bb2f540b41ad980b1941dacd9b4b255118c": { "facing": "ui" },
+  "4ebbef7dbaada24bd867a86bf30bb87da7cb54c2": { "facing": "ui" },
+  "5884d635e22f2c6c644de7c2f6fe325742334e82": {
+    "facing": "model",
+    "id": "tool-result-senduserfile-project-name-rejected",
+    "name": "Tool Result: SendUserFile Project Name Rejected",
+    "desc": "SendUserFile project-folder upload error when the filename cannot be placed in the project folder."
+  },
+  "f1a9fcfdc4fe2e0e9e25dd96ba5cf39be6fc8375": {
+    "facing": "model",
+    "id": "tool-result-senduserfile-project-folder-http-refused",
+    "name": "Tool Result: SendUserFile Project Folder HTTP Refused",
+    "desc": "SendUserFile project-folder upload error when the folder HTTP-refuses the file, interpolating the status/code."
+  },
+  "4ed0f2b84ee592362e37149816e950126be0a128": {
+    "facing": "model",
+    "id": "tool-result-senduserfile-project-folder-no-credential",
+    "name": "Tool Result: SendUserFile Project Folder No Credential",
+    "desc": "SendUserFile project-folder upload error when the session has no credential to send."
+  },
+  "d653c2d22dbd1a595a984ca13878ab2a4ef17e87": {
+    "facing": "model",
+    "id": "tool-result-senduserfile-project-folder-request-incomplete",
+    "name": "Tool Result: SendUserFile Project Folder Request Incomplete",
+    "desc": "SendUserFile project-folder upload error when the write request does not complete."
+  },
+  "c4b6d4bc9722ae446df1c4eaa487a6c8ae733e46": {
+    "facing": "model",
+    "id": "tool-result-senduserfile-project-folder-no-answer",
+    "name": "Tool Result: SendUserFile Project Folder No Answer",
+    "desc": "SendUserFile project-folder upload error when the folder returns no per-file result."
+  },
+  "d56cb5e4a18992198f5a9899be9fcec0a6c8fd0a": {
+    "facing": "model",
+    "id": "tool-result-senduserfile-project-folder-write-refused",
+    "name": "Tool Result: SendUserFile Project Folder Write Refused",
+    "desc": "SendUserFile project-folder upload error when a per-file error_reason refuses the write, interpolating that reason."
+  },
+  "a01785d61894f688297dc2651dbf676632729e30": {
+    "facing": "model",
+    "id": "tool-result-senduserfile-project-name-taken",
+    "name": "Tool Result: SendUserFile Project Name Taken",
+    "desc": "SendUserFile project-folder upload error when a file of that name is already in the folder."
+  },
+  "e4e8446cf65f7ca51337e4d397922c3bf16532d0": {
+    "facing": "model",
+    "id": "tool-result-mcp-first-party-auth-rejected-login-403-missing-scope-retry",
+    "name": "Tool Result: MCP First-Party Auth Rejected Login 403 Missing Scope Retry",
+    "desc": "Trailing concat piece of the FIRST_PARTY_AUTH_REJECTED MCP error that a 403 claude.ai login may be missing a scope and /login should be retried."
+  },
+  "fb778770878d424bd680d625d37f579cef5f5b72": { "facing": "internal" },
+  "e15e6e67d4e5cd9426c8f1569f9c363c9f4e3503": { "facing": "internal" },
+  "f903b3b95e0938267740e1a4406019869da1504a": { "facing": "ui" },
+  "ec79af0b0219d33ad0aac0c11e7898cc1c68da53": {
+    "facing": "model",
+    "id": "data-artifact-attached-watch-republish-no-turn-note",
+    "name": "Artifact Attached Watch Republish No-Turn Note",
+    "desc": "Clause appended to the artifact-attach meta message when a watch is armed: a republish from elsewhere starts no turn and some Artifact results mention a newer version."
+  },
+  "74b673e4779bf1b219eeb499effae153027b9dc9": {
+    "facing": "model",
+    "id": "data-artifact-attached-watch-stop-latched-note",
+    "name": "Artifact Attached Stop-Latched Watch Note",
+    "desc": "Clause appended to the artifact-attach meta message when watch is stop-latched: this session does not track new versions and must not watch again unless the user asks."
+  },
+  "99b82272432cb8fa9ec2af8a3e41f64789ce5453": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-start-kit-other-org",
+    "name": "Tool Result: Artifact Quickstart Start Kit Other Org",
+    "desc": "Quickstart start-kit notSaved reason that the Artifact lives in another org this login cannot read, interpolated into the unavailable tool result."
+  },
+  "2c3fc0b2813a1d86232d02a7360ba7f1735ca7ca": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-start-kit-not-a-link",
+    "name": "Tool Result: Artifact Quickstart Start Kit Not A Link",
+    "desc": "Quickstart start-kit notSaved reason that the link is not an Artifact URL of this session's claude.ai."
+  },
+  "2690a1b8d685abf3306169b434b58ac60882196d": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-start-kit-not-served",
+    "name": "Tool Result: Artifact Quickstart Start Kit Not Served",
+    "desc": "Quickstart start-kit notSaved reason that this session does not serve published files."
+  },
+  "c15ec23b363f7412806ee30f144714fd559f2632": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-start-kit-permission-rule",
+    "name": "Tool Result: Artifact Quickstart Start Kit Permission Rule",
+    "desc": "Quickstart start-kit notSaved reason that a permission rule covers reading the Artifact."
+  },
+  "842c96b6c62b7537e18ef740d8436f708ecca1b5": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-start-kit-notice-pending",
+    "name": "Tool Result: Artifact Quickstart Start Kit Notice Pending",
+    "desc": "Quickstart start-kit notSaved reason that new comments are waiting so a read asks first."
+  },
+  "16dcc753dd84f12ef07c1fc73ccfb448c39991f1": { "facing": "internal" },
+  "4262dbc8544bad956a9f13885ff50a353a06fcd5": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-start-kit-probe-timeout",
+    "name": "Tool Result: Artifact Quickstart Start Kit Probe Timeout",
+    "desc": "Quickstart start-kit notSaved reason that sharing could not be checked in time."
+  },
+  "23a32a1609bc15b9523d4f50bf027dde66ef4491": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-design-system-none-saved",
+    "name": "Tool Result: Artifact Quickstart Design System None Saved",
+    "desc": "Quickstart design-system notSaved reason listing why none of the design system's files could be saved."
+  },
+  "14f5f72dc0096bf5be8843b1aa00f0652b774efc": {
+    "facing": "model",
+    "id": "skill-claude-test-draft-description",
+    "name": "Skill: Claude Test draft description",
+    "desc": "Description of the non-user-invocable claude-test \"draft\" fork skill (agent claude-test:author) that drafts spec files in the background on a first run."
+  },
+  "62d5e9d6a5ca4b976bea45809b02343341232858": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-start-kit-other-org",
+    "name": "Tool Result: Artifact quickstart start kit other org",
+    "desc": "Quickstart start-kit notSaved reason: the linked Artifact is in another of the user's organizations this login cannot read."
+  },
+  "424267040bc97519eb815de2e5d7ea1aa6c08015": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-start-kit-not-a-link",
+    "name": "Tool Result: Artifact quickstart start kit not a link",
+    "desc": "Quickstart start-kit notSaved reason: the link is not an Artifact URL of this session's claude.ai."
+  },
+  "72c34a96d6dc4ed98ab1f2c23555dfcd2950f78d": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-start-kit-probe-timeout",
+    "name": "Tool Result: Artifact quickstart start kit probe timeout",
+    "desc": "Quickstart start-kit notSaved reason: the Artifact's sharing could not be checked in time."
+  },
+  "b3329fbc03043dc555f087d208434a84e25943f4": {
+    "facing": "model",
+    "id": "tool-result-artifact-quickstart-start-kit-not-served",
+    "name": "Tool Result: Artifact quickstart start kit not served",
+    "desc": "Quickstart start-kit notSaved reason: this session does not serve published files."
   }
 }
