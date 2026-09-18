@@ -79,21 +79,34 @@ const same = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
 // CC 2.1.268 turned `${e!==null?pEr():…}` into `${e!==null?pEr:…}` — and a name
 // that follows that change (`…_FN` → plain) is the catalogue being right, not
 // drifting. Only a rename under an unchanged use-shape is the slip this gate is for.
-const slotShapeOf = after => {
+// A slot used as a TEST (`${!X?…}`, `${X?…}`, `${X&&…}`) is a flag; the same
+// position holding a plain value is a different role. CC 2.1.277 hoisted a
+// note string into the slot that had been `${!hasPlannedRead?…}`, and upstream
+// renamed it accordingly; reading both as `value` flagged that rename as drift.
+const slotShapeOf = (before, after) => {
   const ch = after[0] ?? '';
   if (ch === '(') return 'call';
   if (ch === '.' || ch === '[') return 'member';
+  if (
+    before.endsWith('!') ||
+    ch === '?' ||
+    after.startsWith('&&') ||
+    after.startsWith('||')
+  ) {
+    return 'test';
+  }
   return 'value';
 };
 const slotShapes = p => {
   const shapes = new Map();
   const pieces = p.pieces ?? [];
   (p.identifiers ?? []).forEach((ident, i) => {
+    const before = typeof pieces[i] === 'string' ? pieces[i] : '';
     const after = typeof pieces[i + 1] === 'string' ? pieces[i + 1] : '';
     const k = String(ident);
     shapes.set(
       k,
-      [...(shapes.get(k) ?? []), slotShapeOf(after)].sort().join(',')
+      [...(shapes.get(k) ?? []), slotShapeOf(before, after)].sort().join(',')
     );
   });
   return shapes;
@@ -164,9 +177,10 @@ const nameContexts = p => {
     if (!name) return;
     let before = typeof pieces[i] === 'string' ? pieces[i] : '';
     const after = typeof pieces[i + 1] === 'string' ? pieces[i + 1] : '';
+    const shape = slotShapeOf(before, after);
     if (before.endsWith('${')) before = before.slice(0, -2);
     const ctx = {
-      shape: slotShapeOf(after),
+      shape,
       before: norm(before).slice(-CONTEXT_WIN),
       after: norm(after).slice(0, CONTEXT_WIN),
     };
