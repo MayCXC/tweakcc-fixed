@@ -134,6 +134,35 @@ export const SELECTOR_ROWS = [
     ],
   },
   {
+    // The settings JSON schema reaches the model inside /update-config's
+    // prompt. tools/captureSettingsOracle.mjs runs this row against a pristine
+    // binary to record which schema descriptions the model reads.
+    id: 'update-config-schema',
+    enabled: false,
+    verified: false,
+    summary: '/update-config — the full settings JSON schema in the prompt',
+    selectors: {
+      dn: 'print',
+      I6: 'default',
+      d_e: 'default',
+      oa: 'default',
+      OS: 'lean',
+      ADs: 'default',
+    },
+    args: [],
+    promptPrefix: '/update-config ',
+    env: {},
+    canaries: [
+      {
+        id: 'update-config-schema-present',
+        where: 'messages',
+        mustContain: '## Full Settings JSON Schema',
+        why: 'the settings schema no longer reaches the model via /update-config',
+      },
+      ...placeholderLeakCanaries,
+    ],
+  },
+  {
     id: 'background-session',
     enabled: false,
     verified: false,
@@ -165,6 +194,8 @@ export const SELECTOR_ROWS = [
     ],
   },
 ];
+
+export const UPDATE_CONFIG_ROW_ID = 'update-config-schema';
 
 export const DEFAULT_ROW_ID = 'default-print-lean';
 

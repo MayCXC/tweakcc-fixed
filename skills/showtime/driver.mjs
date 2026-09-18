@@ -17,6 +17,7 @@
 
 import { execSync, execFileSync } from 'node:child_process';
 import fs from 'node:fs';
+import { createRequire } from 'node:module';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -61,8 +62,9 @@ function findRepo() {
   process.exit(2);
 }
 const REPO = findRepo();
-const TWEAKCC = path.join(os.homedir(), '.tweakcc');
-const ORIG_JS = path.join(TWEAKCC, 'native-claudejs-orig.js');
+const require = createRequire(import.meta.url);
+const { appliedPromptsDir, pristineCliPath } = require(path.join(REPO, 'tools/lib/overrideSets.cjs'));
+const ORIG_JS = pristineCliPath();
 
 const C = {
   ok: (s) => `\x1b[32m✓\x1b[0m ${s}`,
@@ -297,7 +299,7 @@ function cmdCheck() {
   //    while apply, boot and the READY smoke all stayed green (issue #24).
   console.log(C.head('Predicate-literal audit (blanked needles the binary greps with)'));
   {
-    const set = path.join(TWEAKCC, 'system-prompts');
+    const set = appliedPromptsDir();
     const v = ccVersion(ccBinary()) || repoPromptsVersions().slice(-1)[0];
     const jsonPath = path.join(REPO, 'data/prompts', `prompts-${v}.json`);
     if (!fs.existsSync(ORIG_JS) || !fs.existsSync(set) || !fs.existsSync(jsonPath)) {
@@ -360,6 +362,29 @@ function cmdCheck() {
       catch (e) { out = (e.stdout || '') + (e.stderr || ''); code = e.status || 1; }
       if (code === 0) console.log(C.ok(out.trim().replace(/^✓\s*/, '')));
       else fail(`prompt coverage: ${out.split('\n')[0]}`);
+    }
+  }
+  console.log('');
+
+  // 8b. settings-schema descriptions. The model reads CC's whole settings JSON
+  //     schema (/update-config, settings validation errors), so every
+  //     description in it must be catalogued. See tools/checkSettingsDescriptions.mjs.
+  console.log(C.head('Settings-schema descriptions (finder vs oracle vs catalogue)'));
+  {
+    const v = ccVersion(ccBinary()) || repoPromptsVersions().slice(-1)[0];
+    const ours = path.join(REPO, 'data/prompts', `prompts-${v}.json`);
+    const oracle = path.join(REPO, 'data/settings-descriptions', `oracle-${v}.json`);
+    if (!fs.existsSync(ORIG_JS) || !fs.existsSync(ours)) {
+      console.log(C.info('no pristine cli.js or prompts JSON — skipped'));
+    } else if (!fs.existsSync(oracle)) {
+      fail(`settings descriptions: no oracle for ${v}; run tools/captureSettingsOracle.mjs --binary <pristine claude>`);
+    } else {
+      let out = '', code = 0;
+      try { out = execSync(`node tools/checkSettingsDescriptions.mjs ${ORIG_JS} ${ours} 2>&1`, { cwd: REPO, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 }); }
+      catch (e) { out = (e.stdout || '') + (e.stderr || ''); code = e.status || 1; }
+      const summary = out.trim().split('\n').pop();
+      if (code === 0) console.log(C.ok(summary));
+      else fail(`settings descriptions: ${out.split('\n').filter((l) => /MISSING|EXTRA|UNCATALOGUED/.test(l)).slice(0, 4).join(' | ').slice(0, 300) || summary}`);
     }
   }
   console.log('');

@@ -8,6 +8,7 @@ const {
   splitModuleBundle,
   parseModuleSegment,
 } = require('./lib/moduleBundle.cjs');
+const { buildSettingsIndex } = require('./lib/settingsSchema.cjs');
 
 function slugify(text) {
   return text
@@ -3009,9 +3010,10 @@ function leadShowsModelFacingContext(lead, text = '') {
   // inputSchema param descriptions (audit gap G3: ~61 of 70 missed because Zod's
   // JSON shape is generated at RUNTIME, so statically only `.describe("…")` exists,
   // not the flat {description,type} the rule above matches). This broadens capture;
-  // the classification cache then drops settings/CLI `.describe()` as
-  // facing:'internal' (the §6.5 broaden-capture-then-classify doctrine, safe via
-  // the cache KEEP/DROP at the capture site).
+  // the classification cache then drops SDK control-protocol and CLI `.describe()`
+  // as facing:'internal'. Settings-schema descriptions are model-facing (the model
+  // reads the whole schema via /update-config and settings validation errors) and
+  // are captured structurally by lib/settingsSchema.cjs, ahead of the cache.
   if (/\.describe\(\s*$/.test(tail)) return true;
   // Usage-nudge catalog fields ({id, situation, feature, action}): the catalog
   // is injected into the model's context so IT can decide when a nudge applies.
@@ -3537,6 +3539,10 @@ function shouldCapture(text, cacheBody, lead, minLength, opts = {}) {
   // the cache and the prose gate alike. Hard structural excludes still win over
   // it, exactly as they do over a cached 'model'.
   if (opts.slotLiteral) return !isHardExcluded(text);
+  // A settings-schema description is found structurally (the model reads the
+  // whole schema via /update-config and settings validation errors), which
+  // survives a reword that would orphan any per-string cache row.
+  if (opts.settingsDescription) return !isHardExcluded(text);
   const cls = classifyByCache(cacheBody);
   if (cls) {
     if (isHardExcluded(text)) return false;
@@ -4173,6 +4179,11 @@ function backfillIdenticalSites(stringData, ast, code) {
 function extractStrings(filepath, minLength = 500) {
   _gateCandidates.clear(); // idempotent across calls
   const code = fs.readFileSync(filepath, 'utf-8');
+  const settingsIndex = buildSettingsIndex(code);
+  const settingsAt = node => {
+    const hit = settingsIndex.get(node.start);
+    return hit && hit.safe ? hit : null;
+  };
 
   const segments = splitModuleBundle(code);
   const ast = segments
@@ -4199,7 +4210,9 @@ function extractStrings(filepath, minLength = 500) {
             Math.max(0, frag.start - 600),
             frag.start
           );
-          return shouldCapture(v, v, fragLead, minLength);
+          return shouldCapture(v, v, fragLead, minLength, {
+            settingsDescription: Boolean(settingsAt(frag)),
+          });
         });
         const lead = code.slice(Math.max(0, node.start - 600), node.start);
         // Model-facing if a sibling already made it into the catalogue, or if
@@ -4263,8 +4276,14 @@ function extractStrings(filepath, minLength = 500) {
       // keys sit beyond a long preceding string value.
       const lead = code.slice(Math.max(0, node.start - 600), node.start);
       const slotLiteral = Boolean(slotLiteralVerdict(node.value));
+      const settings = settingsAt(node);
       dumpCandidate({ start: node.start, end: node.end, kind: 'string', cacheBody: node.value });
-      if (shouldCapture(node.value, node.value, lead, minLength, { slotLiteral })) {
+      if (
+        shouldCapture(node.value, node.value, lead, minLength, {
+          slotLiteral,
+          settingsDescription: Boolean(settings),
+        })
+      ) {
         stringData.push({
           name: '',
           id: '',
@@ -4275,6 +4294,7 @@ function extractStrings(filepath, minLength = 500) {
           start: node.start,
           end: node.end,
           slotLiteral,
+          ...(settings && { settings }),
         });
       }
     }
@@ -4437,8 +4457,14 @@ function extractStrings(filepath, minLength = 500) {
       const slotLiteral = (node.quasis || []).some(q =>
         Boolean(slotLiteralVerdict(q.value.cooked ?? q.value.raw))
       );
+      const settings = settingsAt(node);
       dumpCandidate({ start: node.start, end: node.end, kind: 'template', cacheBody: tbody });
-      if (shouldCapture(fullContent, tbody, lead, minLength, { slotLiteral })) {
+      if (
+        shouldCapture(fullContent, tbody, lead, minLength, {
+          slotLiteral,
+          settingsDescription: Boolean(settings),
+        })
+      ) {
         stringData.push({
           name: '',
           id: '',
@@ -4449,6 +4475,7 @@ function extractStrings(filepath, minLength = 500) {
           start: node.start,
           end: node.end,
           slotLiteral,
+          ...(settings && { settings }),
         });
       }
     }
@@ -4631,6 +4658,102 @@ function applySlotLiteralNames(prompts) {
     console.log(`Named ${named.length} slot-literal capture(s) from the allowlist`);
   }
   return prompts;
+}
+
+// Name the settings-schema descriptions from their key path. Runs after the
+// other namers, so an id the catalogue already carries always wins (renaming
+// one would orphan its overrides). A description the reference catalogue
+// already holds takes its id as-is, because shared prompts must keep the
+// reference ids for identifierMap adoption and the mis-bind audit. The same
+// text at several schema sites (a sub-schema reused under several keys) is one
+// multi-site prompt, so it gets one id, named from the path its sites share.
+function applySettingsDescriptionNames(prompts, upstreamPrompts = []) {
+  const norm = s => s.replace(/\\(['"`\\])/g, '$1');
+  const body = p =>
+    (p.pieces || []).filter(x => typeof x === 'string').join('');
+  const upstreamByBody = new Map();
+  for (const u of upstreamPrompts) {
+    if (u.id) upstreamByBody.set(norm(body(u)), u);
+  }
+  const groups = new Map();
+  for (const p of prompts) {
+    if (p.id || !p.settings) continue;
+    const b = body(p);
+    if (!groups.has(b)) groups.set(b, []);
+    groups.get(b).push(p);
+  }
+  let adopted = 0;
+  let generated = 0;
+  for (const [b, group] of groups) {
+    const up = upstreamByBody.get(norm(b));
+    let id, name, description;
+    if (up) {
+      ({ id, name, description } = up);
+      adopted++;
+    } else {
+      const { keyPath, part, parts } = sharedSettingsPath(
+        group.map(p => p.settings)
+      );
+      const slug = keyPath
+        .replace(/[()]/g, '')
+        .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+      const partSuffix = parts > 1 ? `-part-${part}` : '';
+      id = `data-settings-${slug}-description${partSuffix}`;
+      name = `Data: ${keyPath} setting description${parts > 1 ? ` (part ${part} of ${parts})` : ''}`;
+      description =
+        `Description of the \`${keyPath}\` setting in Claude Code's settings ` +
+        'JSON schema. The model reads it through /update-config and settings ' +
+        'validation errors; it is also shown to users in the settings help.';
+      generated++;
+    }
+    for (const p of group) {
+      p.id = id;
+      p.name = name || '';
+      p.description = description || '';
+    }
+  }
+  if (adopted || generated) {
+    console.log(
+      `Named ${adopted + generated} settings description(s): ${adopted} from the reference catalogue, ${generated} from their key path`
+    );
+  }
+  return prompts;
+}
+
+// One name for a text found at several key paths: keep the leading segments
+// all paths share, then the final key when they agree on it.
+function sharedSettingsPath(sites) {
+  const paths = sites.map(s => s.keyPath.split('.'));
+  const common = [];
+  for (let i = 0; i < Math.min(...paths.map(p => p.length)); i++) {
+    if (paths.every(p => p[i] === paths[0][i])) common.push(paths[0][i]);
+    else break;
+  }
+  const last = paths[0][paths[0].length - 1];
+  if (
+    common[common.length - 1] !== last &&
+    paths.every(p => p[p.length - 1] === last)
+  ) {
+    common.push(last);
+  }
+  return {
+    keyPath: common.join('.') || 'root',
+    part: sites[0].part,
+    parts: sites[0].parts,
+  };
+}
+
+function loadUpstreamPrompts() {
+  const file = process.env.TWEAKCC_UPSTREAM_JSON;
+  if (!file || !fs.existsSync(file)) return [];
+  try {
+    return JSON.parse(fs.readFileSync(file, 'utf-8')).prompts || [];
+  } catch {
+    return [];
+  }
 }
 
 // Disambiguate DIFFERENT-content strings that landed on the SAME id (a below-floor
@@ -5075,6 +5198,10 @@ if (require.main === module) {
   );
   mergedResult.prompts = applyCacheNames(mergedResult.prompts);
   mergedResult.prompts = applySlotLiteralNames(mergedResult.prompts);
+  mergedResult.prompts = applySettingsDescriptionNames(
+    mergedResult.prompts,
+    loadUpstreamPrompts()
+  );
   mergedResult.prompts = normalizeIdGroups(mergedResult.prompts);
   mergedResult.prompts = disambiguateIdCollisions(
     mergedResult.prompts,
@@ -5234,9 +5361,9 @@ if (require.main === module) {
     return contentA.localeCompare(contentB);
   });
 
-  // Remove start/end fields before writing
+  // Remove extraction bookkeeping before writing
   mergedResult.prompts = mergedResult.prompts.map(
-    ({ start, end, ...rest }) => rest
+    ({ start, end, settings, ...rest }) => rest
   );
 
   // Add version as top-level field
@@ -5306,3 +5433,4 @@ module.exports._setSlotLiteralsForTests = _setSlotLiteralsForTests;
 module.exports.slotLiteralCandidates = slotLiteralCandidates;
 module.exports.slotLiteralVerdict = slotLiteralVerdict;
 module.exports.applySlotLiteralNames = applySlotLiteralNames;
+module.exports.applySettingsDescriptionNames = applySettingsDescriptionNames;
