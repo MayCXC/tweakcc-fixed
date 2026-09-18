@@ -57,6 +57,7 @@ const reconstruct = p => {
 // parallel body matching any of them was tracking pristine at that point.
 const historical = new Map();
 const current = new Map();
+const currentVersions = new Map();
 const files = fs
   .readdirSync(path.join(REPO, 'data/prompts'))
   .filter(f => /^prompts-\d+\.\d+\.\d+\.json$/.test(f));
@@ -73,6 +74,8 @@ for (const f of files) {
     if (isCurrent) {
       if (!current.has(p.id)) current.set(p.id, new Set());
       current.get(p.id).add(b);
+      if (!currentVersions.has(p.id)) currentVersions.set(p.id, new Set());
+      currentVersions.get(p.id).add(String(p.version));
     }
   }
 }
@@ -137,6 +140,25 @@ if (divergent.length) {
 
 }
 
+// `--apply` conflict-checks the ACTIVE set only, so a parallel override whose
+// ccVersion no longer equals the prompt's catalogue version is never reported,
+// whatever its body: on CC 2.1.276 three opus-5 overrides were still at
+// 2.1.191/2.1.207 and a curated opus-5 trim sat one release behind. Every such
+// file is a conflict the realign pass must see.
+const versionLag = [];
+for (const set of parallel) {
+  for (const [id, vers] of currentVersions) {
+    const f = path.join(LCC, set, `${id}.md`);
+    if (!fs.existsSync(f)) continue;
+    const cc = (/^ccVersion:\s*(.+)$/m.exec(split(f).head) || [])[1]?.trim() || '?';
+    if (!vers.has(cc) && !stale.some(s => s.file === f)) versionLag.push({ id, set, cc, want: [...vers].join('|') });
+  }
+}
+if (versionLag.length) {
+  console.log(`\nparallel-set ccVersion lag (a conflict --apply never reports; realign each): ${versionLag.length}`);
+  for (const v of versionLag) console.log(`  ${v.set.replace('system-prompts-', '').padEnd(9)} ${v.id}  ccVersion=${v.cc} -> ${v.want}`);
+} else console.log('parallel-set ccVersion lag: 0');
+
 if (FIX && stale.length) {
   for (const s of stale) {
     const active = split(path.join(LCC, activeName, `${s.id}.md`));
@@ -147,4 +169,4 @@ if (FIX && stale.length) {
   console.log(`\nmirrored ${stale.length} stale stub(s) from ${activeName}`);
 }
 
-process.exit(stale.length && !FIX ? 1 : 0);
+process.exit((stale.length && !FIX) || versionLag.length ? 1 : 0);
