@@ -32,6 +32,7 @@ import { writeFixSummarizeFromHere } from './fixSummarizeFromHere';
 import { writeFixRewindSummaryHeader } from './fixRewindSummaryHeader';
 import { writeStatuslineUpdateThrottle } from './statuslineUpdateThrottle';
 import { writeClearScreen } from './clearScreen';
+import { writeSessionColor } from './sessionColor';
 import { writeInputChevronColor } from './inputChevronColor';
 import { writePatchesAppliedIndication } from './patchesAppliedIndication';
 import { writeModelCustomizations } from './modelSelector';
@@ -320,6 +321,7 @@ const INVOCATIONS: Record<PatchId, (src: string) => string | null> = {
   'statusline-update-throttle': c =>
     writeStatuslineUpdateThrottle(c, 300, false),
   'clear-screen': c => writeClearScreen(c),
+  'session-color': c => writeSessionColor(c),
   'input-chevron-color': c => writeInputChevronColor(c, 'green'),
   'strip-empty-system-reminders': c => writeStripEmptySystemReminders(c),
   'model-customizations': c => writeModelCustomizations(c),
@@ -394,7 +396,11 @@ const INVOCATIONS: Record<PatchId, (src: string) => string | null> = {
   'swap-ripgrep-for-fff': c => writeSwapRipgrepForFff(c, FFF_WRAPPER_PATH),
   'dream-mode': c => writeDreamMode(c),
   'lean-memory-types': c => writeLeanMemoryTypes(c),
-  toolsets: c => writeToolsets(c, TEST_TOOLSETS, 'minimal', 'minimal'),
+  // All three bindings, each distinct: the selection expression emits a branch
+  // per permission mode, and passing only some leaves the others referencing the
+  // default, so an unparseable plan or accept-edits branch would slip the sweep.
+  toolsets: c =>
+    writeToolsets(c, TEST_TOOLSETS, 'minimal', 'everything', 'minimal'),
   'mcp-non-blocking': c => writeMcpNonBlocking(c),
   // Native default is 3; passing 3 is a same-token no-op the sweep would
   // score as applied/unchanged. Use a value that must rewrite the digit.
