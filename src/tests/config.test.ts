@@ -40,6 +40,10 @@ vi.mock('node:fs');
 vi.mock('which', () => ({
   default: vi.fn(),
 }));
+vi.mock('../systemPromptSync', () => ({
+  syncSystemPrompts: vi.fn().mockResolvedValue({ ccVersion: '', results: [] }),
+  displaySyncResults: vi.fn(),
+}));
 
 import whichMock from 'which';
 
