@@ -22,12 +22,16 @@ import {
   PatchGroup,
   getAllPatchDefinitions,
   TWEAKCC_VERSION,
+  TWEAKCC_SUPPORTED_CC,
 } from './patches/index';
 import {
   preloadStringsFile,
   getSystemPromptDefinitions,
 } from './systemPromptSync';
-import { newestLocalPromptsVersion } from './systemPromptDownload';
+import {
+  newestLocalPromptsVersion,
+  resolveFetchVersion,
+} from './systemPromptDownload';
 import { migrateConfigIfNeeded } from './migration';
 import { completeStartupCheck, startupCheck } from './startup';
 import {
@@ -226,7 +230,7 @@ const main = async () => {
     )
     .option(
       '--fetch-system-prompts [version]',
-      'download a Claude Code version’s system prompts into the cache, then print that version (defaults to the newest prompt data available)'
+      'download a Claude Code version’s system prompts into the cache, then print that version (defaults to the Claude Code version this release supports)'
     )
     .option(
       '--validate-system-prompts [cliJsPath]',
@@ -300,22 +304,18 @@ const main = async () => {
             ? options.fetchSystemPrompts
             : undefined;
 
-        // No version given: take the newest the prompt data covers, the same
-        // default the repo's own tools use. Falling back to the installed
-        // Claude Code matches --list-system-prompts, and keeps this working on
-        // a published install, whose tarball ships no data/prompts.
-        let version = requested ?? newestLocalPromptsVersion() ?? undefined;
-        if (!version) {
-          try {
-            const result = await startupCheck({ interactive: false });
-            version = result.startupCheckInfo?.ccInstInfo?.version;
-          } catch {
-            // Detection failed; reported below.
-          }
-        }
+        // TWEAKCC_SUPPORTED_CC is typed as a string but read from package.json,
+        // so a checkout predating the field yields undefined here, which is the
+        // case resolveFetchVersion's last source covers.
+        const declared: string | undefined = TWEAKCC_SUPPORTED_CC;
+        const version = resolveFetchVersion(
+          requested,
+          declared,
+          newestLocalPromptsVersion
+        );
         if (!version) {
           console.error(
-            'Error: no version given, no prompt data to take the newest from, and no Claude Code installation to read one off. Pass a version, e.g. --fetch-system-prompts 2.1.276.'
+            'Error: no version given, and this build neither declares a supported Claude Code version nor carries prompt data to take the newest from. Pass a version, e.g. --fetch-system-prompts 2.1.276.'
           );
           process.exit(1);
         }

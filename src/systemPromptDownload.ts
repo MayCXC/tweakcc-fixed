@@ -77,6 +77,35 @@ export function newestLocalPromptsVersion(): string | null {
 }
 
 /**
+ * Which Claude Code version to fetch prompts for, in order of what each source
+ * actually knows.
+ *
+ * An explicit argument is the caller's own decision and settles it.
+ *
+ * Otherwise the release's declared version wins, because the question a caller
+ * asks with no argument is which Claude Code this build can patch, and that is
+ * a fact about the patch code. Prompt data cannot answer it: the data and the
+ * code move independently, a prompts commit landing before the release able to
+ * patch what it describes, so the newest file on disk can name a version whose
+ * shape this build does not match. Getting that wrong in the generous
+ * direction is the costly one, since it installs a Claude Code that `--apply`
+ * then fails on, while the cautious answer merely installs an older one that
+ * works.
+ *
+ * The prompt data answers only when no declaration exists, which is a checkout
+ * from before the field. A published install has neither and passes a version.
+ *
+ * @param localNewest Deferred, so the directory is read only when reached.
+ */
+export function resolveFetchVersion(
+  requested: string | undefined,
+  declared: string | undefined,
+  localNewest: () => string | null
+): string | null {
+  return requested ?? declared ?? localNewest();
+}
+
+/**
  * Downloads the strings file for a given CC version from GitHub.
  *
  * Resolution order: repo-local data/prompts/ (when running from a checkout)
