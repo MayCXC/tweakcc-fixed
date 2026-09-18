@@ -39,6 +39,44 @@ export function findRepoPromptsDir(): string | null {
 }
 
 /**
+ * Pick the newest version among a set of prompts filenames. Matches the repo's
+ * prompts-file idiom (`prompts-X.Y.Z.json`), keeps each captured version, and
+ * orders them with a numeric-aware locale compare so 2.1.10 sorts after 2.1.9
+ * (a plain lexicographic sort would put 2.1.9 last).
+ *
+ * @param fileNames - Directory entry names to scan (order irrelevant)
+ * @returns The newest "X.Y.Z" version, or null when none match
+ */
+export function latestPromptsVersion(fileNames: string[]): string | null {
+  const versions = fileNames
+    .map(name => /^prompts-(\d+\.\d+\.\d+)\.json$/.exec(name)?.[1])
+    .filter((v): v is string => v !== undefined)
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+  return versions.at(-1) ?? null;
+}
+
+/**
+ * The newest Claude Code version the prompt data on disk covers, or null when
+ * there is no data/prompts to read (a published npm install, whose tarball
+ * ships none).
+ *
+ * This is the same resolution the repo's own tools use for their default
+ * version argument (`arg('--json') ?? newestPromptsJson()` in
+ * checkOutputContracts, and the equivalent in auditMisbinds,
+ * auditCallSlots and checkEscaperWrappers): read the directory, keep the
+ * `prompts-X.Y.Z.json` entries, take the numerically newest.
+ */
+export function newestLocalPromptsVersion(): string | null {
+  const repoDir = findRepoPromptsDir();
+  if (!repoDir) return null;
+  try {
+    return latestPromptsVersion(fsSync.readdirSync(repoDir));
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Downloads the strings file for a given CC version from GitHub.
  *
  * Resolution order: repo-local data/prompts/ (when running from a checkout)
