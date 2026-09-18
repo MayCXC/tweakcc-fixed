@@ -254,6 +254,22 @@ const SWEEP_CONFIG: UserMessageDisplayConfig = {
   styling: ['bold'],
 };
 
+// CC 2.1.276 appended `awaitingModel` to the child's props; the anchor must
+// accept a trailing prop run rather than end at `timestamp`.
+const FIXTURE_276 = FIXTURE_246.replace(
+  'timestamp:Pm})',
+  'timestamp:Pm,awaitingModel:nd})'
+);
+
+describe('writeUserMessageDisplay — CC 2.1.276 trailing child props', () => {
+  it('matches a child call carrying props after timestamp', () => {
+    expect(FIXTURE_276).not.toBe(FIXTURE_246);
+    const out = writeUserMessageDisplay(FIXTURE_276, baseConfig);
+    expect(out).not.toBeNull();
+    expect(out).toContain('flexDirection:"column"');
+  });
+});
+
 describe('writeUserMessageDisplay — CC 2.1.246 imported jsx helpers', () => {
   it('matches the imported-helper shape that .jsx patterns no longer find', () => {
     const out = writeUserMessageDisplay(FIXTURE_246, baseConfig);

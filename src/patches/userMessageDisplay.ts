@@ -62,7 +62,7 @@ const findImportedJsxUserMessage = (
     const region = oldFile.slice(errAt, regionEnd);
 
     const childRe =
-      /(?<![.$\w])([$\w]+)\([$\w]+,\{text:([$\w]+),useBriefLayout:[$\w]+,timestamp:[$\w]+\}\)/;
+      /(?<![.$\w])([$\w]+)\([$\w]+,\{text:([$\w]+),useBriefLayout:[$\w]+,timestamp:[$\w]+(?:,[$\w]+:[$\w!.]+)*\}\)/;
     const child = childRe.exec(region);
     if (!child || child.index === undefined) {
       from = afterErr;
@@ -484,7 +484,7 @@ export const writeUserMessageDisplay = (
   // 5=`,children:`, 6=child var (discarded), 7=`})`.
   // ────────────────────────────────────────────────────────────────────────
   const jsxRuntimePattern =
-    /(No content found in user prompt message[\s\S]{0,400}?\.jsx\([$\w]+,\{text:([$\w]+),useBriefLayout:[$\w]+,timestamp:[$\w]+\}\)[\s\S]{0,200}?([$\w]+)\.jsx\([$\w]+,)(\{flexDirection:"column"[^{}]*?)(,children:)([$\w]+)(\}\))/;
+    /(No content found in user prompt message[\s\S]{0,400}?\.jsx\([$\w]+,\{text:([$\w]+),useBriefLayout:[$\w]+,timestamp:[$\w]+(?:,[$\w]+:[$\w!.]+)*\}\)[\s\S]{0,200}?([$\w]+)\.jsx\([$\w]+,)(\{flexDirection:"column"[^{}]*?)(,children:)([$\w]+)(\}\))/;
 
   // Method 0 (CC ≥ 2.1.246): imported jsx helpers, not `MOD.jsx`. Tried first.
   const importedJsxMatch = findImportedJsxUserMessage(oldFile);
@@ -505,7 +505,7 @@ export const writeUserMessageDisplay = (
   // over the broad legacy tree-replacement (whose `{text:VAR}` alternative also
   // matches this shape) when present.
   const memoizedChildPattern =
-    /(No content found in user prompt message.{0,1200}?)([$\w]+)=([$\w]+(?:\.default)?\.createElement)\([$\w]+,\{text:([$\w]+),useBriefLayout:[$\w]+,timestamp:[$\w]+\}\)/;
+    /(No content found in user prompt message.{0,1200}?)([$\w]+)=([$\w]+(?:\.default)?\.createElement)\([$\w]+,\{text:([$\w]+),useBriefLayout:[$\w]+,timestamp:[$\w]+(?:,[$\w]+:[$\w!.]+)*\}\)/;
   const memoizedChildMatch =
     importedJsxMatch || jsxRuntimeMatch || modernMatch
       ? null
