@@ -15,9 +15,10 @@ Two repos move together on the same release cycle:
 - **the overrides repo** — the curated system-prompt overrides (`.md` files with
   frontmatter). The tweakcc README pairs the patcher with an overrides repo
   (`lobotomized-claude-code` by default); clone or symlink it where the README
-  says. `~/.tweakcc/system-prompts` and `~/.tweakcc/system-reminders` are symlinks
-  into that repo's active per-model override set; the patcher reads both at
-  `--apply`. The `~/.tweakcc/...` layout is tweakcc's own convention.
+  says. The patcher reads the tweakcc config folder. Audit tools take
+  `--overrides <dir>` (repeatable) or `TWEAKCC_OVERRIDE_SETS`
+  (`path.delimiter`-joined set directories). The `~/.tweakcc/...` layout is
+  tweakcc's own convention.
 
 The canonical pristine `cli.js` is `~/.tweakcc/native-claudejs-orig.js`, which the
 patcher rewrites on every `--apply`. The patched copy is saved alongside as

@@ -169,7 +169,10 @@ export const captureRow = async (row, options = {}) => {
           // and the capture would show a different prompt set than production.
           _CLAUDE_CODE_ASSUME_FIRST_PARTY_BASE_URL: '1',
         };
-        const args = ['--print', ...row.args, marker];
+        // A row may route the marker through a slash command, whose expanded
+        // prompt is what reaches the model.
+        const prompt = `${row.promptPrefix ?? ''}${marker}`;
+        const args = ['--print', ...row.args, prompt];
         child = spawn(binary, args, {
           env,
           cwd,

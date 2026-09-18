@@ -5,6 +5,13 @@ const os = require('os');
 const path = require('path');
 const { spawnSync } = require('child_process');
 const matter = require('gray-matter');
+const {
+  parseOverrideArgs,
+  appliedPromptsDir,
+  appliedRemindersDir,
+  pristineCliPath,
+  printAuditedSets,
+} = require('./lib/overrideSets.cjs');
 
 const repoRoot = path.resolve(__dirname, '..');
 
@@ -304,7 +311,8 @@ function printList(label, items, limit = 25) {
 }
 
 function main() {
-  const args = parseArgs(process.argv.slice(2));
+  const parsed = parseOverrideArgs(process.argv.slice(2));
+  const args = parseArgs(parsed.rest);
   if (args.help) {
     console.log(
       'Usage: node tools/versionBumpReport.js [oldVersion] [newVersion] [--cli path] [--json] [--strict] [--no-extract]'
@@ -318,11 +326,7 @@ function main() {
   // apply, which leaves this whole report unable to run for exactly the half of
   // the bump it is meant to gate. Fall back to the pipeline's own extraction,
   // and let detectVersionFromCli below prove the fallback is the right build.
-  const defaultCli = path.join(
-    os.homedir(),
-    '.tweakcc',
-    'native-claudejs-orig.js'
-  );
+  const defaultCli = pristineCliPath();
   const versions = listPromptVersions(promptsDir);
   const fallbackTarget = args.new || args._[1] || versions[versions.length - 1];
   const tmpCli = fallbackTarget ? `/tmp/cli-${fallbackTarget}.js` : null;
@@ -378,28 +382,31 @@ function main() {
   const newIds = idSet(targetData);
   const added = sortedDiff(newIds, oldIds);
   const removed = sortedDiff(oldIds, newIds);
-  const coverage = scanOverrideCoverage(
+  const systemPromptsDir =
     args['system-prompts-dir'] ||
-      path.join(os.homedir(), '.tweakcc', 'system-prompts'),
-    args['system-reminders-dir'] ||
-      path.join(os.homedir(), '.tweakcc', 'system-reminders'),
+    parsed.explicit[0] ||
+    appliedPromptsDir();
+  const systemRemindersDir =
+    args['system-reminders-dir'] || appliedRemindersDir();
+  const audited = [
+    { dir: systemPromptsDir, name: path.basename(systemPromptsDir) },
+  ];
+  if (args.json) {
+    console.error(`audited sets: ${audited.map(s => s.name).join(', ')}`);
+  } else {
+    printAuditedSets(audited);
+  }
+  const coverage = scanOverrideCoverage(
+    systemPromptsDir,
+    systemRemindersDir,
     targetData
   );
   const unknowns = scanUnknownPlaceholders([
-    args['system-prompts-dir'] ||
-      path.join(os.homedir(), '.tweakcc', 'system-prompts'),
-    args['system-reminders-dir'] ||
-      path.join(os.homedir(), '.tweakcc', 'system-reminders'),
+    systemPromptsDir,
+    systemRemindersDir,
   ]);
-  const inlineAnchors = scanInlineAnchors(
-    args['system-prompts-dir'] ||
-      path.join(os.homedir(), '.tweakcc', 'system-prompts'),
-    cliPath
-  );
-  const reminderCoverage = scanReminderCoverage(
-    args['system-reminders-dir'] ||
-      path.join(os.homedir(), '.tweakcc', 'system-reminders')
-  );
+  const inlineAnchors = scanInlineAnchors(systemPromptsDir, cliPath);
+  const reminderCoverage = scanReminderCoverage(systemRemindersDir);
   const emptyMaps = emptyIdentifierMapEntries(targetData);
   const blockingIssues = [];
   const extractedMetrics = extraction ? metrics(extraction.data) : null;

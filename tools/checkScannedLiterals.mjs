@@ -38,8 +38,16 @@
 //
 // Exit 0 = no blanked predicate, 1 = findings, 2 = could not run.
 
+import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
+
+const require = createRequire(import.meta.url);
+const {
+  parseOverrideArgs,
+  resolveOverrideSets,
+  printAuditedSets,
+} = require('./lib/overrideSets.cjs');
 
 // String methods that consume a literal as a needle rather than emitting it.
 const MATCHERS = [
@@ -237,10 +245,8 @@ export const rewriteTableNeedles = src => [
 ];
 
 const main = () => {
-  const args = process.argv.slice(2);
-  const sets = args
-    .filter(a => a.startsWith('--set='))
-    .map(a => path.resolve(a.slice('--set='.length)));
+  const parsed = parseOverrideArgs(process.argv.slice(2));
+  const args = parsed.rest;
   const jsonOut = (args[args.indexOf('--json') + 1] || '').startsWith('--')
     ? null
     : args.includes('--json')
@@ -248,12 +254,15 @@ const main = () => {
       : null;
   const [cliPath, promptsPath] = args.filter(a => !a.startsWith('--'));
 
-  if (!cliPath || !promptsPath || !sets.length) {
+  if (!cliPath || !promptsPath || !parsed.specified) {
     console.error(
       'usage: checkScannedLiterals.mjs <cli.js> <prompts.json> --set=<dir> [--set=<dir>]'
     );
     process.exit(2);
   }
+  const resolved = resolveOverrideSets(parsed, { fallback: 'none' });
+  printAuditedSets(resolved);
+  const sets = resolved.map(s => s.dir);
   for (const p of [cliPath, promptsPath, ...sets]) {
     if (!fs.existsSync(p)) {
       console.error(`checkScannedLiterals: missing ${p}`);

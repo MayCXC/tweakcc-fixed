@@ -25,11 +25,26 @@
 //   2. Interpolations. A body's literal text is only the pieces between
 //      `${...}` slots, so probes are split there too.
 //
+// A reference id we deliberately do not catalogue (traced to an emission site
+// the model never reads) is recorded in data/prompt-coverage-allowlist.json.
+// A row goes stale, and fails the gate, once its id is no longer missing, no
+// longer in the binary, no longer probeable, or gone from the reference, so
+// rows cannot outlive the reason they were written for.
+//
 // Usage:
 //   node tools/checkPromptCoverage.mjs <ours.json> <reference.json> <pristine cli.js>
+//     [--allowlist <file>]
 // Exit 0 = no gap.
 
 import fs from 'node:fs';
+import path from 'node:path';
+
+const DEFAULT_ALLOWLIST = path.join(
+  import.meta.dirname,
+  '..',
+  'data',
+  'prompt-coverage-allowlist.json'
+);
 
 const MIN_PROBE = 40;
 
@@ -122,8 +137,31 @@ export const coverageReport = (ours, reference, bundle) => {
   return { missing, spanDiff, notOurs, unprobeable };
 };
 
+export const applyAllowlist = (report, allowlist, reference) => {
+  const referenceIds = new Set(reference.map(p => p.id).filter(Boolean));
+  const state = new Map();
+  for (const m of report.missing) state.set(m.id, 'missing');
+  for (const m of report.notOurs) state.set(m.id, 'not in the binary');
+  for (const id of report.unprobeable) state.set(id, 'unprobeable');
+  const missing = report.missing.filter(m => !allowlist[m.id]);
+  const allowlisted = report.missing.filter(m => allowlist[m.id]);
+  const stale = [];
+  for (const id of Object.keys(allowlist)) {
+    if (!referenceIds.has(id)) stale.push({ id, why: 'not in the reference' });
+    else if (state.get(id) !== 'missing') {
+      stale.push({ id, why: state.get(id) || 'catalogued by us' });
+    }
+  }
+  return { ...report, missing, allowlisted, stale };
+};
+
 const main = () => {
-  const [oursPath, referencePath, bundlePath] = process.argv.slice(2);
+  const argv = process.argv.slice(2);
+  const alIdx = argv.indexOf('--allowlist');
+  const allowlistPath = alIdx >= 0 ? argv[alIdx + 1] : DEFAULT_ALLOWLIST;
+  const [oursPath, referencePath, bundlePath] = argv.filter(
+    (_, i) => alIdx < 0 || (i !== alIdx && i !== alIdx + 1)
+  );
   if (!oursPath || !referencePath || !bundlePath) {
     console.error(
       'usage: checkPromptCoverage.mjs <ours.json> <reference.json> <pristine cli.js>'
@@ -131,17 +169,29 @@ const main = () => {
     process.exit(2);
   }
   const load = f => JSON.parse(fs.readFileSync(f, 'utf8')).prompts;
-  const { missing, spanDiff, notOurs, unprobeable } = coverageReport(
-    load(oursPath),
-    load(referencePath),
-    fs.readFileSync(bundlePath, 'utf8')
-  );
+  const reference = load(referencePath);
+  const allowlist = fs.existsSync(allowlistPath)
+    ? JSON.parse(fs.readFileSync(allowlistPath, 'utf8'))
+    : {};
+  const { missing, spanDiff, notOurs, unprobeable, allowlisted, stale } =
+    applyAllowlist(
+      coverageReport(
+        load(oursPath),
+        reference,
+        fs.readFileSync(bundlePath, 'utf8')
+      ),
+      allowlist,
+      reference
+    );
+  for (const s of stale) {
+    console.log(`  STALE allowlist row ${s.id}: ${s.why}`);
+  }
 
   const total = missing.reduce((s, m) => s + m.tokens, 0);
   const trailer =
     `${spanDiff.length} span-difference, ${notOurs.length} reference-only, ` +
-    `${unprobeable.length} unprobeable`;
-  if (missing.length === 0) {
+    `${unprobeable.length} unprobeable, ${allowlisted.length} allowlisted`;
+  if (missing.length === 0 && stale.length === 0) {
     console.log(
       `✓ prompt coverage: every reference prompt present (${trailer})`
     );
@@ -154,6 +204,11 @@ const main = () => {
     process.exit(0);
   }
 
+  if (stale.length > 0) {
+    console.log(
+      `${stale.length} stale allowlist row(s) in ${allowlistPath}; remove them`
+    );
+  }
   console.log(
     `MISSING FROM OUR CATALOGUE: ${missing.length} entries (~${total} tokens) ` +
       `present in the binary but absent from our prompts JSON`

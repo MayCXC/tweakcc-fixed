@@ -21,17 +21,25 @@
 //
 // Writes <out>/<id>.md per id and <out>/tasks.json — the `tasks` array the
 // workflow takes verbatim.
+import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const argv = process.argv.slice(2);
+const require = createRequire(import.meta.url);
+const {
+  parseOverrideArgs,
+  resolveOverrideSets,
+  printAuditedSets,
+} = require('./lib/overrideSets.cjs');
+
+const parsed = parseOverrideArgs(process.argv.slice(2));
+const argv = parsed.rest;
 const positional = argv.filter(a => !a.startsWith('--'));
 const opt = k => {
   const hit = argv.find(a => a.startsWith(`--${k}=`));
   return hit ? hit.slice(k.length + 3) : '';
 };
 const [prevPath, curPath] = positional;
-const setDirs = opt('sets').split(',').filter(Boolean);
 const outDir = opt('out');
 let ids = opt('ids');
 if (ids.startsWith('@')) {
@@ -44,12 +52,15 @@ if (ids.startsWith('@')) {
 }
 const idList = ids.split(',').filter(Boolean);
 
-if (!prevPath || !curPath || !idList.length || !setDirs.length || !outDir) {
+if (!prevPath || !curPath || !idList.length || !parsed.specified || !outDir) {
   console.error(
     'usage: realignPackets.mjs <prev.json> <cur.json> --ids=<a,b|@file> --sets=<dir,…> --out=<dir>'
   );
   process.exit(2);
 }
+const resolved = resolveOverrideSets(parsed, { fallback: 'none' });
+printAuditedSets(resolved);
+const setDirs = resolved.map(s => s.dir);
 
 const load = p => {
   const byId = new Map();

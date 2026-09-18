@@ -1,8 +1,9 @@
 // Normalized projection of a captured /v1/messages body, plus canary
 // evaluation over it.
 //
-// The projection is deliberately narrow — system[].text, tools[].name and
-// tools[].description. A raw full-request snapshot churns on every version and
+// The projection is deliberately narrow — system[].text, tools[].name,
+// tools[].description, and the text of user messages (where a slash command's
+// expanded prompt lands). A raw full-request snapshot churns on every version and
 // gets mechanically re-blessed, which is worse than having no test at all.
 
 export class LivenessError extends Error {}
@@ -28,7 +29,14 @@ export const buildProjection = body => {
     name: typeof t?.name === 'string' ? t.name : '',
     description: typeof t?.description === 'string' ? t.description : '',
   }));
-  return { model: parsed.model ?? null, system, tools };
+  const messages = (Array.isArray(parsed.messages) ? parsed.messages : [])
+    .filter(m => m?.role === 'user')
+    .map(m =>
+      Array.isArray(m.content)
+        ? m.content.map(textOf).join('\n')
+        : textOf(m.content)
+    );
+  return { model: parsed.model ?? null, system, tools, messages };
 };
 
 // A request only counts as the main agent turn if it carries tools AND the
@@ -59,6 +67,7 @@ const scopeText = (projection, where) => {
       ...projection.tools.map(t => `${t.name}\n${t.description}`),
     ].join('\n');
   }
+  if (where === 'messages') return projection.messages.join('\n');
   if (where && typeof where === 'object' && where.tool) {
     const tool = projection.tools.find(t => t.name === where.tool);
     if (!tool) return null;
@@ -133,5 +142,9 @@ export const renderProjection = (row, projection) => {
       tool.description
     );
   }
+  lines.push('', `## user messages (${projection.messages.length})`);
+  projection.messages.forEach((text, i) => {
+    lines.push('', `### messages[${i}] (${text.length} chars)`, text);
+  });
   return lines.join('\n') + '\n';
 };

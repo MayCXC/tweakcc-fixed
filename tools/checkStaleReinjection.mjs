@@ -13,31 +13,34 @@
 // Deliberate retentions live in data/stale-reinjection-allowlist.json, keyed by
 // "<id>::<sha1 of the sentence>" with a reason — because keeping a sentence
 // Anthropic dropped is often exactly the point of this project.
+// The committed baseline is keyed to the maintainer's overrides; for other users
+// NEW findings are still real defects in their overrides.
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { createRequire } from 'node:module';
 // Windows are scoped to markdown blocks; see tools/lib/markdownBlocks.mjs for why.
 import { blocksOf } from './lib/markdownBlocks.mjs';
+const require = createRequire(import.meta.url);
+const {
+  parseOverrideArgs,
+  resolveOverrideSets,
+  remindersDirsFor,
+  printAuditedSets,
+} = require('./lib/overrideSets.cjs');
 
-const REPO = path.resolve(new URL('..', import.meta.url).pathname);
-const version = process.argv[2] || '';
+const parsed = parseOverrideArgs(process.argv.slice(2));
+const sets = resolveOverrideSets(parsed, { fallback: 'applied' });
+const version = parsed.rest[0] || '';
 if (!/^\d+\.\d+\.\d+$/.test(version)) {
   console.error('usage: checkStaleReinjection.mjs <version> [--set=<dir>…]');
   process.exit(2);
 }
+printAuditedSets(sets);
+const REPO = path.resolve(new URL('..', import.meta.url).pathname);
 const ALLOW = path.join(REPO, 'data/stale-reinjection-allowlist.json');
 const allow = fs.existsSync(ALLOW) ? JSON.parse(fs.readFileSync(ALLOW, 'utf8')) : {};
 const sha1 = s => crypto.createHash('sha1').update(s).digest('hex').slice(0, 12);
-
-const explicit = process.argv.filter(a => a.startsWith('--set=')).map(a => a.slice(6));
-const LCC = path.join(os.homedir(), '.tweakcc', 'lobotomized-claude-code');
-const sets = explicit.length
-  ? explicit
-  : fs.existsSync(LCC)
-    ? fs.readdirSync(LCC).filter(d => /^system-prompts-/.test(d)).map(d => path.join(LCC, d))
-    : [];
-if (!sets.length) { console.error('no override sets found'); process.exit(2); }
 
 // Reconstruct a prompt body. TWO invariants, both easy to get wrong and both
 // wrong in the first cut of this file:
@@ -155,7 +158,7 @@ try {
 } catch {
   /* patcher source not present; fall through */
 }
-for (const dir of [...sets, path.join(LCC, 'system-reminders')]) {
+for (const dir of [...sets.map(s => s.dir), ...remindersDirsFor(sets)]) {
   if (!fs.existsSync(dir)) continue;
   for (const f of fs.readdirSync(dir)) {
     if (!f.endsWith('.md')) continue;
@@ -167,13 +170,13 @@ for (const dir of [...sets, path.join(LCC, 'system-reminders')]) {
 
 let findings = 0, allowed = 0;
 const rows = [];
-for (const dir of sets) {
-  const label = path.basename(dir).replace('system-prompts-', '');
-  for (const f of fs.readdirSync(dir)) {
+for (const set of sets) {
+  const label = set.name.replace('system-prompts-', '');
+  for (const f of fs.readdirSync(set.dir)) {
     if (!f.endsWith('.md')) continue;
     const id = f.slice(0, -3);
     if (!cur.has(id) || !past.has(id) || shadowed.has(id)) continue;
-    const body = norm(split(path.join(dir, f)).trim());
+    const body = norm(split(path.join(set.dir, f)).trim());
     if (!body) continue;
     const currentText = norm([...cur.get(id)].join('\n'));
     const curTok = tokens(currentText).join(' ');

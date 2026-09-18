@@ -27,6 +27,10 @@
 // Usage: node tools/auditCallSlots.mjs [prompts.json] [set-dir ...]
 // Exits non-zero on any shape disagreement, and 2 if it could not run at all.
 import fs from 'node:fs';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const { parseOverrideArgs, resolveOverrideSets, printAuditedSets } =
+  require('./lib/overrideSets.cjs');
 
 //
 // Every maintained set is scanned, not one. This bug class is exactly the
@@ -45,25 +49,18 @@ const newestJson = () => {
     return null;
   }
 };
+const parsed = parseOverrideArgs(process.argv.slice(2));
+const extraDirs = parsed.rest.slice(1);
+if (extraDirs.length) {
+  parsed.explicit.push(...extraDirs);
+  parsed.specified = true;
+}
+const overrideDirs = resolveOverrideSets(parsed, { fallback: 'applied' });
+printAuditedSets(overrideDirs);
 const VER = process.env.CC_VER || null;
 const ourJson =
-  process.argv[2] ||
+  parsed.rest[0] ||
   (VER ? `data/prompts/prompts-${VER}.json` : `data/prompts/${newestJson()}`);
-const LCC = `${process.env.HOME}/.tweakcc/lobotomized-claude-code`;
-const cliDirs = process.argv.slice(3).map(a => a.replace(/^--set=/, ''));
-const overrideDirs = cliDirs.length
-  ? cliDirs
-  : (() => {
-      try {
-        return fs
-          .readdirSync(LCC)
-          .filter(d => d.startsWith('system-prompts-'))
-          .filter(d => fs.statSync(`${LCC}/${d}`).isDirectory())
-          .map(d => `${LCC}/${d}`);
-      } catch {
-        return [];
-      }
-    })();
 
 let OURS;
 try {
@@ -74,20 +71,16 @@ try {
   console.error(`call-slot audit: SKIPPED — prompts JSON '${ourJson}' missing/unreadable (${e.message}).`);
   process.exit(2);
 }
-if (overrideDirs.length === 0) {
-  console.error(`call-slot audit: SKIPPED — no override sets found under ${LCC}.`);
-  process.exit(2);
-}
 const files = [];
-for (const dir of overrideDirs) {
+for (const set of overrideDirs) {
   let entries;
   try {
-    entries = fs.readdirSync(dir).filter(f => f.endsWith('.md'));
+    entries = fs.readdirSync(set.dir).filter(f => f.endsWith('.md'));
   } catch (e) {
-    console.error(`call-slot audit: SKIPPED — overrides dir '${dir}' missing (${e.message}).`);
+    console.error(`call-slot audit: SKIPPED — overrides dir '${set.dir}' missing (${e.message}).`);
     process.exit(2);
   }
-  for (const f of entries) files.push({ dir, f });
+  for (const f of entries) files.push({ dir: set.dir, name: set.name, f });
 }
 
 // id -> max number of direct-call interpolations across that id's JSON entries
@@ -129,7 +122,7 @@ for (const p of OURS.prompts) {
 }
 
 const findings = [];
-for (const { dir, f } of files) {
+for (const { dir, name, f } of files) {
   const id = f.slice(0, -3);
   // Only named-prompt overrides map to the JSON. inline-* / system-reminder-* use
   // other surfaces (positional remap / registry) and aren't in prompts JSON.
@@ -153,7 +146,7 @@ for (const { dir, f } of files) {
       const used = punct === '(' ? 'call' : punct === '.' ? 'member' : 'value';
       if (known.has(used)) continue;
       findings.push(
-        `${dir.split('/').pop()}/${id}: override interpolates \${${label}${punct}} as a ${used}, but pristine only ever uses that slot as ${[...known].join('/')} — a call slot read as a value emits the function itself into the prompt`
+        `${name}/${id}: override interpolates \${${label}${punct}} as a ${used}, but pristine only ever uses that slot as ${[...known].join('/')} — a call slot read as a value emits the function itself into the prompt`
       );
     }
   }
@@ -162,7 +155,7 @@ for (const { dir, f } of files) {
   const available = callsById[id];
   if (calledVars.size > available) {
     findings.push(
-      `${dir.split('/').pop()}/${id}: override calls ${calledVars.size} distinct var(s) [${[...calledVars].join(', ')}] but pristine has only ${available} direct-call slot(s) — a ${'${VAR()}'} on a bare value slot throws at runtime`
+      `${name}/${id}: override calls ${calledVars.size} distinct var(s) [${[...calledVars].join(', ')}] but pristine has only ${available} direct-call slot(s) — a ${'${VAR()}'} on a bare value slot throws at runtime`
     );
   }
 }

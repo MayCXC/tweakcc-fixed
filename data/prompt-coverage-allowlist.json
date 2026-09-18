@@ -1,0 +1,182 @@
+{
+  "data-auto-compact-inputs-changed-event-schema": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, e_ type autocompact_state event .describe(): SDK/thin-client event so a host UI can show '% until auto-compact'. Schema description for stdout JSON; not sent as a prompt or tool schema."
+  },
+  "data-background-tasks-changed-event-schema": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, Lae system/background_tasks_changed .describe(): SDK stdout system-event schema description for host task-list replace semantics. Emitted as JSON values on the control/message stream, not as schema text to the model."
+  },
+  "data-chrome-browser-hints-control-request": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, r4t set_chrome_browser_hints control_request .describe(): SDK control_request the host sends so claude-in-chrome can pick a browser. Protocol schema for the CLI, not a tool the model sees."
+  },
+  "data-claude-code-gateway-customer-routed-inference-protocol": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 1208 chunk-ghaf8c9v.js, eA() gateway-protocol markdown: eA({oidcConfigured, criEnabled}) builds the CRI contract as markdown and the only caller is GET /protocol, which returns text/markdown to the HTTP client. It is not interpolated into a system prompt, tool schema, or model message."
+  },
+  "data-code-change-published-event-schema": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, Ole system/code_change_published .describe(): SDK stdout system-event schema (@internal) describing a cache-invalidation signal to hosts. Not converted via toJSONSchema and not in the settings oracle."
+  },
+  "data-directory-added-hook-description": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 1197 chunk-8hkvpw88.js, aze().DirectoryAdded.description: Hook-event help text used as the /hooks TUI subtitle (module 1720). Kwr get_hooks_listing sends only summary, not description; the /update-config hooks prompt (dn) does not include this string; /hooks is type local-jsx."
+  },
+  "data-gateway-ignored-x-forwarded-for-warning": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 1208 chunk-ghaf8c9v.js, Gr(\"warn\", ...) once-per-start log: Gateway operator warning via Gr (imported logger) when X-Forwarded-For is ignored. Stderr/log, not a model message."
+  },
+  "data-hook-classifier-context-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 Nse PostToolUse hook-output schema classifierContext; duplicate in module 304 hook-output union: The description sits on the hook-response Zod field. Hook JSON is parsed for the host; only the field VALUE is forwarded to the permission classifier (safeguards.classifier_context). This description text is not sent. Not in the /update-config settings oracle."
+  },
+  "data-hook-mcp-server-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, Mr mcp_server object .describe() on hook payloads: Documents name/source on hook JSON for mcp__* tools (SDK host / hook command stdin). Hook payload schemas are not passed to $V as tool inputSchema; /hooks configuration prompt does not include this text."
+  },
+  "data-interrupt-cancel-queued-parameter": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, i_ interrupt control_request cancel_queued .describe(): Optional parameter on the SDK interrupt control_request. Used to parse host->CLI JSON; SDK control schemas are not converted to JSON Schema for the model (qte/$V only take settings, tool inputSchema, MCP tools)."
+  },
+  "data-interrupt-receipt-cancelled-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, zle interrupt control_response cancelled .describe(): SDK interrupt receipt field listing UUIDs cancelled by cancel_queued. Host<->CLI control JSON only; same SDK schema family that is never toJSONSchema'd into a prompt."
+  },
+  "data-interrupt-receipt-still-queued-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, zle interrupt control_response still_queued .describe(): Zod description on the SDK interrupt receipt still_queued UUID list. The schema is parsed/emitted on the host<->CLI control stream; it is never passed to $V/qte/toJSONSchema for a model prompt."
+  },
+  "data-managed-settings-helper-onfailure-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "Managed-settings policyHelper chain entry schema (module 48, hr()); absent from the settings JSON schema CC sends the model (data/settings-descriptions/oracle-2.1.276.json)."
+  },
+  "data-managed-settings-helper-retries-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "Managed-settings policyHelper chain entry schema (module 48, hr()); absent from the settings JSON schema CC sends the model (data/settings-descriptions/oracle-2.1.276.json)."
+  },
+  "data-mcp-http-client-capability-validation-rationale": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 1547 chunk-x73sfgts.js, Cl ladder rung client-capabilities rationale: Same unused Cl ladder as the other MCP HTTP rationale strings: never referenced or exported, so it cannot reach the model."
+  },
+  "data-mcp-http-parameter-header-validation-rationale": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 1547 chunk-x73sfgts.js, Cl ladder rung param-header-validation rationale: Dead rationale on the unused Cl MCP HTTP validation ladder (not exported, never read). Not an error message, prompt, or tool schema."
+  },
+  "data-mcp-http-standard-header-validation-rationale": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 1547 chunk-x73sfgts.js, Cl ladder rung standard-header-validation rationale: String lives only as rationale on the in-module Cl validation-ladder array. Cl is never read (.rationale has no consumers) and is not exported, so the text cannot reach a model."
+  },
+  "data-mcp-server-status-error-code-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, Bf mcp status error_code .describe(): Typed error_code on SDK mcp_status / init server rows for host-fixable failures. Stdout protocol schema for the host, not a model-facing schema."
+  },
+  "data-peer-sender-display-name-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, Vf peer-sender name .describe(): Documents sanitized display name on cross-session peer envelopes for the host UI. SDK message schema metadata, not replayed as instructions to the model."
+  },
+  "data-query-result-pending-command-count": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, tF used as queued_turn_count .describe() on query result schemas: tF is only referenced as .describe(tF) on SDK query() result queued_turn_count (two result shapes). Hosts read the integer; the description stays on the Zod schema."
+  },
+  "data-rate-limit-unified-windows": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, rae.unifiedWindows .describe(): Documents unifiedWindows on the SDK rate-limit-info object (rate_limit_event / related stdout). Schema metadata for the host UI; not a tool/input schema and not in /update-config."
+  },
+  "data-rewind-files-skippedlinks-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, Gf / skippedLinks on rewindFiles result schema: Gf is a Zod .describe() constant on the rewindFiles SDK result (also reused on a control-response twin). Hosts get the numeric count; the description string stays on the schema."
+  },
+  "data-sandbox-credential-mask-empty-inject-hosts-warning": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 304 chunk-x7vyvqya.js, t5r/n5r getMaskCredentialWarning: Emitted as process.stderr.write, debug t(...,{level:'warn'}), and split into claude doctor issue/fix rows. Never interpolated into a system prompt or tool result."
+  },
+  "data-sandbox-network-domain-spelling-warning": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 306 chunk-anbz23xk.js, we() doctor diagnostic fix (via $De): The fix text is collected by $De and printed by the claude doctor CLI / status UI. The /doctor slash command prompt is a separate static ls() string and does not embed these diagnostics."
+  },
+  "data-sdk-api-error-kind-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, SDK assistant-message api_error .describe(): Documents the typed api_error enum on SDK stdout assistant messages (is_api_error_message). Hosts consume the field value; the description is schema metadata only and is not serialized into a model request."
+  },
+  "data-sdk-footer-indicator-schema": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, r_ footer_indicator object .describe(): Documents the ◆ footer pill carried on system/init and initialize for host UIs. Terminal/host rendering only; the Zod description is not model-facing."
+  },
+  "data-sdk-set-model-system-prompt-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, l_ set_model control_request system_prompt .describe(): Documents the control-request field whose VALUE becomes the custom system prompt. The catalogue string is the field description for SDK hosts, not that prompt text."
+  },
+  "data-self-hosted-runner-deferred-shutdown-timing-notice": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 319 chunk-c7pgjrkn.js, i() console.log '[self-hosted-runner]': Runner startup notice logged with i=(msg)=>console.log(`[self-hosted-runner] ${msg}`). Operator stderr/stdout, not a model prompt."
+  },
+  "data-structured-usage-rate-limit-rows-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, wnr.rate_limits.limits .describe(): Describes the usage-endpoint limits[] rows on structured SDK usage/rate-limit JSON for host rendering. Not a tool schema and not in the settings oracle."
+  },
+  "data-thin-client-diff-dialog-schema": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, oce get_workspace_diff response .describe(): @internal SDK control response for the thin-client /diff dialog. Host UI payload schema, not a model tool/result schema."
+  },
+  "data-tool-use-display-metadata-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, assistant-message tool_use_meta .describe(): Wrapper-level UI metadata (display_name/icon) on SDK assistant frames. Runtime code attaches VALUES for the host (module 439); the description states it is not replayed to the model, and it is not converted to JSON Schema for prompts."
+  },
+  "data-turn-handoff-memory-context-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, XXe turn_handoff control_request memory_context .describe(): Describes an @internal control-request member the CCR worker may write as a cowork_memory_context attachment. The description is schema docs for the host/worker protocol, not model-facing text."
+  },
+  "data-upload-device-hook-template-request": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, t4t upload_device_hook_template control_request .describe(): Cloud-device control_request sent before register_device_hooks. Host<->worker protocol only."
+  },
+  "data-vcs-state-changed-branch-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, Ple.branch .describe() on vcs_state_changed: Optional branch hint on the SDK vcs_state_changed event. Host cache-invalidation payload; schema description is not model-facing."
+  },
+  "data-vcs-state-changed-event-schema": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, Ple system/vcs_state_changed .describe(): Top-level description of an SDK stdout system event. The event payload is JSON to the SDK host; the Zod description is not placed in a prompt or tool schema."
+  },
+  "tool-parameter-matched-ask-rule": {
+    "verdict": "not-model-facing",
+    "version": "2.1.276",
+    "why": "module 119 chunk-n55wtmpy.js, s_ can_use_tool control_request matched_ask_rule .describe(): Field on the CLI->host can_use_tool permission RPC so hosts can treat ask-rule-forced prompts as rule-forced. Not a model tool parameter; $V never converts this schema."
+  }
+}

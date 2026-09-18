@@ -46,9 +46,17 @@
 //
 // Exit 0 = every fact still reachable, 1 = findings, 2 = could not run.
 
+import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
 import url from 'node:url';
+
+const require = createRequire(import.meta.url);
+const {
+  parseOverrideArgs,
+  resolveOverrideSets,
+  printAuditedSets,
+} = require('./lib/overrideSets.cjs');
 
 const SPAN = /`([^`\n]{1,400})`/g;
 const FENCE = /```[^\n]*\n([\s\S]*?)```/g;
@@ -108,15 +116,19 @@ const main = () => {
     console.error(`checkFactCoverage: ${msg}`);
     process.exit(code);
   };
-  const argv = process.argv.slice(2);
+  const parsed = parseOverrideArgs(process.argv.slice(2));
+  const argv = parsed.rest;
   const jsonPath = argv.find(a => !a.startsWith('--'));
-  const setDir = (argv.find(a => a.startsWith('--set=')) || '').slice(6);
   const idsFile = (argv.find(a => a.startsWith('--ids=')) || '').slice(6);
   const outIdx = argv.indexOf('--json');
   const outPath = outIdx === -1 ? null : argv[outIdx + 1];
 
-  if (!jsonPath || !setDir || !idsFile)
+  if (!jsonPath || !parsed.specified || !idsFile)
     die('usage: <prompts.json> --set=<abs dir> --ids=<file> [--json <path>]');
+  const resolved = resolveOverrideSets(parsed, { fallback: 'none' });
+  if (resolved.length !== 1) die(`exactly one set (got ${resolved.length})`);
+  printAuditedSets(resolved);
+  const setDir = resolved[0].dir;
   if (!fs.existsSync(jsonPath)) die(`no prompts JSON at ${jsonPath}`);
   if (!fs.existsSync(setDir)) die(`no override set at ${setDir}`);
   if (!fs.existsSync(idsFile)) die(`no ids file at ${idsFile}`);

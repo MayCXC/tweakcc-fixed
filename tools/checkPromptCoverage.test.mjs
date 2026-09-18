@@ -3,6 +3,7 @@ import {
   asciiRuns,
   literalRuns,
   coverageReport,
+  applyAllowlist,
 } from './checkPromptCoverage.mjs';
 
 const P = (id, ...pieces) => ({ id, pieces });
@@ -90,5 +91,51 @@ describe('coverageReport', () => {
     );
     expect(missing).toEqual([]);
     expect(unprobeable).toEqual(['theirs']);
+  });
+});
+
+describe('applyAllowlist', () => {
+  const report = {
+    missing: [
+      { id: 'sdk-field', tokens: 10 },
+      { id: 'real-gap', tokens: 20 },
+    ],
+    spanDiff: [],
+    notOurs: [{ id: 'left-binary', tokens: 5 }],
+    unprobeable: ['too-short'],
+  };
+  const reference = [
+    'sdk-field',
+    'real-gap',
+    'left-binary',
+    'too-short',
+    'ours',
+  ].map(id => ({ id, pieces: [] }));
+  const row = { verdict: 'not-model-facing', version: '1', why: 'traced' };
+
+  it('filters allowlisted ids out of missing', () => {
+    const r = applyAllowlist(report, { 'sdk-field': row }, reference);
+    expect(r.missing.map(m => m.id)).toEqual(['real-gap']);
+    expect(r.allowlisted.map(m => m.id)).toEqual(['sdk-field']);
+    expect(r.stale).toEqual([]);
+  });
+
+  it('reports a row stale for every way its reason can expire', () => {
+    const r = applyAllowlist(
+      report,
+      {
+        ours: row,
+        'left-binary': row,
+        'too-short': row,
+        renamed: row,
+      },
+      reference
+    );
+    expect(Object.fromEntries(r.stale.map(s => [s.id, s.why]))).toEqual({
+      ours: 'catalogued by us',
+      'left-binary': 'not in the binary',
+      'too-short': 'unprobeable',
+      renamed: 'not in the reference',
+    });
   });
 });

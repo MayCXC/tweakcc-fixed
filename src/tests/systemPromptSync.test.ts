@@ -894,6 +894,34 @@ World`;
       const stringLiteralContent = 'Hello\\nWorld';
       expect(stringLiteralContent.match(regex)).not.toBeNull();
     });
+    it('skips a catalogued id with no override file without logging', async () => {
+      const mockStringsFile: StringsFile = {
+        version: '1.0.0',
+        prompts: [
+          {
+            id: 'no-override',
+            name: 'Test',
+            description: 'Test',
+            version: '1.0.0',
+            pieces: ['Hello'],
+            identifiers: [],
+            identifierMap: {},
+          },
+        ],
+      };
+      const { downloadStringsFile } = await import('../systemPromptDownload');
+      vi.mocked(downloadStringsFile).mockResolvedValue(mockStringsFile);
+      await promptSync.preloadStringsFile('1.0.0');
+
+      const enoent = Object.assign(new Error('missing'), { code: 'ENOENT' });
+      vi.spyOn(fs, 'readFile').mockRejectedValue(enoent);
+      const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+      const results = await promptSync.loadSystemPromptsWithRegex('1.0.0');
+      expect(results).toHaveLength(0);
+      expect(errorSpy).not.toHaveBeenCalled();
+      errorSpy.mockRestore();
+    });
   });
 
   describe('escapeDepthZeroBackticks', () => {

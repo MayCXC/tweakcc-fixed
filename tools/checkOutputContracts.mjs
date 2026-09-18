@@ -30,14 +30,23 @@
 // Usage: node tools/checkOutputContracts.mjs [--cli <cli.js>] [--json <prompts.json>] [--lcc <dir>]
 import fs from 'node:fs';
 import path from 'node:path';
-import os from 'node:os';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const {
+  parseOverrideArgs,
+  resolveOverrideSets,
+  printAuditedSets,
+  pristineCliPath,
+} = require('./lib/overrideSets.cjs');
+
+const parsed = parseOverrideArgs(process.argv.slice(2));
+const sets = resolveOverrideSets(parsed, { fallback: 'applied' });
+printAuditedSets(sets);
 
 const arg = (n, d) => {
-  const i = process.argv.indexOf(n);
-  return i === -1 ? d : process.argv[i + 1];
+  const i = parsed.rest.indexOf(n);
+  return i === -1 ? d : parsed.rest[i + 1];
 };
-const HOME = os.homedir();
-const LCC = arg('--lcc', path.join(HOME, '.tweakcc/lobotomized-claude-code'));
 const REPO = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 
 const newestPromptsJson = () =>
@@ -60,7 +69,7 @@ const version = path.basename(jsonPath).replace(/^prompts-|\.json$/g, '');
 // skipping silently. A gate that could not run is a gate that did not run.
 const cliCandidates = [
   arg('--cli'),
-  path.join(HOME, '.tweakcc/native-claudejs-orig.js'),
+  pristineCliPath(),
   `/tmp/cli-${version}.js`,
 ].filter(Boolean);
 const cliPath = cliCandidates.find(p => {
@@ -137,11 +146,6 @@ const allow = fs.existsSync(allowPath)
   ? JSON.parse(fs.readFileSync(allowPath, 'utf8'))
   : {};
 
-const sets = fs
-  .readdirSync(LCC)
-  .filter(d => /^system-prompts-/.test(d))
-  .filter(d => fs.statSync(path.join(LCC, d)).isDirectory());
-
 const stripFrontMatter = t => {
   const m = /^<!--[\s\S]*?-->\n?/.exec(t);
   return m ? t.slice(m[0].length) : t;
@@ -151,16 +155,16 @@ const findings = [];
 let checked = 0;
 for (const set of sets) {
   for (const [id, tags] of required) {
-    const file = path.join(LCC, set, `${id}.md`);
+    const file = path.join(set.dir, `${id}.md`);
     if (!fs.existsSync(file)) continue; // no override -> pristine applies, tag intact
     const body = stripFrontMatter(fs.readFileSync(file, 'utf8')).toLowerCase();
     if (!body.trim()) continue; // deliberate suppression: the prompt is gone entirely
     checked++;
     for (const tag of tags) {
       if (body.includes(tag)) continue;
-      const key = `${set}/${id}::${tag}`;
+      const key = `${set.name}/${id}::${tag}`;
       if (allow[key]?.verdict === 'reviewed') continue;
-      findings.push({ set, id, tag, key });
+      findings.push({ set: set.name, id, tag, key });
     }
   }
 }

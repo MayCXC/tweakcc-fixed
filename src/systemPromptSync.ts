@@ -1971,7 +1971,12 @@ export const loadSystemPromptsWithRegex = async (
     try {
       markdown = await fs.readFile(mdPath, 'utf8');
     } catch (error) {
-      console.error(`Failed to read markdown file ${mdPath}:`, error);
+      // No override file means pristine applies; only the dry-run
+      // --validate-system-prompts path sees this, because --apply syncs a stub
+      // for every catalogued id first.
+      if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
+        console.error(`Failed to read markdown file ${mdPath}:`, error);
+      }
       continue;
     }
     const replacementPrompt = parseMarkdownPrompt(markdown);
