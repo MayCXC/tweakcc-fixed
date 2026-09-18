@@ -113,3 +113,20 @@ describe('writeThinkerFormat — CC 2.1.273 conditional ellipsis', () => {
     expect(out).toContain(',ue=`>> ${vt} <<`');
   });
 });
+
+// CC 2.1.277: the ellipsis is a `suffix` prop, skipped only when it is the
+// default and the label already ends in one:
+//   …,Kt=O===we&&_n.test(Vt)?Vt:Vt+O;…
+const FORMAT_SUFFIX = ',Kt=O===we&&_n.test(Vt)?Vt:Vt+O';
+const FIXTURE_2277 = `pre();{${ANCHOR_2273}};mid();${FORMAT_SUFFIX};tail()`;
+
+describe('writeThinkerFormat — CC 2.1.277 suffix prop', () => {
+  it('rewrites the suffix-prop decl, binding {} to the label var', () => {
+    const out = writeThinkerFormat(FIXTURE_2277, '{}');
+
+    expect(out).not.toBeNull();
+    expect(out).toContain(',Kt=`${Vt}`;');
+    expect(out).not.toContain('_n.test(Vt)');
+    expect(out).toContain('tail()');
+  });
+});

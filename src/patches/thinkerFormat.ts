@@ -38,6 +38,31 @@ const getThinkerFormatLocation = (oldFile: string): LocationResult | null => {
       ? ''
       : oldFile.slice(searchStart, searchStart + 20000);
 
+  // CC >= 2.1.277: the ellipsis became a `suffix` prop (defaulting to "…"),
+  // and the skip-if-already-ends-in-one test applies only when the suffix is
+  // that default: `,Kt=O===we&&_n.test(Vt)?Vt:Vt+O`. The configured format
+  // replaces the whole declaration, suffix included, as in every earlier shape.
+  const formatPatternSuffix =
+    /,([$\w]+)(=[$\w]+===[$\w]+&&[$\w]+\.test\(([$\w]+)\)\?\3:\3\+[$\w]+)(?=[,;])/;
+  const formatMatchSuffix = searchSection.match(formatPatternSuffix);
+
+  if (formatMatchSuffix && formatMatchSuffix.index != undefined) {
+    return {
+      startIndex:
+        searchStart! +
+        formatMatchSuffix.index +
+        formatMatchSuffix[1].length +
+        1,
+      endIndex:
+        searchStart! +
+        formatMatchSuffix.index +
+        formatMatchSuffix[1].length +
+        formatMatchSuffix[2].length +
+        1,
+      identifiers: [formatMatchSuffix[3]],
+    };
+  }
+
   // CC >= 2.1.273: the ellipsis became conditional so a label that already ends
   // in one isn't given a second: `,ue=Mn.test(vt)?vt:vt+"…"`, where `vt`
   // holds the resolved label and `Mn` is a module-level regex. The label is no
