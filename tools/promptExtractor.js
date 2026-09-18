@@ -2844,6 +2844,210 @@ const NEW_PROMPT_ASSIGNMENTS = [
     description:
       'Requires confirmation for irreversible or outward-facing actions, checking targets before destructive edits, and truthful reporting of outcomes',
   },
+  // 2.1.273: coverage-gate holes (tools/checkPromptCoverage.mjs): 40 model-facing
+  // strings upstream (Piebald) catalogues that our extractor dropped. 30 were
+  // classify-cache internal/ui drops, 8 were hard-excluded (@internal .describe()
+  // schema docs + the general-task agent prompt, both un-gated below via
+  // lookupNewPromptAssignment), 2 fell to the prose gate. Named for coverage,
+  // following upstream's ids; the coverage gate arbitrates against the binary.
+  {
+    matcher: t =>
+      t.startsWith('Uuids of async user messages that survive this'),
+    name: 'Data: Interrupt receipt still queued field',
+    id: 'data-interrupt-receipt-still-queued-field',
+    description:
+      'Schema description for the still_queued UUID list returned by interrupt control responses',
+  },
+  {
+    matcher: t =>
+      t.startsWith('Host-asserted context shown to the auto-mode permission'),
+    name: 'Data: Hook classifier context field',
+    id: 'data-hook-classifier-context-field',
+    description:
+      'Schema description for the classifierContext hook response field, including trust semantics, size and timing limits, transcript visibility, and rewrite-integrity requirements',
+  },
+  {
+    matcher: t =>
+      t.includes('s helper fails at startup (bad path, missing file'),
+    name: 'Data: Managed settings helper onFailure field',
+    id: 'data-managed-settings-helper-onfailure-field',
+    description:
+      'Schema description for the managed settings helper onFailure field, including source-dependent defaults, startup refusal behavior, static fallbacks, and background refresh handling',
+  },
+  {
+    matcher: t =>
+      t.startsWith('When true, the interrupt also cancels every uuid-stamped'),
+    name: 'Data: Interrupt cancel queued parameter',
+    id: 'data-interrupt-cancel-queued-parameter',
+    description:
+      'Schema description for the optional interrupt cancel_queued request parameter and its queued-command cancellation semantics',
+  },
+  {
+    matcher: t =>
+      t.startsWith('The full set of live background tasks, emitted'),
+    name: 'Data: Background tasks changed event schema',
+    id: 'data-background-tasks-changed-event-schema',
+    description:
+      'Schema description for the background_tasks_changed system event and its replace-set semantics',
+  },
+  {
+    matcher: t =>
+      t.startsWith('Set to false to turn off syncing of the plugins'),
+    name: 'Data: syncClaudeAiPlugins setting',
+    id: 'data-sync-claude-ai-plugins-setting',
+    description:
+      'Describes how the syncClaudeAiPlugins setting disables account-synced plugin downloads, availability, and cleanup across user, managed, workspace, and invocation scopes',
+  },
+  {
+    matcher: t =>
+      t.startsWith('Set to false to turn off syncing of the skills'),
+    name: 'Data: syncClaudeAiSkills setting',
+    id: 'data-sync-claude-ai-skills-setting',
+    description:
+      'Describes how the syncClaudeAiSkills setting disables account-synced skill downloads, availability, and cleanup across user, managed, workspace, and invocation scopes',
+  },
+  {
+    matcher: t => t.includes('it could not be launched, exited non-zero, or'),
+    name: 'Data: Managed settings helper retries field',
+    id: 'data-managed-settings-helper-retries-field',
+    description:
+      'Schema description for the managed settings helper retries field, including retryable failures, limits, per-attempt timeouts, backoff, and terminal failure handling',
+  },
+  {
+    matcher: t =>
+      t.startsWith('Present only when the request set cancel_queued:true'),
+    name: 'Data: Interrupt receipt cancelled field',
+    id: 'data-interrupt-receipt-cancelled-field',
+    description:
+      'Schema description for the cancelled UUID list returned when an interrupt request cancels queued commands',
+  },
+  {
+    matcher: t =>
+      t.startsWith('Count of tracked files NOT restored or deleted'),
+    name: 'Data: Rewind files skippedLinks field',
+    id: 'data-rewind-files-skippedlinks-field',
+    description:
+      'Describes the rewindFiles skippedLinks count, including link-safety refusal semantics and dry-run behavior',
+  },
+  {
+    matcher: t =>
+      t.startsWith('Sandboxed commands get unrestricted read/write'),
+    name: 'Data: Sandbox filesystem disabled setting',
+    id: 'data-sandbox-filesystem-disabled-setting',
+    description:
+      'Describes sandbox.filesystem.disabled behavior, platform limits, read-protection effects, and configuration precedence',
+  },
+  {
+    matcher: t => t.startsWith('Enterprise allowlist of the MCP servers users'),
+    name: 'Data: allowedMcpServers setting',
+    id: 'data-allowed-mcp-servers-setting',
+    description:
+      'Describes how the enterprise allowedMcpServers setting governs user-added versus organization-delivered MCP servers, including ${VAR} expansion, undefined and empty-array behavior, and denylist precedence',
+  },
+  {
+    matcher: t => t.includes('s limits[]), as sent: which meters apply, their'),
+    name: 'Data: Structured usage rate-limit rows field',
+    id: 'data-structured-usage-rate-limit-rows-field',
+    description:
+      'Schema description for structured usage rate-limit rows, including server-defined meter ordering, null and empty semantics, and the synthesized header-fallback row',
+  },
+  {
+    matcher: t =>
+      t.startsWith('Sender display name, normalized by the harness:'),
+    name: 'Data: Peer sender display name field',
+    id: 'data-peer-sender-display-name-field',
+    description:
+      'Schema description for the normalized display name on cross-session peer message senders',
+  },
+  {
+    matcher: t =>
+      t.startsWith('Max time a permission/user dialog forwarded to'),
+    name: 'Data: Dialog expiry setting',
+    id: 'data-dialog-expiry-setting',
+    description:
+      'Describes dialogExpiry deadlines for remote permission dialogs and held cross-session messages, including defaults and overrides',
+  },
+  {
+    matcher: t =>
+      t.startsWith('Set when a user-configured ask RULE (permissions.ask)'),
+    name: 'Tool Parameter: matched ask rule',
+    id: 'tool-parameter-matched-ask-rule',
+    description:
+      'Describes metadata identifying a user-configured permissions.ask rule that forced a tool approval prompt while preserving the tool-authored decision reason',
+  },
+  {
+    matcher: t =>
+      t.startsWith('The branch a commit landed on (from the commit'),
+    name: 'Data: VCS state changed branch field',
+    id: 'data-vcs-state-changed-branch-field',
+    description:
+      'Describes the optional best-effort branch hint on vcs_state_changed events for commits and pushes, including multi-branch and uncertain-attribution behavior',
+  },
+  {
+    matcher: t =>
+      t.startsWith('User-initiated sends still waiting in the command'),
+    name: 'Data: Query result pending command count',
+    id: 'data-query-result-pending-command-count',
+    description:
+      'Describes the query result field that counts queued user sends still awaiting turns and clarifies when it is absent or zero',
+  },
+  {
+    matcher: t => t.includes('(default) emits a stderr warning and lets the'),
+    name: 'Data: Sandbox credential environment no-match setting',
+    id: 'data-sandbox-credential-environment-no-match-setting',
+    description:
+      'Describes sandbox credential environment-variable onExtractNoMatch behavior, including warn, deny, error, and decode-path constraints',
+  },
+  {
+    matcher: t =>
+      t.startsWith('Names of top-level payload claims to mask inside'),
+    name: 'Data: Sandbox credential file mask claims setting',
+    id: 'data-sandbox-credential-file-mask-claims-setting',
+    description:
+      'Describes sandbox credential file maskClaims behavior for selectively masking decoded JWT payload claims while preserving other claims',
+  },
+  {
+    matcher: t =>
+      t.startsWith('Inbound cross-session peer messages (SendMessage'),
+    name: 'Data: Cross-session inbound setting',
+    id: 'data-cross-session-inbound-setting',
+    description:
+      'Describes crossSessionInbound delivery, hold, refusal, and permission-mode parity behavior for peer messages',
+  },
+  {
+    matcher: t =>
+      t.startsWith('[EXPERIMENTAL] Enable in-process TLS termination'),
+    name: 'Data: Sandbox TLS termination setting',
+    id: 'data-sandbox-tls-termination-setting',
+    description:
+      'Describes the experimental sandbox.network.tlsTerminate setting, certificate behavior, Windows trust requirements, source precedence, and initialization validation',
+  },
+  {
+    matcher: t =>
+      t.startsWith('Shell command that prints the absolute path of'),
+    name: 'Data: Command plugin source command field',
+    id: 'data-command-plugin-source-command-field',
+    description:
+      'Describes the command field for command-based plugin sources, including its one-line directory output contract, cache-copy lifecycle, platform shell, and re-resolution behavior',
+  },
+  {
+    matcher: t =>
+      t.startsWith('You are an agent for Claude Code, Anthropic') &&
+      t.includes('When you complete the task, respond with a concise report') &&
+      !t.includes('Your strengths') &&
+      t.trimEnd().endsWith('so it only needs the essentials.'),
+    name: 'Agent Prompt: General task agent',
+    id: 'agent-prompt-general-task-agent',
+    description:
+      "Instructs a Claude Code task agent to complete the user's request fully and report the essential outcome",
+  },
+  {
+    matcher: t => t.includes('will be announced here once they connect'),
+    name: 'System Reminder: MCP servers connecting without ToolSearch',
+    id: 'system-reminder-mcp-servers-connecting-without-toolsearch',
+    description:
+      'Lists MCP servers still connecting when ToolSearch is absent and tells the agent to await tool announcements rather than report the capability unavailable',
+  },
 ];
 
 // Overlay a NEW_PROMPT_ASSIGNMENTS identifierMap onto a carried/generated one,
@@ -3426,21 +3630,25 @@ function isHardExcluded(text) {
     )
   )
     return true;
-  // Two general-purpose-agent fragments with no working override target
-  // (nested/clobbered spans — see the inline notes in validateInput's history).
+  // A general-purpose-agent fragment with no working override target (a
+  // nested/clobbered span; see the inline notes in validateInput's history).
   if (
     text.startsWith(
       'Your strengths:\n- Searching for code, configurations, and patterns across large codebases'
     )
   )
     return true;
+  // The standalone general-task agent prompt. Upstream catalogues it and the
+  // coverage gate flags it, so a curated NEW_PROMPT_ASSIGNMENTS entry names it;
+  // this rule yields to that entry and otherwise keeps the fragment dropped.
   if (
     text.startsWith('You are an agent for Claude Code, Anthropic') &&
     text.includes(
       'When you complete the task, respond with a concise report'
     ) &&
     !text.includes('Your strengths') &&
-    text.trimEnd().endsWith('so it only needs the essentials.')
+    text.trimEnd().endsWith('so it only needs the essentials.') &&
+    !lookupNewPromptAssignment(text)
   )
     return true;
   // Anything that interpolates the inline ${{ISSUES_EXPLAINER, ..., GIT_SHA,
