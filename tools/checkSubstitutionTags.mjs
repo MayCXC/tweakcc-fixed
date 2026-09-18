@@ -14,28 +14,31 @@
 // Anthropic is covered the run it appears.
 //
 // Usage: node tools/checkSubstitutionTags.mjs [--cli <cli.js>] [--json <prompts.json>]
-//                                             [--overrides <dir>]... [--lcc <dir>]
+//                                             [--overrides <dir>]... [--require-sets]
 //
 // With no --overrides, audits the system-prompts folder `--apply` actually reads.
 // --overrides may be repeated to audit specific folders instead, for a setup that
 // keeps several side by side.
 import fs from 'node:fs';
 import path from 'node:path';
-import { getConfigDir, getAppliedSystemPromptsDir } from './lib/configDir.mjs';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const {
+  parseOverrideArgs,
+  resolveOverrideSets,
+  printAuditedSets,
+  pristineCliPath,
+} = require('./lib/overrideSets.cjs');
+
+const parsed = parseOverrideArgs(process.argv.slice(2));
+const sets = resolveOverrideSets(parsed, { fallback: 'applied' });
+printAuditedSets(sets);
 
 const arg = (n, d) => {
-  const i = process.argv.indexOf(n);
-  return i === -1 ? d : process.argv[i + 1];
+  const i = parsed.rest.indexOf(n);
+  return i === -1 ? d : parsed.rest[i + 1];
 };
-// Repeatable: every `--overrides <dir>` occurrence, in order.
-const argAll = n =>
-  process.argv.flatMap((a, i) =>
-    a === n && process.argv[i + 1] ? [process.argv[i + 1]] : []
-  );
-const CONFIG_DIR = getConfigDir();
-const LCC = arg('--lcc', path.join(CONFIG_DIR, 'lobotomized-claude-code'));
-const CLI = arg('--cli', path.join(CONFIG_DIR, 'native-claudejs-orig.js'));
-const OVERRIDES = argAll('--overrides');
+const CLI = arg('--cli', pristineCliPath());
 const REPO = path.resolve(
   path.dirname(new URL(import.meta.url).pathname),
   '..'
@@ -101,36 +104,7 @@ for (const m of cli.matchAll(/\.replace\(\s*"(<[a-z0-9_]{3,60}>)"/g))
   tags.add(m[1]);
 
 const { prompts } = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
-// What to audit, in order of specificity: the folders named with --overrides, then
-// the system-prompts folder the patcher reads (the only override location `--apply`
-// consults), then the multi-model layout under --lcc for a tree that keeps
-// system-prompts-<model> subdirs instead of one applied set.
-const applied = getAppliedSystemPromptsDir();
-const lccSets = () =>
-  fs.existsSync(LCC)
-    ? fs
-        .readdirSync(LCC)
-        .filter(d => d.startsWith('system-prompts-'))
-        .filter(d => fs.statSync(path.join(LCC, d)).isDirectory())
-        .map(d => path.join(LCC, d))
-    : [];
-
-const setDirs = OVERRIDES.length
-  ? OVERRIDES.map(d => path.resolve(d))
-  : applied
-    ? [applied]
-    : lccSets();
-
-if (setDirs.length === 0) {
-  console.error(
-    `✖ substitution tags: nothing to audit. No --overrides given, no system-prompts folder under ${CONFIG_DIR}, and no system-prompts-* under ${LCC}.`
-  );
-  process.exit(1);
-}
-if (OVERRIDES.length) {
-  console.error(`Auditing ${setDirs.length} override folder(s):`);
-  for (const d of setDirs) console.error(`  ${d}`);
-}
+const setDirs = sets.map(s => s.dir);
 
 const body = file => {
   const t = fs.readFileSync(file, 'utf8');
