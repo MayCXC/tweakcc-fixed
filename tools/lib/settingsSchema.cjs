@@ -75,6 +75,41 @@ function literalFragments(node) {
 
 const escapeRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
+const UNKNOWN = Symbol('unknown');
+
+// The value of a call argument when it is a literal (`!0`, `!1`, `void 0`,
+// strings, numbers, null); UNKNOWN otherwise. CC builds sibling schemas from
+// one factory with a boolean flag (`ar(!1)` for settings, `ar(!0)` for
+// known_marketplaces.json), so the flag decides which arm of `e?A:B` is sent.
+function constantOf(node) {
+  if (!node) return undefined;
+  switch (node.type) {
+    case 'BooleanLiteral':
+    case 'StringLiteral':
+    case 'NumericLiteral':
+      return node.value;
+    case 'NullLiteral':
+      return null;
+    case 'UnaryExpression': {
+      if (node.operator === 'void') return undefined;
+      if (node.operator !== '!') return UNKNOWN;
+      const v = constantOf(node.argument);
+      return v === UNKNOWN ? UNKNOWN : !v;
+    }
+    default:
+      return UNKNOWN;
+  }
+}
+
+const paramNames = fn =>
+  (fn.params || []).map(p =>
+    p.type === 'Identifier'
+      ? p.name
+      : p.type === 'AssignmentPattern' && p.left.type === 'Identifier'
+        ? p.left.name
+        : null
+  );
+
 // Does a rendered description (as the model sees it) come from `desc`?
 // Template interpolations match any text.
 function matchesRendered(desc, rendered) {
@@ -322,8 +357,50 @@ function createFinder(code) {
               });
             }
           }
+          if (c.type === 'Identifier') {
+            const r = resolve(c.name, ctx.mod, ctx.scopes);
+            if (r && isFunctionNode(r.node)) {
+              const names = paramNames(r.node);
+              const bound = new Map();
+              names.forEach((n, i) => {
+                if (!n) return;
+                const v =
+                  i < node.arguments.length
+                    ? constantOf(node.arguments[i])
+                    : undefined;
+                if (v !== UNKNOWN) bound.set(n, v);
+              });
+              const sig = [...bound].map(([k, v]) => `${k}=${v}`).join(',');
+              const key = `${r.mod.seg.name}:${r.node.start}:${sig}`;
+              if (!visited.has(key)) {
+                visited.add(key);
+                walk(r.node, {
+                  ...ctx,
+                  mod: r.mod,
+                  scopes: r.scopes,
+                  bind: bound,
+                });
+              }
+              walk(node.arguments, ctx);
+              return;
+            }
+          }
           walk(c, ctx);
           walk(node.arguments, ctx);
+          return;
+        }
+        case 'ConditionalExpression': {
+          const v =
+            node.test.type === 'Identifier' && ctx.params.has(node.test.name)
+              ? ctx.params.get(node.test.name)
+              : UNKNOWN;
+          if (v === UNKNOWN) {
+            walk(node.test, ctx);
+            walk(node.consequent, ctx);
+            walk(node.alternate, ctx);
+          } else {
+            walk(v ? node.consequent : node.alternate, ctx);
+          }
           return;
         }
         case 'Identifier': {
@@ -358,7 +435,10 @@ function createFinder(code) {
             node.body.type === 'BlockStatement'
               ? [...ctx.scopes, collectDeclarations(node.body.body, new Map())]
               : ctx.scopes;
-          walk(node.body, { ...ctx, scopes });
+          const params = new Map(ctx.params);
+          for (const n of paramNames(node)) if (n) params.delete(n);
+          for (const [k, v] of ctx.bind || []) params.set(k, v);
+          walk(node.body, { ...ctx, scopes, params, bind: null });
           return;
         }
         default:
@@ -384,6 +464,8 @@ function createFinder(code) {
       mod: root.mod,
       scopes: root.scopes,
       gated: false,
+      params: new Map(),
+      bind: null,
     });
     return {
       root: { module: root.mod.seg.name, start: root.node.start },

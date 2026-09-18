@@ -122,3 +122,19 @@ describe('buildSettingsIndex', () => {
     expect(allow.matches).toBe(2);
   });
 });
+
+describe('findSettingsDescriptions — factory flag arms', () => {
+  // CC builds two schemas from one factory: `ar(!1)` for settings and
+  // `ar(!0)` for known_marketplaces.json. Only the settings arm is sent.
+  const mod = `var o=()=>({describe(){return this}}),u=(x)=>x,f=(g)=>g;
+function ar(e){return u({name:e?o().describe("Stored-file arm"):o().describe("Settings arm")})}
+var Me=f(()=>ar(!1)),zd=f(()=>ar(!0));
+function build(){return u({${ROOT_KEYS}market:Me})}`;
+  const { descriptions } = findSettingsDescriptions(bundle([mod]));
+  const texts = descriptions.map(d => d.joined);
+
+  it('walks only the arm the settings call site selects', () => {
+    expect(texts).toContain('Settings arm');
+    expect(texts).not.toContain('Stored-file arm');
+  });
+});

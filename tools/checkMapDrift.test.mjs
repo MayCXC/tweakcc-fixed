@@ -42,6 +42,25 @@ describe('checkMapDrift', () => {
     expect(r.out).toContain('1 reshaped');
   });
 
+  it('passes a rename that follows the slot from a test to a value', () => {
+    const r = run(
+      [
+        prompt(['Read ${', '} files. ${!', '?"once":"twice"}'], {
+          0: 'FILES',
+          1: 'HAS_READ',
+        }),
+      ],
+      [
+        prompt(['Read ${', '} files. ${', '}'], {
+          0: 'FILES',
+          1: 'READ_NOTE',
+        }),
+      ]
+    );
+    expect(r.code).toBe(0);
+    expect(r.out).toContain('1 reshaped');
+  });
+
   it('flags a name carried by index onto slots inserted ahead of it', () => {
     const prev = prompt(
       [

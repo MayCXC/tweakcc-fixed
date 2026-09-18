@@ -75332,5 +75332,1427 @@
     "id": "data-settings-validation-failed-header",
     "name": "Data: settings validation failure header",
     "desc": "Header of the settings validation error list the model reads in the tool result after a failed settings edit."
-  }
+  },
+  "948aae163d64309521b1d06e3166d208c4143247": { "facing": "ui" },
+  "5410b0280b0b9319e19458e7466be283f90884be": { "facing": "ui" },
+  "04ad774f60407a47839bf9dcd9fbae94856529a6": {
+    "facing": "model",
+    "id": "system-reminder-tool-hosts-separate-copy-file-tools-this-checkout",
+    "name": "Tool Hosts Notice: Separate Copy File Tools Hit This Checkout",
+    "desc": "tool_hosts_notice line for a machine that holds the user's separate copy: Read/Edit/Grep/Glob act on this session's checkout, so use Bash on that machine to look at the user's copy."
+  },
+  "a68e5c98c84f19943f3279b090d01751950101c1": {
+    "facing": "model",
+    "id": "system-reminder-tool-hosts-separate-copy-machine-arg-file-tools",
+    "name": "Tool Hosts Notice: Separate Copy Machine-Arg File Tools",
+    "desc": "tool_hosts_notice line for a separate-copy machine: file tools given the machine argument act on the user's copy by absolute path under that machine's rules, and the two copies are different files."
+  },
+  "4f0e4d70501fee60df8d2f447284f2195e02219a": {
+    "facing": "model",
+    "id": "system-reminder-tool-hosts-agent-obeyed-config-files-list",
+    "name": "Tool Hosts Notice: Agent-Obeyed Config Files List",
+    "desc": "Fragment listing the files the user's Claude Code or git obeys (.claude directory, .mcp.json, CLAUDE.md, AGENTS.md, .gitattributes …), interpolated into the moving-work-between-copies guidance."
+  },
+  "08ec6e8b27548bafd39af5539b502c27d042cb34": {
+    "facing": "model",
+    "id": "system-reminder-tool-hosts-header-separate-copy",
+    "name": "Tool Hosts Notice: Header Separate Copy",
+    "desc": "tool_hosts_notice header for separate-copy mode: this checkout is the primary copy, the machine's folder is the user's unsynced separate copy, and the machine argument runs a call there."
+  },
+  "99a891002d63cd1572533a4aa0675656e527f23c": {
+    "facing": "model",
+    "id": "system-reminder-tool-hosts-here-primary-copy",
+    "name": "Tool Hosts Notice: Here Is The Primary Copy",
+    "desc": "Describes the default local host in separate-copy mode as this session's own checkout and the primary copy for reads, edits, builds, tests and commits."
+  },
+  "bc5fa1e35f88be15337235162ea70f52eb1beafb": {
+    "facing": "model",
+    "id": "system-reminder-tool-hosts-project-separate-copy",
+    "name": "Tool Hosts Notice: Project Separate Copy",
+    "desc": "Host description fragment for separate-copy mode: the project path on the machine is the user's own separate copy, not synced with this session."
+  },
+  "abc8de49448d9e940fde662a0e56877fd0b3ff1e": {
+    "facing": "model",
+    "id": "tool-result-remote-host-permission-check-threw",
+    "name": "Tool Result: Remote Host Permission Check Threw",
+    "desc": "Refusal returned for a subagent's call to an attached machine when this session's permission check threw, so the call was refused and the host was not contacted."
+  },
+  "cd60673e7f66e65096d7651249166a4ff46baff8": { "facing": "ui" },
+  "73541341d30f03c9150b8c812dbdf3bfb92b75dd": {
+    "facing": "model",
+    "id": "system-reminder-dir-sync-user-branch-followed",
+    "name": "System Reminder: Dir Sync User Branch Followed",
+    "desc": "Tells the cloud agent the checkout followed the user's branch (or detached HEAD), including any previous tip kept under a ref."
+  },
+  "973ff02b1e46a52069e2b3549f00dfa625abbbf0": {
+    "facing": "model",
+    "id": "system-reminder-dir-sync-head-on-sync-snapshot-commit",
+    "name": "System Reminder: Dir Sync HEAD On Sync Snapshot Commit",
+    "desc": "Inner clause of the user-branch-followed reminder: HEAD or the followed branch now points at one of directory sync's own snapshot commits, not the agent's commit."
+  },
+  "f14b8992bc523ba864c8fc2cc9ff63186a2c570d": {
+    "facing": "model",
+    "id": "system-reminder-dir-sync-agent-commits-carried-along",
+    "name": "System Reminder: Dir Sync Agent Commits Carried Along",
+    "desc": "Inner clause of the user-branch-followed reminder when kept agent commits were carried along, so HEAD or the followed branch now points at the agent's tip."
+  },
+  "be9d1555a2ef18a29e7e4e2cb9b6f4a99b092dd7": {
+    "facing": "model",
+    "id": "system-reminder-dir-sync-carried-commits-one-sync-snapshot",
+    "name": "System Reminder: Dir Sync Carried Commits One Sync Snapshot",
+    "desc": "Parenthetical in the carried-along clause saying one of the carried commits is a directory-sync snapshot commit to leave alone."
+  },
+  "3d7cd5034d5476b0969e26625c713c8079c6105c": {
+    "facing": "model",
+    "id": "system-reminder-dir-sync-carried-commits-many-sync-snapshots",
+    "name": "System Reminder: Dir Sync Carried Commits Many Sync Snapshots",
+    "desc": "Plural parenthetical in the carried-along clause saying N of the carried commits are directory-sync snapshot commits to leave alone."
+  },
+  "d3f84b997b71ab893b002684f2875ec0801b528c": { "facing": "ui" },
+  "9fa64281350530cfd1713768c5e246e05f34a7aa": {
+    "facing": "model",
+    "id": "system-reminder-dir-sync-stopped-reason-commit-not-held",
+    "name": "System Reminder: Dir Sync Stopped Reason Commit Not Held",
+    "desc": "Reason clause in the file-sync-stopped reminder: this checkout does not hold the commit the machine's folder is on."
+  },
+  "ab8a61a1bebab8fff259efa1824ac8f63541c497": {
+    "facing": "model",
+    "id": "system-reminder-dir-sync-stopped-reason-machine-stopped",
+    "name": "System Reminder: Dir Sync Stopped Reason Machine Stopped",
+    "desc": "Default reason clause in the file-sync-stopped reminder: the machine stopped sync and its own window says why."
+  },
+  "f273f190a19f8bd97d2f91e18fdacf75e0a5ff9c": { "facing": "ui" },
+  "88ff568c006bce04e8ceddaee2b8176057301200": { "facing": "ui" },
+  "bdc00e2de131d53cd56bf60101f7dd9a8b70c31d": {
+    "facing": "model",
+    "id": "system-reminder-dir-sync-bookkeeping-newest-snapshot-ref-command",
+    "name": "System Reminder: Dir Sync Bookkeeping Newest Snapshot Ref Command",
+    "desc": "Fragment of the bookkeeping-commit reminder giving the git for-each-ref command that prints the newest received snapshot ref to compare against."
+  },
+  "9306cc0deee8656e757672caa15ac770e9c4bc77": {
+    "facing": "model",
+    "id": "system-reminder-dir-sync-bookkeeping-reset-to-user-commit",
+    "name": "System Reminder: Dir Sync Bookkeeping Reset To User Commit",
+    "desc": "Bookkeeping-commit reminder arm when the user's head is named: file changes still reach the user as uncommitted changes, so git reset to their commit and re-commit only your own changes by path."
+  },
+  "2d71edf2c1cf11cbf2242887db2a1677b5609171": {
+    "facing": "model",
+    "id": "system-reminder-dir-sync-bookkeeping-hard-reset-compare-snapshot",
+    "name": "System Reminder: Dir Sync Bookkeeping Hard Reset Compare Snapshot",
+    "desc": "Nested clause of the reset-to-user-commit arm: after a hard reset, diff against the last-synced snapshot and restore any path not deliberately changed."
+  },
+  "b27bc8b2d89bfdb5bc0a7e161228ee165131c23a": {
+    "facing": "model",
+    "id": "system-reminder-dir-sync-bookkeeping-user-commit-not-in-history",
+    "name": "System Reminder: Dir Sync Bookkeeping User Commit Not In History",
+    "desc": "Bookkeeping-commit reminder arm when the user's current commit is not in this history: their machine takes nothing until git reset moves the branch back onto their history."
+  },
+  "4ebca7fa13b832db8389cda9920ff8b7566d7942": {
+    "facing": "model",
+    "id": "system-reminder-dir-sync-bookkeeping-restore-stale-paths",
+    "name": "System Reminder: Dir Sync Bookkeeping Restore Stale Paths",
+    "desc": "Nested clause of the user-commit-not-in-history arm: compare against the last-synced snapshot and restore every path not deliberately changed, or it reaches the user as a revert."
+  },
+  "a21b957043241469f176ca9f65a12f9ef4018ed6": {
+    "facing": "model",
+    "id": "system-reminder-dir-sync-empty-start-could-not-check-in",
+    "name": "System Reminder: Dir Sync Empty Start Could Not Check In",
+    "desc": "Model reminder that directory sync could not check in before the turn and the working directory is empty, so the user's files have not arrived yet."
+  },
+  "113f90ce67f46f561ee7a3f6cc975153d9596ca9": { "facing": "internal" },
+  "fd0e7b66f975f222ba97a9a6fbc7fb9b7a51513b": { "facing": "ui" },
+  "0876d359030c879dc45752976963c4e0112b50d3": { "facing": "ui" },
+  "ae593bd6215d47bfb7607a1fe0bad9e36a7c4ea1": { "facing": "ui" },
+  "01b2f588ffca9c1e367edc568839bb0c6cb15eed": {
+    "facing": "model",
+    "id": "system-reminder-mcp-output-truncation-warning",
+    "name": "System Reminder: MCP output truncation warning",
+    "desc": "Warns that MCP tool output exceeded the token limit and advises pagination, filtering, or noting incomplete results"
+  },
+  "f2304a97aded85bbb077c84c78148584e5e9c06a": {
+    "facing": "model",
+    "id": "tool-result-artifact-list-types-narrowed-by-query",
+    "name": "Tool Result: Artifact list types narrowed by query",
+    "desc": "Notes that an Artifact type listing only shows types matching `type_query`, so a type may be missing, and to list again without it to see all"
+  },
+  "cf1dfc26e72b030548d5323e5008018967941db0": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-room-join-consent-clause",
+    "name": "Tool Result: Artifact publish room join consent clause",
+    "desc": "Clause added to an Artifact publish/create approval explaining that the session will join the artifact's live room, receive viewers' page events, and can re-join on later publishes without asking"
+  },
+  "5d7ec5880d924de38490f91f6d867de34b3c7ceb": {
+    "facing": "model",
+    "id": "tool-result-artifact-created-from-type-file-names",
+    "name": "Tool Result: Artifact created from type file names",
+    "desc": "File-list clause of the created-from-type publish result: how file names are shown, the new Artifact's own files and the type's fixed files"
+  },
+  "cf5c55eddd6e1d0886e103f1af1535fec5d8b773": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-untracked-files-hint",
+    "name": "Slash Command: Ultrareview untracked files hint",
+    "desc": "Appended to the ultrareview empty-diff error when git sees untracked files, telling the user to git add the ones to review and rerun"
+  },
+  "1d95e743ad0aacd4cd145d093894177235f54ed8": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-empty-diff-review-latest-commit",
+    "name": "Slash Command: Ultrareview empty diff review latest commit",
+    "desc": "Appended to the ultrareview empty-diff error suggesting the exact command to review the latest commit by passing its parent commit id"
+  },
+  "0013ad41893ffbc9e2ea1152c0e8498713c6854f": {
+    "facing": "model",
+    "id": "tool-description-webfetch-claude-ai-artifact-links-exception",
+    "name": "Tool Description: WebFetch claude.ai artifact links exception",
+    "desc": "WebFetch description bullet saying claude.ai artifact links are fetchable with the user's claude.ai login and to use WebFetch rather than curl or a headless browser for them"
+  },
+  "40d35a87647a527d378b2519f81b2b72ded0fe60": {
+    "facing": "model",
+    "id": "system-reminder-remote-machine-branch-transfer-review",
+    "name": "System Reminder: Remote machine branch transfer review",
+    "desc": "Sets out how work moves between two unsynced project copies through git: push a branch, fetch it on the user's machine, show the full commit id plus two diff commands, flag agent-config and lookalike paths, submodules and checkout-time filters, and leave the decision to the user addressed by commit id only"
+  },
+  "f5e86965177d78d3519e6c6285da97d9e78a34ec": {
+    "facing": "model",
+    "id": "system-reminder-remote-machine-separate-project-copies",
+    "name": "System Reminder: Remote machine separate project copies",
+    "desc": "Tells the session that its own checkout is the primary copy and the folder on the user's machine is a separate unsynced copy that may sit at another commit, hold uncommitted work, or not even be the same repository, and to state which copy any report refers to"
+  },
+  "0c62345c58b94c5e14b25d44017100b6ee6dd5ca": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-base-ref-not-found",
+    "name": "Slash Command: Ultrareview base ref not found",
+    "desc": "Ultrareview error when the argument is not a branch or commit in the repo, optionally suggesting a close branch name and listing what the command accepts"
+  },
+  "cb59c829e6521ff58617ba3d8af9b396d9f6a2ae": { "facing": "ui" },
+  "65c8fd8fedc29e8f1308988a9baf1914e05ba468": {
+    "facing": "model",
+    "id": "system-reminder-still-running-tool-call",
+    "name": "System Reminder: Still-running tool call",
+    "desc": "Tells Claude that a tool call is still loading while it answers a message the user sent meanwhile, that the result will arrive separately under the same tool_use_id, and that it must not repeat, wait for, or describe the call as cancelled, backgrounded or detached"
+  },
+  "feed95e03688cf5520d9ee98d29acd94bfaa133e": { "facing": "internal" },
+  "8867134c6591680ca41d489cb2eba22621380dc8": {
+    "facing": "model",
+    "id": "tool-result-mcp-tool-backgrounded",
+    "name": "Tool Result: MCP tool backgrounded",
+    "desc": "Tool result telling Claude an MCP tool call was moved to a background task (because it ran long or a user message arrived), that a notification will deliver the result, and how to stop it with TaskStop"
+  },
+  "4bff2eeced1ec757cc715726807ed851ed299545": {
+    "facing": "model",
+    "id": "tool-result-artifact-created-from-type-files-failed",
+    "name": "Tool Result: Artifact created from type files failed",
+    "desc": "Reports that an Artifact was created (or already created by an earlier attempt) from an Artifact type but publishing its files failed, and how to republish to the existing url without type_url"
+  },
+  "1aebe8fc01dbfd72da249f59eef3a718f198fa53": {
+    "facing": "model",
+    "id": "tool-result-artifact-live-doc-shim-published",
+    "name": "Tool Result: Artifact live doc shim published",
+    "desc": "Artifact publish tool result for a live-document shim: the live-doc shim line followed by the standard publish notes and update instructions"
+  },
+  "b0bddff61013458a22e4433e0ee11e7d28ac5105": {
+    "facing": "model",
+    "id": "data-fable-5-model-picker-description",
+    "name": "Data: Fable 5 model picker description",
+    "desc": "Model-facing description of a Fable model option as most capable for the hardest and longest-running tasks"
+  },
+  "1e4a447c9877c9aa80b9fd63cd22ceeade2e904b": {
+    "facing": "model",
+    "id": "tool-result-bash-coordinator-no-worker-transcript-read",
+    "name": "Tool Result: Bash coordinator no worker transcript read",
+    "desc": "Bash refusal in coordinator mode for reading a worker's transcript or task output file, pointing to task notifications and messaging the worker instead"
+  },
+  "f5501cd9aa89bc51fedf5ca413a6156aec050df2": {
+    "facing": "model",
+    "id": "tool-result-bash-coordinator-dynamic-path-argument",
+    "name": "Tool Result: Bash coordinator dynamic path argument",
+    "desc": "Bash refusal in coordinator mode for commands whose arguments use $(…), variables, ~name or .. after a directory, asking for a literal path"
+  },
+  "0994d622be04fd75106e58bca127b7d59e2d4112": {
+    "facing": "model",
+    "id": "tool-result-bash-coordinator-glob-too-wide",
+    "name": "Tool Result: Bash coordinator glob too wide",
+    "desc": "Bash refusal in coordinator mode for a glob wide enough to reach worker transcript and task output folders"
+  },
+  "7c341edad8066250e9ad43e8bae7a367bcfab392": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-no-merge-base-whole-repo-held-back",
+    "name": "Slash Command: Ultrareview no merge base whole repo held back",
+    "desc": "Ultrareview error when the branch shares no history with the base or no base branch exists, so a review would cover every file, directing a person to run /ultrareview interactively"
+  },
+  "b38180198371c4a840985e1b5efa06237eb2c5ce": {
+    "facing": "model",
+    "id": "tool-result-cloud-session-hook-held-project-configured",
+    "name": "Tool Result: Cloud session hook held project configured",
+    "desc": "Permission-ask reason when a project-defined command check hook is not run for a cloud session's call, asking to approve the command and how to stop these prompts"
+  },
+  "36e70797487791eac41dea53f5ae5285ca2667f1": {
+    "facing": "model",
+    "id": "agent-prompt-narration-status-line-question-not-answered",
+    "name": "Agent Prompt: Narration status line question not answered",
+    "desc": "Narration status-line rule that the line is a progress status, never the reply: it must not answer the user's question or state a verdict, only say what is being worked out"
+  },
+  "601562a6c9a3a97afe54ad1b2b1920ce792bd63c": { "facing": "ui" },
+  "ff4d78d58d9a7fce55a77f6fb991e298f587dbb8": { "facing": "ui" },
+  "1a484d9db153947fe315cee884866dcbabe433cc": {
+    "facing": "model",
+    "id": "tool-result-artifact-create-from-type-ask",
+    "name": "Tool Result: Artifact create from type ask",
+    "desc": "Permission ask message when Claude wants to create a new private claude.ai artifact from an Artifact type, naming the type and title and noting the page was written by the type's publisher"
+  },
+  "c4cb1561ebd775ad0a7d8974430462b713ef4e97": { "facing": "internal" },
+  "a6ba8083a810da854f7e1eea4f88c39988783810": {
+    "facing": "model",
+    "id": "system-reminder-directory-sync-attached-machine-guidance",
+    "name": "System Reminder: Directory sync attached machine guidance",
+    "desc": "Explains that a user machine was attached mid-session so this checkout now syncs files with theirs while remaining the session's own, which of the user's arriving changes must be left untouched, which paths never leave this checkout, when the user's changes arrive, and what stops sync"
+  },
+  "010193aa9e3871f2203b146e5c81a74e387e7a68": {
+    "facing": "model",
+    "id": "system-reminder-directory-sync-snapshot-commit-reset",
+    "name": "System Reminder: Directory sync snapshot commit reset",
+    "desc": "Warns that the work branch now points at one of directory sync's own bookkeeping snapshots rather than real history, explains how to tell whether the session caused it, and when to reset the branch versus leave it alone and tell the user"
+  },
+  "a22c507d53069d9b4b1e0005daa18316ba08c0dc": {
+    "facing": "model",
+    "id": "system-reminder-directory-sync-stopped-checkout-kept",
+    "name": "System Reminder: Directory sync stopped checkout kept",
+    "desc": "Tells Claude that file sync with the user's attached machine stopped (with the reason) while this checkout stays unchanged and its own, that the two folders are now separate copies, and to tell the user if that matters"
+  },
+  "6b8500836c7c776467544b0bdcc896c5962dcb82": {
+    "facing": "model",
+    "id": "tool-result-bash-dangerous-op-unset-var-bind-positional-suggestion",
+    "name": "Tool Result: Bash dangerous operation — unset variable, bind the positional (suggestion)",
+    "desc": "Remedy clause spliced into the unset-variable dangerous-removal refusal when the target uses a positional parameter: bind it (and rewrite any named variables with a :? guard), single-quoting an inline sh -c script, or use a literal absolute path."
+  },
+  "ef343b16bf0c225608a1d518dacbe9012097ff42": {
+    "facing": "model",
+    "id": "tool-result-bash-dangerous-op-unset-var-reparsed-suggestion",
+    "name": "Tool Result: Bash dangerous operation — unset variable re-parsed (suggestion)",
+    "desc": "Remedy clause in the unset-variable dangerous-removal refusal when the target sits inside a quoted string or after eval: use a literal absolute path, because a pasted :? guard's quotes would not protect it."
+  },
+  "ea2a640b66c231e1f2b4a6751f5118182e2cbe82": {
+    "facing": "model",
+    "id": "tool-result-bash-dangerous-op-unset-var-reparsed-reason-suggestion",
+    "name": "Tool Result: Bash dangerous operation — unset variable re-parsed (short reason form)",
+    "desc": "Short remedy used in the decision reason of the unset-variable dangerous-removal check when the target is re-parsed (quoted string or eval): use a literal path."
+  },
+  "66541aa30b32fc871ec0ea6a610ac6715a8e2e76": {
+    "facing": "model",
+    "id": "tool-result-bash-dangerous-op-unset-var-unverifiable-suggestion",
+    "name": "Tool Result: Bash dangerous operation — unset variable target unverifiable (suggestion)",
+    "desc": "Remedy clause in the unset-variable dangerous-removal refusal when part of the target cannot be guarded or verified: use a literal absolute path."
+  },
+  "d550d32f7bac7efd7cd5eefc4c3ce546ffff9ff1": {
+    "facing": "model",
+    "id": "tool-result-bash-dangerous-op-unset-var-unverifiable-reason-suggestion",
+    "name": "Tool Result: Bash dangerous operation — unset variable target unverifiable (short reason form)",
+    "desc": "Short remedy used in the decision reason of the unset-variable dangerous-removal check when part of the target cannot be verified: use a literal path."
+  },
+  "d61691693131727f916dea013b099e415cee6bbf": {
+    "facing": "model",
+    "id": "tool-result-bash-dangerous-op-unset-var-guard-rewrite-suggestion",
+    "name": "Tool Result: Bash dangerous operation — unset variable, add :? guard (suggestion)",
+    "desc": "Remedy clause in the unset-variable dangerous-removal refusal offering two fixes: rewrite the command with ${VAR:?} guards, so the shell stops with an error instead of running the removal when the variable is unset or empty, or use a literal absolute path."
+  },
+  "cff115ebb6566369f7774478bc2902ade3299670": {
+    "facing": "model",
+    "id": "tool-result-bash-dangerous-op-unset-variable-expansion-example",
+    "name": "Tool Result: Bash dangerous operation — unset variable expansion (refusal with remedy)",
+    "desc": "Refusal the model reads when a destructive bash command targets a shell variable expansion that becomes /, /* or a top-level path if the variable is unset or empty. It says the action needs explicit approval and cannot be auto-allowed by a permission rule, and it ends with a concrete remedy."
+  },
+  "5da1cb6562edc4ce1a3334880253852619d2c5aa": {
+    "facing": "model",
+    "id": "tool-result-bash-dangerous-op-unset-var-decision-reason",
+    "name": "Tool Result: Bash dangerous operation — unset variable decision reason",
+    "desc": "Decision-reason suffix for the unset-variable dangerous-removal safety check. It becomes 'Dangerous <cmd> operation on possibly-empty variable path…' and names the target, the command and the short remedy."
+  },
+  "26ea59e127cd3444b91e87768189eaff667558c2": { "facing": "internal" },
+  "8bc59d354fda50a014575b5b7e6118eb992841c8": { "facing": "internal" },
+  "001598fd8e68e17def70483eabcf9bc9a4752be1": { "facing": "ui" },
+  "7e4464756ea53691dfafc4c2b765ae2651f84464": { "facing": "ui" },
+  "2732285db391caaa4695ebfdf26d466ad86631f3": { "facing": "ui" },
+  "97250714a0b58193ce2169ebbd3a6cd67225b0c2": { "facing": "ui" },
+  "122ac08750c9445b0cfd7332afdc8bd18eb87334": { "facing": "internal" },
+  "c77038d033949376d06ad52273376f71881ffe4c": { "facing": "internal" },
+  "744fdb93a50316a40835840c28e8a7feea66a721": { "facing": "internal" },
+  "7170eaf29049c5da478522eb58bffa02b41050b0": { "facing": "ui" },
+  "3d3718ea592ce348c1d4dec73a81c8eeab820e94": { "facing": "internal" },
+  "21f1ebaa0cc59e9f6b8a688a1af5e53434f89afa": { "facing": "internal" },
+  "3e2660751f5eda67ff8d88c3fb103582d13eb702": { "facing": "internal" },
+  "575f9f3342b1566aa84355f24adb87b26cb035c8": { "facing": "internal" },
+  "135620ddecf4b983c6b64ba524549a9db72db0c9": { "facing": "internal" },
+  "3cd81518a6f4be6a43a9492847fd5c474a55c006": { "facing": "internal" },
+  "a987cf962b3603a220ef2f3087b2e012c1288e5e": { "facing": "internal" },
+  "849584d4d47992c486704b3b7f68727ea6040540": { "facing": "internal" },
+  "04c63663aa88fdd4dde6d69572ea3898a14bfb52": { "facing": "internal" },
+  "bb840bab80b5f958b71fd8d17a4d8fc70429521f": { "facing": "internal" },
+  "70739729b1536f4982a6d2529eb95aa6960edb5f": { "facing": "internal" },
+  "d2d7237fb1e4d0adccd525e76dbaa1cb9dec88ce": { "facing": "internal" },
+  "5bc4d2c9e64ada8274861e09efbfdbc37743c578": { "facing": "internal" },
+  "5cb9d39636595de93fc5f76dde941629fd3eed9b": { "facing": "internal" },
+  "7f0469f17ad514b46fde420ccbca27daa9934fb2": { "facing": "internal" },
+  "cc2e0539ca7635ac53b69e3ea92e73c8d803a9ee": { "facing": "internal" },
+  "88a61a45473e171de8d48c9a5db6f44d9bcb9879": { "facing": "internal" },
+  "b8aeeb20094b11ff3132e2b375aae114fa343281": {
+    "facing": "model",
+    "id": "slash-command-plugin-install-previous-copy-removed-note",
+    "name": "Slash Command: /plugin Install Note — Previous Copy Had To Be Removed",
+    "desc": "Sentence appended to the failed plugin-version install error when the previously installed copy had to be deleted first because the filesystem refused to rename it, so that version is no longer installed."
+  },
+  "657e3519d7b9acfdfd1947b4d18b7f0062d6dfb2": {
+    "facing": "model",
+    "id": "slash-command-plugin-install-previous-copy-restored-note",
+    "name": "Slash Command: /plugin Install Note — Previous Copy Moved Back",
+    "desc": "Sentence appended to the failed plugin-version install error saying the previously installed copy was moved back into place."
+  },
+  "4a5473a44f647add5031b8b2782b247045d3fe9e": {
+    "facing": "model",
+    "id": "slash-command-plugin-install-previous-folder-not-restored-note",
+    "name": "Slash Command: /plugin Install Note — Prior Folder Not Restored",
+    "desc": "Sentence appended to the failed plugin-version install error when the folder that was there before held no plugin files and was not moved back, telling the reader to install the plugin again to restore it."
+  },
+  "226693535ff64bb1057cab74199b622c3175bc45": {
+    "facing": "model",
+    "id": "slash-command-plugin-install-previous-copy-stranded-note",
+    "name": "Slash Command: /plugin Install Note — Previous Copy Could Not Be Moved Back",
+    "desc": "Sentence appended to the failed plugin-version install error when the previously installed copy could not be moved back into place."
+  },
+  "0ac925248bf3b5acf0c11e795536d499a01ee841": {
+    "facing": "model",
+    "id": "slash-command-plugin-install-leftover-paths-note",
+    "name": "Slash Command: /plugin Install Note — Paths Left On Disk",
+    "desc": "Sentence appended to the failed plugin-version install error listing leftover paths still on disk, which a later install of this version or the plugin cache cleanup will remove."
+  },
+  "a265628351e3db6d380c0c6838f88f6f3b09cf3f": {
+    "facing": "model",
+    "id": "slash-command-plugin-install-version-folder-busy-cause",
+    "name": "Slash Command: /plugin Install Cause — Version Folder Stayed Busy",
+    "desc": "Cause clause in the failed plugin-version install error when the new copy or the version folder stayed busy during the install (a scanner reading fresh files, another program, or another process re-creating it)."
+  },
+  "1bf6283d39f91aef7488590fe15cafe9ab0197d1": {
+    "facing": "model",
+    "id": "slash-command-plugin-install-version-folder-move-failed",
+    "name": "Slash Command: /plugin Install Failed To Move New Copy Into Version Folder",
+    "desc": "Error returned when a plugin install cannot move the freshly staged copy into its version folder. It gives the cause, what happened to any previously installed copy and to leftover paths, and a retry hint."
+  },
+  "e00d9188ed2342b48510e58597494b2a5325b195": {
+    "facing": "model",
+    "id": "slash-command-plugin-install-retry-after-busy-hint",
+    "name": "Slash Command: /plugin Install Hint — Retry After Others Finish",
+    "desc": "Closing hint on the failed plugin-version install error when the folder was busy: run the install again once other Claude Code sessions or programs using that folder have finished."
+  },
+  "c3ec31fcf77cb9aad131d9a3692a541950e9f80e": {
+    "facing": "model",
+    "id": "slash-command-plugin-install-check-cache-permissions-hint",
+    "name": "Slash Command: /plugin Install Hint — Check Cache Permissions And Disk Space",
+    "desc": "Closing hint on the failed plugin-version install error when the move failed for another reason: check the plugin cache folder's permissions and free disk space, then run the install again."
+  },
+  "7de25eb5a521e3b35dcbef88187bbf4dad2f3cda": { "facing": "internal" },
+  "6d88ee89a3ea1600a47f17271f81a431277ca016": { "facing": "internal" },
+  "8b6fafecf3dfc43052e286a5054ff46a31c97577": { "facing": "internal" },
+  "76a6c76d5ffa89e8f3de0e1e7c8be26b77838775": { "facing": "internal" },
+  "9d2d627994c51fe443f1456caa09de9c6b21c2bb": { "facing": "internal" },
+  "05e55edce77a589f44beaa0423223664073cf3b4": { "facing": "internal" },
+  "8cf3b7b2a5a3112d8552eaf029bb564c2f5f8793": { "facing": "internal" },
+  "04576b601cb6550cc6b080b580dad8a945c5caee": { "facing": "internal" },
+  "807565b59655d920f24c3b657051f7dd96eec999": { "facing": "internal" },
+  "2496c7fd5bdc586da65b86574a3343f9353fec77": { "facing": "internal" },
+  "36cb7ed2722ca77566e03eb49abde31db85a23a0": { "facing": "internal" },
+  "fc741ef58775bd10900fce10d6d418603c52a914": { "facing": "ui" },
+  "5c0bafd9390c002b82157e3ed3f489e134f57eab": { "facing": "internal" },
+  "ee927d1a95b04dc527751b3a475328a7c22160c6": { "facing": "internal" },
+  "86f2001e9406ab77b77a2f05914b09f76ee7f5ad": { "facing": "internal" },
+  "4fc242dde81a48b6a6347f35f46140e935011945": { "facing": "ui" },
+  "4492a1cc7f64b6c367ea11b57a344e10f7d6ff2a": { "facing": "ui" },
+  "7d7ad460b9cd12d79c8201325697242e2161d69b": { "facing": "internal" },
+  "0a9c88723216acc7584a636e78514c02ef0026bb": { "facing": "internal" },
+  "f504b96c1b44751f39f7edf7db15aae1bfa211ba": { "facing": "internal" },
+  "c690ee1a5909177a3cc536aca19a1d44ec0d252b": { "facing": "internal" },
+  "5529f7f4ab02e0a8be6de94a5c65f4949ef0745f": { "facing": "internal" },
+  "08781233041f76c1ad0b0e1af20d0ac2ff351304": { "facing": "internal" },
+  "b90d2d4bb64a1c5567cf2969b83be0b34bbbf906": { "facing": "internal" },
+  "b7241df7672387bd7f390085200b0878a74aa97d": { "facing": "ui" },
+  "8284a0fe4f85f4292ae5696ba7772b0d43c66ab7": { "facing": "internal" },
+  "366d95f313f911d2a65de5083ce078464689df43": { "facing": "internal" },
+  "aae74fc67aee72497b25e7f1bcf1a850044f441c": { "facing": "internal" },
+  "4952fecbfc0bfb1a35aa220486b94de6b646b7ab": { "facing": "internal" },
+  "f748ec17b47ac5f652b9847e5b88afa0849aaa3c": { "facing": "internal" },
+  "97d0fa8822a31975a5dcaaac0ec3f4036e85a712": { "facing": "internal" },
+  "0edfb7e2f19b989848f7378fc826c8ec899650ef": { "facing": "internal" },
+  "832d496890a5d02e2b31f22a6fcd37f4dc2465b9": { "facing": "internal" },
+  "cb0f1217eddd9133d1a590e6e25ea938f3a4205a": { "facing": "internal" },
+  "82e284dfba7c94c14cc095f7d7063b84b951b498": { "facing": "internal" },
+  "f80c5155aa221b7bc38fef320a377dd572d79dee": { "facing": "ui" },
+  "4ca41b8e85fcb4f0b3df80819d8f6a01eb3e8341": { "facing": "ui" },
+  "1e07cc6f32e53449a0b5f925df909d077493b6f8": { "facing": "ui" },
+  "c1282b02e29d743438cd5de9f06cf1c3498751c9": { "facing": "internal" },
+  "f72f86c403d58e5604dba8b7a65a7aec0af4d371": { "facing": "internal" },
+  "8531d65c1f649c21cdebe4ae32419db93302629f": { "facing": "internal" },
+  "4f447859cd3cfad5970e8c37b8ec909e213c4f49": { "facing": "internal" },
+  "d9a185a94386fa5c5f32c5f7cbe5f5127840a425": { "facing": "internal" },
+  "4d61b4931a535b6109d75341529a8cfe54f50818": { "facing": "ui" },
+  "0bac2dc6758181a4be3fbd49ea1c10bd3e965656": { "facing": "ui" },
+  "2a605e7370389184692be4f721ba3f1ec80cc57a": { "facing": "ui" },
+  "187845dd02535574f71ffed31df3481592e23c44": {
+    "facing": "model",
+    "id": "tool-result-artifact-ask-rule-covers-this-url-suffix",
+    "name": "Tool result: artifact ask-rule covers this URL suffix",
+    "desc": "Parenthetical appended to artifact permission asks when the user's own ask rule for the named tool covers the target URL."
+  },
+  "380902cf6127e98641d0ab7abd254c136ec1a159": { "facing": "internal" },
+  "a6ef89849b8c0511d53f70d26bcf165183d60c09": {
+    "facing": "model",
+    "id": "tool-result-artifact-asset-copy-approval-scope-until-comment",
+    "name": "Tool result: artifact asset copy approval scope until next comment",
+    "desc": "Clause in the artifact asset-copy permission ask saying approval covers later uploads and copies until someone else comments on the artifact again."
+  },
+  "9138e71ebbe9f9091cffef2ba22a6922ce480618": {
+    "facing": "model",
+    "id": "tool-result-artifact-asset-copy-approval-scope-until-comment-with-source-reads",
+    "name": "Tool result: artifact asset copy approval scope including source reads",
+    "desc": "Clause in the artifact asset-copy permission ask saying approval covers later uploads, copies, and reads of the source this session until someone else comments again."
+  },
+  "72e633846a74d1ba5a070dc83e52a1f95bb8e005": {
+    "facing": "model",
+    "id": "tool-result-artifact-asset-copy-permission-ask",
+    "name": "Tool result: artifact asset copy permission ask",
+    "desc": "Permission-ask message when Claude wants to copy assets from one artifact into another on the server, making them loadable by everyone who can open the destination."
+  },
+  "708fb8debd8a5f930155932f79e5841dcfb3fb04": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-viewers-see-updates",
+    "name": "Tool Result: Artifact publish — viewers see updates immediately",
+    "desc": "States the visibility consequence of publishing over a shared artifact: everyone it is shared with sees the change at once."
+  },
+  "262f6417cfcc1ffa97d9be31be22987e980ce915": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-viewers-see-pinned-version",
+    "name": "Tool Result: Artifact publish — viewers see a pinned earlier version",
+    "desc": "States that viewers are pinned to an earlier version, so a publish will not be what they see."
+  },
+  "8684bf1636b5599c51428b2401619b123ce76aa8": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-private-until-shared",
+    "name": "Tool result: artifact publish private-until-shared note",
+    "desc": "Share-status sentence in the artifact publish consent ask saying the artifact stays private to the user until they share it."
+  },
+  "9fff60280736a964f9c140122bb7b3b2e1ca4d53": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-files-downloaded-from",
+    "name": "Tool result: artifact publish files downloaded from",
+    "desc": "Clause in the artifact publish consent ask stating how many of the published files were downloaded from which artifacts."
+  },
+  "0f8f53939e5c2ec7710bc8307eed1878aa9bd52c": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-copies-files-from-sources",
+    "name": "Tool result: artifact publish copies files from several sources",
+    "desc": "Clause in the artifact publish consent ask listing files copied on the server from several source artifacts."
+  },
+  "cefbc96c529f01e815488980c25f3062cc7795b9": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-copies-files-from-source",
+    "name": "Tool result: artifact publish copies files from one source",
+    "desc": "Clause in the artifact publish consent ask saying files are copied on the server from a single source artifact."
+  },
+  "072083f25f33c1999c33efb309def26de6365c02": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-source-unverified-qualifier",
+    "name": "Tool result: artifact publish source unverified qualifier",
+    "desc": "Quoted source path in the artifact publish consent ask, qualified as a symlink or changing file whose target couldn't be verified."
+  },
+  "3f24e1faa1950cafe3fa8194a75bb9bddfd7464a": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-from-type-page-by-publisher-note",
+    "name": "Tool result: artifact publish from-type page-by-publisher note",
+    "desc": "Sentence in the artifact publish consent ask, when publishing data into a new artifact from a type, noting its page was written by the type's publisher."
+  },
+  "930849a037dabd1bf39a7075aba455242dd73594": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-to-typed-artifact-page-unchanged-note",
+    "name": "Tool result: artifact publish typed-artifact page-unchanged note",
+    "desc": "Sentence in the artifact publish consent ask, when publishing a file to an artifact made from a type, noting its page comes from the type and is unchanged."
+  },
+  "ccf787484810198922e1ef932bab3d579fcb9c08": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-upload-consent-ask",
+    "name": "Tool result: artifact publish upload consent ask",
+    "desc": "Permission-ask message when Claude wants to publish a file as an artifact, uploading it to claude.ai (Anthropic's servers)."
+  },
+  "add074996556b677a4942e158a6eae29b78e1c2b": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-cowork-approval-reason",
+    "name": "Tool result: artifact publish Cowork approval reason",
+    "desc": "Safety-check reason on a publish from a Cowork session: it sends session content to a web-reachable page, naming the target artifact or type."
+  },
+  "1b0126920003fcfc6c89c1162748c0755f09c249": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-cowork-approval-as-file-clause",
+    "name": "Tool result: artifact publish Cowork approval as-file clause",
+    "desc": "Clause in the Cowork publish safety-check reason naming the existing artifact the file is published into."
+  },
+  "7e5d28e139d434dc68490c2a1d703295a175f7c0": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-cowork-approval-from-type-clause",
+    "name": "Tool result: artifact publish Cowork approval from-type clause",
+    "desc": "Clause in the Cowork publish safety-check reason naming the artifact type a new artifact is created from."
+  },
+  "1bc4997524883f43984892b7a2963b172b30d766": {
+    "facing": "model",
+    "id": "tool-result-artifact-created-from-type-already-created-files-published-clause",
+    "name": "Tool result: artifact created-from-type already-created files-published clause",
+    "desc": "Clause in the retried create-from-type tool result saying the given path and any files were published to the already-created artifact."
+  },
+  "79a96f287894305554fa3c93cbd33373b15ea386": {
+    "facing": "model",
+    "id": "tool-result-artifact-created-from-type",
+    "name": "Tool result: artifact created from type",
+    "desc": "Tool result head after creating a new artifact from an artifact type, giving its URL, version and source type."
+  },
+  "14a94a875c15ea7d2190c2ed10aba29e51f08359": {
+    "facing": "model",
+    "id": "tool-result-artifact-created-from-type-files-listing-and-next-steps",
+    "name": "Tool result: artifact created-from-type files listing and next steps",
+    "desc": "Tail of the create-from-type tool result listing the artifact's own and type files, plus follow-up guidance and the URL line."
+  },
+  "aa441705dccfa65c5a9b49de51d64cb70557913a": {
+    "facing": "model",
+    "id": "tool-result-artifact-copy-source-yours-cowritten-label",
+    "name": "Tool result: artifact copy source yours co-written label",
+    "desc": "Ownership label for a copy-source artifact that is the user's but also published to by someone else, used in the artifact publish consent ask."
+  },
+  "a5f78d069b703782a74d013d59106b41447a7153": {
+    "facing": "model",
+    "id": "tool-result-artifact-copy-source-yours-from-type-label",
+    "name": "Tool result: artifact copy source yours from-type label",
+    "desc": "Ownership label for a copy-source artifact that is the user's but whose files come from an artifact type its publisher wrote."
+  },
+  "db0f924f2d533ef0159a5b2777b6e53ac5f3eb93": {
+    "facing": "model",
+    "id": "tool-result-artifact-copy-source-public-other-org-label",
+    "name": "Tool result: artifact copy source public other-org label",
+    "desc": "Ownership label for a copy-source artifact that is a public artifact from outside the user's organization."
+  },
+  "8e69547ddf24477a13bc3f1cb5f564c97ffee825": {
+    "facing": "model",
+    "id": "tool-result-artifact-copy-source-shared-other-org-label",
+    "name": "Tool result: artifact copy source shared other-org label",
+    "desc": "Ownership label for a copy-source artifact shared with the user from another organization."
+  },
+  "204641ab85eb76762bb08a956f1d3eed59f1c378": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-supporting-files-scratchpad-root-breakdown",
+    "name": "Tool result: artifact publish supporting files scratchpad breakdown",
+    "desc": "Breakdown clause in the artifact publish consent ask saying how many supporting files come from, or were read from under a root in, the scratchpad."
+  },
+  "df5c6a736edf4d50eff9209200d5ec61b0b1489b": { "facing": "ui" },
+  "1efe26d79f9750f0dcc57e77b98dcec7f35bc4ff": { "facing": "internal" },
+  "f9167021fcec595ce88208f400f2d1e682bcacde": {
+    "facing": "model",
+    "id": "skill-claude-test-duplicate-plugin-loads-first",
+    "name": "Skill: claude-test duplicate plugin loads first",
+    "desc": "Claude Test failure text returned as the skill prompt when another enabled plugin also named claude-test loads first, telling the user to disable it in /plugin and start a new session."
+  },
+  "91249e29358e6de86e817bfd3f6d047bdd5f4875": { "facing": "ui" },
+  "8ff810c3970c04088430c611b88f7800d1476e6e": {
+    "facing": "model",
+    "id": "system-reminder-served-project-command-check-note",
+    "name": "Served Project Command Check Note",
+    "desc": "Note added to a served call's PreToolUse hook result when the project's sandboxed command check asked, added context, or failed with stderr; joined into the hook's additionalContext for the cloud session's model."
+  },
+  "933f1bf98807028ab2260826cab61807464eb692": {
+    "facing": "model",
+    "id": "system-reminder-served-project-command-check-stderr-clause",
+    "name": "Served Project Command Check Stderr Clause",
+    "desc": "Verb clause picked by the stderr key inside the served project command-check note, introducing the check's first line of error output."
+  },
+  "6b2382f6b2ecafa96fb740ffe2724806640b36ef": { "facing": "internal" },
+  "81aaca1bc0739f0e0e653bb8ce6b6f7a0211ee5c": { "facing": "internal" },
+  "bea736775d1eb6774f4f8abb4741613b215ec229": { "facing": "internal" },
+  "5373e66576f9b688c1433d9e0725f4993ad60fb5": { "facing": "ui" },
+  "df9f4c37deafe6fda6c6d419dd53c2b70148eb35": { "facing": "internal" },
+  "5fd0a98c3b6b6c203ea0862f00c332b11abb25c8": { "facing": "internal" },
+  "f2cd65991806ac8522688d18b28fd03fb9e4f4aa": { "facing": "internal" },
+  "4ea1fe2b47a0f04ce517539e254ec70d1b16d54a": { "facing": "internal" },
+  "f3fc2ac5f997504d56a2313b68d710e97317995c": { "facing": "internal" },
+  "ac2fc7787b3bf06f59ef08657ec9c1fd649df1db": {
+    "facing": "model",
+    "id": "tool-result-write-path-is-directory",
+    "name": "Tool Result: Write Path Is A Directory",
+    "desc": "Write validateInput error returned to the model when file_path names an existing directory, telling it to include the file name."
+  },
+  "3411579fe70c76decb72153cd294184c7a6993bd": {
+    "facing": "model",
+    "id": "tool-result-write-path-not-regular-file",
+    "name": "Tool Result: Write Path Not A Regular File",
+    "desc": "Write validateInput error returned to the model when file_path exists but is a device, FIFO or socket rather than a regular file."
+  },
+  "5630d0c1cfeb4d239729693e975c7a8ce7ab75d6": { "facing": "ui" },
+  "7a3df07a41180ab4c893fc54d6bb73bb6978ff72": { "facing": "ui" },
+  "0a2dcbe3d292f70028b205e3c487286b7d79feb3": { "facing": "ui" },
+  "a1e93aab221ff2cc23650014d5d04e96751c8a6c": {
+    "facing": "model",
+    "id": "tool-result-remote-host-separate-copy-file-missing-hint",
+    "name": "Tool Result: Remote Host Separate Copy File-Missing Hint",
+    "desc": "Suffix appended to Read/Glob/Grep not-found errors when an attached machine holds the user's own unsynced copy of the project, pointing the model at the served tool on that machine."
+  },
+  "136715859fc7791a88417083d8e64f222d477632": { "facing": "ui" },
+  "c94f7aaea3e96fef695c695b0dbc4935ba952a89": { "facing": "internal" },
+  "2a96afb69b1c6da6ff1a0eb5b92ee491ce40745b": { "facing": "internal" },
+  "b1ccfc4aa56d53f919d4a248a999ee2fb957669d": { "facing": "internal" },
+  "6799d5775f4ac124ee7080a3f52241503bcc8987": { "facing": "internal" },
+  "a7020bf682e787f6fe8bfa1e99cf7f682d24db91": { "facing": "internal" },
+  "1a5caa2f5793b6970cbfb8ef2d8aafed755bfd0f": { "facing": "internal" },
+  "2f8de54adb5a6823fdc33dc02ad3634a3a7134c7": { "facing": "internal" },
+  "cf3d9cfe20e646154101705ed55124dcff665f93": { "facing": "internal" },
+  "b68c5253b755d75c2e434498dc36ae68e2f23ac7": { "facing": "internal" },
+  "02304909cf6a634834469486224f50c41bc95b30": { "facing": "internal" },
+  "82275abd504941d4626af33517ff042c2e0684e3": { "facing": "internal" },
+  "ca42f12e6867cac111e779bb1b483dd298f3beca": {
+    "facing": "model",
+    "id": "tool-result-webfetch-proxy-rejected",
+    "name": "Tool Result: WebFetch Proxy Rejected",
+    "desc": "errorMessage for a PROXY_REJECTED ccr proxy response on the WebFetch path, returned to the model as the failed tool result. Sibling of tool-result-webfetch-proxy-transport-error."
+  },
+  "c5741f67a668722ab4ebfbd103f71b70228a824a": { "facing": "internal" },
+  "a3989f60ba73c2ea266f289b8ea30b9a305a5b65": {
+    "facing": "model",
+    "id": "data-task-notification-detached-tool-call-timed-out",
+    "name": "Task Notification: Detached Tool Call Timed Out",
+    "desc": "Result text in the task-notification for a backgrounded (detached) tool call that hit the detach ceiling and was stopped."
+  },
+  "3e70fbf8d824aa7383c93f19cf3b398a7854cfc6": {
+    "facing": "model",
+    "id": "data-task-notification-detached-tool-call-stopped-by-user",
+    "name": "Task Notification: Detached Tool Call Stopped By User",
+    "desc": "Result text in the task-notification when the user stopped a backgrounded (detached) tool call before it finished."
+  },
+  "3b4c339168b33cfb0692d9072a5016b8ab09b354": {
+    "facing": "model",
+    "id": "data-task-notification-detached-tool-result-oversize-unsaved",
+    "name": "Task Notification: Detached Tool Result Oversize Unsaved",
+    "desc": "Task-notification text when a detached tool call completed but its result was too large to carry and could not be saved to a file."
+  },
+  "9dd326a1cae0f4ac9aabf463353aca45bb2fa905": {
+    "facing": "model",
+    "id": "data-task-notification-detached-tool-result-saved-to-file",
+    "name": "Task Notification: Detached Tool Result Saved To File",
+    "desc": "Task-notification result text telling the model that an oversized detached tool result was saved to a file (fully or truncated) and to read that file."
+  },
+  "bb97cf85ee9082caad817629b97e397cfc069609": {
+    "facing": "model",
+    "id": "data-task-notification-detached-tool-result-render-failed",
+    "name": "Task Notification: Detached Tool Result Render Failed",
+    "desc": "Task-notification text when a detached tool call completed but its result could not be rendered."
+  },
+  "8e08d824d8f4b8581bcf37c306f09ba91c128a98": {
+    "facing": "model",
+    "id": "data-task-notification-detached-tool-call-ended-without-result",
+    "name": "Task Notification: Detached Tool Call Ended Without Result",
+    "desc": "Summary header of the task-notification for a detached tool call that failed or was stopped, telling the model to carry on as if the tool had returned and not to announce a notification."
+  },
+  "b954cf8d2270af33483bcec70713fd7c711804e9": { "facing": "internal" },
+  "b1dec0239a998651083cc3b1568cc78a069718e3": { "facing": "internal" },
+  "cf33e6240897562d248a64925b2a1b3c55739802": { "facing": "internal" },
+  "e214b81759fea45c3a65285cf5450807d0df92a0": { "facing": "internal" },
+  "e391b778536f17d252dfc114b3db29a4c75fd00c": { "facing": "internal" },
+  "1f8c8ca805167b536fed819db7f0ff6396f8d74a": { "facing": "internal" },
+  "9aa7bfb52d24758168c1cf17bd6e93b6454aea6a": { "facing": "internal" },
+  "dbc9bbfce9a05e254d92f2b24d4c3c9aaa11ae2c": { "facing": "internal" },
+  "e4df0a87c07792458c3bec687aa364981d44a8da": { "facing": "internal" },
+  "8318080f67645be0f84ef9604a7230764226aa3b": { "facing": "internal" },
+  "3951847074b15d76ed3529c4385105b54559c025": { "facing": "ui" },
+  "23b12e2db0af3c75b08d1cfd291d5ce7d0c696f5": { "facing": "internal" },
+  "d57dd4428147009917074c089c4a9338621a6bc1": { "facing": "internal" },
+  "47343baaba34ae50e1ffde921feef041e1aa789b": { "facing": "internal" },
+  "938b1d4f1acd8ce7054b40690e4e3a133e39bcac": { "facing": "internal" },
+  "a29f5bf57955962bbd1ac644b8d11d3979890f27": { "facing": "internal" },
+  "a2afbe3627cc799424d2cd8097ecc8edad326fb1": { "facing": "internal" },
+  "5cc18c405ace1fbdad80b280c716d6fb37894597": { "facing": "internal" },
+  "326036f79075ba04ae92e6ed90ab63565db1d029": { "facing": "internal" },
+  "b973fd827f3f6b6a84be84ed020417e2c25610e1": { "facing": "internal" },
+  "94b68a7d68db962ad74dd484c0900daafb6b288e": { "facing": "internal" },
+  "00469df8aea5aa4b4bed016e0533809521b936fc": {
+    "facing": "model",
+    "id": "tool-result-bash-dangerous-op-unset-variable-remedy-normally-set",
+    "name": "Tool Result: Bash Dangerous Op Remedy — Normally-Set Variable",
+    "desc": "Remedy clause in the dangerous-removal ask message when the target's variable (e.g. $HOME, $TMPDIR) is normally set, so a :? guard would not stop it; tells the model to use a literal absolute path."
+  },
+  "44b754a679625bf874ad21227e7332e6afd77974": {
+    "facing": "model",
+    "id": "tool-result-bash-dangerous-op-unset-variable-reason-normally-set",
+    "name": "Tool Result: Bash Dangerous Op Reason — Normally-Set Variable",
+    "desc": "Short remedy clause in the dangerous-removal decisionReason when the target's variable is normally set, so a guard would not stop it; suggests a literal path."
+  },
+  "93b2c8ffc24ee9578fb4be0947c6eed1cf812508": { "facing": "internal" },
+  "a0442b5f1de3511f8294c9aeee3d6afcf20a8b8b": { "facing": "internal" },
+  "bc1418cd8a68af8d979c3031ae036bedb3b50c35": {
+    "facing": "model",
+    "id": "slash-command-plugin-install-loads-in-place-suffix",
+    "name": "Slash Command: /plugin install — Loads In Place Suffix",
+    "desc": "Suffix on the plugin already-installed result when the plugin loads in place from a local directory. It says edits take effect at the next session start or /reload-plugins, and can add how the update command re-records the version."
+  },
+  "3d44789798f52812f0d1cc1200e9f9dbfec4aad6": {
+    "facing": "model",
+    "id": "slash-command-plugin-install-already-installed",
+    "name": "Slash Command: /plugin install — Already Installed",
+    "desc": "Result message when the requested plugin is already installed in that scope. It notes when the plugin was marked as manually installed and appends the version and in-place suffixes."
+  },
+  "9c8338af1476307c64e3aca6cc22ba53fbeb19ab": {
+    "facing": "model",
+    "id": "tool-result-subagent-spawn-hook-rewrite-ruled",
+    "name": "Tool Result: Subagent Spawn Hook Rewrite Ruled",
+    "desc": "Agent tool error returned when a plugin's agent.spawn hook rewrote a spawn into one that a permission rule asks for or denies. It tells Claude to dispatch the spawn directly."
+  },
+  "03382909c8f394ecf012c4d7da9229f5fffa3e2d": { "facing": "internal" },
+  "e498d072302ce04e92021d13645d8b9b2923b73b": { "facing": "internal" },
+  "6904cc80bb01628b9538beafc02d5f98c9ca600c": {
+    "facing": "model",
+    "id": "tool-result-artifact-db-relay-not-carried",
+    "name": "Tool Result: Artifact DB Relay Did Not Carry Request",
+    "desc": "ArtifactData error returned when this cloud session's artifact connection did not carry the db request, so nothing ran. It adds that Claude Code on the user's own machine can still read and edit the artifact."
+  },
+  "a51b69e6a4ff28db35e6ed31da12098084d3fe10": {
+    "facing": "model",
+    "id": "tool-result-artifact-db-relay-busy-after-retry",
+    "name": "Tool Result: Artifact DB Relay Busy After Retry",
+    "desc": "ArtifactData error returned when the cloud session's artifact connection was still unavailable after one retry. For a write it warns the edit may have applied and says to read it back before retrying; otherwise it says nothing ran and to retry shortly."
+  },
+  "7d6678395f56e715dcf47040ea1d04387ccb484a": {
+    "facing": "model",
+    "id": "tool-parameter-artifact-action-open",
+    "name": "Tool Parameter: Artifact Action Open",
+    "desc": "Artifact tool text for the 'open' action. It shows the user an existing artifact without changing it, and is not for one just published or just created from a type unless that call's result says to open it."
+  },
+  "0189666b9e45e76f348cf8a28b0631ca7f02f5b0": {
+    "facing": "model",
+    "id": "tool-description-artifact-emailed-deck-not-file-format",
+    "name": "Tool Description: Artifact Emailed Deck Not A File Format",
+    "desc": "Sentence in the Artifact guidance saying a deck to be emailed or attached is not a request for a file format, because a deck made from the Slides type downloads as .pptx or PDF."
+  },
+  "95214c07afe25c113922923f9f4851b9bf0d574b": {
+    "facing": "model",
+    "id": "tool-result-artifact-upload-asset-covers-uploads-and-copies-note",
+    "name": "Tool Result: Artifact Upload Covers Uploads And Copies Note",
+    "desc": "Note appended to the Artifact upload and copy permission prompts saying that approving covers later uploads and copies into this artifact for the rest of this session."
+  },
+  "8f525292547bfcc6b162a327c7a67c4150fcb800": {
+    "facing": "model",
+    "id": "tool-result-artifact-copy-from-covers-uploads-copies-and-source-note",
+    "name": "Tool Result: Artifact Copy-From Session Approval Note",
+    "desc": "Note in the copy-from-another-artifact permission prompt saying that approving covers later uploads and copies here, and reads of the source artifact, for this session."
+  },
+  "209895605c5ff8dc90648167616cf41eec3cb7b6": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-files-artifact-source-not-accepted",
+    "name": "Tool Result: Artifact Publish Files Artifact Source Not Accepted",
+    "desc": "Input-validation error returned when a files entry uses the {artifact, path} copy source where it is not accepted. It tells Claude to publish the file from a local copy instead."
+  },
+  "ac342da0b15d08e8854d4a4c3c2f6dde8640d940": { "facing": "internal" },
+  "d1b55ba914239414dcb2a1fe22a1d7218601a2d6": { "facing": "internal" },
+  "5655f881de4fb136c486db7c16a3c0d985a9c8cc": { "facing": "ui" },
+  "a4d666850635ee4cc21cb2f7441bba35729efce7": { "facing": "ui" },
+  "b894ae49ac772b3121cc609bda86587d1effaaa9": { "facing": "ui" },
+  "560e8cd5e89c20d025ddccbf7c60ba1c72691373": { "facing": "internal" },
+  "c0633ce91b1a30989def3563f42bf448daafe51d": { "facing": "ui" },
+  "73ee73c5fc9db6c7e0708e51cec194bd76e097e2": { "facing": "ui" },
+  "43fe98b415c540a5daeebc700c3101f633d0d5e8": {
+    "facing": "model",
+    "id": "system-reminder-prefetched-artifact-type-two-steps-url-read",
+    "name": "System Reminder: Prefetched Artifact Type — Two-Steps URL Read",
+    "desc": "Clause in the prefetched artifact-type instruction-files reminder, used when the two-steps note already asks for one read of the artifact url beside the Bash call."
+  },
+  "c842068cdf6bddcad7fa4a1190c66332710c773b": {
+    "facing": "model",
+    "id": "system-reminder-prefetched-artifact-type-read-url-once",
+    "name": "System Reminder: Prefetched Artifact Type — Read URL Once",
+    "desc": "Clause in the prefetched artifact-type instruction-files reminder telling Claude to read the artifact url once with the Artifact tool, in the same message as its other first reads."
+  },
+  "42836f07956d107577980b37dca16699dbbc9869": { "facing": "ui" },
+  "033c20a27495ef6345204ecde4ca16b0df762b19": { "facing": "ui" },
+  "80c7d613bef6a1806e893063d976c7c263d59f6d": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-first-commit-base-rerun-hint",
+    "name": "Slash Command: /ultrareview — First Commit Becomes Base Hint",
+    "desc": "Tail of the diff-too-large error on a first commit. It says the first commit is now the base, and to make changes and rerun the review to cover only those."
+  },
+  "94b6dff5871e19d0b4036e5464ee4f016eb26326": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-empty-diff-switch-branch-or-base",
+    "name": "Slash Command: /ultrareview — Empty Diff Switch Branch Or Base",
+    "desc": "Advice in the empty-diff error to switch to the branch holding the work, or to pass a different base."
+  },
+  "5e02ea17b0c0ef74677db6dda69e058a6c682918": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-empty-diff-on-base-branch",
+    "name": "Slash Command: /ultrareview — Empty Diff On Base Branch",
+    "desc": "Empty-diff reason used when the user is on the review's base branch and has no staged or unstaged edits."
+  },
+  "672990d0131500f76d6f8c575c36aec72a58032c": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-empty-diff-base-branch-commits-count-as-base",
+    "name": "Slash Command: /ultrareview — Committed Work Counts As Base",
+    "desc": "Explanation in the empty-diff error that everything already committed on the base branch counts as the base, so only uncommitted edits would be reviewed."
+  },
+  "97d56c794c2a4e296d1ffa0856004df0a192ef68": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-empty-diff-on-base-no-commits-beyond",
+    "name": "Slash Command: /ultrareview — On Base With No Commits Beyond Merge Base",
+    "desc": "Empty-diff reason used when the user is on the base branch, has no commits beyond the merge base, and has no edits."
+  },
+  "0624b2ec3ddc6f2fac7203072085d9d2fad40384": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-empty-diff-head-in-base",
+    "name": "Slash Command: /ultrareview — Checked-Out Commit Already In Base",
+    "desc": "Empty-diff reason used when the detached checked-out commit is already part of the base and there are no edits."
+  },
+  "0abf3c6f339c780ed6647bd3570a8f36f745be9c": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-first-commit-review-whole-hint",
+    "name": "Slash Command: /ultrareview — Review First Commit Whole Hint",
+    "desc": "Suffix saying the first commit can be reviewed whole by running /ultrareview in an interactive Claude Code session, which asks before it spends anything."
+  },
+  "a157add346471adee53073a3d29da23bbb1338ab": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-scope-first-commit-all-files",
+    "name": "Slash Command: /ultrareview — Scope First Commit All Files",
+    "desc": "Confirm-scope line used when every file in the first commit is reviewed because there is nothing earlier to compare with."
+  },
+  "93298c92bb2b1144d41b1a331615b4fd4f8aaba4": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-not-git-init-starting-point",
+    "name": "Slash Command: /ultrareview — Not Git: Init Starting Point",
+    "desc": "Advice in the not-a-git-repository error to run git init and commit a starting point. The review then covers the changes made on top of that commit."
+  },
+  "02ade63b56dc19a834af675b5cb0552ff92f655b": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-not-git-init-commit-work",
+    "name": "Slash Command: /ultrareview — Not Git: Init And Commit Work",
+    "desc": "Advice in the not-a-git-repository error to run git init and commit the work. The review then covers that first commit whole if it is small enough, and later the changes made on top of it."
+  },
+  "797e16f52b2ec53641cdce212a445a84095bc398": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-not-git-open-folder",
+    "name": "Slash Command: /ultrareview — Not Git: Open A Repository Folder",
+    "desc": "Advice in the not-a-git-repository error on desktop or IDE hosts to open a folder that is a git repository with at least one commit, then try again."
+  },
+  "8bca576901f83995e6ecb26c1d635d666263b6b5": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-not-git-repo",
+    "name": "Slash Command: /ultrareview — Not Inside A Git Repository",
+    "desc": "Error explaining that the review compares a git branch against an earlier commit but the current directory is not inside a git repository, followed by the remediation advice."
+  },
+  "0d9c40335c6f54d3e4a21e3410bc3eaae37b1ac0": {
+    "facing": "model",
+    "id": "slash-command-mcp-inline-no-servers-configured",
+    "name": "Slash Command: /mcp — No Servers Configured (Inline)",
+    "desc": "Inline /mcp reply when no MCP servers are configured, with an add or open hint that fits the surface and the usage line."
+  },
+  "1408f493ff4029a48048d4b72bce104d3b5b21ef": {
+    "facing": "model",
+    "id": "slash-command-mcp-open-from-command-menu-hint",
+    "name": "Slash Command: /mcp — Open From Command Menu Hint",
+    "desc": "App-surface suffix used across inline /mcp replies, telling the user to open MCP servers from the command menu instead of running /mcp in the terminal."
+  },
+  "04251b4b1184a3eabe0293c9042e6b678c228b64": {
+    "facing": "model",
+    "id": "slash-command-mcp-status-terminal-details-with-usage",
+    "name": "Slash Command: /mcp — Status Terminal Details With Usage",
+    "desc": "Tail of the inline /mcp status summary that combines the 'Use /mcp in the terminal for details' hint with the usage line."
+  },
+  "abd4e0c0064b4ecbbc8bb3b40b5fa5a8a1c82c93": {
+    "facing": "model",
+    "id": "slash-command-mcp-named-server-not-configured-terminal-hint",
+    "name": "Slash Command: /mcp — Named Server Not Found Terminal Hint",
+    "desc": "Terminal-surface suffix of the inline /mcp 'no MCP server named X' reply, pointing to /mcp in the terminal to see the configured servers."
+  },
+  "3221485bfa24c48ce934e2fd6af0072c395dca3b": {
+    "facing": "model",
+    "id": "slash-command-mcp-pending-approval-approve-in-terminal-hint",
+    "name": "Slash Command: /mcp — Pending Approval Terminal Hint",
+    "desc": "Terminal-surface suffix of the inline /mcp pending-approval reply, telling the user to approve the server with /mcp in the terminal first."
+  },
+  "4c566c8fa37914e8abf8507314268cc166042844": {
+    "facing": "model",
+    "id": "slash-command-mcp-authenticate-in-terminal-hint",
+    "name": "Slash Command: /mcp — Authenticate In Terminal Hint",
+    "desc": "Terminal-surface suffix of inline /mcp reconnect and enable replies when the server needs authentication, telling the user to authenticate with /mcp in the terminal."
+  },
+  "0274963c8ff532bfd2eddbad82e65dde66b700dc": {
+    "facing": "model",
+    "id": "slash-command-mcp-reconnect-check-config",
+    "name": "Slash Command: /mcp — Reconnect Check Config Hint",
+    "desc": "Terminal-surface suffix of inline /mcp reconnect and enable replies, telling the user to check the server's config with /mcp in the terminal."
+  },
+  "1df34e2b4c7ce9c23e13000a731315065131304a": {
+    "facing": "model",
+    "id": "slash-command-mcp-disable-failed",
+    "name": "Slash Command: /mcp — Disable Failed",
+    "desc": "Inline /mcp reply when disabling a named server failed because it may have been removed or its config could not be read. It ends with a hint, fitted to the surface, to check /mcp."
+  },
+  "294384f038aa733859f67cd9b02a46570236e79a": { "facing": "ui" },
+  "691941d97236394b0a42b5deedc5784aa380b088": { "facing": "ui" },
+  "2ec3342018ee82a82c0d9bbe56411b7ac9a66c21": { "facing": "ui" },
+  "265b21be0aad20a890150347a21c0719b8decbca": { "facing": "ui" },
+  "4c9fd460d3ac19bb704ed1e638d9c6df081991ce": { "facing": "ui" },
+  "84a4f07e3450824f4aecd0200f1ace93703f116e": { "facing": "ui" },
+  "0d079d17afcae33da86d0ae2175a40fac9f97955": { "facing": "ui" },
+  "eb671ad8a4478393365bdf51fe7c7c60fcdc0dc7": { "facing": "internal" },
+  "747275a400e04bf539eda44b48ee3558ef05593b": {
+    "facing": "model",
+    "id": "tool-description-artifact-list-scope-types-and-type-query",
+    "name": "Tool Description: Artifact List Scope Types And Type Query",
+    "desc": "Artifact tool description clause saying scope \"types\" lists the Artifact types this account can start from, and type_query narrows a listing that says more types exist than it shows."
+  },
+  "091543f66eb249e4e7e565e3d23be49ed9d81aa3": {
+    "facing": "model",
+    "id": "tool-result-fetch-inbox-message-attachments-not-downloaded",
+    "name": "Tool Result: Fetch Inbox Message Attachments Not Downloaded",
+    "desc": "Prefix in FetchInboxMessage results saying how many attached files could not be downloaded."
+  },
+  "442e0e32b003bac1ad2ece88e297df46cf3bdb28": {
+    "facing": "model",
+    "id": "tool-result-plugin-card-unknown-ids-dropped",
+    "name": "Tool Result: Plugin Card Unknown IDs Dropped",
+    "desc": "Note in the plugin card tool result that some suggested ids were not in the user's catalog and were dropped, and must not be named in text."
+  },
+  "4bf4d8f1181a06b9bb1d4ad3a9e9315bf2a9ee1d": {
+    "facing": "model",
+    "id": "tool-result-plugin-card-skill-ids-redirect",
+    "name": "Tool Result: Plugin Card Skill IDs Redirect",
+    "desc": "Note in the plugin card tool result that some suggested ids are skills rather than plugins, and should be surfaced with the skills suggestion tool instead."
+  },
+  "1427419fe2dd734475db7691a9945b5894651788": {
+    "facing": "model",
+    "id": "tool-result-plugin-card-unchecked-ids-left-off",
+    "name": "Tool Result: Plugin Card Unchecked IDs Left Off",
+    "desc": "Note in the plugin card tool result that some suggested ids could not be checked and were left off the card. It says to continue without them and not name them."
+  },
+  "b8cf3dc309c6be6c2ecaa46ccdd21f9901631da9": { "facing": "internal" },
+  "196c6a40965a4a0fd1493d508f0da6812245cf16": {
+    "facing": "model",
+    "id": "tool-description-fetchinboxmessage-project-thread-wake-envelope",
+    "name": "Tool Description: FetchInboxMessage project thread wake envelope",
+    "desc": "Added to the FetchInboxMessage description when the relaying thread is a project thread: identifies which element of the wake envelope is the user's own words, treats everything else the envelope quotes as context rather than a request, and explains how to read the files the user attached"
+  },
+  "f447eb40271fda6d4203e7317c5e6ca6053bb8dc": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-empty-diff-generic-hint",
+    "name": "Slash Command: Ultrareview Empty Diff Generic Hint",
+    "desc": "Remedy clause of the ultrareview empty_diff precondition error when the diff against the base is empty for no more specific reason: stage or commit local edits, or pass a different base."
+  },
+  "35cafab212b87fae14527b8091827a45103b4fe1": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-not-git-repo-cd-or-init",
+    "name": "Slash Command: Ultrareview Not A Git Repo (cd or init)",
+    "desc": "Remedy tail of the ultrareview not_git_repo precondition error: cd into the project if it already uses git and rerun, otherwise git init and commit."
+  },
+  "38ad8a6c6cd4471e00fc1e811931115506565c47": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-empty-diff-detached-head-hint",
+    "name": "Slash Command: Ultrareview Empty Diff Detached HEAD Hint",
+    "desc": "Remedy clause of the ultrareview empty_diff error when the checked-out detached commit is already part of the base: switch to the work branch or pass a different base."
+  },
+  "27eb3928efc2c44994e8205e689ba0dc1afc3077": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-empty-diff-branch-at-base-hint",
+    "name": "Slash Command: Ultrareview Empty Diff Branch At Base Hint",
+    "desc": "Remedy clause of the ultrareview empty_diff error when the current branch has no commits beyond the base: switch branches, or pass a different base if the branch was merged."
+  },
+  "80ed2279fd970795a8a372f2589cc5a74562f0b3": {
+    "facing": "model",
+    "id": "tool-parameter-artifact-list-type-query",
+    "name": "Tool Parameter: Artifact List type_query",
+    "desc": "Artifact tool type_query parameter (list with scope 'types'): narrows the types listing by relevance, warns that a narrowed listing is not the whole catalog, and says to omit it when choosing a type."
+  },
+  "d5279b4a02f7e39cb040249daf08e0248934354b": {
+    "facing": "model",
+    "id": "tool-parameter-artifact-list-types-type-query",
+    "name": "Tool Parameter: Artifact list_types type_query",
+    "desc": "Split-action Artifact schema type_query parameter for list_types: narrows the types listing by relevance, warns that a narrowed listing is not the whole catalog, and says to omit it when choosing a type."
+  },
+  "7e7e803293b81361ab158dc4f8d5800043598d2e": {
+    "facing": "model",
+    "id": "tool-result-plugin-card-none-verified",
+    "name": "Tool Result: Plugin Card None Verified",
+    "desc": "SuggestPluginInstall tool result when no suggested pluginId could be verified in the user's catalog: no card was rendered, pass ids exactly as SearchPlugins returns them, and do not mention it to the user."
+  },
+  "9e53453516017d9427eeb3059da31e75ddbe22e4": { "facing": "ui" },
+  "e3ed202d5b8e742148e28bd237f468fedd970592": { "facing": "ui" },
+  "c366dcefa9615e6e634d873ea7b7d76492897af7": { "facing": "ui" },
+  "81f7e37904995a5c2fe4d2eb338a0a975fe7e2bd": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-contract-rollout-retry",
+    "name": "Tool Result: Artifact Publish Contract Rollout Retry",
+    "desc": "Artifact publish deploy-422 tool result when the tool chose the server's newest contract before it reached every server: nothing was published, send the same call again in about a minute, and do not pin an older contract."
+  },
+  "be9d19db6bc9ecf3d3e4d39e9eb2b29e61aca674": { "facing": "internal" },
+  "9a8b2224bfa00d85ca9193031b10d2c4bfefc750": {
+    "facing": "model",
+    "id": "tool-description-suggestplugininstall-proactive-offer",
+    "name": "Tool Description: SuggestPluginInstall (proactive offer)",
+    "desc": "Gated variant of the SuggestPluginInstall tool prompt: render a card of claude.ai plugins taken from SearchPlugins results, offer one proactively when a plugin could take over or make the task repeatable, map result fields onto the card, and when not to call it"
+  },
+  "3ea0e5a829089977041551d1dd35196b963b3edd": { "facing": "internal" },
+  "91006270d4abfd11da54dd9199b749b5203cfec8": {
+    "facing": "model",
+    "id": "data-task-notification-detached-tool-call-finished",
+    "name": "Data: Task Notification Detached Tool Call Finished",
+    "desc": "Task-notification summary when a detached tool call completes: its result follows, carry on as if the tool had just returned, do not announce a notification, and do not re-answer a request the user has since dropped."
+  },
+  "7d5a04e659e6eab4aa674e782b4f7c0aa98b75fe": { "facing": "ui" },
+  "e97a7cedd92fe268107005abef4211fa6257ca8f": { "facing": "ui" },
+  "2a743553535f08d8342951b47ff20fda455ae469": { "facing": "ui" },
+  "e3d3f9e8444baba2e9b20fc5bd15b7d780d5fad5": {
+    "facing": "model",
+    "id": "data-memory-sync-file-not-saved-stays-local",
+    "name": "Data: Memory Sync File Not Saved Stays Local",
+    "desc": "PostToolUse additionalContext when the server refused one memory file: it stays local, other files keep syncing, and the model should tell the user."
+  },
+  "cf16cad40ef1ebfe77a2bfc53c7c86f991a878b7": { "facing": "ui" },
+  "af25f2a2cee9398aba8f048a81bcde04c67b6274": { "facing": "internal" },
+  "acaa3c6b9e201ff7fa5264bf839162350e7730d9": { "facing": "internal" },
+  "58bb0be1f6c7921d7c71d0d25011d531cc6a9df3": { "facing": "ui" },
+  "2830f5201ed730054d6da53ecdfe52abedb96fdd": {
+    "facing": "model",
+    "id": "system-reminder-tool-hosts-machine-separate-copy-lives-there",
+    "name": "Tool Hosts Notice: User's Separate Copy Lives On The Machine",
+    "desc": "Shared prefix of the tool-hosts notice for an attached machine that holds the user's own separate copy of the project (possibly at another commit, not synced either way) plus their apps and processes; its Claude Code may ask before running."
+  },
+  "c33b35d005813dfb26efd9c5a3912a98af880355": {
+    "facing": "model",
+    "id": "system-reminder-dir-sync-agent-snapshot-commits-restored",
+    "name": "System Reminder: Dir Sync Agent Snapshot Commits Restored",
+    "desc": "Cloud-session notice that the work branch had been pointed at directory sync's own snapshot commits rather than the agent's work, is back on the user's head with the working tree unchanged, and no reset is needed."
+  },
+  "1ccdb88224c9f4b6fe8addedae0c7aab5416b5bf": { "facing": "ui" },
+  "ebe204c097c062e017d9b41723a805fe92b39d19": { "facing": "ui" },
+  "bafe2ab893a537a010f908b24b31ec2ef7605e2b": { "facing": "ui" },
+  "0cb759454bc958a45c62738e252151f7bd71bb07": {
+    "facing": "model",
+    "id": "tool-result-cloud-session-command-check-stopped-after-repeated-asks",
+    "name": "Cloud session: project command check stopped after repeated asks",
+    "desc": "Hook additionalContext for a cloud-served call when the project's command check needed the person's OK three times in a row: it is not run again this session, each command asks instead, and how the person can stop the questions."
+  },
+  "59a1db1b4d21b978b631ca6f09733cd913ab025b": {
+    "facing": "model",
+    "id": "tool-result-cloud-session-command-check-changed-since-last-serve",
+    "name": "Cloud session: project command check changed since last serve",
+    "desc": "Permission-ask reason for a cloud-served call when the project's command check changed since this computer last served the project, so it is not run this time; approving also accepts the changed check."
+  },
+  "09273eec5930ca69b96864809f3ec6a5314f5014": { "facing": "ui" },
+  "e8a9e588e219551baa636332cc693b227ae2fecd": { "facing": "ui" },
+  "546238118f8768cfd5584f27fe55a0f1898183dc": { "facing": "ui" },
+  "17ca4ab6e6c49d1c9243e940e65762e4f552dd62": { "facing": "internal" },
+  "cfde92688a4f979edc247d99641ba41c955cf153": { "facing": "internal" },
+  "89314aff7e121572f92b7a47d75e8198bf4ccedf": { "facing": "internal" },
+  "f8c702bc77eb2db9fb747ae33db58f9371b453da": {
+    "facing": "model",
+    "id": "system-prompt-agent-memory-entrypoint-not-loaded-read-only",
+    "name": "System Prompt: Agent Memory Entrypoint Not Loaded (Read-Only)",
+    "desc": "Agent-memory section line when the memory entrypoint file was refused (a link, special file, or outside the working copy): treat this agent memory as read-only and do not write files in its folder."
+  },
+  "0c32d9f4ee2f4f8e151ade70aa69903cbc455997": { "facing": "ui" },
+  "eb788ce2ddbc0818c29b324f231922c93a048e63": { "facing": "ui" },
+  "b8f1a26f3ec7e5709d97d60a4d14cf33d54f09f8": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-no-commits-commit-starting-point",
+    "name": "Slash Command: Ultrareview Branch Has No Commits (Commit Starting Point)",
+    "desc": "Ultrareview no_merge_base precondition error when HEAD has no commits and the caller does not confirm before launch: commit a starting point first, then the review covers changes made on top of it."
+  },
+  "acd456ac6ee83ee56e528f08d8775c2d6fcd4423": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-no-commits",
+    "name": "Slash Command: Ultrareview Branch Has No Commits",
+    "desc": "Precondition error when HEAD does not resolve; emitted by the /code-review ultra command as <local-command-stdout> and replayed to the model."
+  },
+  "06b7e722398caa8a9375299dfe61ec4290f017d8": { "facing": "ui" },
+  "61ca7ce2bce1a63be1ddd29367c3431c4ed7e3da": {
+    "facing": "model",
+    "id": "data-settings-validation-marketplace-regex-does-not-compile",
+    "name": "Data: Settings Validation Marketplace Regex Does Not Compile",
+    "desc": "Reason fragment for a hostPattern/pathPattern marketplace policy entry whose regex does not compile, so the entry cannot be enforced; interpolated into the managed-settings validation issue."
+  },
+  "11a4b29e1f84a1423c80511b06f3d65a935dec95": {
+    "facing": "model",
+    "id": "data-settings-validation-marketplace-github-owner-wildcard-shape",
+    "name": "Data: Settings Validation Marketplace GitHub Owner Wildcard Shape",
+    "desc": "Reason fragment for a github marketplace policy entry whose owner wildcard is not exactly \"<owner>/*\", so the entry cannot be enforced; interpolated into the managed-settings validation issue."
+  },
+  "ca970797987da48bd6464b65bdaad83c4eb94730": {
+    "facing": "model",
+    "id": "data-settings-validation-marketplace-git-wildcard-unsupported",
+    "name": "Data: Settings Validation Marketplace Git Wildcard Unsupported",
+    "desc": "Reason fragment for a git-form marketplace policy entry using a wildcard, which only github-form entries support, so the entry cannot be enforced; interpolated into the managed-settings validation issue."
+  },
+  "5e88aca18ec530e518715f649fd79cc4039d51f8": {
+    "facing": "model",
+    "id": "data-settings-validation-marketplace-ref-wildcard",
+    "name": "Data: Settings Validation Marketplace Ref Wildcard",
+    "desc": "Reason fragment for a github/git marketplace policy entry whose ref contains \"*\", which git does not allow in ref names, so the entry cannot be enforced; interpolated into the managed-settings validation issue."
+  },
+  "734d0c2517a33859417f92f3c1825920e6c2d29d": {
+    "facing": "model",
+    "id": "data-settings-validation-blocked-marketplaces-unenforceable-entry-kept",
+    "name": "Data: Settings Validation blockedMarketplaces Unenforceable Entry Kept",
+    "desc": "Managed-settings validation issue when a blockedMarketplaces entry can never match a marketplace source: the entry is kept and marketplace restrictions stay active."
+  },
+  "94da448f8d3470ba8fab9614ce0a279029417faf": {
+    "facing": "model",
+    "id": "data-settings-validation-strict-known-marketplaces-invalid-empty-allowlist",
+    "name": "Data: Settings Validation strictKnownMarketplaces Invalid",
+    "desc": "Managed-settings validation issue when strictKnownMarketplaces is present but invalid: an empty allowlist (no marketplaces admitted) is enforced until it is fixed."
+  },
+  "e815bd359d1d2d12f763161fcb8540fb505a7472": {
+    "facing": "model",
+    "id": "data-settings-validation-blocked-marketplaces-invalid-dropped",
+    "name": "Data: Settings Validation blockedMarketplaces Invalid Dropped",
+    "desc": "Managed-settings validation issue when blockedMarketplaces is present but invalid and was dropped, so its entries cannot be enforced until it is fixed."
+  },
+  "20a53ce8bc94c1298f09afee36b14d3b45d4e3be": {
+    "facing": "model",
+    "id": "data-settings-validation-disable-sideload-flags-invalid-treated-true",
+    "name": "Data: Settings Validation disableSideloadFlags Invalid",
+    "desc": "Managed-settings validation issue when disableSideloadFlags is present but invalid: it is treated as true (sideload CLI flags rejected) until it is fixed."
+  },
+  "46f3b9a5b6c00f3899c7ef42a5b7ed8d928f1187": {
+    "facing": "model",
+    "id": "data-settings-validation-marketplace-entry-inert-policy-tier-note",
+    "name": "Data: Settings Validation Marketplace Entry Inert Outside Policy Tiers",
+    "desc": "Settings-validation line for a strict/blocked-marketplaces entry that can never match: explains that policy tiers keep or strip it and that in user/project/local files the key is inert, and asks for the entry to be fixed or removed"
+  },
+  "19062aeaa2cbb11288d26c27948a19a617c27049": {
+    "facing": "model",
+    "id": "data-settings-validation-blocked-marketplaces-kept-unmatchable-clause",
+    "name": "Data: Settings Validation Blocked-Marketplaces Kept Unmatchable Clause",
+    "desc": "Ternary clause of the marketplace-entry validation line for blockedMarketplaces: clients keep the entry with a warning, but it can never match, so it blocks nothing"
+  },
+  "7a5e3abb0132008724b2bc65ab6b30de5dbfa8df": { "facing": "internal" },
+  "0266e1389cc2037457765f83ba7f7c9865deef4d": { "facing": "internal" },
+  "bc521937b9c95ecbb3adee45122aea55cbdca3fc": { "facing": "internal" },
+  "9e056001564cf08c682bcf1aa45544d0c545b216": { "facing": "internal" },
+  "85fba91878b84e8be871a6ddc2f5f58e6839d131": { "facing": "internal" },
+  "f348cc3d1cd42b3bcbdc70ec0d4987104fed1049": { "facing": "internal" },
+  "568067785fd3e9281072ee1607d45cfd61a6c215": { "facing": "internal" },
+  "de55cd7cb25e358797c88c28e2b557c14f56386f": { "facing": "internal" },
+  "fc2213137ec12d41bafae9c64cf0e0fff28853f2": {
+    "facing": "model",
+    "id": "tool-result-pdf-rendered-pages-move-failed",
+    "name": "Tool Result: PDF Rendered Pages Move Failed",
+    "desc": "Read tool PDF page-extraction error when the rendered page images could not be moved into the output directory, with the error code"
+  },
+  "e13dc2e719c078912ddaf46ac1beefe5f3070bdc": { "facing": "internal" },
+  "2c272626d158931c51e99bf630d7d9ab5bedf3ea": { "facing": "ui" },
+  "25a90429b4a1b6df8801791d5a1b0bbacfa9578e": { "facing": "internal" },
+  "e3bf41c056924e9ec655e9749ba348c93298bc85": { "facing": "internal" },
+  "be9e9e7a0ce7e359ddaf6dc7ec932286dc80ba67": { "facing": "internal" },
+  "78ea4e835472f635d4dcedfa288b0751f2942ac8": { "facing": "internal" },
+  "0073314c11ff6ce76bbcb9da44717d8ec0c7487b": { "facing": "internal" },
+  "f8a375cc93acd607a5fb916bc5e9be0ce9f67084": { "facing": "internal" },
+  "2596086ffae2d677afd069a40eb383b96e74a046": { "facing": "internal" },
+  "448abb664df75328ccbbf6845ec1dabc5a88d79c": {
+    "facing": "model",
+    "id": "slash-command-plugin-validate-ui-render-surfaces-only-list",
+    "name": "Plugin Validate: UI Render Component Surfaces-Only List",
+    "desc": "Phrase naming the several surfaces a ui.render component is raised on (\"the X, Y and Z surfaces only\"), used in /plugin validate advice that a hook's surface matcher never fires"
+  },
+  "85d71aa886f1c56b3b1bbd9497872cd22e23a2e2": { "facing": "internal" },
+  "0370f28e348a58ef2d0e06c07b82449dc25dd1ac": {
+    "facing": "model",
+    "id": "tool-result-bash-zsh-read-non-numeric-operand-too-complex",
+    "name": "Tool Result: Bash Zsh Read Non-Numeric Operand Too Complex",
+    "desc": "Bash too-complex reason when a zsh `read` numeric option operand is non-numeric, because zsh arith-evaluates it and may run $(cmd)"
+  },
+  "21f281a5fd913240487c496e2bb696f8afd07ce6": {
+    "facing": "model",
+    "id": "tool-result-bash-zsh-read-prompt-subscript-too-complex",
+    "name": "Tool Result: Bash Zsh Read Prompt Subscript Too Complex",
+    "desc": "Bash too-complex reason when a zsh `read -p` operand is a subscripted, dash-prefixed or runtime-determined NAME that zsh may arith-evaluate"
+  },
+  "42baa5cee5007611101b1922ffcafb52b487fdbb": {
+    "facing": "model",
+    "id": "system-prompt-memory-read-only-cannot-save-new-memories",
+    "name": "System Prompt: Memory Read-Only, Cannot Save New Memories",
+    "desc": "Memory system-prompt sentence used when the memory directory is read-only this session: states that no new memories can be saved to it"
+  },
+  "3e5acb13acc656f4439de6c20cf9bebda30baca0": { "facing": "internal" },
+  "34d7f454af60d73822afbe46db0446668421073e": { "facing": "internal" },
+  "4fdedbe5816521f76eda672d5d487527b0b3f36f": { "facing": "internal" },
+  "f70cadc0f83cb3893b4f634cb6fa6a45faab120a": { "facing": "internal" },
+  "4dd85c11aec5e98f64ff41fa6f204ab2e05bb513": {
+    "facing": "model",
+    "id": "tool-result-read-symlink-resolution-changed-after-permission",
+    "name": "Tool Result: Read Symlink Resolution Changed After Permission",
+    "desc": "Read tool refusal when a file's symlink resolution changed between the permission check and the read, with the specific reason and advice to stop concurrent link rewrites and retry"
+  },
+  "e0bd33b8408af49faedeff5388e8cea7e68fe815": { "facing": "internal" },
+  "49cda5784f4203ae8f47c808af6fc8c921bac7b4": { "facing": "internal" },
+  "7a00e55dd834a622dd09cbbf5bf9317a675be7f3": { "facing": "internal" },
+  "5f4d27fc0234ceb060cfa5b1719b627797fcf27f": { "facing": "ui" },
+  "5aed70ef2837c6ce2bcd8d559c01118536bf29dd": { "facing": "ui" },
+  "2a1ff9649e6748975f6fc5b5509443a7e097aa15": { "facing": "ui" },
+  "ff74ffd3f4520e85cd045ef41c24343641c85438": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-rate-limited-nothing-published",
+    "name": "Tool Result: Artifact Publish Rate-Limited, Nothing Published",
+    "desc": "Opening sentence of the Artifact tool's publish rate-limit result: publishing is rate-limited and nothing was published"
+  },
+  "d7ecbe144fc94779c753c24b8f6d2757ef1b329c": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-rate-limited-already-retried-once",
+    "name": "Tool Result: Artifact Publish Rate-Limited, Already Retried Once",
+    "desc": "Artifact rate-limit result clause: the call itself is fine, a publishing rate limit refused it, and the tool already waited and resent it once"
+  },
+  "84339fa824ebc50dcb079bb73ea4bad5f4537cb0": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-rate-limited-wait-seconds-tail",
+    "name": "Tool Result: Artifact Publish Rate-Limited Wait Tail",
+    "desc": "Artifact rate-limit result tail after the retry delay: publishing limits are shared so the wait may be longer, and nothing else about the call should change"
+  },
+  "e678a4a0a47790262d11a05adddf6838bcc02287": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-rate-limited-reserved-slug-note",
+    "name": "Tool Result: Artifact Publish Rate-Limited Reserved Slug Note",
+    "desc": "Artifact rate-limit result note, added when a slug was reserved, that the artifact was reserved for this publish with nothing published yet and should be targeted to avoid reserving another"
+  },
+  "52cfcc79be36839e81f858bfc92262c849ea2b47": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-rate-limited-refused-step-copy-staging",
+    "name": "Tool Result: Artifact Rate-Limited Refused Step (Copy Staging)",
+    "desc": "Refused-step description in the Artifact rate-limit result, naming the copied files being staged from other artifacts and saying nothing was staged"
+  },
+  "46c04f179cd59ef95c716400c25cec3dedfe8cf8": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-rate-limited-refused-step-copy-preflight",
+    "name": "Tool Result: Artifact Rate-Limited Refused Step (Copy Preflight)",
+    "desc": "Refused-step description in the Artifact rate-limit result for the upload preflight that copying files from another artifact needs; nothing was staged"
+  },
+  "a50dc2550b103059ee8b5db72467308918ff0196": { "facing": "internal" },
+  "ed4b8e85769ac3edf7657897e2c14ccc6f09d771": {
+    "facing": "model",
+    "id": "tool-result-grep-ripgrep-spawn-advice-process-limit",
+    "name": "Tool Result: Grep Ripgrep Spawn Advice (Process Limit)",
+    "desc": "Advice clause for an EAGAIN ripgrep spawn failure, relayed to the user: the machine hit a process limit and closing other programs can help"
+  },
+  "e09de6c44e39a51edd43fd69160bef454d241f2f": {
+    "facing": "model",
+    "id": "tool-result-grep-ripgrep-spawn-advice-short-of-memory",
+    "name": "Tool Result: Grep Ripgrep Spawn Advice (Short Of Memory)",
+    "desc": "Advice clause for an ENOMEM ripgrep spawn failure: the machine is short of memory and closing other programs can help"
+  },
+  "1fab0ea945a1d18792595349b6eda0e0b51b19f9": {
+    "facing": "model",
+    "id": "tool-result-grep-ripgrep-spawn-advice-too-many-files-open",
+    "name": "Tool Result: Grep Ripgrep Spawn Advice (Too Many Files Open)",
+    "desc": "Advice clause for an ENFILE ripgrep spawn failure: the machine has too many files open and closing other programs can help"
+  },
+  "1f9a7c82530fc8a7fbcc951c4ee3ce493e4e986a": { "facing": "internal" },
+  "c7c82f43759d0a4db460a79c6230ec78c009da5e": { "facing": "internal" },
+  "17123758e52af40c0bafaeb40e27ea0587409eb2": { "facing": "internal" },
+  "139cab7c988a40ba1587422b487318025fca30ea": { "facing": "internal" },
+  "1962dd8e8113fa2bf44db52d1f4fa21f17709d3b": { "facing": "internal" },
+  "d9be337b4112711a0adf974a5b2395f3be4c560f": {
+    "facing": "model",
+    "id": "tool-description-webfetch-artifact-links-use-artifact-tool",
+    "name": "Tool Description: WebFetch Artifact Links Use Artifact Tool",
+    "desc": "WebFetch description bullet used when the Artifact tool is available: claude.ai artifact links (including preview.claude.ai) are published artifacts to read with the Artifact tool's read action, not WebFetch, curl or a headless browser"
+  },
+  "7d682d0d6271398e3a6e10f32bccf3f5f0e65c0f": { "facing": "internal" },
+  "01ed877afc6689bd2c152a54684df86243cc2c4f": {
+    "facing": "model",
+    "id": "tool-result-project-command-check-changed-since-attach",
+    "name": "Tool Result: Project Command Check Changed Since Attach",
+    "desc": "Permission ask when a cloud session's call is served on an attached computer whose project command-check hook no longer matches the one recorded at attach time, so the hook is not run"
+  },
+  "cb8a851b79b13d30a0d6199db8195416fb4ad3f3": {
+    "facing": "model",
+    "id": "system-reminder-project-command-check-changed-since-last-serve",
+    "name": "System Reminder: Project Command Check Changed Since Last Serve",
+    "desc": "One-time hook context: the project's command check differs from the one the computer last recorded for this project, so each command asks the person for this session and the check is accepted once the session's use of that computer ends"
+  },
+  "84000c3ee19a607bf5482c748c463ccf5d92daee": {
+    "facing": "model",
+    "id": "tool-result-project-command-check-wants-confirmation",
+    "name": "Tool Result: Project Command Check Wants Confirmation",
+    "desc": "Permission ask reason when the project's sandboxed command check answered ask/defer for the command"
+  },
+  "79979decc979bd3fc6953a168e4a2ebf0b0cd09a": {
+    "facing": "model",
+    "id": "tool-result-project-command-check-rewrite-refused-cloud-session",
+    "name": "Tool Result: Project Command Check Rewrite Refused (Cloud Session)",
+    "desc": "Permission ask when the project's command check tried to rewrite the command, which it may not do for a cloud session, and asks to approve the command as written"
+  },
+  "13303dc42d3feebd05cf757bbbb5113be086f210": {
+    "facing": "model",
+    "id": "tool-result-project-command-check-could-not-finish",
+    "name": "Tool Result: Project Command Check Could Not Finish",
+    "desc": "Permission ask when the project's command check timed out, exited, failed to start or gave an unreadable answer on this computer, with that cause"
+  },
+  "e63d5659ffec787e700c4b180056cbbe41e1e43c": {
+    "facing": "model",
+    "id": "tool-result-project-command-check-blocked-command",
+    "name": "Tool Result: Project Command Check Blocked Command",
+    "desc": "Deny reason when a project command check hook blocked the command, naming the check and quoting its reason"
+  },
+  "4b9fab9b962a6122692bde89348c1a8b12a16359": {
+    "facing": "model",
+    "id": "system-reminder-project-command-checks-read-only-sandbox",
+    "name": "System Reminder: Project Command Checks Run In Read-Only Sandbox",
+    "desc": "One-time hook context that project command checks run in a read-only sandbox on this computer for this session"
+  },
+  "be57d965dee5c24e905d01f8e8acc29069c9a86d": { "facing": "internal" },
+  "e050482e81eeb96ef1a2a6e0fba2d26ec7c7ca26": {
+    "facing": "model",
+    "id": "tool-description-artifact-docs-connector-start-from-docs-type-variant",
+    "name": "Tool Description: Artifact Docs Connector Start From Docs Type Variant",
+    "desc": "Replacement pair that rewrites the connector sentence in the Artifact tool description to say documents sent to the first-party connector start from the Docs Artifact type when the tool lists one."
+  },
+  "534e541f261566e7946621277cd6a00cd3ade17c": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-replacing-existing-page",
+    "name": "Tool Result: Artifact publish — replacing an existing page",
+    "desc": "Warns that the publish will replace the page already at the named address."
+  },
+  "9faedc3c494a0d925ff76d1e9af6698c04175c93": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-replacing-current-page",
+    "name": "Tool Result: Artifact publish — replacing its current page",
+    "desc": "Retarget clause when the publish replaces the artifact's own current page."
+  },
+  "c12b5bdccc0e07b1330363454d89b771edeaf755": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-replacing-named-page",
+    "name": "Tool Result: Artifact publish — replacing a named page",
+    "desc": "Retarget clause naming the page the publish will replace."
+  },
+  "025d6173fe4e5dab7f5052cad572d16d4ddb5881": {
+    "facing": "model",
+    "id": "tool-result-artifact-publish-replacing-unrecognized-address",
+    "name": "Tool Result: Artifact publish — replacing a page at an unrecognized address",
+    "desc": "Retarget clause when the target url cannot be parsed into a known artifact address."
+  },
+  "0f1a495589f97ce5df0135210e370ce546b73f87": {
+    "facing": "model",
+    "id": "tool-result-remote-tool-unverified-refusal-reason-unattested-request",
+    "name": "Tool Result: Remote tool unverified refusal — unattested request",
+    "desc": "Refusal reason when a remote tool call arrived without a valid device signature."
+  },
+  "b7a4aa9db06d526a29721e73525df2bad3aab4a9": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-no-changes-to-review",
+    "name": "Slash Command: Ultrareview no changes to review",
+    "desc": "Ultrareview empty-diff error wrapper: states there are no changes to review, with the reason and hints appended."
+  },
+  "5be595e98398f195460fccbf5b765cc97b062f98": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-empty-diff-no-commits-beyond-base",
+    "name": "Slash Command: Ultrareview empty diff no commits beyond base",
+    "desc": "Empty-diff reason: the branch has no commits beyond the base and no edits."
+  },
+  "1932d38982f8f0dc83073ac138a4295ed35db817": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-empty-diff-against-base-empty",
+    "name": "Slash Command: Ultrareview empty diff against base",
+    "desc": "Empty-diff reason: the diff against the base is empty."
+  },
+  "9ebd60e69fd8afb9fa78ed96d6b3f9c40bd1845e": { "facing": "internal" }
 }

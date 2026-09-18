@@ -1311,5 +1311,55 @@
     "verdict": "archived",
     "version": "2.1.276",
     "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "slash-command-mcp-reconnect-pending-approval": {
+    "verdict": "archived",
+    "version": "2.1.277",
+    "why": "No literal run survives in the 2.1.277 bundle; override archived to ~/.tweakcc/orphans-removed-for-2.1.277/."
+  },
+  "tool-parameter-task-output-block": {
+    "verdict": "archived",
+    "version": "2.1.277",
+    "why": "TaskOutput tool removed in 2.1.277"
+  },
+  "tool-parameter-task-output-task-id": {
+    "verdict": "archived",
+    "version": "2.1.277",
+    "why": "TaskOutput tool removed in 2.1.277"
+  },
+  "tool-parameter-task-output-timeout": {
+    "verdict": "archived",
+    "version": "2.1.277",
+    "why": "TaskOutput tool removed in 2.1.277"
+  },
+  "tool-result-artifact-publish-custom-thumbnails-clause": {
+    "verdict": "archived",
+    "version": "2.1.277",
+    "why": "No literal run survives in the 2.1.277 bundle; override archived to ~/.tweakcc/orphans-removed-for-2.1.277/."
+  },
+  "tool-result-bash-dangerous-op-unset-variable-expansion-condition": {
+    "verdict": "archived",
+    "version": "2.1.277",
+    "why": "No literal run survives in the 2.1.277 bundle; override archived to ~/.tweakcc/orphans-removed-for-2.1.277/."
+  },
+  "tool-result-mcp-task-elicitation-dialog-open": {
+    "verdict": "archived",
+    "version": "2.1.277",
+    "why": "No literal run survives in the 2.1.277 bundle; override archived to ~/.tweakcc/orphans-removed-for-2.1.277/."
+  },
+  "tool-result-mcp-task-survives-session": {
+    "verdict": "archived",
+    "version": "2.1.277",
+    "why": "No literal run survives in the 2.1.277 bundle; override archived to ~/.tweakcc/orphans-removed-for-2.1.277/."
+  },
+  "tool-result-task-output-truncated-tail-only": {
+    "verdict": "archived",
+    "version": "2.1.277",
+    "why": "TaskOutput tool removed in 2.1.277"
+  },
+  "tool-result-task-output-web-fetch-agent-no-report": {
+    "verdict": "archived",
+    "version": "2.1.277",
+    "why": "TaskOutput tool removed in 2.1.277"
   }
 }

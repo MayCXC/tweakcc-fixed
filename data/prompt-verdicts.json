@@ -39861,5 +39861,3075 @@
     "verdict": "wipe-merge",
     "version": "2.1.276",
     "why": "Every claim is carried by system-prompt-saving-skills-via-file-delivery, which the same send_file selector injects into the same request; the save_tool/propose_tool/no_save_tool arms never co-render. Verified adversarially."
+  },
+  "data-allowed-mcp-servers-setting": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-command-plugin-source-command-field": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-cross-session-inbound-setting": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Sole semantics of the key; every sentence is mechanics."
+  },
+  "data-dialog-expiry-setting": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique security/ordering contract (trusted sources only, env override precedence); every sentence frozen."
+  },
+  "data-sandbox-credential-environment-no-match-setting": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-sandbox-credential-file-mask-claims-setting": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Distinct property and contract; not coverage. Keep."
+  },
+  "data-sandbox-filesystem-disabled-setting": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Security contract text (what protection is dropped); a wipe would also leave the concatenated description broken between part-2 and part-5."
+  },
+  "data-sandbox-tls-termination-setting": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique mechanics; frozen (paths, /sandbox install, ordering); dropping would dangle part-2's 'Only honored from...'."
+  },
+  "data-settings-additional-marketplaces-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Defines the alias contract; part-2 continues the sentence, so wiping would dangle."
+  },
+  "data-settings-additional-marketplaces-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-additional-marketplaces-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (ordering 'when', 'while'); the compat advice is unique and useful for the model's choice of key."
+  },
+  "data-settings-advisor-model-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only statement of the key's purpose in the schema."
+  },
+  "data-settings-agent-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-agent-push-notif-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-allow-all-claude-ai-mcps-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique semantics."
+  },
+  "data-settings-allow-managed-hooks-only-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition of the key."
+  },
+  "data-settings-allow-managed-mcp-servers-only-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique merge/scope mechanics; frozen (only, enumerations)."
+  },
+  "data-settings-allow-managed-permission-rules-only-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Security/precedence contract, frozen."
+  },
+  "data-settings-allowed-channel-plugins-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Part-2 continues the sentence; the joined description is concise spec."
+  },
+  "data-settings-allowed-channel-plugins-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Wiping would break the joined sentence and drop the replacement semantics."
+  },
+  "data-settings-allowed-channel-plugins-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique dependency/fallback mechanics; part cannot be removed without breaking the joined sentence."
+  },
+  "data-settings-allowed-http-hook-urls-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique mechanics."
+  },
+  "data-settings-allowed-marketplaces-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique semantics of the allowedMarketplaces alias."
+  },
+  "data-settings-allowed-marketplaces-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique conflict-resolution contract for this key."
+  },
+  "data-settings-allowed-marketplaces-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique conflict/compat contract; wipe would dangle part-2 (\"this key \")."
+  },
+  "data-settings-allowed-mcp-servers-server-command-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-allowed-mcp-servers-server-name-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics for the field."
+  },
+  "data-settings-allowed-mcp-servers-server-url-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Distinct key; only definition."
+  },
+  "data-settings-always-thinking-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-api-key-helper-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep."
+  },
+  "data-settings-append-plugins-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "A sibling key's description cannot carry this key's per-key scope; wiping leaves appendPlugins bare. All frozen (ordering words, enumeration of sources)."
+  },
+  "data-settings-ask-user-question-timeout-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Joined description is unique; part-1 starts the sentence and cannot be removed without dangling part-2."
+  },
+  "data-settings-ask-user-question-timeout-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (default/ordering); required for the joined sentence to parse."
+  },
+  "data-settings-ask-user-question-timeout-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Carries the allowed enum; wipe dangles part-2."
+  },
+  "data-settings-attribution-commit-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Short description; the empty-string sentence is frozen and the only carrier of the rule on the validation-failure path. Keep."
+  },
+  "data-settings-attribution-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Default semantics unique; first sentence is the needed readable lead."
+  },
+  "data-settings-attribution-pr-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep; the empty-string rule must survive where the skill is absent."
+  },
+  "data-settings-auto-compact-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-auto-continue-at-usage-limit-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics carrier; both states needed."
+  },
+  "data-settings-auto-dream-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier of the override-server-default semantics."
+  },
+  "data-settings-auto-memory-directory-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Security contract (ignored in checked-in settings) and default path are unique."
+  },
+  "data-settings-auto-memory-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier."
+  },
+  "data-settings-auto-scroll-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Minimal accurate description; wiping leaves a bare key."
+  },
+  "data-settings-auto-updates-channel-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Enum is frozen and unique."
+  },
+  "data-settings-auto-upload-sessions-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-available-models-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-aws-auth-refresh-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only statement of the key's meaning."
+  },
+  "data-settings-aws-credential-export-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition of awsCredentialExport."
+  },
+  "data-settings-bash-edit-diff-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique mechanics incl. permission-mode gate."
+  },
+  "data-settings-bash-output-max-chars-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-blocked-marketplaces-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "CAPS BEFORE is a frozen ordering word, not theater. Keep."
+  },
+  "data-settings-channels-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-claude-md-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen restrictive 'Only honored'; unique scope contract."
+  },
+  "data-settings-claude-md-excludes-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (paths, enumeration, e.g.-style examples, 'Only'); unique mechanics."
+  },
+  "data-settings-cleanup-period-days-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen numbers and a flag name; the flag guidance is unique. Keep."
+  },
+  "data-settings-company-announcements-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keeps random-selection behavior."
+  },
+  "data-settings-daemon-cold-start-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-default-shell-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen default value."
+  },
+  "data-settings-denied-mcp-servers-description": {
+    "verdict": "trim",
+    "version": "2.1.276",
+    "why": "Keep the definition and the all-scopes clause; delete only the precedence sentence, which the sibling carries in the same schema blob."
+  },
+  "data-settings-denied-mcp-servers-server-command-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-denied-mcp-servers-server-name-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-denied-mcp-servers-server-url-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique per-key semantics."
+  },
+  "data-settings-desktop-session-cleanup-period-days-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "All frozen numbers, ordering and precedence."
+  },
+  "data-settings-disable-agent-view-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (enumeration, env var); unique."
+  },
+  "data-settings-disable-all-hooks-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-disable-artifact-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-disable-auto-mode-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Minimal; nothing to trim."
+  },
+  "data-settings-disable-bundled-skills-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique scope contract."
+  },
+  "data-settings-disable-claude-ai-connectors-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-disable-claude-ai-connectors-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Scope contract; wipe breaks the sentence."
+  },
+  "data-settings-disable-claude-ai-connectors-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Completes the part-2 sentence and holds the precedence rule; frozen."
+  },
+  "data-settings-disable-command-plugin-sources-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique mechanics."
+  },
+  "data-settings-disable-command-plugin-sources-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique default rule; wipe dangles part-3."
+  },
+  "data-settings-disable-command-plugin-sources-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Removing would leave part-2 dangling; managed-only scope is unique."
+  },
+  "data-settings-disable-remote-control-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-disable-sideload-flags-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Stage 1 proposed cutting the last sentence as a repeat of \"(and set in managed settings)\". Overruled: that sentence is the only statement that the key is ignored in user/project/local settings, a scope restriction the opening parenthetical does not make. Frozen spec text throughout. Keep."
+  },
+  "data-settings-disable-skill-shell-execution-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-disable-workflows-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (env var); only statement of CLAUDE_CODE_DISABLE_WORKFLOWS equivalence."
+  },
+  "data-settings-disabled-mcpjson-servers-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Example is not a semantics statement and does not co-render on every path."
+  },
+  "data-settings-editor-mode-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Minimal; wiping leaves bare key."
+  },
+  "data-settings-effort-level-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier for top-level effortLevel."
+  },
+  "data-settings-emoji-completion-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-enable-all-project-mcp-servers-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics."
+  },
+  "data-settings-enable-artifact-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (enumeration, 'only', 'any'); security-relevant precedence contract."
+  },
+  "data-settings-enable-workflows-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-enabled-mcpjson-servers-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics."
+  },
+  "data-settings-enabled-plugins-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "No full coverage in every rendering request; precedence recipe is a unique ordering contract."
+  },
+  "data-settings-enforce-available-models-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique mechanics, frozen."
+  },
+  "data-settings-env-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep: only statement of the key's meaning on the validation path."
+  },
+  "data-settings-extra-known-marketplaces-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-extra-known-marketplaces-install-location-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique default."
+  },
+  "data-settings-extra-known-marketplaces-source-directory-path-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-extra-known-marketplaces-source-file-path-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-extra-known-marketplaces-source-github-repo-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-github-repo-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-host-pattern-host-pattern-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-extra-known-marketplaces-source-npm-package-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen match semantics."
+  },
+  "data-settings-extra-known-marketplaces-source-npm-registry-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-extra-known-marketplaces-source-npm-version-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-extra-known-marketplaces-source-path-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-path-pattern-path-pattern-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-extra-known-marketplaces-source-ref-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-description": {
+    "verdict": "trim",
+    "version": "2.1.276",
+    "why": "The first sentence carries the whole user-facing meaning. The second sentence is frozen (it names a filename), so it can only be deleted whole. Deleting it removes implementation detail and leaves a grammatical description that still makes sense to humans."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-name-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique validation contract; wipe breaks the sentence with part-2."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-name-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (schema identifier); removing it would dangle part-1's 'Same validation '. Any cleanup of the dev-comment tail belongs to part-3's verdict and must keep part-2's clause intact."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-name-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Deleting would leave part-2 ending on a dangling \"—\"; rewriting frozen text is barred. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-owner-email-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-owner-name-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-owner-url-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-headers-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-headers-helper-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Security contract (header filtering) and run conditions are unique."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-name-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-archive-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Wipe breaks the sentence with part-2."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-archive-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-archive-sha256-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (every, SHA-256, plugin.json, ordering 'else'); security contract (install refused on mismatch)."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-archive-sha256-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen precedence enumeration; needed for grammar."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-archive-sha256-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Load-bearing gotcha; removing leaves part-2 dangling."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-archive-url-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-archive-url-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-command-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-command-mode-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Enum semantics frozen; part-2 continues."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-command-mode-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (platform enumeration, 'must'); needed for joined sentence."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-command-mode-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Completes part-2 sentence; frozen (while)."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-command-timeout-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition of this property."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Validation rule; wipe dangles part-2."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Removing leaves part-1 dangling after the em-dash; states why relative paths are rejected here."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-git-subdir-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen ('Only'); unique."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-git-subdir-path-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-git-subdir-url-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-npm-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-npm-package-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-npm-registry-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep; the hedge is not worth a rewrite and rewriting frozen text is forbidden."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-npm-version-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-sha-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Minimal; wiping leaves bare `sha` in three variants."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-unsupported-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (`error` field name); removal would dangle part-2 '(then ... holds the reason)'."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-unsupported-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Cannot be cut without breaking the joined sentence. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-unsupported-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Deleting would leave part-2 ending \"rewrites\" with no object. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-settings-plugins-source-url-url-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (https://, git@ enumeration)."
+  },
+  "data-settings-extra-known-marketplaces-source-skills-dir-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique policy mechanics."
+  },
+  "data-settings-extra-known-marketplaces-source-skip-lfs-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique; tells the model the key is inert and what to do instead."
+  },
+  "data-settings-extra-known-marketplaces-source-sparse-paths-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-url-headers-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier."
+  },
+  "data-settings-extra-known-marketplaces-source-url-headers-helper-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-extra-known-marketplaces-source-url-url-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-fallback-model-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-fast-mode-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-fast-mode-per-session-opt-in-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen; the only restatement is a clarifying default, too small to trim and verbatim-or-delete would lose the explicit start state."
+  },
+  "data-settings-feedback-drafts-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen enum."
+  },
+  "data-settings-feedback-survey-rate-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Starting-value guidance is useful when the model writes the key."
+  },
+  "data-settings-file-checkpointing-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-file-suggestion-command-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-footer-links-regexes-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (paths, number 5, enumeration); the purpose sentence is the only statement of intended use."
+  },
+  "data-settings-footer-links-regexes-regex-label-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen ({name}, default)."
+  },
+  "data-settings-footer-links-regexes-regex-pattern-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep: removal would leave a bare nested key; negligible saving."
+  },
+  "data-settings-footer-links-regexes-regex-type-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen."
+  },
+  "data-settings-footer-links-regexes-regex-url-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-footer-links-regexes-type-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "One-sentence label for a distinct schema node. Keep."
+  },
+  "data-settings-force-login-gateway-url-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Security scope contract per key, frozen."
+  },
+  "data-settings-force-login-method-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique enum semantics."
+  },
+  "data-settings-force-login-org-uuid-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-force-remote-settings-refresh-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique startup contract."
+  },
+  "data-settings-gateway-internal-networks-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Security/limit contract, frozen."
+  },
+  "data-settings-gcp-auth-refresh-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-hooks-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Top-level key label; wiping leaves bare key."
+  },
+  "data-settings-hooks-hooks-agent-model-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition; default differs from sibling."
+  },
+  "data-settings-hooks-hooks-agent-prompt-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique per-key."
+  },
+  "data-settings-hooks-hooks-agent-timeout-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only statement of agent default."
+  },
+  "data-settings-hooks-hooks-agent-type-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-hooks-hooks-command-args-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Joined with part-2/3 forms the exec-form contract."
+  },
+  "data-settings-hooks-hooks-command-args-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Wiping would break the sentence and lose the mechanic."
+  },
+  "data-settings-hooks-hooks-command-args-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique mechanics."
+  },
+  "data-settings-hooks-hooks-command-async-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-hooks-hooks-command-async-rewake-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-hooks-hooks-command-if-description": {
+    "verdict": "trim",
+    "version": "2.1.276",
+    "why": "Keep syntax/example and the frozen 'Only runs' rule; drop the restating rationale sentence."
+  },
+  "data-settings-hooks-hooks-command-shell-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-hooks-hooks-command-timeout-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-hooks-hooks-command-type-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition of the discriminator value."
+  },
+  "data-settings-hooks-hooks-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier."
+  },
+  "data-settings-hooks-hooks-http-allowed-env-vars-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Security/interpolation contract."
+  },
+  "data-settings-hooks-hooks-http-headers-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-hooks-hooks-http-timeout-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unit 'seconds' is load-bearing; per-key description."
+  },
+  "data-settings-hooks-hooks-http-type-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics."
+  },
+  "data-settings-hooks-hooks-http-url-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-hooks-hooks-mcp-tool-input-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (e.g., interpolation syntax); unique mechanics."
+  },
+  "data-settings-hooks-hooks-mcp-tool-server-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Minimal constraint."
+  },
+  "data-settings-hooks-hooks-mcp-tool-timeout-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Per-field unit statement."
+  },
+  "data-settings-hooks-hooks-mcp-tool-tool-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Minimal."
+  },
+  "data-settings-hooks-hooks-mcp-tool-type-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-hooks-hooks-once-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier."
+  },
+  "data-settings-hooks-hooks-prompt-continue-on-block-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-hooks-hooks-prompt-model-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep."
+  },
+  "data-settings-hooks-hooks-prompt-prompt-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen placeholder name."
+  },
+  "data-settings-hooks-hooks-prompt-timeout-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-hooks-hooks-prompt-type-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Minimal discriminator label."
+  },
+  "data-settings-hooks-hooks-status-message-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier."
+  },
+  "data-settings-hooks-matcher-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier."
+  },
+  "data-settings-http-hook-allowed-env-vars-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen."
+  },
+  "data-settings-include-co-authored-by-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep the Deprecated marker and default."
+  },
+  "data-settings-include-git-instructions-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-input-needed-notif-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen enumeration; minimal."
+  },
+  "data-settings-isolate-peer-machines-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only schema definition."
+  },
+  "data-settings-keybinding-flavor-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep the Deprecated marker so the model does not set it."
+  },
+  "data-settings-language-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keeps the dictation scope."
+  },
+  "data-settings-managed-mcp-servers-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Security/transport contract, frozen."
+  },
+  "data-settings-managed-sources-behavior-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (enum, precedence ordering, filenames)."
+  },
+  "data-settings-managed-sources-behavior-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Wipe breaks the joined sentence."
+  },
+  "data-settings-managed-sources-behavior-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-managed-sources-behavior-description-part-4": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-managed-sources-behavior-description-part-5": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-managed-sources-behavior-description-part-6": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-max-effort-level-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-minimum-version-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Minimal, distinct semantics."
+  },
+  "data-settings-model-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-model-overrides-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (e.g., model ID example); unique."
+  },
+  "data-settings-model-picker-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-model-picker-options-behaves-as-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Wipe breaks the sentence."
+  },
+  "data-settings-model-picker-options-behaves-as-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-model-picker-options-behaves-as-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-model-picker-options-behaves-as-description-part-4": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Completes part-3 sentence."
+  },
+  "data-settings-model-picker-options-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-model-picker-options-description-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-model-picker-options-label-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics."
+  },
+  "data-settings-model-picker-options-model-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-model-picker-replace-built-in-options-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Wipe breaks the sentence."
+  },
+  "data-settings-model-picker-replace-built-in-options-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Completes part-1, frozen."
+  },
+  "data-settings-model-pricing-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Removing would leave the description starting mid-thought."
+  },
+  "data-settings-model-pricing-description-part-10": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-model-pricing-description-part-11": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Wipe breaks the honored-sources sentence."
+  },
+  "data-settings-model-pricing-description-part-12": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Would dangle part-11 if cut."
+  },
+  "data-settings-model-pricing-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Wipe breaks the sentence."
+  },
+  "data-settings-model-pricing-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Mid-sentence part; frozen enumeration."
+  },
+  "data-settings-model-pricing-description-part-4": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique mechanics."
+  },
+  "data-settings-model-pricing-description-part-5": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Validation contract."
+  },
+  "data-settings-model-pricing-description-part-6": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (exactly, enumeration)."
+  },
+  "data-settings-model-pricing-description-part-7": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Continues into part-8."
+  },
+  "data-settings-model-pricing-description-part-8": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (enumeration, 'every'); grammar-critical."
+  },
+  "data-settings-model-pricing-description-part-9": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen ('any', enumeration); grammar-critical."
+  },
+  "data-settings-model-settings-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics."
+  },
+  "data-settings-model-settings-effort-level-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics."
+  },
+  "data-settings-model-settings-max-effort-level-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-otel-headers-helper-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier."
+  },
+  "data-settings-output-style-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-parent-settings-behavior-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (identifiers, flag)."
+  },
+  "data-settings-parent-settings-behavior-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Wipe breaks the sentence."
+  },
+  "data-settings-parent-settings-behavior-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (enum, 'no effect when'); closes the joined description."
+  },
+  "data-settings-permissions-additional-directories-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-permissions-allow-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-permissions-ask-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-permissions-block-reads-outside-working-directories-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique precedence contract."
+  },
+  "data-settings-permissions-default-mode-auto-mode-shape-auto-mode-allow-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen sentinel name."
+  },
+  "data-settings-permissions-default-mode-auto-mode-shape-auto-mode-classify-all-shell-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen default."
+  },
+  "data-settings-permissions-default-mode-auto-mode-shape-auto-mode-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition of the object key."
+  },
+  "data-settings-permissions-default-mode-auto-mode-shape-auto-mode-environment-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen sentinel literal \"$defaults\"."
+  },
+  "data-settings-permissions-default-mode-auto-mode-shape-auto-mode-hard-deny-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-permissions-default-mode-auto-mode-shape-auto-mode-soft-deny-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique section semantics; externally referenced literal."
+  },
+  "data-settings-permissions-default-mode-auto-mode-shape-skip-auto-permission-prompt-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-permissions-default-mode-auto-mode-shape-use-auto-mode-during-plan-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier."
+  },
+  "data-settings-permissions-default-mode-brief-view-shape-default-view-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-permissions-default-mode-deep-link-shape-disable-deep-link-registration-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics."
+  },
+  "data-settings-permissions-default-mode-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "The alias fact is unique; frozen."
+  },
+  "data-settings-permissions-default-mode-screen-reader-shape-ax-screen-reader-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-permissions-default-mode-voice-shape-voice-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-permissions-deny-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Minimal per-key label."
+  },
+  "data-settings-permissions-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep: only carrier on the validation path."
+  },
+  "data-settings-permissions-disable-bypass-permissions-mode-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-plans-directory-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-plugin-configs-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-plugin-configs-mcp-servers-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-plugin-configs-options-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-plugin-suggestion-marketplaces-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "All unique security/ordering contracts."
+  },
+  "data-settings-plugin-trust-message-description": {
+    "verdict": "trim",
+    "version": "2.1.276",
+    "why": "The first two sentences carry every mechanic (appended to the pre-install trust warning; only read from managed-settings.json / MDM). The 'useful for enterprise administrators' sentence restates the policy-only audience already implied and adds a sample string; it contains e.g. so it is deleted whole, not rewritten. Remaining text stays a readable description."
+  },
+  "data-settings-policy-helper-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-pr-url-template-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (placeholders, example URL, 'first')."
+  },
+  "data-settings-precompute-compaction-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-preferred-notif-channel-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-prefers-reduced-motion-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Minimal."
+  },
+  "data-settings-prepend-plugins-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique ordering contract."
+  },
+  "data-settings-process-wrapper-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen env var and precedence."
+  },
+  "data-settings-prompt-cache-ttl-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-prompt-suggestion-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Default semantics needed."
+  },
+  "data-settings-proxy-auth-helper-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics."
+  },
+  "data-settings-remote-control-at-startup-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics."
+  },
+  "data-settings-remote-default-environment-id-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-remote-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-required-maximum-version-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep."
+  },
+  "data-settings-required-minimum-version-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen ('Only enforced'); unique per key."
+  },
+  "data-settings-respect-gitignore-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep; the .ignore clause is unique."
+  },
+  "data-settings-respond-to-bash-commands-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen."
+  },
+  "data-settings-sandbox-allow-apple-events-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-sandbox-allow-apple-events-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep marker and text verbatim."
+  },
+  "data-settings-sandbox-allow-apple-events-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Security warning; cutting would dangle part-2."
+  },
+  "data-settings-sandbox-allow-apple-events-description-part-5": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-sandbox-allow-unsandboxed-commands-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Security gate; frozen verbatim."
+  },
+  "data-settings-sandbox-bwrap-path-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (Only, PATH, platform); security scope contract."
+  },
+  "data-settings-sandbox-credentials-allow-plaintext-inject-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-sandbox-credentials-aws-pairs-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique; wipe dangles later parts."
+  },
+  "data-settings-sandbox-credentials-aws-pairs-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-sandbox-credentials-aws-pairs-description-part-4": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Wiping breaks parts 3/5."
+  },
+  "data-settings-sandbox-credentials-aws-pairs-description-part-5": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique re-signing mechanics."
+  },
+  "data-settings-sandbox-credentials-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-sandbox-credentials-env-vars-decode-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique per-key."
+  },
+  "data-settings-sandbox-credentials-env-vars-decode-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen, mid-sentence."
+  },
+  "data-settings-sandbox-credentials-env-vars-decode-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Would dangle part-2."
+  },
+  "data-settings-sandbox-credentials-env-vars-extract-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique per-key."
+  },
+  "data-settings-sandbox-credentials-env-vars-extract-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Wipe breaks the sentence."
+  },
+  "data-settings-sandbox-credentials-env-vars-extract-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (field names, enum, default); security masking contract."
+  },
+  "data-settings-sandbox-credentials-env-vars-mask-claims-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique fail-open contract; frozen."
+  },
+  "data-settings-sandbox-credentials-env-vars-mode-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique in the schema."
+  },
+  "data-settings-sandbox-credentials-env-vars-name-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only semantics."
+  },
+  "data-settings-sandbox-credentials-env-vars-on-extract-no-match-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Validation contract; cutting dangles neighbours."
+  },
+  "data-settings-sandbox-credentials-env-vars-on-extract-no-match-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-sandbox-credentials-files-decode-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen."
+  },
+  "data-settings-sandbox-credentials-files-description": {
+    "verdict": "trim",
+    "version": "2.1.276",
+    "why": "Only the leading sentence is unique to the array property; the mode definitions and platform degrade are carried verbatim-equivalently by the co-rendered mode description of the same entries. Both deleted sentences are frozen (enumeration/tool names) so they are deleted whole, not rewritten. Dependency: parts 1-3 of the mode description must stay (part-2 and part-3 are pristine-keep in this packet; part-1 is outside this packet)."
+  },
+  "data-settings-sandbox-credentials-files-extract-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Distinct key; wipe breaks the sentence."
+  },
+  "data-settings-sandbox-credentials-files-extract-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Would break the joined sentence."
+  },
+  "data-settings-sandbox-credentials-files-extract-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen; completes part-2."
+  },
+  "data-settings-sandbox-credentials-files-mask-duplicates-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (default, enumeration, 'Only'); needed to close part-2."
+  },
+  "data-settings-sandbox-credentials-files-mode-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-sandbox-credentials-files-mode-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-sandbox-credentials-files-mode-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-sandbox-credentials-files-on-extract-no-match-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Continues into part-2."
+  },
+  "data-settings-sandbox-credentials-files-on-extract-no-match-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen enum/default; grammar-critical."
+  },
+  "data-settings-sandbox-credentials-files-on-extract-no-match-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Grammar-critical; fail-closed contract."
+  },
+  "data-settings-sandbox-credentials-files-on-extract-no-match-description-part-4": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-sandbox-credentials-files-path-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-sandbox-credentials-inject-hosts-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen; removal dangles part-2's '`network.allowedDomains`'."
+  },
+  "data-settings-sandbox-credentials-inject-hosts-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Wipe breaks the default statement."
+  },
+  "data-settings-sandbox-credentials-sigv4-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen; per-key scope contract."
+  },
+  "data-settings-sandbox-credentials-sigv4-presigned-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen header names/enum."
+  },
+  "data-settings-sandbox-credentials-sigv4-sigv4a-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-sandbox-credentials-sigv4-streaming-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique fail-closed contract."
+  },
+  "data-settings-sandbox-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Security scope contract, frozen."
+  },
+  "data-settings-sandbox-enable-weaker-network-isolation-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique; paired with the part-2 security warning."
+  },
+  "data-settings-sandbox-enable-weaker-network-isolation-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep."
+  },
+  "data-settings-sandbox-fail-if-unavailable-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique security gate."
+  },
+  "data-settings-sandbox-filesystem-allow-managed-read-paths-only-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-sandbox-filesystem-allow-read-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-sandbox-filesystem-allow-write-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-sandbox-filesystem-deny-read-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen merge rule."
+  },
+  "data-settings-sandbox-filesystem-deny-write-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (Edit(...) rule name); unique merge contract."
+  },
+  "data-settings-sandbox-filesystem-disabled-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-sandbox-filesystem-disabled-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Would dangle part-1."
+  },
+  "data-settings-sandbox-filesystem-disabled-description-part-5": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-sandbox-filesystem-disabled-description-part-6": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Would dangle part-5/7."
+  },
+  "data-settings-sandbox-filesystem-disabled-description-part-7": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Completes part-6 sentence."
+  },
+  "data-settings-sandbox-network-allow-mach-lookup-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-sandbox-network-allow-managed-domains-only-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-sandbox-network-denied-domains-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-sandbox-network-strict-allowlist-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-sandbox-network-strict-allowlist-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Security scope contract."
+  },
+  "data-settings-sandbox-network-tls-terminate-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen restrictive scope (security: project settings cannot enable TLS termination); grammar-critical."
+  },
+  "data-settings-sandbox-ripgrep-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-sandbox-socat-path-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen; security scope contract."
+  },
+  "data-settings-schema-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-show-clear-context-on-plan-accept-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen default."
+  },
+  "data-settings-show-message-timestamps-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-show-thinking-summaries-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-show-turn-duration-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Minimal."
+  },
+  "data-settings-skill-listing-budget-fraction-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-skill-listing-max-desc-chars-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep."
+  },
+  "data-settings-skill-overrides-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-skip-dangerous-mode-permission-prompt-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Minimal; describes a state flag the model should not casually set."
+  },
+  "data-settings-skip-web-fetch-preflight-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-spellcheck-checker-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-spellcheck-color-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Format contract."
+  },
+  "data-settings-spellcheck-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (paths, 'only', enumeration); interpolations must stay."
+  },
+  "data-settings-spellcheck-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier."
+  },
+  "data-settings-spellcheck-language-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-spinner-tips-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Carrier does not co-render on every path the cut text renders on; saving is ~6 tokens. Keep."
+  },
+  "data-settings-spinner-tips-override-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Schema line is the complete spec."
+  },
+  "data-settings-spinner-tips-override-label-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep; the default is unique."
+  },
+  "data-settings-spinner-tips-override-tips-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only spec of the object form."
+  },
+  "data-settings-spinner-tips-override-tips-file-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep."
+  },
+  "data-settings-spinner-verbs-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep; the mode semantics are unique."
+  },
+  "data-settings-ssh-configs-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-ssh-configs-id-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-ssh-configs-name-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Minimal."
+  },
+  "data-settings-ssh-configs-ssh-host-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-ssh-configs-ssh-identity-file-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-ssh-configs-ssh-port-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier."
+  },
+  "data-settings-ssh-configs-start-directory-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-status-line-command-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-status-line-command-hide-vim-mode-indicator-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-status-line-command-refresh-interval-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier."
+  },
+  "data-settings-strict-known-marketplaces-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-strict-known-marketplaces-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Prevents a real misconfiguration; leads into part-3."
+  },
+  "data-settings-strict-known-marketplaces-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Completes the 'policy gate only' note."
+  },
+  "data-settings-strict-plugin-only-customization-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-strict-plugin-only-customization-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Continues into part-3."
+  },
+  "data-settings-strict-plugin-only-customization-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-subagent-prompt-cache-ttl-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-subagent-prompt-cache-ttl-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-subagent-status-line-command-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen."
+  },
+  "data-settings-switch-models-on-flag-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-syntax-highlighting-disabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Not full coverage across the schema's render paths; minimal anyway."
+  },
+  "data-settings-task-output-max-chars-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-teammate-mode-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Enum contract."
+  },
+  "data-settings-terminal-progress-bar-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-terminal-title-from-rename-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen default."
+  },
+  "data-settings-theme-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-time-format-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen."
+  },
+  "data-settings-time-zone-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen."
+  },
+  "data-settings-todo-feature-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-tui-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique."
+  },
+  "data-settings-ultracode-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Continues into part-2."
+  },
+  "data-settings-ultracode-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-ultracode-description-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-validation-failed-header": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Error header string; frozen."
+  },
+  "data-settings-validation-invalid-enum-value": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-validation-malformed-json": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Exact error string; frozen."
+  },
+  "data-settings-validation-number-minimum": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-validation-tip-additional-directories": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen."
+  },
+  "data-settings-validation-tip-api-key-helper": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Adds the output contract the schema lacks."
+  },
+  "data-settings-validation-tip-boolean": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Co-renders only with the error; unique guidance."
+  },
+  "data-settings-validation-tip-cleanup-period-days": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Stage 1 proposed cutting the closing parenthetical about why 0 is rejected. Overruled: this tip is also shown to users in the settings error, and the parenthetical is what tells someone who set 0 for \"never clean up\" why it failed. Frozen numbers and flags throughout. Keep."
+  },
+  "data-settings-validation-tip-default-mode": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-validation-tip-env-strings": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen."
+  },
+  "data-settings-validation-tip-hook-command": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-validation-tip-hook-event": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep."
+  },
+  "data-settings-validation-tip-hooks-shape": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "The example is the tip's point. Keep."
+  },
+  "data-settings-validation-tip-malformed-json": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Keep; readable tip for both audiences."
+  },
+  "data-settings-validation-tip-permission-rules-array": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique on the validation path."
+  },
+  "data-settings-validation-tip-unrecognized-field": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable)."
+  },
+  "data-settings-verbose-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Minimal."
+  },
+  "data-settings-view-mode-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier."
+  },
+  "data-settings-vim-insert-mode-remaps-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (only, exactly two, e.g., enum)."
+  },
+  "data-settings-voice-auto-submit-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-voice-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-voice-mode-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen enum."
+  },
+  "data-settings-wheel-scroll-acceleration-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This is the only place the key's semantics reach the model, and most of it is frozen by the tripwire. Keep."
+  },
+  "data-settings-workflow-keyword-trigger-enabled-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen."
+  },
+  "data-settings-workflow-size-guideline-description": {
+    "verdict": "trim",
+    "version": "2.1.276",
+    "why": "Keep all mechanics; delete only the redundant closing sentence, which 'Advisory' in sentence 1 already states."
+  },
+  "data-settings-worktree-base-ref-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (enum, enumeration)."
+  },
+  "data-settings-worktree-bg-isolation-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique gate contract."
+  },
+  "data-settings-worktree-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-worktree-location-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen."
+  },
+  "data-settings-worktree-sparse-paths-description-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only co-rendered statement of this settings key's semantics; wiping would leave a bare key and every sentence is load-bearing spec (tripwire-frozen where applicable). Part of a concatenated multi-part description; cutting it would break the joined sentence."
+  },
+  "data-settings-worktree-sparse-paths-description-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (only); deleting whole sentence would lose the effect; keep."
+  },
+  "data-settings-worktree-symlink-directories-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen."
+  },
+  "data-settings-xaa-idp-callback-port-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (RFC number, 'Only needed')."
+  },
+  "data-settings-xaa-idp-client-id-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only definition."
+  },
+  "data-settings-xaa-idp-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen (SEP number, 'all')."
+  },
+  "data-settings-xaa-idp-issuer-description": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only carrier."
+  },
+  "data-sync-claude-ai-plugins-setting": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Frozen throughout (paths, enumeration, 'Only', ordering); unique per key."
+  },
+  "data-sync-claude-ai-skills-setting": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Dense frozen spec. Keep."
+  },
+  "agent-prompt-narration-status-line-question-not-answered": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique behavioral contract for the narration writer; frozen (never, enumeration, ordering 'when the turn ends')."
+  },
+  "data-settings-validation-blocked-marketplaces-invalid-dropped": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen validation-error contract (setting name, enforcement consequence); unique."
+  },
+  "data-settings-validation-blocked-marketplaces-unenforceable-entry-kept": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen validation message with slot; unique."
+  },
+  "data-settings-validation-disable-sideload-flags-invalid-treated-true": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Security fail-closed contract (invalid => treated as true); frozen, unique."
+  },
+  "data-settings-validation-marketplace-entry-inert-policy-tier-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Opens with slot (settings key path) but is validation output with enum/path mechanics; frozen, unique."
+  },
+  "data-settings-validation-marketplace-git-wildcard-unsupported": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique git-form wildcard rule reason; contains enum/sentinel text (\"<owner>/*\", github-form, regex) — frozen mechanics."
+  },
+  "data-settings-validation-marketplace-github-owner-wildcard-shape": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique github owner-wildcard \"<owner>/*\" shape rule reason; contains enum/sentinel text (\"<owner>/*\", github-form, regex) — frozen mechanics."
+  },
+  "data-settings-validation-marketplace-ref-wildcard": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique managed-settings validation reason; opens with ${.source} slot but no detector matches this text; frozen literal."
+  },
+  "data-settings-validation-marketplace-regex-does-not-compile": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique regex-compile failure reason; contains enum/sentinel text (\"<owner>/*\", github-form, regex) — frozen mechanics."
+  },
+  "data-settings-validation-strict-known-marketplaces-invalid-empty-allowlist": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "data-task-notification-detached-tool-call-ended-without-result": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique failed-arm framing and the do-not-announce contract; frozen."
+  },
+  "data-task-notification-detached-tool-call-finished": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique behavioral contract for detached tool results; frozen (never/do-not, 'one or two lines', ordering)."
+  },
+  "data-task-notification-detached-tool-call-stopped-by-user": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "data-task-notification-detached-tool-call-timed-out": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Error text carrying a threshold in minutes; frozen."
+  },
+  "data-task-notification-detached-tool-result-oversize-unsaved": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "data-task-notification-detached-tool-result-render-failed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Only signal that a detached call's result is lost though the call completed; unique error contract."
+  },
+  "data-task-notification-detached-tool-result-saved-to-file": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "skill-claude-test-duplicate-plugin-loads-first": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique failure text naming /plugin and the ordering 'Then start a new session'; frozen."
+  },
+  "slash-command-mcp-authenticate-in-terminal-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen (/mcp command name); unique remedy for needs-auth."
+  },
+  "slash-command-mcp-inline-no-servers-configured": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen command text (`claude mcp add`)."
+  },
+  "slash-command-mcp-named-server-not-configured-terminal-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen /mcp pointer."
+  },
+  "slash-command-mcp-open-from-command-menu-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen UI-surface remedy; unique for app surface. Catalog note: overlapping multisite match with disable-failed / inline-no-servers bodies."
+  },
+  "slash-command-mcp-pending-approval-approve-in-terminal-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen (/mcp, 'first' ordering); unique."
+  },
+  "slash-command-mcp-status-terminal-details-with-usage": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen /mcp hint; opens with slot (surface helper fn), no detector."
+  },
+  "slash-command-plugin-install-already-installed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "slash-command-plugin-install-leftover-paths-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique path-cleanup fact; frozen."
+  },
+  "slash-command-plugin-install-loads-in-place-suffix": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "slash-command-plugin-install-previous-copy-removed-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "slash-command-plugin-install-previous-copy-restored-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique state report for the 'restored' outcome."
+  },
+  "slash-command-plugin-install-previous-copy-stranded-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "slash-command-plugin-install-previous-folder-not-restored-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen (ordering 'again', remedy); unique."
+  },
+  "slash-command-plugin-install-version-folder-busy-cause": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "slash-command-plugin-install-version-folder-move-failed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Error contract with cause-specific remedy; frozen enumerations (permissions and free disk space)."
+  },
+  "slash-command-plugin-install-version-folder-move-failed-cause": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Minimal cause clause with OS error slot."
+  },
+  "slash-command-plugin-load-failed-see-plugin": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen error text naming /plugin."
+  },
+  "slash-command-plugin-load-failed-see-plugin-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen error text naming /plugin; wiping would remove the message at those sites."
+  },
+  "slash-command-plugin-validate-ui-render-surfaces-only-list": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "slash-command-ultrareview-base-ref-not-found": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen enumeration of accepted arguments; unique."
+  },
+  "slash-command-ultrareview-empty-diff-against-base-empty": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Minimal reason clause."
+  },
+  "slash-command-ultrareview-empty-diff-base-branch-commits-count-as-base": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Explains why the diff is empty (committed work = base); unique mechanic."
+  },
+  "slash-command-ultrareview-empty-diff-branch-at-base-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen remedy clause."
+  },
+  "slash-command-ultrareview-empty-diff-detached-head-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Detached-HEAD-specific remedy; unique."
+  },
+  "slash-command-ultrareview-empty-diff-generic-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique remedy with ordering ('first'); frozen."
+  },
+  "slash-command-ultrareview-empty-diff-head-in-base": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Fragment of error sentence; cutting would break the joined sentence."
+  },
+  "slash-command-ultrareview-empty-diff-no-commits-beyond-base": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Reason-clause fragment; structural, unique."
+  },
+  "slash-command-ultrareview-empty-diff-no-tracked-edits": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Load-bearing shared fragment; wiping blanks every empty-diff reason."
+  },
+  "slash-command-ultrareview-empty-diff-on-base-branch": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen reason fragment."
+  },
+  "slash-command-ultrareview-empty-diff-on-base-no-commits-beyond": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Reason-clause fragment; unique to its branch."
+  },
+  "slash-command-ultrareview-empty-diff-pass-base-explicitly": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "slash-command-ultrareview-empty-diff-review-latest-commit": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen command form; unique recovery hint."
+  },
+  "slash-command-ultrareview-empty-diff-switch-branch-or-base": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen remedy clause."
+  },
+  "slash-command-ultrareview-empty-diff-try-different-base": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen command form; slot value for hint prompts."
+  },
+  "slash-command-ultrareview-first-commit-base-rerun-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique mechanic; frozen ordering ('from here on', rerun)."
+  },
+  "slash-command-ultrareview-first-commit-review-whole-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen suffix naming /ultrareview."
+  },
+  "slash-command-ultrareview-no-changes-to-review": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Structural wrapper; wiping would drop the whole empty-diff error."
+  },
+  "slash-command-ultrareview-no-commits-commit-starting-point": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique arm; ordering words (first, then); frozen."
+  },
+  "slash-command-ultrareview-no-merge-base-whole-repo-held-back": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique held-back/cost-gate contract ('a person can run /ultrareview ... which asks before it spends anything')."
+  },
+  "slash-command-ultrareview-not-git-init-commit-work": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique mechanic (first commit reviewed whole if small enough)."
+  },
+  "slash-command-ultrareview-not-git-init-starting-point": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique arm; path/command literal \"git init\"; frozen."
+  },
+  "slash-command-ultrareview-not-git-open-folder": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; 'at least one commit' threshold + 'then'; frozen."
+  },
+  "slash-command-ultrareview-not-git-repo": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen error; opens with slot (command name), no detector."
+  },
+  "slash-command-ultrareview-not-git-repo-cd-or-init": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; frozen."
+  },
+  "slash-command-ultrareview-scope-first-commit-all-files": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Scope confirmation line; unique."
+  },
+  "slash-command-ultrareview-untracked-files-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; command literal `git add`, ordering 'then'; frozen."
+  },
+  "system-prompt-agent-memory-entrypoint-not-loaded-read-only": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique security gate; frozen (do not, enumeration)."
+  },
+  "system-prompt-memory-read-only-cannot-save-new-memories": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short state sentence; keep."
+  },
+  "system-reminder-dir-sync-agent-snapshot-commits-restored": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique ordering/state contract with ref path snapshot in/<gen>; frozen."
+  },
+  "system-reminder-dir-sync-bookkeeping-newest-snapshot-ref-command": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen (command, ordering, empty-output rule); unique."
+  },
+  "system-reminder-dir-sync-bookkeeping-reset-to-user-commit": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen git commands/ordering; protects user uncommitted work; unique."
+  },
+  "system-reminder-dir-sync-bookkeeping-user-commit-not-in-history": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen git commands/ordering; data-loss guard; unique."
+  },
+  "system-reminder-dir-sync-carried-commits-many-sync-snapshots": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique 'leave those' instruction."
+  },
+  "system-reminder-dir-sync-carried-commits-one-sync-snapshot": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique 'leave it' instruction."
+  },
+  "system-reminder-dir-sync-head-on-sync-snapshot-commit": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique state clause; frozen."
+  },
+  "system-reminder-dir-sync-stopped-reason-commit-not-held": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "system-reminder-dir-sync-stopped-reason-machine-stopped": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Minimal clause."
+  },
+  "system-reminder-directory-sync-attached-machine-guidance": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique mechanics for attached-mid-session sync (timing, exclusions, stop conditions); every sentence frozen."
+  },
+  "system-reminder-directory-sync-snapshot-commit-reset": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; paths refs/claude/…, ordering, never — frozen."
+  },
+  "system-reminder-directory-sync-stopped-checkout-kept": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique state/next-step contract; frozen sentences."
+  },
+  "system-reminder-prefetched-artifact-type-read-url-once": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "system-reminder-prefetched-artifact-type-two-steps-url-read": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique clause; frozen (Bash tool name)."
+  },
+  "system-reminder-project-command-check-changed-since-last-serve": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique security/behaviour contract (check not run, each command asks)."
+  },
+  "system-reminder-project-command-checks-read-only-sandbox": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique one-line fact."
+  },
+  "system-reminder-remote-machine-branch-raw-diff-command": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Exact command the model must reproduce; frozen."
+  },
+  "system-reminder-remote-machine-branch-transfer-review": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Security/ordering contract for moving code from an untrusted copy; all content unique and frozen."
+  },
+  "system-reminder-remote-machine-separate-project-copies": {
+    "verdict": "trim",
+    "version": "2.1.277",
+    "why": "Two frozen sentences are wholly carried by co-rendered lines of the same notice; delete them verbatim, keep the unique same-repository check and the report-which-copy rule. Note: remaining text loses its leading '- ' bullet marker (cosmetic)."
+  },
+  "system-reminder-served-project-command-check-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen enum map (asked/context/stderr) and output relay."
+  },
+  "system-reminder-still-running-tool-call": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique frozen contract (never, tool_use_id, tag slot)."
+  },
+  "system-reminder-tool-hosts-agent-obeyed-config-files-list": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Structural fragment; wiping breaks the enclosing sentence."
+  },
+  "system-reminder-tool-hosts-header-separate-copy": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Load-bearing header; frozen verbatim-or-delete, and delete would lose the argument instruction."
+  },
+  "system-reminder-tool-hosts-here-primary-copy": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Structural host-list entry with enumeration; frozen."
+  },
+  "system-reminder-tool-hosts-machine-separate-copy-lives-there": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen, unique content; no partial cut possible."
+  },
+  "system-reminder-tool-hosts-project-separate-copy": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Host description fragment; frozen."
+  },
+  "system-reminder-tool-hosts-separate-copy-file-tools-this-checkout": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen tool-name enumeration; opens with slot (machine label), no detector on rendered text."
+  },
+  "system-reminder-tool-hosts-separate-copy-machine-arg-file-tools": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen (file_path parameter, absolute paths, arg name); unique mechanics."
+  },
+  "tool-description-artifact-docs-connector-start-from-docs-type-variant": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique replacement clause; mid-sentence fragment, cannot be wiped."
+  },
+  "tool-description-artifact-emailed-deck-not-file-format": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique routing rule; enumeration (.pptx or PDF) frozen."
+  },
+  "tool-description-fetchinboxmessage-project-thread-wake-envelope": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique trust-boundary contract (only the triggering human element is the user's request) plus attachment-reading mechanics; frozen."
+  },
+  "tool-description-suggestplugininstall-proactive-offer": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique tool contract (pluginId/pluginName mapping, ordering 'First call'); frozen."
+  },
+  "tool-description-webfetch-artifact-links-use-artifact-tool": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique routing bullet; frozen."
+  },
+  "tool-description-webfetch-claude-ai-artifact-links-exception": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique routing rule for artifact links when no Artifact tool; frozen."
+  },
+  "tool-parameter-artifact-list-type-query": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Keeps relevance-ranking semantics and omit-by-default guard; implicit overlap is not coverage."
+  },
+  "tool-parameter-artifact-list-types-type-query": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Schema parameter text for the split-action Artifact schema; frozen (only, case-insensitive, omit-unless rule)."
+  },
+  "tool-result-artifact-ask-rule-covers-this-url-suffix": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Reworded successor of tool-result-artifact-consent-ask-rule-covers-this-url-3, whose override was byte-identical to its old pristine; the new body applies as pristine. Tool-result mechanics, frozen, no co-rendered duplicate."
+  },
+  "tool-result-artifact-asset-copy-approval-scope-until-comment": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen consent-scope contract; unique."
+  },
+  "tool-result-artifact-asset-copy-approval-scope-until-comment-with-source-reads": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen consent-scope contract incl. source reads; unique."
+  },
+  "tool-result-artifact-asset-copy-permission-ask": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Reworded successor of tool-result-artifact-copy-from-permission-ask, whose override was byte-identical to its old pristine; the new body applies as pristine. Tool-result mechanics, frozen, no co-rendered duplicate."
+  },
+  "tool-result-artifact-copy-from-covers-uploads-copies-and-source-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique scope statement; frozen."
+  },
+  "tool-result-artifact-copy-source-public-other-org-label": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Minimal label."
+  },
+  "tool-result-artifact-copy-source-shared-other-org-label": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Minimal label."
+  },
+  "tool-result-artifact-copy-source-yours-cowritten-label": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Consent-ask ownership disclosure; unique."
+  },
+  "tool-result-artifact-copy-source-yours-from-type-label": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short ownership label; keep."
+  },
+  "tool-result-artifact-created-from-type-already-created-files-published-clause": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-artifact-created-from-type-files-listing-and-next-steps": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Structural tool-result tail; unique file-layout facts (add under `project/`)."
+  },
+  "tool-result-artifact-db-relay-busy-after-retry": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen write-may-have-applied/read-back-before-retry ordering contract."
+  },
+  "tool-result-artifact-db-relay-not-carried": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen error tag store_unavailable and nothing-ran contract."
+  },
+  "tool-result-artifact-list-types-narrowed-by-query": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; param name type_query; frozen."
+  },
+  "tool-result-artifact-publish-also-removes-files": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Consent-ask disclosure fragment; wiping breaks the joined sentence."
+  },
+  "tool-result-artifact-publish-also-uploads-supporting-files": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Minimal consent clause."
+  },
+  "tool-result-artifact-publish-contract-rollout-retry": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique retry/do-not-pin contract with a time threshold; frozen."
+  },
+  "tool-result-artifact-publish-copies-files-from-source": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Consent-ask clause; keep."
+  },
+  "tool-result-artifact-publish-copies-files-from-sources": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Consent disclosure; unique."
+  },
+  "tool-result-artifact-publish-cowork-approval-reason": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Safety-check reason naming the target; unique."
+  },
+  "tool-result-artifact-publish-files-artifact-source-not-accepted": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; parameter names frozen."
+  },
+  "tool-result-artifact-publish-from-type-page-by-publisher-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique in its ask; frozen."
+  },
+  "tool-result-artifact-publish-rate-limited-already-retried-once": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; frozen (once)."
+  },
+  "tool-result-artifact-publish-rate-limited-nothing-published": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique opener."
+  },
+  "tool-result-artifact-publish-rate-limited-refused-step-copy-preflight": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-artifact-publish-rate-limited-refused-step-copy-staging": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique fragment."
+  },
+  "tool-result-artifact-publish-rate-limited-reserved-slug-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Tells model to reuse the reserved artifact to avoid another reservation; unique mechanic."
+  },
+  "tool-result-artifact-publish-rate-limited-wait-seconds-tail": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-artifact-publish-replacing-current-page": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-artifact-publish-replacing-named-page": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-artifact-publish-supporting-files-scratchpad-root-breakdown": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-artifact-publish-to-typed-artifact-page-unchanged-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Consent disclosure; unique in its emission."
+  },
+  "tool-result-artifact-upload-asset-covers-uploads-and-copies-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen consent-scope contract; unique."
+  },
+  "tool-result-bash-coordinator-dynamic-path-argument": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique refusal with enumerated forms; frozen."
+  },
+  "tool-result-bash-coordinator-glob-too-wide": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Refusal + remedy contract; unique."
+  },
+  "tool-result-bash-coordinator-no-worker-transcript-read": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Refusal + routing contract; unique."
+  },
+  "tool-result-bash-dangerous-op-unset-var-bind-positional-suggestion": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Safety remedy; frozen."
+  },
+  "tool-result-bash-dangerous-op-unset-var-decision-reason": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Decision-reason template; unique."
+  },
+  "tool-result-bash-dangerous-op-unset-var-guard-rewrite-suggestion": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique ${VAR:?} guard mechanic; frozen."
+  },
+  "tool-result-bash-dangerous-op-unset-var-reparsed-reason-suggestion": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Minimal; frozen."
+  },
+  "tool-result-bash-dangerous-op-unset-var-reparsed-suggestion": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique reason why a guard does not protect; frozen."
+  },
+  "tool-result-bash-dangerous-op-unset-var-unverifiable-reason-suggestion": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Safety remedy; unique."
+  },
+  "tool-result-bash-dangerous-op-unset-var-unverifiable-suggestion": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Safety-refusal remedy; frozen."
+  },
+  "tool-result-bash-dangerous-op-unset-variable-reason-normally-set": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Safety-refusal remedy; frozen."
+  },
+  "tool-result-bash-dangerous-op-unset-variable-remedy-normally-set": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Safety-refusal remedy; frozen."
+  },
+  "tool-result-cloud-session-command-check-changed-since-last-serve": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique permission-ask reason with approval semantics; frozen."
+  },
+  "tool-result-cloud-session-command-check-stopped-after-repeated-asks": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen threshold (three), path, env var, enumeration."
+  },
+  "tool-result-fetch-inbox-message-attachments-not-downloaded": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen bracketed marker with count; unique."
+  },
+  "tool-result-grep-ripgrep-spawn-advice-process-limit": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique EAGAIN advice."
+  },
+  "tool-result-grep-ripgrep-spawn-advice-short-of-memory": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique ENOMEM advice."
+  },
+  "tool-result-grep-ripgrep-spawn-advice-too-many-files-open": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique ENFILE advice."
+  },
+  "tool-result-pdf-rendered-pages-move-failed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-plugin-card-none-verified": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique contract (never, tool names, ordering); frozen."
+  },
+  "tool-result-plugin-card-skill-ids-redirect": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Routing redirect to skills-suggestion tool; unique."
+  },
+  "tool-result-plugin-card-unchecked-ids-left-off": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-plugin-card-unknown-ids-dropped": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; frozen."
+  },
+  "tool-result-project-command-check-blocked-command": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Deny reason contract; unique."
+  },
+  "tool-result-project-command-check-changed-since-attach": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Permission ask; unique."
+  },
+  "tool-result-project-command-check-could-not-finish": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique ask."
+  },
+  "tool-result-project-command-check-rewrite-refused-cloud-session": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique ask."
+  },
+  "tool-result-project-command-check-wants-confirmation": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-remote-host-permission-check-threw": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique refusal."
+  },
+  "tool-result-remote-host-separate-copy-file-missing-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Error-suffix redirect; frozen."
+  },
+  "tool-result-write-path-is-directory": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen parameter name file_path; opens with slot (path), no detector."
+  },
+  "tool-result-write-path-not-regular-file": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen enumeration and file_path semantics; opens with slot (path), no detector."
   }
 }

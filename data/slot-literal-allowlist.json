@@ -156,16 +156,6 @@
     "text": ". Did you mean /",
     "verdict": "catalogue"
   },
-  "1c0d81e77fda581d": {
-    "verdict": "catalogue",
-    "desc": "Consequence clause on the publish-upload permission-ask: other files already published on the artifact stay. behavior:ask — if the user declines, this message is the tool_result.",
-    "id": "tool-result-artifact-publish-other-published-files-stay",
-    "label": "TOOL_RESULT_ARTIFACT_PUBLISH_UPLOAD_CONSENT_ASK_VAR_4",
-    "name": "Tool Result: Artifact publish — its other published files stay",
-    "promptId": "tool-result-artifact-publish-upload-consent-ask",
-    "reason": "states that a declined or partial publish leaves the artifact's other files in place",
-    "text": " (its other published files stay)"
-  },
   "20a69a3dd0499378": {
     "label": "TOOL_RESULT_ARTIFACT_PUBLISH_UPLOAD_CONSENT_ASK_VAR_1",
     "promptId": "tool-result-artifact-publish-upload-consent-ask",
@@ -237,16 +227,6 @@
     "promptId": "system-prompt-local-command-stdout-framing-tag-5",
     "reason": "tells the model the command needs an interactive terminal",
     "text": " opens an interactive panel and isn't available in this environment. Run it from the Claude Code terminal instead.",
-    "verdict": "catalogue"
-  },
-  "3708e8f3a0ae17b9": {
-    "desc": "Warns that the existing page's share status could not be confirmed, which is what makes the publish consent decision uncertain.",
-    "id": "tool-result-artifact-publish-share-status-unconfirmed",
-    "label": "TOOL_RESULT_ARTIFACT_PUBLISH_COWORK_USER_APPROVAL_REQUIRED_VAR_0",
-    "name": "Tool Result: Artifact publish — share status unconfirmed",
-    "promptId": "tool-result-artifact-publish-cowork-user-approval-required",
-    "reason": "states that share status is unconfirmed — affects the consent decision",
-    "text": "; its share status could not be confirmed",
     "verdict": "catalogue"
   },
   "3c19816d83bc5d4f": {
@@ -699,32 +679,12 @@
     "reason": "first quasi of ` (and grant flags: ${v})` @5817444; only labels the interpolated flag names inside the access-target phrase",
     "text": " (and grant flags: "
   },
-  "9712cdcbb233ab7e": {
-    "desc": "States that the artifact stays private to the user until they choose to share it.",
-    "id": "tool-result-artifact-publish-private-until-shared",
-    "label": "TOOL_RESULT_ARTIFACT_PUBLISH_COWORK_USER_APPROVAL_REQUIRED_VAR_0",
-    "name": "Tool Result: Artifact publish — private until shared",
-    "promptId": "tool-result-artifact-publish-cowork-user-approval-required",
-    "reason": "states the private-until-shared consequence",
-    "text": ", private to you until you share it",
-    "verdict": "catalogue"
-  },
   "980e41d677e0d393": {
     "label": "DATA_TASK_NOTIFICATION_ARTIFACT_AUTO_REPLY_NAME_CHORD_RECEIPT_VAR_6",
     "note": "Second quasi of the same template node as 9cb8ee10318d5747, which carries the catalogue verdict for the whole sentence.",
     "promptId": "data-task-notification-artifact-auto-reply-name-chord-receipt",
     "text": " for good with ✕ on the watch in the tasks list or the kill-all-agents gesture",
     "verdict": "glue"
-  },
-  "986590c740ba1d03": {
-    "desc": "Warns that the publish will replace the page already at the named address.",
-    "id": "tool-result-artifact-publish-replacing-existing-page",
-    "label": "TOOL_RESULT_ARTIFACT_PUBLISH_COWORK_USER_APPROVAL_REQUIRED_VAR_1",
-    "name": "Tool Result: Artifact publish — replacing an existing page",
-    "promptId": "tool-result-artifact-publish-cowork-user-approval-required",
-    "reason": "states that an existing page will be replaced",
-    "text": ", replacing the existing page at ",
-    "verdict": "catalogue"
   },
   "99a8a97950e1f09b": {
     "desc": "Warns that the publish will replace an existing page whose address the session does not recognize.",
@@ -781,16 +741,6 @@
     "promptId": "system-prompt-agent-namer",
     "reason": "a constraint on the name to generate",
     "text": "\n\nAvoid these (already taken): ",
-    "verdict": "catalogue"
-  },
-  "a47c1a1ea37d39bc": {
-    "desc": "States the visibility consequence of publishing over a shared artifact: everyone it is shared with sees the change at once.",
-    "id": "tool-result-artifact-publish-viewers-see-updates",
-    "label": "TOOL_RESULT_ARTIFACT_PUBLISH_COWORK_USER_APPROVAL_REQUIRED_VAR_0",
-    "name": "Tool Result: Artifact publish — viewers see updates immediately",
-    "promptId": "tool-result-artifact-publish-cowork-user-approval-required",
-    "reason": "states the visibility consequence of publishing",
-    "text": " (viewers see updates immediately)",
     "verdict": "catalogue"
   },
   "a98b87459e8bf8f8": {
@@ -985,16 +935,6 @@
     "promptId": "tool-result-computer-use-access-unattended-scheduled",
     "reason": "first quasi of `grant flags (${v})` @5817475, the flags-only arm of the same ternary; only labels the interpolated flag names",
     "text": "grant flags ("
-  },
-  "c1ad34616bb89d8c": {
-    "desc": "States that viewers are pinned to an earlier version, so a publish will not be what they see.",
-    "id": "tool-result-artifact-publish-viewers-see-pinned-version",
-    "label": "TOOL_RESULT_ARTIFACT_PUBLISH_COWORK_USER_APPROVAL_REQUIRED_VAR_0",
-    "name": "Tool Result: Artifact publish — viewers see a pinned earlier version",
-    "promptId": "tool-result-artifact-publish-cowork-user-approval-required",
-    "reason": "states the pinned-version consequence",
-    "text": " (viewers see a pinned earlier version)",
-    "verdict": "catalogue"
   },
   "c4dcff2887bcf116": {
     "label": "DATA_TASK_NOTIFICATION_ARTIFACT_DURABLE_WAKE_NOT_REGISTERED_VAR_1",
@@ -1726,5 +1666,105 @@
     "id": "tool-result-artifact-source-restored-counts-as-viewed",
     "name": "Tool Result: Artifact source restored — counts as viewed",
     "desc": "Clause saying the restored published version now counts as viewed."
+  },
+  "de17ce345bf208c7": {
+    "verdict": "catalogue",
+    "desc": "Cause clause in the failed plugin-version install error when the rename itself failed, followed by the OS error; the non-busy sibling of slash-command-plugin-install-version-folder-busy-cause.",
+    "id": "slash-command-plugin-install-version-folder-move-failed-cause",
+    "label": "SLASH_COMMAND_PLUGIN_INSTALL_VERSION_FOLDER_MOVE_FAILED_VAR_1",
+    "name": "Slash Command: /plugin Install Cause — Move Failed",
+    "promptId": "slash-command-plugin-install-version-folder-move-failed",
+    "reason": "one branch of a two-way cause clause whose other branch (busy-cause) is catalogued; states why the install failed and selects the permissions/disk-space remedy",
+    "text": "the move failed ("
+  },
+  "c0a991265e96d406": {
+    "verdict": "catalogue",
+    "desc": "Remedy clause appended to the /ultrareview empty-diff hints when a base was passed explicitly: try a different base, with the exact command form `<cmd> <branch>`.",
+    "id": "slash-command-ultrareview-empty-diff-try-different-base",
+    "label": "SLASH_COMMAND_ULTRAREVIEW_EMPTY_DIFF_SWITCH_BRANCH_OR_BASE_VAR_0",
+    "name": "Slash Command: /ultrareview empty diff — try a different base",
+    "promptId": "slash-command-ultrareview-empty-diff-switch-branch-or-base",
+    "reason": "head quasi of its own template literal (explicit-base arm of L); an instruction with a command the model must reproduce",
+    "text": "try a different base, e.g. `"
+  },
+  "65a450250610c0e4": {
+    "verdict": "catalogue",
+    "desc": "Remedy clause appended to the /ultrareview empty-diff hints when no base was passed: pass one explicitly, with the exact command form `<cmd> <branch>`.",
+    "id": "slash-command-ultrareview-empty-diff-pass-base-explicitly",
+    "label": "SLASH_COMMAND_ULTRAREVIEW_EMPTY_DIFF_SWITCH_BRANCH_OR_BASE_VAR_0",
+    "name": "Slash Command: /ultrareview empty diff — pass a base explicitly",
+    "promptId": "slash-command-ultrareview-empty-diff-switch-branch-or-base",
+    "reason": "head quasi of the other arm of L (its own template literal); an instruction with a command the model must reproduce",
+    "text": "pass one explicitly, e.g. `"
+  },
+  "9f83e04f33f48504": {
+    "verdict": "catalogue",
+    "desc": "Shared state clause in the /ultrareview empty-diff explanations: there are no staged or unstaged edits to tracked files, which is why nothing is reviewable.",
+    "id": "slash-command-ultrareview-empty-diff-no-tracked-edits",
+    "label": "SLASH_COMMAND_ULTRAREVIEW_EMPTY_DIFF_ON_BASE_BRANCH_VAR_1",
+    "name": "Slash Command: /ultrareview empty diff — no staged or unstaged edits",
+    "promptId": "slash-command-ultrareview-empty-diff-on-base-branch",
+    "reason": "one string (H) shared by three catalogued empty-diff explanations; states the reason the diff is empty, which drives the stage/commit remedy",
+    "text": "no staged or unstaged edits to tracked files"
+  },
+  "0e68cfa3f03811f3": {
+    "verdict": "catalogue",
+    "desc": "Warns that the existing page's share status could not be confirmed, which is what makes the publish consent decision uncertain.",
+    "id": "tool-result-artifact-publish-share-status-unconfirmed",
+    "label": "TOOL_RESULT_ARTIFACT_PUBLISH_UPLOAD_CONSENT_ASK_VAR_4",
+    "name": "Tool Result: Artifact publish — share status unconfirmed",
+    "promptId": "tool-result-artifact-publish-upload-consent-ask",
+    "reason": "successor of the 2.1.276 id (was \"; its share status could not be confirmed\"); first arm of Nn, whose sibling arms are catalogued",
+    "text": " Its share status couldn't be confirmed."
+  },
+  "78b12d9d9ed2c084": {
+    "verdict": "catalogue",
+    "desc": "Consent-ask clause stating that the publish also uploads N supporting files to claude.ai; the upload sibling of the catalogued \"Also copies … on the server\" clauses.",
+    "id": "tool-result-artifact-publish-also-uploads-supporting-files",
+    "label": "TOOL_RESULT_ARTIFACT_PUBLISH_UPLOAD_CONSENT_ASK_VAR_5",
+    "name": "Tool Result: Artifact publish — also uploads supporting files",
+    "promptId": "tool-result-artifact-publish-upload-consent-ask",
+    "reason": "head quasi of ` Also uploads ${n} supporting ${file(s)}`; states additional data egress, siblings tool-result-artifact-publish-copies-files-from-source(s) are catalogued",
+    "text": " Also uploads "
+  },
+  "48075abd2f0fd1ac": {
+    "verdict": "catalogue",
+    "desc": "Consent-ask clause stating that the publish also removes N files from the artifact's current version (null `files` entries), passed as the lead to the removal-count builder.",
+    "id": "tool-result-artifact-publish-also-removes-files",
+    "label": "TOOL_RESULT_ARTIFACT_PUBLISH_UPLOAD_CONSENT_ASK_VAR_5",
+    "name": "Tool Result: Artifact publish — also removes files from the current version",
+    "promptId": "tool-result-artifact-publish-upload-consent-ask",
+    "reason": "argument to the removal builder rendering \" Also removes N file(s) from its current version.\"; states a destructive consequence of the publish",
+    "text": " Also removes "
+  },
+  "8d8d35748b2c9cf0": {
+    "verdict": "catalogue",
+    "desc": "Consequence clause on the publish-upload permission-ask: other files already published on the artifact stay. behavior:ask — if the user declines, this message is the tool_result.",
+    "id": "tool-result-artifact-publish-other-published-files-stay",
+    "label": "TOOL_RESULT_ARTIFACT_PUBLISH_UPLOAD_CONSENT_ASK_VAR_6",
+    "name": "Tool Result: Artifact publish — its other published files stay",
+    "promptId": "tool-result-artifact-publish-upload-consent-ask",
+    "reason": "successor of the 2.1.276 id (was \" (its other published files stay)\"); same role, reworded to a sentence",
+    "text": " The other published files stay."
+  },
+  "511f107fbfa9c4be": {
+    "verdict": "catalogue",
+    "desc": "The exact git command (git -c core.quotePath=true -c diff.relative=false diff --raw --ignore-submodules=none HEAD <sha>) the model runs on the remote machine to show the user what a transferred branch changes; also embedded in the sensitive-path diff command.",
+    "id": "system-reminder-remote-machine-branch-raw-diff-command",
+    "label": "BRANCH_RAW_DIFF_COMMAND",
+    "name": "System Reminder: Remote machine branch transfer — raw diff command",
+    "promptId": "system-reminder-remote-machine-branch-transfer-review",
+    "reason": "a command the model must reproduce verbatim in the branch-transfer review procedure",
+    "text": "git -c core.quotePath=true -c diff.relative=false diff --raw --ignore-submodules=none HEAD <sha>"
+  },
+  "12678d51d61f58f5": {
+    "verdict": "catalogue",
+    "desc": "Suffix on plugin install/enable results when the plugin was installed but failed to load: points to /plugin for details.",
+    "id": "slash-command-plugin-load-failed-see-plugin",
+    "label": "SLASH_COMMAND_PLUGIN_INSTALL_ALREADY_INSTALLED_VAR_2",
+    "name": "Slash Command: /plugin — plugin could not be loaded",
+    "promptId": "slash-command-plugin-install-already-installed",
+    "reason": "states a failure consequence and where to look (/plugin); identical text also emitted at @33915799",
+    "text": ". The plugin couldn't be loaded — see /plugin for details."
   }
 }
