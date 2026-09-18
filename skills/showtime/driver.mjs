@@ -124,6 +124,12 @@ const cmpVer = (a, b) =>
 
 // ---- subcommands -----------------------------------------------------------
 
+function pkgSupportedCc() {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(REPO, 'package.json'), 'utf8')).supportedClaudeCode ?? null;
+  } catch { return null; }
+}
+
 function cmdVersions() {
   const bin = ccBinary();
   if (!bin) return fail('could not resolve the claude binary');
@@ -134,6 +140,10 @@ function cmdVersions() {
   console.log(C.info(`claude binary:        ${bin}`));
   console.log(C.info(`installed CC:         ${installed}`));
   console.log(C.info(`repo latest prompts:  ${latestRepo}`));
+  const supported = pkgSupportedCc();
+  console.log(C.info(`supportedClaudeCode:  ${supported ?? '(unset)'}`));
+  if (latestRepo && supported && supported !== latestRepo)
+    console.log(C.bad(`package.json supportedClaudeCode (${supported ?? 'unset'}) != newest prompts JSON (${latestRepo}) -> set it in the release commit`));
   if (installed && latestRepo) {
     if (cmpVer(installed, latestRepo) > 0)
       console.log(C.bad(`NEW VERSION: installed ${installed} > repo ${latestRepo} -> run the bump pipeline (SKILL.md)`));

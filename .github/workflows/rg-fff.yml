@@ -16,8 +16,21 @@ permissions:
   contents: write
 
 jobs:
+  meta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24.x
+
+      - name: Check release metadata
+        run: node tools/checkReleaseMeta.mjs
+
   build:
     name: ${{ matrix.target }}
+    needs: meta
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false

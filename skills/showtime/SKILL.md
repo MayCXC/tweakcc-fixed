@@ -140,7 +140,7 @@ repeatedly. It also flags the **stale-backup** condition before it can bite (§1
 6. Stale-backup check + --apply + smoke             ← driver check
 7. LCC override realignment (the conflicts)         ← grounded workflow + the decision rule (§7)
 8. Commit each repo + push                          ← git commit -F (avoid the bad-substitution trap)
-9. Publish to npm (if you distribute via npm)       ← bump package.json version, tag vX.Y.Z, push --tags → release CI; consumers npx the new version
+9. Publish to npm (if you distribute via npm)       ← bump package.json version + supportedClaudeCode, tag vX.Y.Z, push --tags → release CI; consumers npx the new version
 ```
 
 > **Major-change gate — deem and stop, don't blindly apply.** "Applied cleanly /
@@ -439,7 +439,10 @@ fetch `prompts-X.Y.Z.json` from your repo's `main` branch at runtime, so an
 unpushed JSON 404s for every consumer.
 
 ```bash
-# bump "version" in package.json (its own commit), push main, then:
+# bump "version" and "supportedClaudeCode" in package.json in the release commit
+# (supportedClaudeCode = the newest data/prompts/prompts-X.Y.Z.json), then:
+node tools/checkReleaseMeta.mjs                  # the release workflows run this too and abort on a mismatch
+# push main, then:
 git tag vX.Y.Z && git push origin main --tags   # tag push triggers the release workflow (npm publish + GH release)
 npm view <your-package> version                  # wait until the registry serves X.Y.Z
 ```

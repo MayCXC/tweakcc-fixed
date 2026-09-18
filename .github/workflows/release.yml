@@ -28,6 +28,9 @@ jobs:
           cache: pnpm
           registry-url: https://registry.npmjs.org
 
+      - name: Check release metadata
+        run: node tools/checkReleaseMeta.mjs
+
       - name: Update npm
         run: npm install -g npm@latest
 
