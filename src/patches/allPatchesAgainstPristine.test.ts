@@ -32,6 +32,7 @@ import { writeFixSummarizeFromHere } from './fixSummarizeFromHere';
 import { writeFixRewindSummaryHeader } from './fixRewindSummaryHeader';
 import { writeStatuslineUpdateThrottle } from './statuslineUpdateThrottle';
 import { writeClearScreen } from './clearScreen';
+import { writeInputChevronColor } from './inputChevronColor';
 import { writePatchesAppliedIndication } from './patchesAppliedIndication';
 import { writeModelCustomizations } from './modelSelector';
 import { writeShowMoreItemsInSelectMenus } from './showMoreItemsInSelectMenus';
@@ -52,6 +53,7 @@ import { writeHideStartupClawd } from './hideStartupClawd';
 import { writeIncreaseFileReadLimit } from './increaseFileReadLimit';
 import { writeSuppressLineNumbers } from './suppressLineNumbers';
 import { writeSuppressRateLimitOptions } from './suppressRateLimitOptions';
+import { writeSuppressRateLimitWarning } from './suppressRateLimitWarning';
 import { writeTokenCountRounding } from './tokenCountRounding';
 import { writeRememberSkill } from './rememberSkill';
 import { writeAgentsMd } from './agentsMd';
@@ -318,6 +320,7 @@ const INVOCATIONS: Record<PatchId, (src: string) => string | null> = {
   'statusline-update-throttle': c =>
     writeStatuslineUpdateThrottle(c, 300, false),
   'clear-screen': c => writeClearScreen(c),
+  'input-chevron-color': c => writeInputChevronColor(c, 'green'),
   'strip-empty-system-reminders': c => writeStripEmptySystemReminders(c),
   'model-customizations': c => writeModelCustomizations(c),
   'show-more-items-in-select-menus': c =>
@@ -366,6 +369,7 @@ const INVOCATIONS: Record<PatchId, (src: string) => string | null> = {
   'increase-file-read-limit': c => writeIncreaseFileReadLimit(c),
   'suppress-line-numbers': c => writeSuppressLineNumbers(c),
   'suppress-rate-limit-options': c => writeSuppressRateLimitOptions(c),
+  'suppress-rate-limit-warning': c => writeSuppressRateLimitWarning(c),
   'token-count-rounding': c => writeTokenCountRounding(c, 100),
   'remember-skill': c => writeRememberSkill(c),
   'agents-md': c => writeAgentsMd(c, DEFAULT_SETTINGS.claudeMdAltNames ?? []),

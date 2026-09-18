@@ -65,6 +65,7 @@ export function MiscView({ onSubmit }: MiscViewProps) {
     increaseFileReadLimit: false,
     suppressLineNumbers: false,
     suppressRateLimitOptions: false,
+    suppressRateLimitWarning: false,
     mcpConnectionNonBlocking: true,
     mcpServerBatchSize: null as number | null,
     statuslineThrottleMs: null as number | null,
@@ -199,7 +200,10 @@ export function MiscView({ onSubmit }: MiscViewProps) {
         toggle: () => {
           updateSettings(settings => {
             if (!settings.inputBox) {
-              settings.inputBox = { removeBorder: false };
+              settings.inputBox = {
+                removeBorder: false,
+                chevronIdleThemeColor: null,
+              };
             }
             settings.inputBox.removeBorder = !settings.inputBox.removeBorder;
           });
@@ -353,6 +357,20 @@ export function MiscView({ onSubmit }: MiscViewProps) {
             ensureMisc();
             settings.misc!.suppressRateLimitOptions =
               !settings.misc!.suppressRateLimitOptions;
+          });
+        },
+      },
+      {
+        id: 'suppressRateLimitWarning',
+        title: 'Suppress rate limit warning banners',
+        description:
+          'Hides rate limit warning banners in the status bar. Error messages when limits are actually reached are still shown.',
+        getValue: () => settings.misc?.suppressRateLimitWarning ?? false,
+        toggle: () => {
+          updateSettings(settings => {
+            ensureMisc();
+            settings.misc!.suppressRateLimitWarning =
+              !settings.misc!.suppressRateLimitWarning;
           });
         },
       },
