@@ -35,9 +35,10 @@ describe('checkReleaseMeta', () => {
     expect(r.out).toContain('newest prompts file is 2.1.100');
   });
 
-  it('checks only the tag while package.json declares no field', () => {
-    expect(run({ version: '1.0.0' }, ['2.1.100']).code).toBe(0);
-    expect(run({ version: '1.0.0' }, ['2.1.100'], 'v1.0.1').code).toBe(1);
+  it('fails when package.json declares no field', () => {
+    const r = run({ version: '1.0.0' }, ['2.1.100']);
+    expect(r.code).toBe(1);
+    expect(r.out).toContain('supportedClaudeCode');
   });
 
   it('checks the tag against the package version', () => {

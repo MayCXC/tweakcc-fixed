@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 // Release gate: on a tag build the tag must match the package version, and
-// once package.json declares `supportedClaudeCode` (the newest Claude Code
-// version this release supports) it must name the newest prompts file in
-// data/prompts. Runs in the release workflows only: mid
+// package.json `supportedClaudeCode` (the newest Claude Code version this
+// release supports) must name the newest prompts file in data/prompts. Runs in the release workflows only: mid
 // bump, the prompts commit lands before the release commit, so this would fail
 // the pre-commit suite by design.
 //
@@ -39,10 +38,7 @@ const newest = versions[versions.length - 1];
 
 const errors = [];
 if (!newest) errors.push('no data/prompts/prompts-X.Y.Z.json found');
-else if (
-  pkg.supportedClaudeCode !== undefined &&
-  pkg.supportedClaudeCode !== newest
-)
+else if (pkg.supportedClaudeCode !== newest)
   errors.push(
     `package.json supportedClaudeCode is ${JSON.stringify(pkg.supportedClaudeCode)}, but the newest prompts file is ${newest}`
   );
@@ -59,5 +55,5 @@ if (errors.length) {
   process.exit(1);
 }
 console.log(
-  `release meta: OK (version ${pkg.version}, supportedClaudeCode ${pkg.supportedClaudeCode ?? 'not declared'}${ref ? `, ref ${ref}` : ''})`
+  `release meta: OK (version ${pkg.version}, supportedClaudeCode ${pkg.supportedClaudeCode}${ref ? `, ref ${ref}` : ''})`
 );
