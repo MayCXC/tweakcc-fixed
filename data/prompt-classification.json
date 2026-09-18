@@ -367,7 +367,6 @@
     "name": "Tool Result: Artifact write_db Invalid URL",
     "desc": "Permission-layer deny for Artifact write_db when `url` does not parse as an artifact url; returned to the model as the tool_result."
   },
-  "026365c8": { "facing": "internal" },
   "026365c8e5b8c6843beac969c103bd83a84be56e": { "facing": "internal" },
   "026429ba2f9d9127bc1777847e4815481ce4ab74": {
     "facing": "model",
@@ -461,7 +460,6 @@
   "02d5bf0c439dde3701df29780d0d7d0cd0705703": { "facing": "internal" },
   "02d5d9129a90ac28de6889ecba6a0ecc44e855a7": { "facing": "internal" },
   "02dc1dcf3bc917def99ff3fb6b1bbe28211000a3": { "facing": "ui" },
-  "02df9bcd": { "facing": "internal" },
   "02df9bcdca839e337b391fc6a9d607b6c0b9e66d": { "facing": "internal" },
   "02e0610d0551c14e4f0b6b29ecfa0de503b9756c": {
     "facing": "model",
@@ -753,7 +751,6 @@
     "name": "Memory reply-text-only rule",
     "desc": "Memory-prompt rule restricting memory notices to the model's reply text, not tool inputs like plans or todos."
   },
-  "04545153": { "facing": "internal" },
   "045451535b4a7b7a5a1bd1b504514cae62c44946": { "facing": "internal" },
   "04556e595eb21d576acacdf0adc2cc4914e17c7b": { "facing": "internal" },
   "04580c630ee8ec7d28d29f872bf40dbe953b34f0": {
@@ -1843,7 +1840,6 @@
   "0aa7d0f57d5799f500cc27bce933e70a10d9de93": { "facing": "internal" },
   "0aa8d266f792884063f999004499b84c0c49b941": { "facing": "ui" },
   "0aab9890263d1ebd6f069f6d803695435bcfd9cc": { "facing": "ui" },
-  "0ab0d9d3": { "facing": "internal" },
   "0ab0d9d312dbff15342327685de895b0b81cda91": { "facing": "internal" },
   "0abcee71828694089b9bb848a520c90a7e9556a2": {
     "facing": "model",
@@ -2449,12 +2445,6 @@
     "name": "System Reminder: Plan approved",
     "desc": "Notifies Claude that the user approved the plan, provides the saved plan file and approved plan content, and allows coding to begin"
   },
-  "0e5c57b5": {
-    "facing": "model",
-    "id": "tool-parameter-toolsearch-query",
-    "name": "ToolSearch query",
-    "desc": "Description for the ToolSearch tool inputSchema's query param (query to find deferred tools, supports select:<tool_name>); model-facing as a tool parameter description."
-  },
   "0e5c57b5d1457d51cca25f08b5dccbc381353fb4": {
     "facing": "model",
     "id": "tool-parameter-toolsearch-query",
@@ -2494,7 +2484,6 @@
   },
   "0e92b54a3a5ede96f81f4abe84eae571eb186ae5": { "facing": "internal" },
   "0e94860806b1dc877846e4f9be72ecf8e7621719": { "facing": "ui" },
-  "0e95b0db": { "facing": "internal" },
   "0e95b0dbdb151e391d054631b8722fd6bf75e5ef": { "facing": "internal" },
   "0e98084846fcd5bfb175728136580a4e56f25536": { "facing": "internal" },
   "0e988d7efbbd093f35f90febc5ecb94c734f5b28": { "facing": "internal" },
@@ -2750,7 +2739,6 @@
     "name": "ShareOnboardingGuide short_code parameter",
     "desc": "The `short_code` input-schema param description for the ShareOnboardingGuide tool, serialized into the model's tool list."
   },
-  "10077a52": { "facing": "internal" },
   "10077a5212a3cc19cef136aae1517a9906b66a1d": { "facing": "internal" },
   "100a22f039036292dc54455750ff1d704be1ddce": {
     "facing": "model",
@@ -2982,7 +2970,6 @@
   },
   "1138dde7bf3c568d0d91529864a57265db6996d9": { "facing": "internal" },
   "114174999297a9b61fc6e315ee54546affc61f5f": { "facing": "ui" },
-  "1149d374": { "facing": "internal" },
   "1149d3745a748960708791b47e306b0078c29b1b": { "facing": "internal" },
   "11510f1904a362a1c0a3fb10d7f34eca1a608330": { "facing": "ui" },
   "1158f6ab94b6c9bed88c63b7ae8aa85efe729e6e": {
@@ -6414,7 +6401,6 @@
   "2816aaf876770496dd342756fd2f6bcb470727c8": { "facing": "ui" },
   "28186371cf51290bab114423af17ac98fb3086f3": { "facing": "ui" },
   "281b54df8f47025cca26372e050580b997b94af4": { "facing": "internal" },
-  "28295cf6": { "facing": "internal" },
   "28295cf6a95eedeeaafb52b42aa51db919abc4e0": { "facing": "internal" },
   "282990aaca878fd6bc3eb9eb983a67eab708465d": { "facing": "ui" },
   "282c0559016e4fc8873528f8038c825aafccd04e": { "facing": "internal" },
@@ -7233,7 +7219,6 @@
   },
   "2cbcc819ffde7bdf6f01b78ebc5531e02540466e": { "facing": "ui" },
   "2cbd195ab3d78d6b764c4cc3f11eccc429cee119": { "facing": "ui" },
-  "2cc385b5": { "facing": "internal" },
   "2cc385b5e0394942e7e45fc986fea30679c7486b": { "facing": "internal" },
   "2cc4830934c8ebd6a0f4498a870cf3141875d6bf": {
     "facing": "model",
@@ -8906,7 +8891,6 @@
   "37e3f36deb1da8b6b19c33c4f9a22961f5ac84d8": { "facing": "ui" },
   "37ec20860c6b28d7c10c46655aaf66a853494665": { "facing": "ui" },
   "37f98281f777350eb00f8d4882113d1f38d56e4f": { "facing": "ui" },
-  "37fa91db": { "facing": "internal" },
   "37fa91dbb3b48dc15379069039c9a4052e118512": { "facing": "internal" },
   "37fe9a66981f8501bbef9b80213904b4735fa52d": { "facing": "internal" },
   "3801e40933162a1320acf0c30f220770153cd02b": { "facing": "internal" },
@@ -9260,7 +9244,6 @@
     "name": "Skill Reference: Data-viz Reference Palette",
     "desc": "Data-viz skill reference file (references/palette.md) — the reference-instance palette with validated default hex values"
   },
-  "3a231e17": { "facing": "internal" },
   "3a231e172765a6ba091c3045feaa4478cd704572": { "facing": "internal" },
   "3a3a29009c62f9a068e61f81792a492a4126ecfd": {
     "facing": "model",
@@ -10380,7 +10363,6 @@
   "420b9cda91afb060951981d8772b9c262cfc2e38": { "facing": "ui" },
   "420bab2f57ea107f0d3f10dc627c38ff2d616b17": { "facing": "internal" },
   "4210cd02e997c223674ce9c930fba8c5f00f98ba": { "facing": "ui" },
-  "421588ab": { "facing": "internal" },
   "421588abcb95349d73587b1f8badb8d8c0139d78": { "facing": "internal" },
   "421b2f5cf2db8fc772fee0fa0a38b32377906140": { "facing": "internal" },
   "421bbdf0ac3c32110155f3847d9ddf88c72be30f": {
@@ -11110,7 +11092,6 @@
   "45e492f79ba47d9ebd8960a7d4402277fd6452ad": { "facing": "ui" },
   "45e54f01ff2efdffb8884c545119323e4315d1b5": { "facing": "internal" },
   "45e97130c9fdfce9ccedd2669fd791cd783e57d5": { "facing": "internal" },
-  "45e97130fdfce9ccedd2669fd791cd783e57d5": { "facing": "ui" },
   "45ed48bfe58854569988e84b0d5b78089583423a": { "facing": "ui" },
   "45eeb2a65b81f430f7aba61276e43ce599204076": { "facing": "internal" },
   "45f77c59800463c0aaead80ed6341a2017bdcf96": {
@@ -11323,7 +11304,6 @@
     "desc": "Describes the SearchSkills tool for finding relevant claude.ai skills by keyword and suggesting add cards when results fit"
   },
   "47721d260de52e14656502a59fc38bf47810c1dd": { "facing": "ui" },
-  "47745d21": { "facing": "internal" },
   "47745d2137eb0ce89bec06d18e7f1e46a745a5ae": { "facing": "internal" },
   "4774692fd524c54ae3600b6900bbaab41aaa68a9": {
     "facing": "model",
@@ -12159,12 +12139,6 @@
   },
   "4cdec63f14e8c42f0b6ddad5926aba1927b961d1": { "facing": "internal" },
   "4ce047a29b3204ded87af5fd63c99ce0cf2abe36": { "facing": "internal" },
-  "4ceb0763": {
-    "facing": "model",
-    "id": "tool-result-pdf-pages-extracted",
-    "name": "PDF pages extracted tool result",
-    "desc": "tool_result content string returned to the model after extracting pages from a PDF, reporting page count, path, and size; model-facing."
-  },
   "4ceb0763526aa7f98b331bdac61c1b336a21cdc2": {
     "facing": "model",
     "id": "tool-result-pdf-pages-extracted",
@@ -12872,12 +12846,6 @@
     "name": "Slash Command: /scroll-speed — cancelled, nothing changed",
     "desc": "Tells the model the scroll-speed picker was dismissed and the previous value restored, so no settings write happened."
   },
-  "5119ae19": {
-    "facing": "model",
-    "id": "tool-parameter-exit-plan-mode-allowed-prompts",
-    "name": "ExitPlanMode allowed prompts",
-    "desc": "Description for the ExitPlanMode tool inputSchema's allowedPrompts param (prompt-based permission categories needed to implement the plan); model-facing as a tool parameter description."
-  },
   "5119ae195c866b0ac249d7cae55d89505b4daf7d": {
     "facing": "model",
     "id": "tool-parameter-exitplanmode-allowed-prompts",
@@ -13358,7 +13326,6 @@
     "desc": "The tool_result content returned to the model after a successful file update (with user-modified suffix ordering) via mapToolResultToToolResultBlockParam; model-facing."
   },
   "545a77f03275b20a5ef354fd30b4c5b92be8fab6": { "facing": "internal" },
-  "545c8351": { "facing": "internal" },
   "545c83516c0081468d36e6d1de78a04c937e6855": { "facing": "internal" },
   "5465aef28d0fe8bbe60a21626a779af676cdb2b3": { "facing": "internal" },
   "5467584fb0e017a7921467d7036bea54c0d97a42": { "facing": "internal" },
@@ -14000,7 +13967,6 @@
     "desc": "Interpolated into the artifact-capabilities skill guidance to enumerate the capability names this user may declare"
   },
   "589fa341fb260fb8dce609f88cebe492fd7b65d8": { "facing": "ui" },
-  "58a5c107": { "facing": "internal" },
   "58a5c107240437a2f7070b4f3dbd7fa89e970071": { "facing": "internal" },
   "58a6c8ca77df24d33f6a8cccc90863b0eed23b0a": {
     "facing": "model",
@@ -14314,12 +14280,6 @@
     "desc": "Trailing instruction wrapping co-written artifact HTML in model context, warning that the tag's contents are untrusted data."
   },
   "5b1154f4d8e3de91ea9a8f645604877ea84adab0": { "facing": "internal" },
-  "5b13dd7b": {
-    "facing": "model",
-    "id": "tool-parameter-grep-only-matching",
-    "name": "Grep only-matching (-o)",
-    "desc": "Description for the Grep tool inputSchema's -o param (print only matched parts of each line, rg --only-matching); model-facing as a tool parameter description."
-  },
   "5b13dd7b9f9e5561c88325a744a7a9d54ab7a359": {
     "facing": "model",
     "id": "tool-parameter-grep-only-matching",
@@ -14851,12 +14811,6 @@
     "name": "Data: WorktreeCreate hook dotted-path rejected",
     "desc": "Error surfaced when the WorktreeCreate hook emits a path with dot segments the symlink screen can't verify."
   },
-  "5e9d096cf3118107b8227a95393517eb123f3e4": {
-    "facing": "model",
-    "id": "tool-result-worktree-create-hook-dotted-path-tail",
-    "name": "Tool Result: Worktree create — dotted-path retry tail",
-    "desc": "Trailing literal of the dotted-path rejection instructing the hook to emit a normalized (dot-free) absolute path and retry."
-  },
   "5eac5042fadecf2841a95702c67305a6b2656c8d": { "facing": "internal" },
   "5eae7cdcd0029b973eca7b70d27a718502779894": {
     "facing": "model",
@@ -15200,7 +15154,6 @@
     "desc": "Tells the model the path is already reachable because an ancestor is a working directory, naming that ancestor so it knows the effective access boundary."
   },
   "60a10cb55bccb5a8b2ff28b2b9bcaefb64898d6e": { "facing": "internal" },
-  "60a21c90": { "facing": "internal" },
   "60a21c90dcfbe33c62e1be750a9e1c308a53e32c": { "facing": "internal" },
   "60a3d9057422e86f58750bed4ae01c7a34770436": {
     "facing": "model",
@@ -15889,7 +15842,6 @@
     "name": "Tool Result: resume_replies denied — session never opted in",
     "desc": "Permission denial explaining the session never opted into automatic comment replies, so a resume has nothing to re-enable."
   },
-  "655f0dc3": { "facing": "internal" },
   "655f0dc339740c78924f40b50d76d19747c77e2b": { "facing": "internal" },
   "655f8b5f58cd821af735ae1616a07d99a38e9843": { "facing": "internal" },
   "65610634cd6f502ac5b8b52fafcdf6f5913e93d9": { "facing": "ui" },
@@ -16616,7 +16568,6 @@
   },
   "6955f5b59b6323e94fde736e13437600d17169c2": { "facing": "internal" },
   "695a2feec7569d41c71dcdcb17a6f507d2470148": { "facing": "ui" },
-  "6962e063": { "facing": "internal" },
   "6962e06303897547c237af46f39608732c8e9182": { "facing": "internal" },
   "6967d619548ac5242cf81139da204dbbeb0d0212": {
     "facing": "model",
@@ -17738,7 +17689,6 @@
     "name": "TaskCreate Agent-params guidance",
     "desc": "TaskCreate misuse error returned to the model when Agent-tool parameters were passed instead."
   },
-  "70806fa6": { "facing": "internal" },
   "70806fa6c6119d9e49b17bde837663a339715c63": { "facing": "internal" },
   "7082f886593d77d2321fb3eca6b98fdcd71da19a": {
     "facing": "model",
@@ -17819,7 +17769,6 @@
   "7108c47a9b514a2c246a1aadefb6f938419a27e2": { "facing": "ui" },
   "710d60f4645d282c991d2e2d5a7ff1088e9b49e6": { "facing": "internal" },
   "710e5c788dba829878aae0085c50001d2ba5f693": { "facing": "internal" },
-  "7119cf2d251e1100377be5f557fdd1a9638f7f": { "facing": "ui" },
   "7119ed1c2d251e1100377be5f557fdd1a9638f7f": { "facing": "ui" },
   "711e182e772b47c503b94bdd6de098333797699e": {
     "facing": "model",
@@ -17884,7 +17833,6 @@
     "desc": "Continuation of deny-rules context instructing to block equivalent effects via other tools."
   },
   "716ba8ec965ecf99481885ac6afdfc5edac3756c": { "facing": "internal" },
-  "7178d28e": { "facing": "internal" },
   "7178d28eee195a2ca0e8349975bcdbb9ea491205": { "facing": "internal" },
   "7180534c77dda39197af816f768b983d6525234a": {
     "facing": "model",
@@ -18245,7 +18193,6 @@
     "name": "CLI identity (Agent SDK)",
     "desc": "System-prompt opening line identifying Claude Code as running within the Claude Agent SDK; injected as the system prompt."
   },
-  "736dd447": { "facing": "internal" },
   "736dd4479a97a363a2ebe193bceb1474525daa5e": { "facing": "internal" },
   "73712fe3093f42bbbd7709fbf7c21820fb3bc702": {
     "facing": "model",
@@ -19777,7 +19724,6 @@
     "desc": "Assembled /code-review command text block returned as {type:'text'} — prefix + review-target preamble + the per-effort-level instructions (KPm[level]) + optional --comment and --fix addenda, delivered to the model"
   },
   "7e1c0c064e4b50969f08c7ea0fb6b1c9f045bb2a": { "facing": "internal" },
-  "7e1e9b59": { "facing": "internal" },
   "7e1e9b593ddf8708e7abd28363ad333e72f7a9ae": { "facing": "internal" },
   "7e223349bdd4faef0a634caed2679cda710e0bf5": {
     "facing": "model",
@@ -19952,7 +19898,6 @@
   "7f854a383b85c94fe7c6e64d36d832d457ab3278": { "facing": "internal" },
   "7f85f091815d4e93af0b07229cc36e7f2e958ff2": { "facing": "ui" },
   "7f8a8cf69baa7c939a27a57ed56263803f0f119b": { "facing": "ui" },
-  "7fa6a237": { "facing": "internal" },
   "7fa6a23709aaf04c754c6e0e3a298112bb5e08c3": { "facing": "internal" },
   "7fa841a13c1349d772aa76ea0d96d2c450a79d62": {
     "facing": "model",
@@ -20439,12 +20384,6 @@
     "name": "PR summary placeholder",
     "desc": "Template placeholder in PR-description guidance injected into the model."
   },
-  "8289dd68": {
-    "facing": "model",
-    "id": "tool-parameter-taskcreate-active-form",
-    "name": "TaskCreate active form",
-    "desc": "Description for the TaskCreate tool inputSchema's activeForm param (present-continuous label shown in the spinner while in_progress); model-facing as a tool parameter description."
-  },
   "8289dd6834fd9dced2eeb84f9376aa0221ae8239": {
     "facing": "model",
     "id": "tool-parameter-taskcreate-active-form",
@@ -20556,12 +20495,6 @@
     "desc": "Tells the model the named terminal (Ghostty/Kitty/Warp/WezTerm/Windows Terminal) needs no setup, so a follow-up install attempt would be pointless."
   },
   "830e043d7ca1e3d8f3ab2b4317ca0e9b7af9de30": { "facing": "ui" },
-  "8317aa9aa3116a7edb3def838662c44ddc4d33": {
-    "facing": "model",
-    "id": "slash-command-auto-mode-setup-expect-sha256-malformed",
-    "name": "Slash Command: /auto-mode-setup malformed --expect-sha256",
-    "desc": "Non-interactive apply error: --expect-sha256 must be a 64-character hex sha256 digest."
-  },
   "8317aa9adeb3116a7edb3def838662c44ddc4d33": {
     "facing": "model",
     "id": "data-auto-mode-setup-bad-hash-arg",
@@ -20613,12 +20546,6 @@
     "id": "tool-description-computer-type-text",
     "name": "Tool Description: Computer type/key text param",
     "desc": "computer tool's text param for type/key actions including modifier-key conventions"
-  },
-  "83823f56": {
-    "facing": "model",
-    "id": "tool-parameter-project-tool-search-n",
-    "name": "Project tool search hit count",
-    "desc": "Description for the project tool inputSchema's n param (number of project_search hits, default 5); model-facing as a tool parameter description."
   },
   "83823f56b2d9b045b377b83dda23d9837019bb5c": {
     "facing": "model",
@@ -20887,7 +20814,6 @@
     "desc": "Publish-time validation failure when the review-page MCP manifest names a host:local server that cannot carry the review grant."
   },
   "84ce5b205a6ceb585f4cdadd6216ae1c1e19c630": { "facing": "internal" },
-  "84d2d533": { "facing": "internal" },
   "84d2d533b490de307e2e679635b5f9e9428e3824": { "facing": "internal" },
   "84d54d93dfbadb3656d050f096ec3193efaa23da": { "facing": "ui" },
   "84d59ff1683856a1b626dcb01fec076785b9aa6a": { "facing": "internal" },
@@ -21396,7 +21322,6 @@
   },
   "87398c483dd61ca44ddfd9f39b14fab90a0dee80": { "facing": "internal" },
   "873ed9d0cf8d25e4f12046e776b9538e2caab604": { "facing": "internal" },
-  "873f9067": { "facing": "internal" },
   "873f906703dce9c7e27af431660207dd1ba7a714": { "facing": "internal" },
   "87413bda718269b76c3549341d826e1b0442a579": { "facing": "internal" },
   "87426c9d59e9033f4a6ad22f0d76da440de47a9a": { "facing": "internal" },
@@ -22020,12 +21945,6 @@
     "desc": "Appended to a SendMessage result when the named recipient was earlier confirmed to live on another machine and a local session record now claims that identity, hiding it; tells the model nothing was sent and the local claim is suspicious."
   },
   "8b0d1bfbdecbed2090c6d51a679f49684b10de21": { "facing": "ui" },
-  "8b0dbb59": {
-    "facing": "model",
-    "id": "tool-parameter-project-tool-force",
-    "name": "Project tool write force",
-    "desc": "Description for the project tool inputSchema's force param (bypass the project_write chat-injection budget guard); model-facing as a tool parameter description."
-  },
   "8b0dbb598f9c08f97bc99578548829c2b22e3f21": {
     "facing": "model",
     "id": "tool-parameter-projects-force",
@@ -22752,7 +22671,6 @@
     "name": "Comment reply outcome unknown — relay request failed",
     "desc": "Artifact tool error telling Claude a comment reply may or may not have posted because the relay request failed, and to re-read the comments before retrying."
   },
-  "8f88e820": { "facing": "internal" },
   "8f88e82029ae8c9fb9d9dda2129243ad670de7aa": { "facing": "internal" },
   "8f8e3712504e3f8927e452fce46c2909e91323d8": { "facing": "internal" },
   "8f906554bc9352a28ba4a94a1937f3945ba12615": {
@@ -22822,7 +22740,6 @@
     "name": "Slash Command: /remote-env — default environment set",
     "desc": "Tells the model which remote or self-hosted environment is now the session default and by which id, so later remote work is attributed to the right target."
   },
-  "8ffebe42": { "facing": "internal" },
   "8ffebe4276756cb587aca55f7ac9d99287c00321": { "facing": "internal" },
   "900729d9cd1ecc89f4ad71c82b5e9abb4d7a93ec": { "facing": "internal" },
   "9009880ad268a6f8450d6978ca56103dd26e0be1": { "facing": "internal" },
@@ -22886,7 +22803,6 @@
   "9055cf46053efd9ae9933822624e2f4247b7246e": { "facing": "ui" },
   "905677eca9112d2ea373549e3bc220875e42557a": { "facing": "ui" },
   "905d35cb24e8f648f1068afec3c4018b9095acd3": { "facing": "ui" },
-  "906dd297": { "facing": "internal" },
   "906dd2972feae238977ec252176a624449df00c4": { "facing": "internal" },
   "907e7fcd5acbf2774828919e83ce7785335565c9": {
     "facing": "model",
@@ -23666,7 +23582,6 @@
     "desc": "Injected with a cloud-review task notification when the stored posting routine cannot be verified."
   },
   "94c0a3ab3c6413ca6e873b4357edc91a2ea03e62": { "facing": "internal" },
-  "94c0a3ab6c413ce6a873b4357edc91a2ea03e62": { "facing": "internal" },
   "94c5102236dd2f55c01f631f268f3085e91000ef": { "facing": "ui" },
   "94c6a27ad9a3ec8fa925bde94886cfdc9beba0ce": {
     "facing": "model",
@@ -23705,7 +23620,6 @@
   },
   "94ea600144631ad9a443fe8a640e9de8fb1bca92": { "facing": "internal" },
   "94f2465644f3c2859b5832213734e83f770d8bd1": { "facing": "internal" },
-  "94f4622a": { "facing": "internal" },
   "94f4622abb91863f22c35cc96893c77edbc55355": { "facing": "internal" },
   "95072d11ef87129ffef9d49d47fccff75b2cf777": { "facing": "internal" },
   "9521b7b54b8bf6f706786b4403f2e739df0c549c": { "facing": "ui" },
@@ -23932,7 +23846,6 @@
     "name": "Tool Result: Session Registry Unreadable",
     "desc": "Suffix on a SendMessage failure telling the model the local session registry could not be read and to retry the same address shortly."
   },
-  "9689b028": { "facing": "internal" },
   "9689b02868e3861a11e906b0a7570da26ce9b148": { "facing": "internal" },
   "968f4a149d5d310a16ad94dad7b5087f5a30e08e": { "facing": "internal" },
   "9690b7049b5d44af499c680413e49b236663345c": {
@@ -23973,12 +23886,6 @@
     "desc": "Describes the optional directory path searched by the lightweight glob tool."
   },
   "96cf2e387141406b74f6329f428dbed63729d0ef": { "facing": "internal" },
-  "96db1368": {
-    "facing": "model",
-    "id": "tool-result-pdf-file-read",
-    "name": "PDF file read tool result",
-    "desc": "tool_result content string returned to the model after a Read of a PDF file, reporting the file path and size; model-facing."
-  },
   "96db1368800dc9f6588fda74915776254b5d7543": {
     "facing": "model",
     "id": "tool-result-pdf-file-read",
@@ -25659,7 +25566,6 @@
     "name": "Data: Task notification for re-armed artifact auto-replies",
     "desc": "Task notification telling the agent that publishing re-enabled auto-replies on an artifact whose live-updates task had been killed, and how to disarm them again."
   },
-  "a0e85b1a": { "facing": "internal" },
   "a0e85b1a1c8c2f790274c0a7a74ab106a81eab9a": { "facing": "internal" },
   "a0ecffc250254ab3cd7ffeffaecf86b46cd1a25e": {
     "facing": "model",
@@ -25902,12 +25808,6 @@
     "desc": "Environment block listing the last ten Claude Code releases and the running version, injected into the model context."
   },
   "a29638f78fa9b9b8d3115bd13da44a0c5965a082": { "facing": "internal" },
-  "a29e4aa4": {
-    "facing": "model",
-    "id": "tool-parameter-project-tool-search-query",
-    "name": "Project tool search query",
-    "desc": "Description for the project tool inputSchema's query param for project_search knowledge-base queries; model-facing as a tool parameter description."
-  },
   "a29e4aa4590b78e5911af395ccd48d0586b2d909": {
     "facing": "model",
     "id": "tool-parameter-projects-search-query",
@@ -26495,12 +26395,6 @@
     "name": "System Reminder: Ultrareview Post Environment Setup Failed",
     "desc": "Tells the model that the cloud environment needed to post review findings could not be found or created."
   },
-  "a6457666": {
-    "facing": "model",
-    "id": "tool-parameter-project-tool-write-local-path",
-    "name": "Project tool write local path",
-    "desc": "Description for the project tool inputSchema's local_path param (file in the working dir uploaded by project_write); model-facing as a tool parameter description."
-  },
   "a64576663bddf447a0b6fc6221cd9d5dd30cec5e": {
     "facing": "model",
     "id": "tool-parameter-projects-local-path",
@@ -27078,12 +26972,6 @@
     "id": "data-task-notification-artifact-auto-reply-interrupt-stop-disclosure",
     "name": "Data: Artifact Auto-Reply Interrupt Stop Disclosure",
     "desc": "Task-notification body envelope telling the model the user's interrupt paused auto-replies and that an unsolicited republish must not re-enable them."
-  },
-  "a9e297eb": {
-    "facing": "model",
-    "id": "tool-parameter-design-sync-preview-card-path",
-    "name": "design-sync preview card path",
-    "desc": "Description for the design-sync tool inputSchema's preview-card path param (project-relative path to the preview/spec file the card renders); model-facing as a tool parameter description."
   },
   "a9e297ebbdbd3d469fe6d2ec460d4025e90e8277": {
     "facing": "model",
@@ -29511,12 +29399,6 @@
     "desc": "Describes the RemoteTrigger cursor parameter used to continue paginated run and log requests."
   },
   "b8fba085b446f8bdcba2d74a44107c737db41dac": { "facing": "ui" },
-  "b90247d0f7f50670ea4925bf57781ad9518c1d9": {
-    "facing": "model",
-    "id": "tool-result-worktree-create-hook-committed-symlink-rejected",
-    "name": "Tool Result: Worktree create — committed symlink rejected",
-    "desc": "EnterWorktree error tail when a repository-committed symlink under the checkout root could redirect the worktree outside the repo; tells the user to remove it or emit an outside path and retry."
-  },
   "b90247dc7f0f50670ea4925bf57781ad9518c1d9": {
     "facing": "model",
     "id": "data-worktree-create-hook-symlink-rejected",
@@ -29526,7 +29408,6 @@
   "b9025fc9f160c498c87a8874dffc0dace4913cf3": { "facing": "internal" },
   "b905d09ee6c8cdf8e30f3605670162b12e90ebe2": { "facing": "internal" },
   "b90cf9d47a16443f7420a6810f4677ea3b054bac": { "facing": "internal" },
-  "b90cf9d4f57420a6810f4677ea3b054bac": { "facing": "internal" },
   "b91208affd11e160700fe222f8425ddf48fc0458": { "facing": "internal" },
   "b91d1d18051112f508666afcf428d555c862bb5d": { "facing": "ui" },
   "b924a260054dfd9a6be7446c91b828e8c6a56296": {
@@ -29560,7 +29441,6 @@
   "b949b56850274f677859603ecd420553c3f6253e": { "facing": "internal" },
   "b94a530d538b36d9977c5c95c3d1d8ec022da5c1": { "facing": "ui" },
   "b94d83312beaf3a1379f393ca075f8189a60aa73": { "facing": "ui" },
-  "b95e7ba3": { "facing": "internal" },
   "b95e7ba3117c3435f138abd4253d7cba5fe6e446": { "facing": "internal" },
   "b96a7a109d2743d10723e41562bdf8b5c3575146": {
     "facing": "model",
@@ -30238,7 +30118,6 @@
     "name": "Onboarding guide share-link mode param",
     "desc": "inputSchema param of the onboarding-guide share-link tool documenting the check/update/create/delete modes; model-facing."
   },
-  "bd330347": { "facing": "internal" },
   "bd3303478b9518126390e4709567559bf78a3cd3": { "facing": "internal" },
   "bd33fc91ec6756ec0ff018e508311cb2a610fc53": {
     "facing": "model",
@@ -31390,12 +31269,6 @@
   },
   "c43699bd505448e6b53be608c9391289ae92c076": { "facing": "internal" },
   "c43e864e29c002e60ca12a30f3fa0e76fb196cb5": { "facing": "internal" },
-  "c440fd6a": {
-    "facing": "model",
-    "id": "tool-parameter-design-sync-file-path",
-    "name": "design-sync file path",
-    "desc": "Description for the design-sync tool inputSchema's per-file path param (e.g. components/button/index.html); model-facing as a tool parameter description."
-  },
   "c440fd6ab901711a023c0945d0b87798744bcd27": {
     "facing": "model",
     "id": "tool-parameter-designsync-project-path",
@@ -31883,7 +31756,6 @@
     "desc": "Closing instruction of the same watch-ended notification, telling the model to inform the user and only re-call resume_replies if they still want auto-replies."
   },
   "c77fd9fd08eb9f918b2266a6fe64094976206c59": { "facing": "ui" },
-  "c77fd9fd9c0fb9e918b2266a6fe64094976206c59": { "facing": "ui" },
   "c781666d5771366c565059ee56fb07fadf6a44ea": {
     "facing": "model",
     "id": "tool-result-send-message-teams-required",
@@ -33387,7 +33259,6 @@
     "desc": "Continuation of the index-added git-bundle refusal naming git rm --cached -- <file> so the file stays on disk."
   },
   "d02c110cb688611b147cf18da24986a01f4b3fca": { "facing": "internal" },
-  "d03188d6": { "facing": "internal" },
   "d03188d6eab4bd2df11405781b37ec173b6e1d12": { "facing": "internal" },
   "d036486ef74bd42efb2bcbdfbb6d0d8699b6b88f": { "facing": "model" },
   "d036cbb2dc2172fb4a9002044261fdb6508017eb": { "facing": "ui" },
@@ -33429,12 +33300,6 @@
     "desc": "Shared clause stating subagent_type must be supplied because the general-purpose agent is not available in this session"
   },
   "d08143cfb56f3debd7f6ca104e5c2c7879df5a73": { "facing": "ui" },
-  "d08387a1": {
-    "facing": "model",
-    "id": "tool-parameter-task-spawn-permission-mode",
-    "name": "Task spawn permission mode",
-    "desc": "Description for the Task (spawn subagent) tool inputSchema's mode param controlling the spawned teammate's permission mode; model-facing as a tool parameter description."
-  },
   "d08387a1a414e703ba0bb5124c09fd3bf448d3ad": {
     "facing": "model",
     "id": "tool-parameter-agent-spawn-permission-mode",
@@ -34014,7 +33879,6 @@
     "name": "Data: Task Notification Artifact Auto-Edit Thread Followup",
     "desc": "Injected for the model after an automatic artifact edit completes without a confirmed thread resolution and follow-up may be needed."
   },
-  "d42344dc": { "facing": "internal" },
   "d42344dc5167d05bf8ef619247ed06b4ab0fb868": {
     "facing": "model",
     "id": "tool-result-artifact-published",
@@ -35431,7 +35295,6 @@
   "dd11f28d5554a0184ff8feec4d6190fa76c72597": { "facing": "ui" },
   "dd127bfae15822cf883674083da27359f57b2492": { "facing": "ui" },
   "dd1328a5d737d2a750e26f23f9e568304c812ed8": { "facing": "ui" },
-  "dd1b2d4e": { "facing": "internal" },
   "dd1b2d4eb8829915c9bfa8ae5a88b9c65abc5322": { "facing": "internal" },
   "dd1d09c3e334d680147a0af23f733fe0973d1c59": { "facing": "ui" },
   "dd2a763c5d70136401b9eb6c8c71d281c6e4f4ea": { "facing": "ui" },
@@ -35568,7 +35431,6 @@
   },
   "de06e65281c6e12c5e59f569d484b71e45017765": { "facing": "internal" },
   "de08220cc8edc19e954e5cfa8d68c824b40642a4": { "facing": "ui" },
-  "de0c60ea": { "facing": "internal" },
   "de0c60ea48979ff222bdbb4c49cffddccaa5539a": { "facing": "internal" },
   "de0e064d35ed89011c7b74521e910c00efff0240": { "facing": "ui" },
   "de154ef84a4c18b5c6c829252047e4d76eedb857": { "facing": "internal" },
@@ -36699,7 +36561,6 @@
     "desc": "Model-facing tool_result content confirming a message was delivered to the user (with attachment count); sent back to the model."
   },
   "e4c85d765efe8e516645848a41ee37eb8529745f": { "facing": "internal" },
-  "e4c874ae": { "facing": "internal" },
   "e4c874aebf43a0a8c2b3a96191910a50dfb740b7": { "facing": "internal" },
   "e4cf9b2d578a92329d46bb2754d8fbf14fdf33e6": {
     "facing": "model",
@@ -37714,7 +37575,6 @@
   },
   "ebd962b4b85056490ead96041b03a66117ec8aaf": { "facing": "internal" },
   "ebdf8c34e8ffd05814344357e7f3d9df483aa9e9": { "facing": "internal" },
-  "ebe8eb93": { "facing": "internal" },
   "ebe8eb93727f53e8f107f498ec90cce1de802e32": { "facing": "internal" },
   "ebe9e828f0c39ce50bb2dbdc7bc556201fe1fcb1": {
     "facing": "model",
@@ -37780,7 +37640,6 @@
   },
   "ec380b9c825fd9d4ed19a68b4db24b314a482d01": { "facing": "internal" },
   "ec3f55cdf81d00e8601b0a4787e0001a4e302b3f": { "facing": "ui" },
-  "ec434ce5": { "facing": "internal" },
   "ec434ce5180e858d8ef09fdc534d97988a719ca4": { "facing": "internal" },
   "ec44b2d8a4008a5fc0b037d719d23facae81ba5b": { "facing": "ui" },
   "ec49f52c26bdc22784e38abe960323406f51ec7e": { "facing": "ui" },
@@ -38165,12 +38024,6 @@
     "desc": "Value passed to `yd({…mode:\"task-notification\",origin:{source:\"artifact-auto-react-stop-disclosure\"}})` in q$o(); injected as a task notification telling the model that N artifact auto-reply subscriptions stopped and not to republish to re-enable them unprompted."
   },
   "ee93d6cbd499db8b32ca8d842a0746e4a4617802": { "facing": "internal" },
-  "ee9ca2b6": {
-    "facing": "model",
-    "id": "tool-parameter-project-tool-path",
-    "name": "Project tool doc path",
-    "desc": "Description for the project (claude.ai project) tool inputSchema's path param used by project_read/write/delete; model-facing as a tool parameter description."
-  },
   "ee9ca2b6a16105be0cf4e33d9066a03b1262adaa": {
     "facing": "model",
     "id": "tool-parameter-projects-doc-path",
@@ -38369,7 +38222,6 @@
     "desc": "Conditional clause appended to the action-safety block telling the model to surface a mismatch — content that contradicts its description, or that it didn't create — instead of proceeding with a delete or overwrite."
   },
   "efcea7a20ea8a70ecdd66cfb5a363225073c3ab1": { "facing": "ui" },
-  "efd40a38": { "facing": "internal" },
   "efd40a38c68f9b8e49e4802b2f4dd1f6c57a3652": { "facing": "internal" },
   "efdcb16a1b58e2ad25fe694d77a8b7ef32cad140": {
     "facing": "model",
@@ -38680,7 +38532,6 @@
   },
   "f1749ad4ab6f77da65bbf16e7c55bbf2e83cbef0": { "facing": "internal" },
   "f1874c8946cb8b3803b9837556335fbebf09c0c4": { "facing": "internal" },
-  "f1878ac5": { "facing": "internal" },
   "f1878ac51bcf99f3e1944a4ecf82d2a73abcb5d8": { "facing": "internal" },
   "f18861a7a1ef293334a62a1f3ffedd91697592e0": {
     "facing": "model",
@@ -38873,7 +38724,6 @@
   "f292024ee3d51a033db2587b4e98eaac8a21aba5": { "facing": "internal" },
   "f2941a8d58383fd3b4efc87087f50153fd58e80c": { "facing": "ui" },
   "f295f640d6140d7b6ee750cfde632b6fa62fe824": { "facing": "internal" },
-  "f29c5f84": { "facing": "internal" },
   "f29c5f84f0b6bac929718c9c04038b05d8e86107": { "facing": "internal" },
   "f29c95542385638ff04b45a4715c7c379be6809d": {
     "facing": "model",
@@ -39783,7 +39633,6 @@
     "desc": "Tells the model the session just switched to fast mode, optionally naming the model it was switched to and the per-Mtok rate, so it knows its own execution mode and cost profile changed mid-session."
   },
   "f886feb5d0637f12c48e3ebc9c99a83ef1e94bd6": { "facing": "internal" },
-  "f88c5698": { "facing": "internal" },
   "f88c5698a9520bcb9e4a7d5db1f943b3dbcfd51d": { "facing": "internal" },
   "f88d9dd5af5dde60e79ab5b3540330b58ee53784": { "facing": "internal" },
   "f88ef520799e5d464426513f8a2950ad7350471f": { "facing": "ui" },
@@ -40232,12 +40081,6 @@
     "name": "DirectoryAdded Hook Failed Notification",
     "desc": "Task-notification line injected into the conversation after /add-dir when one or more DirectoryAdded hooks failed and their output was suppressed."
   },
-  "fb5e92e1": {
-    "facing": "model",
-    "id": "tool-parameter-sendmessage-message",
-    "name": "SendMessage message content",
-    "desc": "Description for the SendMessage tool inputSchema's message param (plain text message content) sent to agent teammates; model-facing as a tool parameter description."
-  },
   "fb5e92e1941a78a247178065c7a74581202d85c6": {
     "facing": "model",
     "id": "tool-parameter-sendmessage-message-text",
@@ -40422,7 +40265,6 @@
     "name": "Tool Description: Artifact Publish To Typed Artifact",
     "desc": "Dynamic description for publishing files onto an existing Artifact created from a type, whose page is unchanged."
   },
-  "fc9ce098": { "facing": "internal" },
   "fc9ce0987756a775fbbe9743c3cc3516b0e3c1a2": { "facing": "internal" },
   "fc9fdfcc2bc8ba92028c685dafa535afc9968c6c": {
     "facing": "model",
