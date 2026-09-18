@@ -1161,5 +1161,155 @@
     "verdict": "archived",
     "version": "2.1.274",
     "why": "Memory write tombstone identical-recreate refusal removed; absent from bundle, catalogue and sidecar."
+  },
+  "system-reminder-repl-vm-state-cleared-on-compaction": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-description-repl-execution-timeout": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-description-shquote-powershell": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-description-tool-only-available-inside-context": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-description-waitformcpservers-repl-environment": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "WaitForMcpServers REPL-environment wording removed with the REPL tool; absent from bundle."
+  },
+  "tool-description-waitformcpservers-repl-ready-when": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "WaitForMcpServers REPL-environment wording removed with the REPL tool; absent from bundle."
+  },
+  "tool-parameter-artifact-from-url-person-can-open": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "Absent from the 2.1.276 bundle, catalogue and sidecar."
+  },
+  "tool-parameter-send-message-recipient": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "Absent from the 2.1.276 bundle, catalogue and sidecar."
+  },
+  "tool-result-artifact-favicon-emoji": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "Artifact emoji favicon replaced by a one-word icon in 2.1.276; the favicon text is absent from the bundle."
+  },
+  "tool-result-artifact-publish-favicon-required-with-files": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "Artifact emoji favicon replaced by a one-word icon in 2.1.276; the favicon text is absent from the bundle."
+  },
+  "tool-result-artifact-publish-required-new-artifact-clause": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "Artifact emoji favicon replaced by a one-word icon in 2.1.276; the favicon text is absent from the bundle."
+  },
+  "tool-result-artifact-read-paths-need-prior-path-approval": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "Artifact read-paths approval wording reworked in 2.1.276; distinctive probes absent from bundle, catalogue and sidecar."
+  },
+  "tool-result-artifact-read-paths-never-asks": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "Artifact read-paths approval wording reworked in 2.1.276; distinctive probes absent from bundle, catalogue and sidecar."
+  },
+  "tool-result-artifact-read-paths-omit-out-dir-scratchpad": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "Artifact read-paths approval wording reworked in 2.1.276; distinctive probes absent from bundle, catalogue and sidecar."
+  },
+  "tool-result-artifact-read-paths-session-approval-not-kept": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "Artifact read-paths approval wording reworked in 2.1.276; distinctive probes absent from bundle, catalogue and sidecar."
+  },
+  "tool-result-registertool-name-collision": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "RegisterTool results removed with the REPL tool; absent from bundle, catalogue and sidecar."
+  },
+  "tool-result-registertool-name-invalid": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "RegisterTool results removed with the REPL tool; absent from bundle, catalogue and sidecar."
+  },
+  "tool-result-registertool-schema-invalid": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "RegisterTool results removed with the REPL tool; absent from bundle, catalogue and sidecar."
+  },
+  "tool-result-repl-async-cancelled-before-start": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-result-repl-async-dispatch-queue-depth-cap": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-result-repl-async-dispatched": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-result-repl-async-dispatched-queued-behind": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-result-repl-async-settle-output-truncated": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-result-repl-base64-moved-to-result": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-result-repl-documents-omitted": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-result-repl-images-omitted": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-result-repl-inner-watchdog": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-result-repl-module-loading-blocked": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-result-repl-url-elicitation-declined": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
+  },
+  "tool-result-repl-wallclock-limit": {
+    "verdict": "archived",
+    "version": "2.1.276",
+    "why": "REPL tool removed from CC 2.1.276 (description, params, async dispatch and VM-state reminder all absent from the bundle)."
   }
 }

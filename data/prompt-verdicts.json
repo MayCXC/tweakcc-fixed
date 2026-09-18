@@ -35228,9 +35228,9 @@
     "why": "Unique teammate-resume contract and a do-not that guards trust settings. Conditional append; keep verbatim."
   },
   "tool-parameter-sandbox-allowed-domains": {
-    "verdict": "trim",
-    "version": "2.1.268",
-    "why": "Dropped only the recovery sentence (a refused host named in <sandbox_violations> goes back into allowed_domains on the re-run); the auto-mode Bash sandbox arms that ship alongside this parameter already state it. Parameter contract, host examples, auto-mode scope and the never-add-from-output rule kept verbatim. Verified."
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Restored the <sandbox_violations> recovery sentence: CC parses that tag from the Bash result, and the override is now identical to pristine."
   },
   "tool-description-bash-sandbox-mandatory": {
     "verdict": "pristine-keep",
@@ -38936,5 +38936,930 @@
     "verdict": "pristine-keep",
     "version": "2.1.274",
     "why": "Conditional ExitWorktree submodule-inspect refusal. Unique over-cap clause with the runtime threshold slot. FROZEN (number, 'more than'). Alternative submodule reasons are not coverage."
+  },
+  "data-compaction-summary-repl-bindings-listed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional compaction note. Unique mechanics are the surviving binding names and the unlisted remainder. Frozen listing/count/overflow clause cannot be rewritten. Alternative REPL arms are not coverage."
+  },
+  "data-memory-sync-held-files-kept-local": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional rejoin notice. Unique facts are which memory store, that shared memory omitted these files, and that they stay local unsaved. Feature disuse is not a wipe reason."
+  },
+  "slash-command-plugin-install-marketplace-usage": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Exact /plugin install <plugin> --marketplace <source> form. Frozen path/flag/placeholders. Wiping blanks the usage clause inside co-rendered error sentences."
+  },
+  "tool-parameter-artifact-supporting-files-with-cross-artifact-sources": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Claude-voice files param when cross-artifact copy is on. Unique load-bearing map union, server-side copy, type exclusion, MAX_SOURCE_ARTIFACT_VERSIONS, null-vs-omit update rules, list form, and local-source path gate. All tripwire-frozen; alternative arms are not coverage."
+  },
+  "tool-result-artifact-favicon-deprecated-use-icon": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional rejection names `favicon`/`icon` and how the tab icon is chosen. Frozen parameter names plus the numbered example cannot be compressed. Schema overlap does not replace the failed-call contract."
+  },
+  "tool-result-artifact-list-types-docs-unfillable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional list_types trailer. Unique action for this result is to make a page rather than start from the unfillable Docs type. Connector/type names and 'only' are frozen."
+  },
+  "tool-result-artifact-other-org-shared-untrusted-input": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Security/provenance contract for content another organization shared. Unique facts (belongs to another org; shared with the user) have no co-rendering carrier. Bracketed marker is frozen verbatim."
+  },
+  "tool-result-artifact-publish-cannot-change-sharing": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Spliced clause: sharing is changed only from the page Share menu. Frozen menu name and cannot-change contract. An alternative fallback sentence is not coverage."
+  },
+  "tool-result-artifact-publish-not-previewed-this-session": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional publish trailer. Unique preview-before-viewers and post-publish capability-test contracts. Frozen action \"preview\", ordering, and 'only once' cap."
+  },
+  "tool-result-artifact-source-file-missing-cause": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Shared cause for a missing artifact source file. Unique mechanics (other machine or cleared temp files). Interpolated fragment cannot be wiped without punching holes in co-rendered errors."
+  },
+  "tool-result-artifact-source-restored-counts-as-viewed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique restore mechanic: the restored published version counts as viewed immediately. Alternative viewed-once-whole-file arm is not coverage."
+  },
+  "tool-result-artifact-type-file-too-large": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional type_file result. Unique reason is that the file is too large to show and nothing was saved. opensWithSlot path is not a startsWith needle. Trailing suffix is another prompt, not this one's bloat."
+  },
+  "tool-result-bash-zsh-read-fused-non-numeric-operand-too-complex": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Security/validation gate for a numeric operand fused into a zsh read flag. Unique fused-in spelling plus arith-eval/$(cmd) risk. Alternative non-fused error is not coverage."
+  },
+  "data-webfetch-saved-files-note-listed-files-only": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Harness-note scope when no save directory applies. Wiping blanks the middle of the parent sentence. Unique, load-bearing, frozen."
+  },
+  "slash-command-plugin-install-marketplace-needs-source": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional /plugin install error with frozen flag name and two-item source enumeration. Usage sibling co-renders but does not state the missing-source contract."
+  },
+  "slash-command-plugin-npm-tarball-integrity-mismatch": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique npm-install security error. Frozen tool/error mechanics. Alternative npm errors do not co-render."
+  },
+  "slash-command-plugin-validate-hooks-module-not-named-like-code": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Hooks-module filename gate for /plugin validate. Unique vs the client-module sibling; opening-slot prefix is load-bearing."
+  },
+  "tool-result-account-skills-no-save-tool": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Post-write suffix for the no-save-tool session. Unique among the Write/Edit skill-suffix family; cannot rewrite the frozen sentence."
+  },
+  "tool-result-artifact-copy-from-source-other-org-unasked": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique copy_from failure when nobody was asked, with the retry clause in slot 1. Cannot-ask is the other branch."
+  },
+  "tool-result-artifact-db-not-found-external-shared-non-editor": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Viewer/commenter extra-org db not_found: editors-only data plus do-not-retry. Unique vs the writer arm."
+  },
+  "tool-result-artifact-public-outside-org-untrusted-input": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique public extra-org untrusted-input trailer. Digests disagree, so it cannot be wiped as a default."
+  },
+  "tool-result-artifact-publish-cross-org-file-copy-unavailable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Publish-specific cross-org copy refusal with recovery. Frozen don't-retry plus publish-without-file. The copy_from sibling is a different tool."
+  },
+  "tool-result-artifact-publish-sharing-public": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique public sharing-status arm of the publish result. Frozen enum label."
+  },
+  "tool-result-artifact-read-file-set-aside": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique per-file batched read_file skip with four frozen reason arms and a path reread. Whole-batch deny is the other function."
+  },
+  "tool-result-artifact-share-menu-external-invites-off": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Share-menu state that extra-org email invites are admin-off. Unique vs the available arm."
+  },
+  "tool-result-artifact-upload-asset-list-permission-ask-title": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique list-upload permission title. Single-file title is the other arm."
+  },
+  "data-artifact-read-share-email-accept-invitation": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional artifact-read hint with a unique frozen recovery contract. Complementary sibling does not cover email invitations."
+  },
+  "data-memory-sync-no-usable-record-off-for-now": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique store-off contract on a conditional rejoin notice. Related notices are other states, not coverage."
+  },
+  "slash-command-plugin-install-blocked-marketplaces": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique install refusal for blockedMarketplaces. Opening slot is a runtime spec, not a detector prefix. Alternative policy arm is not coverage."
+  },
+  "slash-command-plugin-npm-marketplace-disabled": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique npm-marketplace disable contract. Similar phrasing on other features does not co-render."
+  },
+  "tool-parameter-artifact-file-paths-upload-asset": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique file_paths batch contract; rewrite needle and frozen enumerations must stay verbatim. Co-rendering siblings do not carry the cap or solo exceptions."
+  },
+  "tool-result-account-skills-use-save-tool": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional SKILL.md tool_result that can be the only copy naming save-skill after a cache write. Alternative Jnn arms are not coverage; the always-on saving-skills prompt is not always present."
+  },
+  "tool-result-artifact-content-fetch-https-connect-failed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique Artifact content-fetch HTTPS/443 contract. Alternative proxy arm is not coverage."
+  },
+  "tool-result-artifact-publish-copy-source-not-found-alike": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique copy-source not-found ambiguity contract. Cannot rewrite frozen enumeration."
+  },
+  "tool-result-artifact-publish-retry-with-url": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique retry-with-url arm. Sibling retry sentences are other ternary branches, not coverage."
+  },
+  "tool-result-artifact-share-menu-plan-allows": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique wrapper; wiping it drops the interpolated allow-list from the publish result. Inner slot prompts are contents, not coverage."
+  },
+  "tool-result-artifact-shared-from-another-org-label": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique permission-ask qualifier. Phrase overlap with error/provenance prompts is not same-request coverage; ua() siblings are alternative arms."
+  },
+  "tool-result-artifact-upload-asset-not-stored-header": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique failed-upload header and reference ban. Complementary stored lines are not coverage."
+  },
+  "tool-result-artifact-upload-asset-stored-line": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique batch stored-line format. Single-file unreadable-url prompt is another surface, not coverage."
+  },
+  "data-artifact-document-quickstart-intent-other-or-design": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional routing phrase that completes other prompts. Enum/parameter names are frozen. Blanking the body leaves 'call quickstart with' unfinished. No same-request carrier states which intent to pass."
+  },
+  "data-webfetch-saved-files-note-no-files": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "opensWithSlot and a startsWith detector peel this harness note off the subagent report. Unique no-files fact plus injection guard. Conditional WebFetch note; wipe would return empty and break the detector."
+  },
+  "slash-command-plugin-link-command-cancelled": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "local-jsx /plugin onComplete payload for the cancel path. Unique signal that the linked command did not run. Alternative arms never co-render. Conditional; keep the frozen outcome text."
+  },
+  "system-prompt-artifact-type-bundled-file-untrusted-reference": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Preamble for a type-bundled file: publisher-released, same file on every Artifact from the type, reference not instructions, scoped only to that type's content. Frozen quantifiers and the not-as-instructions contract. Unique vs instruction wrappers. Conditional type-file read."
+  },
+  "tool-description-mcp-wait-omit-all-pending": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "WaitForMcpServers description fragment. Restrictive 'all' plus the omit=wait-all contract. Wiping leaves 'or omit' / '`servers` reports…' as a broken sentence. Unique mechanic; keep verbatim."
+  },
+  "tool-result-artifact-comment-reply-may-already-have-posted": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique suffix: a later known error does not cancel the chance the earlier attempt posted. 'before retrying' is a frozen ordering/validation gate. Conditional comment-reply error."
+  },
+  "tool-result-artifact-file-not-found-deleted-still-targeted": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique still-targeted contract versus the unlinked create-new arm. Frozen `file_path`/`url`, 'still', and the without-url remedy. Conditional Ql() suffix."
+  },
+  "tool-result-artifact-file-not-found-update-then-publish": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique update path for page files, including the .md→.html write target and 'then publish again with that url'. Frozen ordering, extension, and url. Conditional file_not_found remedy."
+  },
+  "tool-result-artifact-publish-root-ignored-no-files": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique publish warning with frozen parameter names (`root`, `files`, `file_path`), 'only', and the files-list remedy. Conditional; keep verbatim."
+  },
+  "tool-result-artifact-publish-target-gone-external-access": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "opensWithSlot rewrite splice. Blanking becomes replace(sTe,'') and deletes the original error prefix from the thrown sentence. Unique owner-withdrew-invitation/edit-access clause. Keep."
+  },
+  "tool-result-artifact-share-menu-external-invites-available": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique fact that email invites outside the organization are available. Leading '; ' completes the Share-menu sentence; wipe drops that clause rather than a whole prompt. Conditional share-menu fragment."
+  },
+  "tool-result-artifact-upload-asset-none-stored-item": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique none-stored item shape, 300-char cap, and status enums. Frozen number and status strings. opensWithSlot is the path formatter, not a wipeable label. Conditional upload error."
+  },
+  "tool-result-fork-unavailable-in-parent-mode": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique: a fork from plan/dontAsk would run without the parent restriction. Frozen mode name and the 'Start a fresh context instead' contract. Conditional subagent-launch error."
+  },
+  "data-artifact-document-quickstart-docs-type-left-out": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique parenthetical that a Docs type was omitted from this listing because the connector is not attached. Similar connector facts on other tools/arms do not ship with this result. Conditional; keep verbatim."
+  },
+  "data-plugin-marketplace-reserved-name-gh": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique description for marketplace name 'gh'. Sibling reserved-name strings are other map keys, not coverage. Conditional validation fragment; keep."
+  },
+  "data-plugin-marketplace-reserved-name-pip": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique interpolation when the reserved name pip is taken. Alternative reserved-name arms are not coverage. Keep."
+  },
+  "tool-parameter-artifact-icon-app-wording": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "App-worded icon parameter is the only copy of that surface's contract, including never-a-brand-name, redeploy omit, and the typesOn ignore slot. Alternative CLI wording is not coverage. Frozen sentence stays verbatim."
+  },
+  "tool-result-artifact-comments-outside-org-do-not-reply": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Outside-org comments listing is the only place that names actions reply/resolve on that result and tells the model to act in-session. Co-rendered stem does not cover those claims. Opening slot is a startsWith detector; keep the whole template."
+  },
+  "tool-result-artifact-copy-from-retry-same-action": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique copy-from retry clause so the user is asked. Publish retry siblings are other ternary arms of p. Keep."
+  },
+  "tool-result-artifact-db-not-found-external-shared-writer": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique not_found suffix for an extra-org share at writer role, including the do-not-retry gate. Alternative non-editor arm is not coverage. Keep verbatim."
+  },
+  "tool-result-artifact-file-not-found-recreate-then-publish": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique recreate-then-publish remedy for a missing non-page file. The update-then-publish sibling is the other extension arm. Keep."
+  },
+  "tool-result-artifact-source-restore-cowritten-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Else-arm of source-restore success is the only copy of this trust-boundary when the page is not newer and not other-writers. Alternative restore/stale-guard strings never co-render. Keep."
+  },
+  "tool-result-artifact-source-restore-other-writers-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique source-restore 'build on' trust-boundary for other writers. Merge/Read siblings are other features. Keep."
+  },
+  "tool-result-artifact-type-file-not-listed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only not_listed type-file result. Unique path/title/files interpolations and nothing-was-saved. Keep, including opening slots."
+  },
+  "tool-result-artifact-type-file-read-via-created-instance": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique create-available suffix naming type_url and no files. Existing-instance sibling is the other flag arm. Keep verbatim."
+  },
+  "tool-result-artifact-type-file-unavailable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only unavailable type-file result, including the catalog-did-not-answer default. Other unread cases are alternative switch arms. Keep, including opening slots."
+  },
+  "slash-command-advisor-held-model-until-clear": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional /advisor stdout suffix with a unique hold contract (model/tool vs setting). Nothing unique is duplicated by a co-rendered carrier."
+  },
+  "tool-result-account-skills-cache-unsaved-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional tool_result prefix. The overwrite-on-sync and do-not-report-this-write-as-saved claims are unique; the saving-skills system prompts do not cover them."
+  },
+  "tool-result-artifact-asset-copy-cross-org-unsupported": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional copy_from 400/predates_cross_org result. Unique server-capability and don't-retry contract for this action."
+  },
+  "tool-result-artifact-comments-outside-org-reply-unavailable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Comments tool_result stem and a detector needle. Wiping or rewriting would empty the startsWith match and the listing-path stem. Not covered by the not_found sibling."
+  },
+  "tool-result-artifact-publish-sharing-unknown": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional publish-result fallback when the audience value is unrecognized. Unique unknown-audience rendering; alternative sharing arms are not coverage."
+  },
+  "tool-result-artifact-source-restore-comment-notice-pending": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional source-restore unavailable why for a pending comment notification. Unique in that path."
+  },
+  "tool-result-artifact-source-restore-type-page": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional source-restore why for a type-locked Artifact whose page is never published from a file. Unique mechanic."
+  },
+  "tool-result-artifact-upload-asset-duplicate-path-nothing-sent": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Runtime upload_asset abort when a later list entry names an already-opened file. Needs both the duplicate-path fact and the nothing-sent contract; the per-entry sibling is not in this result."
+  },
+  "tool-result-artifact-upload-asset-durable-until-delete": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Batch-upload closer with the load-and-durable-until-delete_asset contract. Alternative upload/copy surfaces are not coverage."
+  },
+  "tool-result-artifact-upload-asset-extra-params-error": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional upload_asset extra-field rejection. Unique allowed-field set and remove-list slot."
+  },
+  "tool-result-artifact-upload-asset-list-assets-known-unstored": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional none-stored tail that lists paths known not stored. Alternative empty-list tail is not coverage."
+  },
+  "tool-result-artifact-upload-asset-text-file-own-call": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional validation error. Schema text is not a substitute for the failure message on this call; the type list and file_path-alone contract stay."
+  },
+  "tool-result-mcp-task-truncated-portion-not-kept": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional MCP truncation hint. Unique persist-failure reason; alternative hints do not co-render."
+  },
+  "slash-command-advisor-api-refused-until-clear": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Sole carrier of the API-refused-this-conversation contract and that the setting applies only after /clear or /compact and in new conversations. Conditional slash-command stdout; unique mechanics; nothing to trim."
+  },
+  "slash-command-plugin-install-links-turned-off": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique local-jsx /plugin onComplete when tengu_amber_tollgate disables install links; the model is told to have the user type /plugin install. Conditional; keep."
+  },
+  "slash-command-plugin-install-tarball-path-climbs": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique security/error contract for a climbing or undecodable tarball URL under organization plugin-source restrictions. Conditional; cannot wipe the opening slot; nothing duplicated."
+  },
+  "slash-command-plugin-npm-manifest-name-mismatch": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Sole carrier of the downloaded-manifest-name mismatch. Blanking it deletes the lead of a concatenated error string. Conditional install refusal; keep verbatim."
+  },
+  "slash-command-plugin-update-already-at-latest": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique npm-update up_to_date outcome including the optional (tracking …) clause. Conditional; unique; keep."
+  },
+  "tool-result-artifact-assets-uploaded-count": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique multi-file upload_asset result header. Conditional tool_result; load-bearing count contract; keep."
+  },
+  "tool-result-artifact-comment-reply-temporarily-unavailable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Sole 5xx unknown-outcome contract: the reply may still have posted, re-read before retrying later. Conditional tool_result; unique mechanics."
+  },
+  "tool-result-artifact-publish-sharing-owner": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique owner-audience arm of publish sharing status. Alternative visibility strings are not coverage. Conditional; keep both sentences and the slot."
+  },
+  "tool-result-artifact-publish-unread-discard-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "opensWithSlot Y is a detector needle; the unread-discard clause is unique versus replace-a-newer-edit. Never wipe; nothing to trim."
+  },
+  "tool-result-artifact-share-menu-no-public-link": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique share-menu clause when public is not offered and org external-sharing is not explicitly off. Blanking it deletes words from the parent sentence on this arm. Keep."
+  },
+  "tool-result-artifact-type-file-not-text": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique not_text unread contract (cannot show; nothing saved). Conditional type-file tool_result; keep."
+  },
+  "tool-result-artifact-upload-asset-failed-line": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique per-file failure line (not attempted / failed-but-may-be-stored / failed plus truncated message). Conditional; keep the enum and cap verbatim."
+  },
+  "tool-result-artifact-upload-asset-file-path-or-paths-not-both": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique XOR validation/deny when both file_path and file_paths are passed. Conditional; the whole sentence is frozen mechanics."
+  },
+  "tool-result-output-too-large-could-not-be-saved": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique envelope when the full tool_result could not be persisted: first N shown, remainder dropped, page or filter to continue. Conditional; keep tags and body."
+  },
+  "data-artifact-upload-asset-list-auto-classifier-unshown": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional auto-classifier input. Unique unshown-list noun phrase; the shown-list sibling is the other arm and does not co-render. Feature disuse is not a wipe. Load-bearing and not slop."
+  },
+  "data-memory-sync-held-files-no-record": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional rejoin fragment. Unique cause (folder had no usable shared-memory record) plus the count and file list on that path. Sibling kept-local/off-for-now paths do not co-render. Frozen if kept (so, numeric .length)."
+  },
+  "slash-command-plugin-npm-tarball-duplicate-path": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional /plugin-install onComplete clause. Unique duplicate-path unpack error with the path slot. Frozen if kept (two). Feature disuse is not a wipe."
+  },
+  "tool-result-artifact-copy-source-owner-unconfirmed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional copy_source_unconfirmed / copy_source_outside_org_retry error. Unique unconfirmed-owner fact, publish-aborted outcome, and recheck instruction. Alternative retry arm is not coverage. Frozen if kept (so, nothing was published). Opening slot is a prefix, not a detector needle."
+  },
+  "tool-result-artifact-outside-org-not-found-no-resolve": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional not_found-on-external-org error. Unique 'neither is resolving' plus in-session posting contract on this path. Sibling listing tails are a different arm. Opening-slot detector forbids wiping/trimming the stem. Frozen if kept (reply/resolve actions)."
+  },
+  "tool-result-artifact-public-outside-org-label": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional ua() arm. Unique public-extra-org qualifier on permission-ask labels. Alternative ownership arms and same-phrase error paths never co-render, so they are not coverage."
+  },
+  "tool-result-artifact-read-file-protected-paths-deny": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional batched read_file deny. Unique all-paths-protected fact, enumerated class (git/hook/tool/agent settings, shell profiles, suspicious spelling, scratchpad link), nothing-read outcome, and retry with `path`. Frozen if kept (every, enumeration, `path`). Sibling ask/set-aside paths are not coverage."
+  },
+  "tool-result-artifact-read-provenance-external-org-writer-untrusted": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional read-provenance arm. Unique writer+external-org source plus the untrusted-third-party contract on that arm. Wiping or trimming the parenthetical would drop the only live untrusted signal when this arm renders."
+  },
+  "tool-result-artifact-share-menu-no-public-link-sharing-off": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional share-menu qualifier. Unique sharing-off reason for why there is no public link. The 'available here' sibling is the other arm and does not co-render."
+  },
+  "tool-result-artifact-source-restore-newer-than-last-seen": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional source-restore note. Unique newer-than-last-seen fact plus the untrusted/don't-reuse-memory contract on that arm. Alternative restore notes are not coverage."
+  },
+  "tool-result-artifact-type-file-read-via-existing-instance": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional unread suffix when creating from a type is off. Unique recovery: read the path with an instance the user already has (no create-first/`type_url` path). The created-instance sibling is the other arm."
+  },
+  "tool-result-artifact-type-file-shown-not-saved": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional type-file tool_result header. Unique shown-inline + not-saved-to-disk contract with the character-count slot. Empty-file sibling is the other arm."
+  },
+  "tool-result-artifact-upload-asset-unexpected-before-store": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional per-file upload failure after bytes were sent. Unique unknown-stored fact and list-assets recovery. Frozen if kept (before). Feature disuse is not a wipe."
+  },
+  "data-artifact-upload-asset-list-auto-classifier-input": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique batch-approval, note-ordering, and overflow contracts for the auto-permission classifier. Conditional; wiping blanks the only list summary the classifier sees. OpensWithSlot has no detector. Keep verbatim."
+  },
+  "data-memory-sync-held-files-ask-before-delete": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique hold mechanic plus delete-gate on a conditional rejoin notice. Feature disuse is not a wipe reason. Keep all three sentences verbatim."
+  },
+  "tool-parameter-artifact-favicon-deprecated-claude-omits": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Sole live copy of the favicon-deprecation fact on the app-worded Artifact schema. Wiping leaves a still-present favicon field undescribed. Conditional schema string; keep verbatim."
+  },
+  "tool-parameter-artifact-favicon-deprecated-omit": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Sole live copy of the omit-favicon contract on the base Artifact schema. Same keep as other deprecated-parameter one-liners whose deprecation fact lives only here."
+  },
+  "tool-result-account-skills-report-unsaved": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique same-request remainder is the affirmative disclosure on the report_unsaved arm. Prefix prohibition is not the same claim. Conditional Write/Edit suffix; keep verbatim."
+  },
+  "tool-result-artifact-copy-from-destination-other-organization": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique copy_from cross-org gate and remedy. Conditional permission deny; keep verbatim."
+  },
+  "tool-result-artifact-file-not-found-deleted-publish-new": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique unlinked-deleted publish contract. Conditional file_not_found remedy; keep verbatim."
+  },
+  "tool-result-artifact-list-external-org-not-listed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique cross-org list hole plus ask-for-link remedy. Conditional list suffix; keep verbatim."
+  },
+  "tool-result-artifact-publish-source-missing-restored": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Sole copy of the missing-source restore path, including the republish identity (same file_path/url). Conditional; keep verbatim including slots."
+  },
+  "tool-result-artifact-read-destinations-check-changed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique retry contract for this permission race. Conditional deny message; keep verbatim."
+  },
+  "tool-result-artifact-source-restore-path-exists": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique restore EEXIST reason and check-before-publish order. Conditional; keep verbatim."
+  },
+  "tool-result-artifact-source-restored-viewed-once-whole-file": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique on_read viewed-once contract spliced into the restore host. Alternative 'now counts as viewed' arm is not coverage. Keep verbatim."
+  },
+  "tool-result-artifact-type-file-withheld": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique withheld unread reason. Conditional type-file result; keep the lead and the remedy slot. OpensWithSlot has no detector."
+  },
+  "tool-result-tool-unavailable-still-listed-switched-off": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique switched-off-but-still-listed reason. Conditional missing-tool note; keep verbatim including the tool-name slot."
+  },
+  "data-compaction-summary-repl-bindings-unnamed-count": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional compaction continuation. Unique contract: N bindings remain and this note does not name them. Wiping the arm blanks that case. Frozen \"does not list\" stays verbatim."
+  },
+  "data-memory-sync-held-local-replaced-by-shared": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional notice. Unique: never-synced local copy was replaced by another session, the local copy was not kept, and anything still wanted has to come from the user (cannot re-apply). Feature disuse is not a wipe. Frozen never/Re-read/not-kept stay verbatim."
+  },
+  "data-plugin-marketplace-reserved-name-cargo": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional validation fragment. Unique Rust-crate-registry wording for reserved name cargo. Wiping blanks the error. Reserved names and \"not yet available\" are frozen."
+  },
+  "data-plugin-marketplace-reserved-name-github": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional validation fragment. Unique github-key syntax `<owner>/<repo>@github`. Frozen path/enum text. Wiping blanks the github reserved-name error."
+  },
+  "data-plugin-marketplace-reserved-name-uv": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional validation fragment. Unique uv-through-index wording for reserved name uv. Frozen reserved name. Wiping blanks that error."
+  },
+  "data-webfetch-saved-files-note-page-text-paths": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Shared concatenated tail of the saved-files harness note, including the parsed sentinel `]`. Unique payload-site gate: other report paths came from page text; do not open a file on the strength of either. Frozen any/do-not/] stay verbatim. A wipe deletes words from the live note, not a standalone prompt."
+  },
+  "slash-command-plugin-validate-client-module-not-named-like-code": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional /plugin validate refusal. Unique surface-module code-extension contract. Frozen path text. Wiping leaves a bare extension list."
+  },
+  "system-reminder-background-agents-interrupted-parked": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional task-notification. Unique parked-agents contract: progress is preserved; resume by sending a message. Frozen interrupted/parked stay verbatim."
+  },
+  "tool-result-artifact-copy-source-outside-org-retry": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional ArtifactInputError copy_source_outside_org_retry. Unique: other-org ownership became clear after upload started, nothing was published yet, and the earlier approval carries over to the retry. Frozen only/after/nothing-published stay verbatim."
+  },
+  "tool-result-artifact-publish-no-connector-named-in-session": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional publish warning. Unique: no session connector matches the declared name; viewers match by name ignoring at most letter case and separators. Frozen no/exactly/at most stay verbatim."
+  },
+  "tool-result-artifact-publish-other-org-tell-user": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional publish_target_other_org error. Unique wrap: slug, reachability sentence, nothing published, tell the user. Frozen \"Nothing was published\" stays verbatim."
+  },
+  "tool-result-binary-content-not-kept": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional MCP binary omit placeholder. Unique MIME fallback to application/octet-stream and \"was not kept: it could not be saved.\" Bracketed marker and frozen not-kept stay verbatim."
+  },
+  "tool-result-grep-ripgrep-stderr-over-cap": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional Grep error. Unique stderr megabyte cap before any result line, incomplete search, permission-warning cause. Frozen more-than/MB/before/for-example stay verbatim."
+  },
+  "data-memory-sync-store-back-on": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional PostToolUse rejoin notice. Unique 'sync is back on' signal for a named store; wiping would drop the only copy on that arm. Frozen store-name interpolation. Feature disuse is not a wipe reason."
+  },
+  "slash-command-plugin-install-marketplace-named-twice": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique /plugin install usage contract. The sentence enumerates two forms (<plugin>@<marketplace> vs the sliced usage line) so it is frozen verbatim-or-delete; both checks leave it unique and load-bearing."
+  },
+  "slash-command-plugin-install-source-not-available-yet": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional install/update/uninstall error for reserved sources. Unique syntax and 'not available yet' contract; alternative source refusals do not co-render."
+  },
+  "slash-command-plugin-install-tarball-url-unparsed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique parse-failure arm under organization plugin-source restrictions. Wiping would drop the only reason for that refusal. Slot-open detector check is negative."
+  },
+  "system-reminder-background-tasks-stopped-by-user": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique stopped-tasks list so the model does not treat them as still running. Sibling agent notices are other objects or other arms, never coverage."
+  },
+  "tool-result-artifact-file-not-found-published-gone": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique linked-path gone clause. Frozen path/machine wording. Conditional file_not_found fragment; preserve."
+  },
+  "tool-result-artifact-file-not-found-unlinked-gone": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique unlinked-path gone clause. Alternative arm of published-gone is never coverage. Mechanics stay."
+  },
+  "tool-result-artifact-quickstart-docs-connector-missing-no-types": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "This arm is the only place that says no Artifact types were listed and to call quickstart again with the interpolated argument. Connector-only-fill claims on other delivery paths are alternative arms, not coverage. Frozen only/tool-name sentences cannot be rewritten."
+  },
+  "tool-result-artifact-share-menu-nothing-wider-than-private": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Fragment completing 'allow: ${s}${l}${o}'. Blanking deletes words from that sentence. Unique plan/org bound; keep verbatim."
+  },
+  "tool-result-artifact-type-link-is-type-not-instance": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique type-link read contract. Conditional tool_result prefix; preserve."
+  },
+  "tool-result-artifact-upload-asset-path-too-long": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique approval-display length gate. Frozen number/parameter/path wording. Conditional list-entry refusal."
+  },
+  "tool-result-artifact-upload-asset-reference-by-url": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Batch upload_asset success trailer. Unique store-id / every-view contract on this arm; frozen sentence cannot be compressed. Alternative single-file note is never coverage."
+  },
+  "tool-result-bash-coordinator-readonly-only": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique coordinator Bash validation gate. Frozen enumerations and never-style input bans stay verbatim. Wiping would empty the refusal the validator returns."
+  },
+  "tool-result-remote-tool-unverified-refusal-reason-unattested-request": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique unattested-request reason. Family members are not substitutes. Wiping empties the E() slot and deletes the only copy of this account requirement."
+  },
+  "slash-command-plugin-link-command-unprintable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique /plugin onComplete contract for a held install-link command that fails /^[\\x20-\\x7e]*$/. Wiping would leave the model with no reason the command was skipped and no remedy. Frozen: the command did not run; type it yourself."
+  },
+  "tool-description-mcp-wait-without-servers-reports-failures": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Load-bearing description fragment: once none is pending, omit `servers` to get connect-failure and unconfigured reports. Unique vs ready=false return text. Keep verbatim; blanking deletes the end of the live tool description."
+  },
+  "tool-result-artifact-assets-uploaded-retry-unstored-file-paths": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique partial-failure retry: fix the failures, recall with only the listed `file_paths`, none of which were stored. Conditional tool_result; keep the frozen retry contract."
+  },
+  "tool-result-artifact-copy-from-source-shared-other-org-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only arm that states the source belongs to another organization and was shared, and that approving copies its assets into this artifact. Same shape as the already-kept foreign-note consent sentence."
+  },
+  "tool-result-artifact-file-not-found-not-restored": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique restore-failure why on the file-not-found result. Wiping drops the only copy of why the Artifact copy was not restored."
+  },
+  "tool-result-artifact-publish-files-cross-org-refused": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique publish-files cross-org refuse: copied files can only go into the user's own artifacts; drop them or publish to an own artifact. Keep the error tag and dual remedy verbatim."
+  },
+  "tool-result-artifact-publish-icon-field-not-accepted": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only copy of the dropped-`icon`-field outcome: the publish succeeded with no icon because the server rejected the field. Distinct from omitted-icon and legacy-favicon."
+  },
+  "tool-result-artifact-publish-legacy-favicon-sent": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique publish warning that a legacy `favicon` emoji went out and the next call must pass `icon`. Keep the parameter names verbatim."
+  },
+  "tool-result-artifact-publish-nul-byte-fffd-warning": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique post-publish NUL contract (byte offset, browser U+FFFD, script break, \\\\u0000 repair). Opening slot is a path, not a detector needle. Keep verbatim."
+  },
+  "tool-result-artifact-type-file-empty-not-saved": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only result that the type file exists, is empty, and was not saved. Wiping would collapse it into the non-empty shown-below arm, which does not render here."
+  },
+  "tool-result-artifact-upload-asset-file-paths-over-limit": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique upload_asset validation: over the per-call cap, N were given, send the rest in further calls. Wiping blanks the overflow error, including the uncatalogued cap prefix in slot 0."
+  },
+  "tool-result-artifact-upload-asset-permission-ask-list": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique multi-file upload_asset ask naming the files and that everyone who can open the artifact can load them. Conditional checkPermissions message; keep."
+  },
+  "tool-result-artifact-visibility-private-unless-shared": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Only arm for unknown/default sharing: private unless shared from the page Share menu, the model cannot change sharing, and others cannot open the link until it is shared. Keep both frozen sentences."
+  },
+  "data-hook-additional-context-persist-failed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional hook overflow. opensWithSlot: identifier 0 is bundle `re(g,n)` (truncate). Detector `h.startsWith(CZ)` with CZ=`<persisted-output>` matches the PREFIX of the catch return, i.e. slot 0, not the fail note. Wiping blanks the truncated hook payload the parent status describes as kept inline. Keep slot 0 and the frozen cut-at/persist-failed note verbatim."
+  },
+  "data-plugin-marketplace-reserved-name-npm": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional marketplace-name validation fragment. Unique among reserved-name siblings because npm is live (`<package>@npm`) and the recovery is remove-then-add under another name. Frozen spec token and recovery; keep."
+  },
+  "slash-command-plugin-install-invalid-npm-spec": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional /plugin install onComplete refusal. Entire sentence is FROZEN (e.g., three-item enumeration, spec token). Unique error identity; keep verbatim."
+  },
+  "slash-command-plugin-marketplace-add-different-source": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional /plugin marketplace add refusal. Frozen ordering (`first`) and the exact slash command with the live name slot. Unique recovery contract; keep."
+  },
+  "tool-parameter-send-message-recipient-agents-or-main": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional SendMessage `to` schema for the no-listing arm. Frozen three-item enumeration including `\"main\"` and agentId. Cross-session sibling cannot cover it; tool-desc overlap is partial and stricter. Keep the field contract."
+  },
+  "tool-result-artifact-copy-from-source-other-org-cannot-ask": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional copy_from/publish other-org result when nobody in-session can be asked. Unique vs unasked (no ask surface vs ask-not-fired). `Don't retry it here` is frozen retry mechanics; keep verbatim."
+  },
+  "tool-result-artifact-publish-no-icon-sent": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional publish tool_result. Unique recovery that overrides omit-on-redeploy. Frozen `icon` parameter name; keep."
+  },
+  "tool-result-artifact-publish-retry-same-publish": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional retry fragment for unasked cross-org publish with no retryUrl. Spliced into the unasked result as `${p}`. Unique verb (`publish` vs `action`) and no-url path. Frozen retry instruction; keep."
+  },
+  "tool-result-artifact-publish-sharing-org": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional publish-result sharing status for org audience. Frozen quantifiers/enum (`everyone`, `Anyone with the link`, cannot/unless). Unique vs users/public. Keep both sentences."
+  },
+  "tool-result-artifact-publish-sharing-users": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional publish-result for `users` sharing. Frozen access rule (`nobody else`, email invite, `Anyone with the link`). Distinct from org-wide. Keep verbatim."
+  },
+  "tool-result-artifact-upload-asset-duplicate-path": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional upload_asset list-entry error. Frozen `each` + once-per-file rule. nothing-sent cannot cover the preflight sites. Keep."
+  },
+  "tool-result-grep-ripgrep-output-collection-failed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional Grep collection error (often huge match set). Frozen error tag and `.message` slot. Sibling recovery text is other arms. Keep."
+  },
+  "tool-result-grep-ripgrep-output-over-cap": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Conditional Grep error when stdout exceeds the megabyte cap before a complete line. Frozen `/1e6}MB`, `before`, `single complete line`. Unique vs stderr-over-cap. Keep verbatim."
+  },
+  "data-artifact-publish-one-of-session-working-directories": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique extra-workdir label spliced into publish-root errors. Frozen path slot plus the parenthetical that distinguishes extra workdirs from cwd/scratchpad. Conditional. Keep verbatim."
+  },
+  "data-artifact-read-share-other-org-open-locally": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique artifact-read recovery for another-org shares. Frozen enumeration of two open paths (computer or Claude Code on the web). Alternative labels/hints are not this instruction. Keep."
+  },
+  "slash-command-advisor-held-setting-until-clear": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique setting-hold arm: runs without the advisor vs keeps ${advisor}, until /clear or /compact, so the already-sent prompt stays unchanged. Frozen slash-command names and until-ordering. Keep."
+  },
+  "tool-parameter-artifact-publish-asset-flag-copy-from": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "copyOn schema arm. Unique mechanic: with from_url and asset_ids in place of file_path, copy assets server side. Overlapping upload half is frozen parameter text and cannot be rewritten; the non-copy arm is an alternative, not coverage. Keep."
+  },
+  "tool-result-account-skills-propose-complete-skill": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique post-write argument contract for ProposeSkills: call ${tool} with the complete SKILL.md. That disambiguates the always-on don't-hand-them-a-SKILL.md line. Frozen filename and tool slot. Conditional. Keep."
+  },
+  "tool-result-artifact-comment-reply-retry-unknown": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique combined-unknown after retry: (${first}, and ${retry}) — may have posted; re-read comments before retrying. Frozen before-ordering. Keep."
+  },
+  "tool-result-artifact-copy-from-source-public-outside-org-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique copy_from permission suffix when the source is a public artifact from outside the organization; approving copies its assets into this one. Alternative ownership notes are other arms. Keep."
+  },
+  "tool-result-artifact-live-subscription-publish-context-brief": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique watchBrief pointer for publish_context sessions: none in this kind of session; see the earlier publish result; not an error. Alternative live-sub lines are other arms. Keep."
+  },
+  "tool-result-artifact-share-menu-public-link-caveat": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique public-mode clause: a public link can still be unavailable for what this page uses; the menu says why. Wiping it would blank a slot in the plan-allows sentence and drop the only copy of that limit. Keep."
+  },
+  "tool-result-artifact-upload-asset-list-assets-before-resend": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique retry tail when no failure is known unstored: list the assets to see what is stored before sending again. Frozen before-ordering. Keep."
+  },
+  "tool-result-artifact-upload-asset-list-needs-own-approval": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique authorization deny plus frozen file_path/file_paths retry contract. Fable 5.1 keeps approval gates as facts. Wipe would drop the whole deny. Keep."
+  },
+  "tool-result-artifact-upload-asset-unreadable-entries": {
+    "verdict": "pristine-keep",
+    "version": "2.1.276",
+    "why": "Unique unread-rows note: N more entry/entries of this record could not be read; list_assets or list with scope assets shows what the artifact holds. Frozen action names. Opening slot is the count. Keep."
+  },
+  "tool-result-account-skills-send-complete-skill": {
+    "verdict": "wipe-merge",
+    "version": "2.1.276",
+    "why": "Every claim is carried by system-prompt-saving-skills-via-file-delivery, which the same send_file selector injects into the same request; the save_tool/propose_tool/no_save_tool arms never co-render. Verified adversarially."
   }
 }
