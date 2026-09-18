@@ -115,6 +115,7 @@ import { writeFablePlan } from './fablePlan';
 import { writeVoiceMode } from './voiceMode';
 import { writeChannelsMode } from './channelsMode';
 import { writeClearScreen } from './clearScreen';
+import { writeSessionColor } from './sessionColor';
 import { writeReadDefaultLines } from './readDefaultLines';
 import { writeSwapRipgrepForFff } from './swapRipgrepForFff';
 import { ensureRgFffWrapper } from '../ripgrepFff';
@@ -251,6 +252,13 @@ const PATCH_DEFINITIONS = [
     group: PatchGroup.ALWAYS_APPLIED,
     description:
       'Register a /clear-screen command that clears the terminal scrollback and redraws without resetting conversation context',
+  },
+  {
+    id: 'session-color',
+    name: 'Session color from env',
+    group: PatchGroup.ALWAYS_APPLIED,
+    description:
+      'Set session prompt bar color via TWEAKCC_SESSION_COLOR env var',
   },
   {
     id: 'strip-empty-system-reminders',
@@ -1039,6 +1047,9 @@ export const applyCustomization = async (
     'clear-screen': {
       fn: c => writeClearScreen(c),
     },
+    'session-color': {
+      fn: c => writeSessionColor(c),
+    },
     'strip-empty-system-reminders': {
       fn: c => writeStripEmptySystemReminders(c),
     },
@@ -1280,6 +1291,7 @@ export const applyCustomization = async (
           c,
           config.settings.toolsets!,
           config.settings.defaultToolset,
+          config.settings.acceptEditsToolset,
           config.settings.planModeToolset
         ),
       condition: !!(
