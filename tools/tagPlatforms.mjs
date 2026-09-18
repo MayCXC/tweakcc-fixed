@@ -20,14 +20,18 @@
 // Node `process.platform` values are the keys (darwin, linux, win32). Two
 // bundles of the same platform (linux-x64 and linux-arm64) both map to `linux`;
 // a prompt missing from either is treated as missing from the platform.
+import { execFileSync } from 'node:child_process';
+import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
-import os from 'node:os';
-import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
+const require = createRequire(import.meta.url);
+const { parseOverrideArgs, appliedPromptsDir } = require('./lib/overrideSets.cjs');
+
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const [jsonPath, ...specs] = process.argv.slice(2);
+const parsed = parseOverrideArgs(process.argv.slice(2));
+const [jsonPath, ...specs] = parsed.rest;
 if (!jsonPath || specs.length === 0) {
   console.error('usage: tagPlatforms.mjs <prompts.json> <platform>=<cli.js> …');
   process.exit(2);
@@ -50,12 +54,22 @@ for (const b of bundles) {
 const data = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
 const platforms = [...new Set(bundles.map(b => b.platform))];
 
+let appliedSet = null;
+try {
+  appliedSet = fs.realpathSync(appliedPromptsDir());
+} catch {
+  appliedSet = null;
+}
+
 // name -> set of platforms that could not find it
 const missing = new Map();
 for (const b of bundles) {
   let out = '';
+  const harnessArgs = [path.join(REPO, 'tools', 'applySafetyHarness.mjs')];
+  if (appliedSet) harnessArgs.push(`--set=${appliedSet}`);
+  harnessArgs.push(b.file);
   try {
-    out = execFileSync('node', [path.join(REPO, 'tools', 'applySafetyHarness.mjs'), b.file], {
+    out = execFileSync('node', harnessArgs, {
       cwd: REPO,
       encoding: 'utf8',
       maxBuffer: 256 * 1024 * 1024,
@@ -81,9 +95,7 @@ for (const b of bundles) {
 // override's front-matter name to its id as a second key.
 const overrideNameToId = new Map();
 try {
-  const activeSet = fs.realpathSync(
-    path.join(os.homedir(), '.tweakcc', 'system-prompts')
-  );
+  const activeSet = appliedSet || fs.realpathSync(appliedPromptsDir());
   for (const f of fs.readdirSync(activeSet)) {
     if (!f.endsWith('.md')) continue;
     const head = fs.readFileSync(path.join(activeSet, f), 'utf8').slice(0, 4000);

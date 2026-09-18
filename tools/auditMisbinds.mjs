@@ -11,8 +11,16 @@
 //   git show upstream/main:data/prompts/prompts-<ver>.json > /tmp/pieb-<ver>.json
 //   node tools/auditMisbinds.mjs [ourJson] [upstreamJson] [overridesDir]
 // Defaults target the local showtime layout.
+import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
+
+const require = createRequire(import.meta.url);
+const {
+  parseOverrideArgs,
+  appliedPromptsDir,
+  printAuditedSets,
+} = require('./lib/overrideSets.cjs');
 
 // Default to the newest committed prompts JSON. A hardcoded old version silently
 // audits the wrong release (or skips entirely) long after that version is gone.
@@ -29,13 +37,22 @@ const latestCommittedVer = () => {
   return vers[vers.length - 1];
 };
 
+const parsed = parseOverrideArgs(process.argv.slice(2));
 const VER = process.env.CC_VER || latestCommittedVer();
-const ourJson = process.argv[2] || `data/prompts/prompts-${VER}.json`;
-const upstreamJson = process.argv[3] || `/tmp/pieb-${VER}.json`;
+const ourJson = parsed.rest[0] || `data/prompts/prompts-${VER}.json`;
+const upstreamJson = parsed.rest[1] || `/tmp/pieb-${VER}.json`;
 // Default to whatever the live symlink names, not a set that may be retired.
-const overridesDir =
-  process.argv[4] ||
-  fs.realpathSync(`${process.env.HOME}/.tweakcc/system-prompts`);
+let overridesDir = parsed.rest[2];
+if (!overridesDir) {
+  const applied = appliedPromptsDir();
+  try {
+    overridesDir = fs.realpathSync(applied);
+  } catch {
+    console.error(`no override folder at ${applied}, nothing to audit`);
+    process.exit(parsed.requireSets ? 2 : 0);
+  }
+}
+printAuditedSets([{ dir: overridesDir, name: path.basename(overridesDir) }]);
 
 const OURS = JSON.parse(fs.readFileSync(ourJson, 'utf8'));
 // Upstream reference is required. On a box without the `upstream` remote (e.g. a

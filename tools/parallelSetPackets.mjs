@@ -21,10 +21,15 @@
 //
 // Writes <out>/missing-ids.txt, <out>/batch-NNN.md and <out>/args.json
 // ({ batches: [{ file, ids }] }) for the classify workflow.
+import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const argv = process.argv.slice(2);
+const require = createRequire(import.meta.url);
+const { parseOverrideArgs } = require('./lib/overrideSets.cjs');
+
+const parsed = parseOverrideArgs(process.argv.slice(2));
+const argv = parsed.rest;
 const jsonPath = argv.find(a => !a.startsWith('--'));
 const opt = k => (argv.find(a => a.startsWith(`--${k}=`)) || '').slice(k.length + 3);
 const active = opt('active');

@@ -84,11 +84,10 @@ Two git repos move together on the same release cycle:
 | **lobotomized-claude-code (LCC)** | curated overrides (`.md` + frontmatter)             | `origin` = your fork of the overrides repo; no upstream (own canonical source) |
 
 - The README pairs tweakcc-fixed with an overrides repo (lobotomized-claude-code
-  by default) — clone or symlink it where the README says. `~/.tweakcc/system-prompts`
-  is a **symlink** → your active per-model override set (e.g. `…/lobotomized-claude-code/system-prompts-<model>`).
-  `~/.tweakcc/system-reminders` is symlinked the same way. The patcher reads both
-  via the symlinks at `--apply`. Use your active model override set — the public
-  skill does not assume a single model dir.
+  by default) — clone or symlink it where the README says. The patcher reads the
+  tweakcc config folder. Audit tools take `--overrides <dir>` (repeatable) or
+  `TWEAKCC_OVERRIDE_SETS` (`path.delimiter`-joined set directories). Use your
+  active model override set — the public skill does not assume a single model dir.
 - **CC install detection.** tweakcc auto-detects the installed Claude Code; the
   native binary it extracts from is the versioned binary your `claude` launcher
   resolves to. No env var is needed when there's exactly one install.

@@ -13,10 +13,20 @@
 // Usage: node tools/checkEscaperWrappers.mjs [prompts-X.Y.Z.json]
 import fs from 'node:fs';
 import path from 'node:path';
-import os from 'node:os';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const {
+  parseOverrideArgs,
+  resolveOverrideSets,
+  remindersDirsFor,
+  printAuditedSets,
+} = require('./lib/overrideSets.cjs');
 
 const repo = path.resolve(import.meta.dirname, '..');
-const LCC = path.join(os.homedir(), '.tweakcc', 'lobotomized-claude-code');
+
+const parsed = parseOverrideArgs(process.argv.slice(2));
+const sets = resolveOverrideSets(parsed, { fallback: 'applied' });
+printAuditedSets(sets);
 
 const newestJson = () =>
   fs
@@ -31,13 +41,9 @@ const newestJson = () =>
     .at(-1);
 
 const jsonPath =
-  process.argv[2] || path.join(repo, 'data', 'prompts', newestJson());
+  parsed.rest[0] || path.join(repo, 'data', 'prompts', newestJson());
 if (!fs.existsSync(jsonPath)) {
   console.error(`checkEscaperWrappers: no prompts JSON at ${jsonPath}`);
-  process.exit(2);
-}
-if (!fs.existsSync(LCC)) {
-  console.error(`checkEscaperWrappers: no override checkout at ${LCC}`);
   process.exit(2);
 }
 
@@ -56,11 +62,6 @@ const reconstruct = p => {
 // A label is a sanitizer if its NAME says so. Keying on the name rather than on
 // the specific function keeps this alive when Anthropic adds a second escaper.
 const WRAPPER = /\$\{([A-Z0-9_]*(?:ESCAPE|SANITIZE)[A-Z0-9_]*)\(([^()]*)\)\}/g;
-
-const sets = fs
-  .readdirSync(LCC)
-  .filter(d => d.startsWith('system-prompts-'))
-  .filter(d => fs.statSync(path.join(LCC, d)).isDirectory());
 
 // A shadowed id is never iterated by applySystemPrompts — the reminder registry
 // (or another override's `shadows:`) already spliced that cli.js region — so its
@@ -82,8 +83,7 @@ try {
 // only two in TS, while `opened-file-in-ide.md` and eight siblings declare
 // theirs in runtime front-matter. Scanning only the per-model prompt sets misses
 // them and reports a shadowed (inert) override as a live leak.
-for (const dir of [...sets, 'system-reminders']) {
-  const abs = path.join(LCC, dir);
+for (const abs of [...sets.map(s => s.dir), ...remindersDirsFor(sets)]) {
   if (!fs.existsSync(abs)) continue;
   for (const f of fs.readdirSync(abs)) {
     if (!f.endsWith('.md')) continue;
@@ -106,7 +106,7 @@ for (const p of prompts) {
   }));
   if (!wrapped.length) continue;
   for (const set of sets) {
-    const file = path.join(LCC, set, `${p.id}.md`);
+    const file = path.join(set.dir, `${p.id}.md`);
     if (!fs.existsSync(file)) continue;
     const text = fs.readFileSync(file, 'utf8');
     // An empty-bodied (suppressed) override renders nothing, so it cannot leak.
@@ -116,7 +116,7 @@ for (const p of prompts) {
     for (const { fn, inner } of wrapped) {
       if (text.includes(`\${${fn}(${inner})}`)) continue;
       if (text.includes(`\${${inner}}`)) {
-        findings.push({ set, id: p.id, fn, inner });
+        findings.push({ set: set.name, id: p.id, fn, inner });
       }
     }
   }

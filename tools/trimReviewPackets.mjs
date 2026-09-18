@@ -14,20 +14,31 @@
 //        --sets=<abs dir>[,<abs dir>…] --out=<dir> [--facts=<checkFactCoverage --json output>]
 //
 // Writes <out>/<id>.md per finding and <out>/BRIEF.md (the reviewer brief).
+import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const argv = process.argv.slice(2);
+const require = createRequire(import.meta.url);
+const {
+  parseOverrideArgs,
+  resolveOverrideSets,
+  printAuditedSets,
+} = require('./lib/overrideSets.cjs');
+
+const parsed = parseOverrideArgs(process.argv.slice(2));
+const argv = parsed.rest;
 const jsonPath = argv.find(a => !a.startsWith('--'));
 const opt = k => (argv.find(a => a.startsWith(`--${k}=`)) || '').slice(k.length + 3);
 const findingsPath = opt('findings');
 const factsPath = opt('facts');
-const sets = opt('sets').split(',').filter(Boolean);
 const out = opt('out');
-if (!jsonPath || (!findingsPath && !factsPath) || !sets.length || !out) {
+if (!jsonPath || (!findingsPath && !factsPath) || !parsed.specified || !out) {
   console.error('usage: trimReviewPackets.mjs <prompts.json> (--findings=<json> | --facts=<json>) --sets=<dir,…> --out=<dir>');
   process.exit(2);
 }
+const resolved = resolveOverrideSets(parsed, { fallback: 'none' });
+printAuditedSets(resolved);
+const sets = resolved.map(s => s.dir);
 
 const prompts = JSON.parse(fs.readFileSync(jsonPath, 'utf8')).prompts;
 const byId = new Map();

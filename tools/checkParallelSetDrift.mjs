@@ -16,20 +16,40 @@
 // --fix mirrors the ACTIVE set's current body into every set proven to be a
 // stale pristine stub, and rewrites that file's ccVersion.
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const {
+  parseOverrideArgs,
+  resolveOverrideSets,
+  appliedPromptsDir,
+  printAuditedSets,
+} = require('./lib/overrideSets.cjs');
 
-const LCC = path.join(os.homedir(), '.tweakcc', 'lobotomized-claude-code');
-const REPO = path.resolve(new URL('..', import.meta.url).pathname);
-const version = process.argv[2] || '';
-const FIX = process.argv.includes('--fix');
+const parsed = parseOverrideArgs(process.argv.slice(2));
+const sets = resolveOverrideSets(parsed, { fallback: 'applied' });
+const restPos = parsed.rest.filter(a => a !== '--fix');
+const version = restPos[0] || '';
+const FIX = parsed.rest.includes('--fix');
 if (!/^\d+\.\d+\.\d+$/.test(version)) {
   console.error('usage: checkParallelSetDrift.mjs <version> [--fix]');
   process.exit(2);
 }
 
-const activeDir = fs.realpathSync(path.join(os.homedir(), '.tweakcc', 'system-prompts'));
-const activeName = path.basename(activeDir);
+const REPO = path.resolve(new URL('..', import.meta.url).pathname);
+
+let active = null;
+const applied = appliedPromptsDir();
+if (fs.existsSync(applied)) {
+  try {
+    const dir = fs.realpathSync(applied);
+    active = { dir, name: path.basename(dir) };
+  } catch {
+    active = null;
+  }
+}
+const others = sets.filter(s => !active || s.dir !== active.dir);
+printAuditedSets(active ? [active, ...others] : others);
 
 // Reconstruct a prompt body. TWO invariants, both easy to get wrong and both
 // wrong in the first cut of this file:
@@ -88,39 +108,36 @@ const split = file => {
     : { head: '', body: raw, full: raw, headEnd: 0 };
 };
 
-const sets = fs
-  .readdirSync(LCC)
-  .filter(d => /^system-prompts-/.test(d) && fs.statSync(path.join(LCC, d)).isDirectory());
-const parallel = sets.filter(s => s !== activeName);
-
 const stale = [];
 const propagate = [];
 const divergent = [];
 
-for (const id of current.keys()) {
-  const activeFile = path.join(LCC, activeName, `${id}.md`);
-  if (!fs.existsSync(activeFile)) continue;
-  const active = split(activeFile);
-  const activeBody = active.body.trim();
-  const cur = current.get(id);
-  const past = historical.get(id);
+if (active) {
+  for (const id of current.keys()) {
+    const activeFile = path.join(active.dir, `${id}.md`);
+    if (!fs.existsSync(activeFile)) continue;
+    const activeSplit = split(activeFile);
+    const activeBody = activeSplit.body.trim();
+    const cur = current.get(id);
+    const past = historical.get(id);
 
-  for (const set of parallel) {
-    const f = path.join(LCC, set, `${id}.md`);
-    if (!fs.existsSync(f)) continue;
-    const { head, body } = split(f);
-    const b = body.trim();
-    if (b === activeBody) continue;        // already in step
-    if (cur.has(b)) continue;              // matches a CURRENT pristine site — fine
-    const cc = (/^ccVersion:\s*(.+)$/m.exec(head) || [])[1] || '?';
-    // Mirroring is only MECHANICAL when the active body is itself a current
-    // pristine stub — then the parallel set was tracking pristine and simply
-    // missed a refresh. When the active body is curated (a trim, or an empty
-    // body = deliberate suppression), copying it across is a CONTENT decision
-    // and belongs to the propagation pass, not to an automatic fix.
-    const activeIsStub = cur.has(activeBody);
-    if (past.has(b)) (activeIsStub ? stale : propagate).push({ id, set, cc, file: f, was: b.length, now: activeBody.length, empty: activeBody === '' });
-    else divergent.push({ id, set, cc });
+    for (const other of others) {
+      const f = path.join(other.dir, `${id}.md`);
+      if (!fs.existsSync(f)) continue;
+      const { head, body } = split(f);
+      const b = body.trim();
+      if (b === activeBody) continue;        // already in step
+      if (cur.has(b)) continue;              // matches a CURRENT pristine site — fine
+      const cc = (/^ccVersion:\s*(.+)$/m.exec(head) || [])[1] || '?';
+      // Mirroring is only MECHANICAL when the active body is itself a current
+      // pristine stub — then the parallel set was tracking pristine and simply
+      // missed a refresh. When the active body is curated (a trim, or an empty
+      // body = deliberate suppression), copying it across is a CONTENT decision
+      // and belongs to the propagation pass, not to an automatic fix.
+      const activeIsStub = cur.has(activeBody);
+      if (past.has(b)) (activeIsStub ? stale : propagate).push({ id, set: other.name, cc, file: f, was: b.length, now: activeBody.length, empty: activeBody === '' });
+      else divergent.push({ id, set: other.name, cc });
+    }
   }
 }
 
@@ -146,12 +163,12 @@ if (divergent.length) {
 // 2.1.191/2.1.207 and a curated opus-5 trim sat one release behind. Every such
 // file is a conflict the realign pass must see.
 const versionLag = [];
-for (const set of parallel) {
+for (const other of others) {
   for (const [id, vers] of currentVersions) {
-    const f = path.join(LCC, set, `${id}.md`);
+    const f = path.join(other.dir, `${id}.md`);
     if (!fs.existsSync(f)) continue;
     const cc = (/^ccVersion:\s*(.+)$/m.exec(split(f).head) || [])[1]?.trim() || '?';
-    if (!vers.has(cc) && !stale.some(s => s.file === f)) versionLag.push({ id, set, cc, want: [...vers].join('|') });
+    if (!vers.has(cc) && !stale.some(s => s.file === f)) versionLag.push({ id, set: other.name, cc, want: [...vers].join('|') });
   }
 }
 if (versionLag.length) {
@@ -159,14 +176,14 @@ if (versionLag.length) {
   for (const v of versionLag) console.log(`  ${v.set.replace('system-prompts-', '').padEnd(9)} ${v.id}  ccVersion=${v.cc} -> ${v.want}`);
 } else console.log('parallel-set ccVersion lag: 0');
 
-if (FIX && stale.length) {
+if (FIX && stale.length && active) {
   for (const s of stale) {
-    const active = split(path.join(LCC, activeName, `${s.id}.md`));
+    const activeSplit = split(path.join(active.dir, `${s.id}.md`));
     const target = split(s.file);
-    const head = target.head.replace(/^ccVersion:.*$/m, `ccVersion: ${(/^ccVersion:\s*(.+)$/m.exec(active.head) || [, version])[1]}`);
-    fs.writeFileSync(s.file, `<!--\n${head}\n-->\n${active.body}`);
+    const head = target.head.replace(/^ccVersion:.*$/m, `ccVersion: ${(/^ccVersion:\s*(.+)$/m.exec(activeSplit.head) || [, version])[1]}`);
+    fs.writeFileSync(s.file, `<!--\n${head}\n-->\n${activeSplit.body}`);
   }
-  console.log(`\nmirrored ${stale.length} stale stub(s) from ${activeName}`);
+  console.log(`\nmirrored ${stale.length} stale stub(s) from ${active.name}`);
 }
 
 process.exit((stale.length && !FIX) || versionLag.length ? 1 : 0);

@@ -11,14 +11,17 @@
 // single-file->rg, short->rg, regex->rg, glob translation, fuzzy, exit codes).
 import { execFileSync, spawnSync } from 'node:child_process';
 import { writeFileSync, readFileSync, existsSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
+const { pristineCliPath } = require(path.join(HERE, '..', 'lib', 'overrideSets.cjs'));
 const REPO = path.resolve(HERE, '..', '..');
 const SRC = path.join(REPO, 'src');
-const ORIG = path.join(os.homedir(), '.tweakcc', 'native-claudejs-orig.js');
+const ORIG = pristineCliPath();
 
 let CLAUDE = null;
 try {
@@ -59,7 +62,7 @@ if (existsSync(ORIG)) {
   const err = f => { const r = spawnSync('node', ['--check', f], { encoding: 'utf8', maxBuffer: 1 << 28 }); return r.status === 0 ? 'OK' : (r.stderr.match(/:(\d+)\n/) || [])[1]; };
   ok('patch parse-neutral (orig err line == patched err line)', err(tmpO) === err(tmpP));
 } else {
-  console.log('(skipping PART A: no ~/.tweakcc/native-claudejs-orig.js backup)');
+  console.log(`(skipping PART A: no ${ORIG} backup)`);
 }
 
 console.log('\n=== PART B: wrapper vs ripgrep set-equivalence ===');

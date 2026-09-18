@@ -24,28 +24,22 @@
 // Requires a built dist (run `pnpm build` first). Exit 0 = clean.
 
 import { execFileSync } from 'node:child_process';
+import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+const require = createRequire(import.meta.url);
+const {
+  parseOverrideArgs,
+  resolveOverrideSets,
+  appliedPromptsDir,
+  resolveConfigDir,
+  printAuditedSets,
+} = require('./lib/overrideSets.cjs');
+
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const argv = process.argv.slice(2).filter((a) => !a.startsWith('--set='));
-const PRISTINE = argv[0] || '/tmp/cli-2.1.179.js';
-// Verify a specific per-model override set WITHOUT moving the live
-// `~/.tweakcc/system-prompts` symlink: `--set=<dir>` (or TWEAKCC_OVERRIDE_SET)
-// names the override dir to copy into the temp HOME. Defaults to the live symlink
-// target. This removes the "symlink left on fable-5" trap — the caller never has
-// to point the live symlink at a non-active set and restore it.
-const OVERRIDE_SET =
-  (process.argv.find((a) => a.startsWith('--set=')) || '').slice(6) ||
-  process.env.TWEAKCC_OVERRIDE_SET ||
-  null;
-// Version drives which prompts-X.Y.Z.json the apply loads — derive it from the
-// pristine filename (cli-X.Y.Z.js) so the harness tracks the binary under test
-// across version bumps instead of pinning a stale version.
-const VERSION =
-  (PRISTINE.match(/cli-(\d+\.\d+\.\d+)\.js$/) || [, '2.1.179'])[1];
 
 // minified `${var}` tokens: 1-4 alnum/$ chars, not an ALL_CAPS tweakcc name.
 // Is short ident `v` BOUND anywhere in `window` — arrow/function params (incl.
@@ -284,6 +278,49 @@ export const harnessVerdict = ({
   wfScriptErrors.length === 0;
 
 const runHarness = () => {
+const parsed = parseOverrideArgs(process.argv.slice(2));
+// Verify a specific per-model override set WITHOUT moving the live
+// `~/.tweakcc/system-prompts` symlink: `--set=<dir>` (or TWEAKCC_OVERRIDE_SET)
+// names the override dir to copy into the temp HOME. Defaults to the live symlink
+// target. This removes the "symlink left on fable-5" trap — the caller never has
+// to point the live symlink at a non-active set and restore it.
+let sets;
+if (parsed.specified) {
+  sets = resolveOverrideSets(parsed, { fallback: 'none' });
+} else if (process.env.TWEAKCC_OVERRIDE_SET) {
+  sets = resolveOverrideSets(
+    {
+      explicit: [process.env.TWEAKCC_OVERRIDE_SET],
+      lcc: [],
+      requireSets: true,
+      rest: parsed.rest,
+      specified: true,
+    },
+    { fallback: 'none' }
+  );
+} else {
+  const applied = appliedPromptsDir();
+  if (!fs.existsSync(applied)) {
+    console.error(`no override folder at ${applied}, nothing to audit`);
+    process.exit(2);
+  }
+  const dir = fs.realpathSync(applied);
+  sets = [{ dir, name: path.basename(dir) }];
+}
+if (sets.length !== 1) {
+  console.error(
+    `applySafetyHarness: exactly one override set required, got ${sets.length}`
+  );
+  process.exit(2);
+}
+const OVERRIDE_SET = sets[0].dir;
+printAuditedSets(sets);
+const PRISTINE = parsed.rest[0] || '/tmp/cli-2.1.179.js';
+// Version drives which prompts-X.Y.Z.json the apply loads — derive it from the
+// pristine filename (cli-X.Y.Z.js) so the harness tracks the binary under test
+// across version bumps instead of pinning a stale version.
+const VERSION =
+  (PRISTINE.match(/cli-(\d+\.\d+\.\d+)\.js$/) || [, '2.1.179'])[1];
 if (!fs.existsSync(PRISTINE)) {
   console.error(`harness: pristine cli.js not found: ${PRISTINE}`);
   process.exit(2);
@@ -292,7 +329,7 @@ const orig = fs.readFileSync(PRISTINE, 'utf8');
 const tmpHome = fs.mkdtempSync(path.join(os.tmpdir(), 'applysafe-home-'));
 try {
   // Isolated ~/.tweakcc with a copy of the real override set + config.
-  const realTweakcc = path.join(os.homedir(), '.tweakcc');
+  const realTweakcc = resolveConfigDir();
   const tc = path.join(tmpHome, '.tweakcc');
   fs.mkdirSync(tc, { recursive: true });
   for (const name of ['system-prompts', 'system-reminders']) {
@@ -300,7 +337,7 @@ try {
     // verify fable-5 / opus-4-7 without disturbing the live symlink. Reminders are
     // a single shared folder, always taken from the live location.
     const src =
-      name === 'system-prompts' && OVERRIDE_SET
+      name === 'system-prompts'
         ? OVERRIDE_SET
         : path.join(realTweakcc, name);
     if (fs.existsSync(src)) {
@@ -333,8 +370,15 @@ try {
   let log = '';
   let applyExit = 0;
   try {
+    const childEnv = {
+      ...process.env,
+      HOME: tmpHome,
+      TWEAKCC_CC_INSTALLATION_PATH: cliCopy,
+      TWEAKCC_CONFIG_DIR: path.join(tmpHome, '.tweakcc'),
+    };
+    delete childEnv.XDG_CONFIG_HOME;
     log = execFileSync('node', [path.join(REPO, 'dist', 'index.mjs'), '--apply'], {
-      env: { ...process.env, HOME: tmpHome, TWEAKCC_CC_INSTALLATION_PATH: cliCopy },
+      env: childEnv,
       encoding: 'utf8',
       maxBuffer: 256 * 1024 * 1024,
     });

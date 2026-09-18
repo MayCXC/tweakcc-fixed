@@ -48,9 +48,17 @@
 // Exit 0 = no findings (or --all), 1 = findings, 2 = could not run.
 
 import crypto from 'node:crypto';
+import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
 import url from 'node:url';
+
+const require = createRequire(import.meta.url);
+const {
+  parseOverrideArgs,
+  resolveOverrideSets,
+  printAuditedSets,
+} = require('./lib/overrideSets.cjs');
 
 const TOKEN = /\$\{[^}]{0,120}\}|\{\{[^}]{0,80}\}\}/g;
 
@@ -133,21 +141,25 @@ const main = () => {
     process.exit(code);
   };
 
-  const args = process.argv.slice(2);
+  const parsed = parseOverrideArgs(process.argv.slice(2));
+  const args = parsed.rest;
   const jsonPath = args.find(a => !a.startsWith('--'));
-  const setDir = (args.find(a => a.startsWith('--set=')) || '').slice(6);
   const idsFile = (args.find(a => a.startsWith('--ids=')) || '').slice(6);
   const all = args.includes('--all');
   const outIdx = args.indexOf('--json');
   const outPath = outIdx === -1 ? null : args[outIdx + 1];
 
-  if (!jsonPath || !setDir)
+  if (!jsonPath || !parsed.specified)
     die('usage: <prompts.json> --set=<dir> (--ids=<file> | --all) [--json <path>]');
   if (!idsFile && !all)
     die(
       'pass --ids=<file> to gate a bump, or --all to inventory the whole set — ' +
         'an unscoped gate reports every historical decision and gets ignored'
     );
+  const resolved = resolveOverrideSets(parsed, { fallback: 'none' });
+  if (resolved.length !== 1) die(`exactly one set (got ${resolved.length})`);
+  printAuditedSets(resolved);
+  const setDir = resolved[0].dir;
   if (!fs.existsSync(jsonPath)) die(`no prompts JSON at ${jsonPath}`);
   if (!fs.existsSync(setDir)) die(`no override set at ${setDir}`);
 

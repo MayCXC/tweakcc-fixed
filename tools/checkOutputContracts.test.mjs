@@ -56,7 +56,10 @@ function scaffold(overrides) {
   return root;
 }
 
-function run(root) {
+function run(root, extra = []) {
+  const env = { ...process.env };
+  delete env.TWEAKCC_OVERRIDE_SETS;
+  delete env.TWEAKCC_OVERRIDE_SET;
   try {
     const out = execFileSync(
       process.execPath,
@@ -64,14 +67,18 @@ function run(root) {
         TOOL,
         '--cli', path.join(root, 'cli.js'),
         '--json', path.join(root, 'prompts-9.9.9.json'),
-        '--lcc', path.join(root, 'lcc'),
+        ...extra,
       ],
-      { encoding: 'utf8' }
+      { encoding: 'utf8', env }
     );
     return { code: 0, out };
   } catch (e) {
     return { code: e.status, out: (e.stdout || '') + (e.stderr || '') };
   }
+}
+
+function runLcc(root) {
+  return run(root, ['--lcc', path.join(root, 'lcc')]);
 }
 
 describe('checkOutputContracts', () => {
@@ -80,7 +87,7 @@ describe('checkOutputContracts', () => {
     // <block> instruction, so the parser returned null and auto mode blocked
     // every action while every other gate stayed green.
     const root = scaffold({ classifier: 'Judge the action by its full effect.' });
-    const { code, out } = run(root);
+    const { code, out } = runLcc(root);
     expect(code).toBe(1);
     expect(out).toContain('classifier');
     expect(out).toContain('<block>');
@@ -88,35 +95,49 @@ describe('checkOutputContracts', () => {
 
   it('passes when the override keeps the tag', () => {
     const root = scaffold({ classifier: 'Judge it, then answer <block>yes</block> or <block>no</block>.' });
-    const { code, out } = run(root);
+    const { code, out } = runLcc(root);
     expect(code).toBe(0);
     expect(out).toContain('PASS');
+  });
+
+  it('accepts --overrides pointing at the child set dir', () => {
+    const root = scaffold({
+      classifier:
+        'Judge it, then answer <block>yes</block> or <block>no</block>.',
+    });
+    const { code, out } = run(root, [
+      '--overrides',
+      path.join(root, 'lcc', 'system-prompts-opus-5'),
+    ]);
+    expect(code).toBe(0);
+    expect(out).toContain('PASS');
+    expect(out).toMatch(/audited sets: system-prompts-opus-5/);
   });
 
   it('does not flag a tag that only appears in prose, not in a real regex', () => {
     // <out_dir> and <name> live in a template literal, never in a parser. An
     // override is free to drop them.
     const root = scaffold({ 'mentions-out-dir': 'Call it however you like.' });
-    const { code } = run(root);
+    const { code } = runLcc(root);
     expect(code).toBe(0);
   });
 
   it('ignores a deliberate full suppression (empty body)', () => {
     const root = scaffold({ classifier: '' });
-    const { code } = run(root);
+    const { code } = runLcc(root);
     expect(code).toBe(0);
   });
 
   it('ignores an id with no override at all, since pristine then applies', () => {
     const root = scaffold({});
-    const { code } = run(root);
+    const { code } = runLcc(root);
     expect(code).toBe(0);
   });
 
   it('exits 2 rather than 0 when it cannot find a pristine bundle to read', () => {
     const root = scaffold({});
     fs.rmSync(path.join(root, 'cli.js'));
-    const { code } = run(root);
+    const { code } = runLcc(root);
     expect(code).toBe(2);
   });
 });

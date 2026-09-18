@@ -20,29 +20,16 @@
 //
 //   node tools/checkFrontmatterBleed.mjs [--set=<dir>…]
 //
-// Default: every maintained set under ~/.tweakcc/lobotomized-claude-code.
+// Default: the applied folder / TWEAKCC_OVERRIDE_SETS / --overrides.
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const { parseOverrideArgs, resolveOverrideSets, printAuditedSets } =
+  require('./lib/overrideSets.cjs');
 
-const LCC = path.join(os.homedir(), '.tweakcc', 'lobotomized-claude-code');
-const cliSets = process.argv
-  .slice(2)
-  .filter(a => a.startsWith('--set='))
-  .map(a => a.slice('--set='.length));
-
-const sets = cliSets.length
-  ? cliSets
-  : fs
-      .readdirSync(LCC)
-      .filter(d => d.startsWith('system-prompts-'))
-      .map(d => path.join(LCC, d))
-      .filter(d => fs.statSync(d).isDirectory());
-
-if (!sets.length) {
-  console.error('checkFrontmatterBleed: no override sets found');
-  process.exit(2);
-}
+const parsed = parseOverrideArgs(process.argv.slice(2));
+const sets = resolveOverrideSets(parsed, { fallback: 'applied' });
 
 const FRONTMATTER = /^<!--[\s\S]*?-->\n?/;
 // An orphan closer stands alone on its line. `a-->b` inside a mermaid fence and
@@ -52,11 +39,11 @@ const ORPHAN_LINE = /^\s*-->\s*$/m;
 const findings = [];
 let scanned = 0;
 
-for (const dir of sets) {
-  if (!fs.existsSync(dir)) continue;
-  for (const name of fs.readdirSync(dir)) {
+for (const set of sets) {
+  if (!fs.existsSync(set.dir)) continue;
+  for (const name of fs.readdirSync(set.dir)) {
     if (!name.endsWith('.md')) continue;
-    const text = fs.readFileSync(path.join(dir, name), 'utf8');
+    const text = fs.readFileSync(path.join(set.dir, name), 'utf8');
     const m = text.match(FRONTMATTER);
     const body = m ? text.slice(m[0].length) : text;
     scanned += 1;
@@ -64,7 +51,7 @@ for (const dir of sets) {
     const closes = (body.match(/-->/g) || []).length;
     if (closes > opens && ORPHAN_LINE.test(body)) {
       findings.push({
-        set: path.basename(dir),
+        set: set.name,
         id: name.slice(0, -3),
         opens,
         closes,
@@ -78,6 +65,7 @@ for (const f of findings) {
     `  ${f.set}  ${f.id}  (body has ${f.closes} "-->" against ${f.opens} "<!--")`
   );
 }
+printAuditedSets(sets);
 console.log(
   `frontmatter bleed: ${findings.length} unbalanced comment closer(s) across ${scanned} override(s) in ${sets.length} set(s)`
 );
