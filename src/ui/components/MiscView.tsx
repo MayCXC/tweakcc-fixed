@@ -66,6 +66,7 @@ export function MiscView({ onSubmit }: MiscViewProps) {
     suppressLineNumbers: false,
     suppressRateLimitOptions: false,
     suppressRateLimitWarning: false,
+    sessionColor: false,
     mcpConnectionNonBlocking: true,
     mcpServerBatchSize: null as number | null,
     statuslineThrottleMs: null as number | null,
@@ -371,6 +372,19 @@ export function MiscView({ onSubmit }: MiscViewProps) {
             ensureMisc();
             settings.misc!.suppressRateLimitWarning =
               !settings.misc!.suppressRateLimitWarning;
+          });
+        },
+      },
+      {
+        id: 'sessionColor',
+        title: 'Session color from TWEAKCC_SESSION_COLOR',
+        description:
+          'Colors the session prompt bar from the TWEAKCC_SESSION_COLOR env var, read at each launch, so concurrent sessions can be told apart. Accepts red, blue, green, yellow, purple, orange, pink or cyan; any other value leaves the bar alone.',
+        getValue: () => settings.misc?.sessionColor ?? false,
+        toggle: () => {
+          updateSettings(settings => {
+            ensureMisc();
+            settings.misc!.sessionColor = !settings.misc!.sessionColor;
           });
         },
       },

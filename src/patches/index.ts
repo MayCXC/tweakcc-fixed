@@ -254,13 +254,6 @@ const PATCH_DEFINITIONS = [
       'Register a /clear-screen command that clears the terminal scrollback and redraws without resetting conversation context',
   },
   {
-    id: 'session-color',
-    name: 'Session color from env',
-    group: PatchGroup.ALWAYS_APPLIED,
-    description:
-      'Set session prompt bar color via TWEAKCC_SESSION_COLOR env var',
-  },
-  {
     id: 'strip-empty-system-reminders',
     name: 'Strip empty <system-reminder> wrappers',
     group: PatchGroup.ALWAYS_APPLIED,
@@ -416,6 +409,13 @@ const PATCH_DEFINITIONS = [
     name: 'Suppress rate limit warning',
     group: PatchGroup.MISC_CONFIGURABLE,
     description: 'Rate limit warning banners in the status bar will be hidden',
+  },
+  {
+    id: 'session-color',
+    name: 'Session color from env',
+    group: PatchGroup.MISC_CONFIGURABLE,
+    description:
+      'Session prompt bar color is read from the TWEAKCC_SESSION_COLOR env var at each launch',
   },
   {
     id: 'token-count-rounding',
@@ -1047,9 +1047,6 @@ export const applyCustomization = async (
     'clear-screen': {
       fn: c => writeClearScreen(c),
     },
-    'session-color': {
-      fn: c => writeSessionColor(c),
-    },
     'strip-empty-system-reminders': {
       fn: c => writeStripEmptySystemReminders(c),
     },
@@ -1195,6 +1192,10 @@ export const applyCustomization = async (
     'suppress-rate-limit-warning': {
       fn: c => writeSuppressRateLimitWarning(c),
       condition: !!config.settings.misc?.suppressRateLimitWarning,
+    },
+    'session-color': {
+      fn: c => writeSessionColor(c),
+      condition: !!config.settings.misc?.sessionColor,
     },
     'token-count-rounding': {
       fn: c =>

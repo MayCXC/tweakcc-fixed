@@ -15,14 +15,14 @@ const VALID_COLORS = [
 // `claude --name foo` reaches the session through a spread earlier in the same
 // app-state literal: `...<n>&&{standaloneAgentContext:{name:<n>}}`. A plain
 // `standaloneAgentContext:` key added after it wins outright, so it drops the name
-// on every install, colour or no colour. Contributing a SPREAD instead keeps the two
-// independent: with no colour requested it contributes nothing and the original
-// spread stands, and with one it carries the name through alongside the colour.
+// on every install, color or no color. Contributing a SPREAD instead keeps the two
+// independent: with no color requested it contributes nothing and the original
+// spread stands, and with one it carries the name through alongside the color.
 const NAME_SPREAD = /\.\.\.([$\w]+)&&\{standaloneAgentContext:\{name:\1\}\}/;
 
 // The name variable is a sibling in the same literal, so it is in scope at the
 // injection point. Where the bundle has no such spread, there is no name to keep
-// and the colour stands alone.
+// and the color stands alone.
 const injectionFor = (nameVar: string | null): string =>
   `,...(()=>{` +
   `let __c=process.env.TWEAKCC_SESSION_COLOR;` +
@@ -76,13 +76,23 @@ export const writeSessionColor = (oldFile: string): string | null => {
     return null;
   }
 
-  const saveColorResult = patchSaveAgentColor(result);
-  if (!saveColorResult) {
-    debug('patch: sessionColor: failed to patch saveAgentColor');
-    return null;
+  // Remembering the color across sessions is a second, independent anchor, and
+  // the color does not depend on it. The injection reaches the store through
+  // `if(globalThis.__tweakccSaveAgentColor)`, so when this anchor finds nothing
+  // the hook is simply absent: the session is still colored and only the memory
+  // of it between sessions is lost. Since the two anchors differ sharply in how
+  // much of the bundle they pin (an app-state literal against a minified async
+  // function matched through seven groups), tying them together would let the
+  // narrower one take a working color patch down with it.
+  const withSavedColor = patchSaveAgentColor(result);
+  if (!withSavedColor) {
+    debug(
+      'patch: sessionColor: no saveAgentColor anchor; color applies without cross-session persistence'
+    );
+    return result;
   }
 
-  return saveColorResult;
+  return withSavedColor;
 };
 
 export const patchSaveAgentColor = (oldFile: string): string | null => {

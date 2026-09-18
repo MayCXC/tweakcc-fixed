@@ -125,6 +125,7 @@ export interface MiscConfig {
   suppressLineNumbers: boolean;
   suppressRateLimitOptions: boolean;
   suppressRateLimitWarning: boolean;
+  sessionColor: boolean;
   mcpConnectionNonBlocking: boolean;
   mcpServerBatchSize: number | null;
   statuslineThrottleMs: number | null;

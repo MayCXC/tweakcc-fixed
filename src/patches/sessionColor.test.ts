@@ -113,6 +113,19 @@ describe('sessionColor', () => {
       expect(result).toBeNull();
     });
 
+    it('should color the session when no saveAgentColor anchor exists', () => {
+      const result = writeSessionColor(makeBoth());
+      expect(result).not.toBeNull();
+      expect(result).toContain('TWEAKCC_SESSION_COLOR');
+      expect(result).toContain('standaloneAgentContext:{name:__n,color:__c}');
+      // The store itself is what this bundle lacks, so the assignment is absent
+      // while the guarded call remains, leaving that one path inert at runtime.
+      expect(result).not.toContain('globalThis.__tweakccSaveAgentColor=');
+      expect(result).toContain(
+        'if(globalThis.__tweakccSaveAgentColor)globalThis.__tweakccSaveAgentColor(__c)'
+      );
+    });
+
     it('should schedule color save via queueMicrotask', () => {
       const result = writeSessionColor(makeFullFile())!;
       expect(result).toContain('queueMicrotask');
