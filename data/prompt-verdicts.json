@@ -42096,5 +42096,840 @@
     "verdict": "pristine-keep",
     "version": "2.1.276",
     "why": "Dense frozen spec. Keep."
+  },
+  "agent-prompt-narration-status-line-question-not-answered": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique behavioral contract for the narration writer; frozen (never, enumeration, ordering 'when the turn ends')."
+  },
+  "data-settings-validation-blocked-marketplaces-invalid-dropped": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen validation-error contract (setting name, enforcement consequence); unique."
+  },
+  "data-settings-validation-blocked-marketplaces-unenforceable-entry-kept": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen validation message with slot; unique."
+  },
+  "data-settings-validation-disable-sideload-flags-invalid-treated-true": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Security fail-closed contract (invalid => treated as true); frozen, unique."
+  },
+  "data-settings-validation-marketplace-entry-inert-policy-tier-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Opens with slot (settings key path) but is validation output with enum/path mechanics; frozen, unique."
+  },
+  "data-settings-validation-marketplace-git-wildcard-unsupported": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique git-form wildcard rule reason; contains enum/sentinel text (\"<owner>/*\", github-form, regex) — frozen mechanics."
+  },
+  "data-settings-validation-marketplace-github-owner-wildcard-shape": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique github owner-wildcard \"<owner>/*\" shape rule reason; contains enum/sentinel text (\"<owner>/*\", github-form, regex) — frozen mechanics."
+  },
+  "data-settings-validation-marketplace-ref-wildcard": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique managed-settings validation reason; opens with ${.source} slot but no detector matches this text; frozen literal."
+  },
+  "data-settings-validation-marketplace-regex-does-not-compile": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique regex-compile failure reason; contains enum/sentinel text (\"<owner>/*\", github-form, regex) — frozen mechanics."
+  },
+  "data-settings-validation-strict-known-marketplaces-invalid-empty-allowlist": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "data-task-notification-detached-tool-call-ended-without-result": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique failed-arm framing and the do-not-announce contract; frozen."
+  },
+  "data-task-notification-detached-tool-call-finished": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique behavioral contract for detached tool results; frozen (never/do-not, 'one or two lines', ordering)."
+  },
+  "data-task-notification-detached-tool-call-stopped-by-user": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "data-task-notification-detached-tool-call-timed-out": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Error text carrying a threshold in minutes; frozen."
+  },
+  "data-task-notification-detached-tool-result-oversize-unsaved": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "data-task-notification-detached-tool-result-render-failed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Only signal that a detached call's result is lost though the call completed; unique error contract."
+  },
+  "data-task-notification-detached-tool-result-saved-to-file": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "skill-claude-test-duplicate-plugin-loads-first": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique failure text naming /plugin and the ordering 'Then start a new session'; frozen."
+  },
+  "slash-command-mcp-authenticate-in-terminal-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen (/mcp command name); unique remedy for needs-auth."
+  },
+  "slash-command-mcp-inline-no-servers-configured": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen command text (`claude mcp add`)."
+  },
+  "slash-command-mcp-named-server-not-configured-terminal-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen /mcp pointer."
+  },
+  "slash-command-mcp-open-from-command-menu-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen UI-surface remedy; unique for app surface. Catalog note: overlapping multisite match with disable-failed / inline-no-servers bodies."
+  },
+  "slash-command-mcp-pending-approval-approve-in-terminal-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen (/mcp, 'first' ordering); unique."
+  },
+  "slash-command-mcp-status-terminal-details-with-usage": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen /mcp hint; opens with slot (surface helper fn), no detector."
+  },
+  "slash-command-plugin-install-already-installed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "slash-command-plugin-install-leftover-paths-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique path-cleanup fact; frozen."
+  },
+  "slash-command-plugin-install-loads-in-place-suffix": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "slash-command-plugin-install-previous-copy-removed-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "slash-command-plugin-install-previous-copy-restored-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique state report for the 'restored' outcome."
+  },
+  "slash-command-plugin-install-previous-copy-stranded-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "slash-command-plugin-install-previous-folder-not-restored-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen (ordering 'again', remedy); unique."
+  },
+  "slash-command-plugin-install-version-folder-busy-cause": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "slash-command-plugin-install-version-folder-move-failed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Error contract with cause-specific remedy; frozen enumerations (permissions and free disk space)."
+  },
+  "slash-command-plugin-install-version-folder-move-failed-cause": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Minimal cause clause with OS error slot."
+  },
+  "slash-command-plugin-load-failed-see-plugin": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen error text naming /plugin."
+  },
+  "slash-command-plugin-load-failed-see-plugin-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen error text naming /plugin; wiping would remove the message at those sites."
+  },
+  "slash-command-plugin-validate-ui-render-surfaces-only-list": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "slash-command-ultrareview-base-ref-not-found": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen enumeration of accepted arguments; unique."
+  },
+  "slash-command-ultrareview-empty-diff-against-base-empty": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Minimal reason clause."
+  },
+  "slash-command-ultrareview-empty-diff-base-branch-commits-count-as-base": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Explains why the diff is empty (committed work = base); unique mechanic."
+  },
+  "slash-command-ultrareview-empty-diff-branch-at-base-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen remedy clause."
+  },
+  "slash-command-ultrareview-empty-diff-detached-head-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Detached-HEAD-specific remedy; unique."
+  },
+  "slash-command-ultrareview-empty-diff-generic-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique remedy with ordering ('first'); frozen."
+  },
+  "slash-command-ultrareview-empty-diff-head-in-base": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Fragment of error sentence; cutting would break the joined sentence."
+  },
+  "slash-command-ultrareview-empty-diff-no-commits-beyond-base": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Reason-clause fragment; structural, unique."
+  },
+  "slash-command-ultrareview-empty-diff-no-tracked-edits": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Load-bearing shared fragment; wiping blanks every empty-diff reason."
+  },
+  "slash-command-ultrareview-empty-diff-on-base-branch": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen reason fragment."
+  },
+  "slash-command-ultrareview-empty-diff-on-base-no-commits-beyond": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Reason-clause fragment; unique to its branch."
+  },
+  "slash-command-ultrareview-empty-diff-pass-base-explicitly": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "slash-command-ultrareview-empty-diff-review-latest-commit": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen command form; unique recovery hint."
+  },
+  "slash-command-ultrareview-empty-diff-switch-branch-or-base": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen remedy clause."
+  },
+  "slash-command-ultrareview-empty-diff-try-different-base": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen command form; slot value for hint prompts."
+  },
+  "slash-command-ultrareview-first-commit-base-rerun-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique mechanic; frozen ordering ('from here on', rerun)."
+  },
+  "slash-command-ultrareview-first-commit-review-whole-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen suffix naming /ultrareview."
+  },
+  "slash-command-ultrareview-no-changes-to-review": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Structural wrapper; wiping would drop the whole empty-diff error."
+  },
+  "slash-command-ultrareview-no-commits-commit-starting-point": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique arm; ordering words (first, then); frozen."
+  },
+  "slash-command-ultrareview-no-merge-base-whole-repo-held-back": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique held-back/cost-gate contract ('a person can run /ultrareview ... which asks before it spends anything')."
+  },
+  "slash-command-ultrareview-not-git-init-commit-work": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique mechanic (first commit reviewed whole if small enough)."
+  },
+  "slash-command-ultrareview-not-git-init-starting-point": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique arm; path/command literal \"git init\"; frozen."
+  },
+  "slash-command-ultrareview-not-git-open-folder": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; 'at least one commit' threshold + 'then'; frozen."
+  },
+  "slash-command-ultrareview-not-git-repo": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen error; opens with slot (command name), no detector."
+  },
+  "slash-command-ultrareview-not-git-repo-cd-or-init": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; frozen."
+  },
+  "slash-command-ultrareview-scope-first-commit-all-files": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Scope confirmation line; unique."
+  },
+  "slash-command-ultrareview-untracked-files-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; command literal `git add`, ordering 'then'; frozen."
+  },
+  "system-prompt-agent-memory-entrypoint-not-loaded-read-only": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique security gate; frozen (do not, enumeration)."
+  },
+  "system-prompt-memory-read-only-cannot-save-new-memories": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short state sentence; keep."
+  },
+  "system-reminder-dir-sync-agent-snapshot-commits-restored": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique ordering/state contract with ref path snapshot in/<gen>; frozen."
+  },
+  "system-reminder-dir-sync-bookkeeping-newest-snapshot-ref-command": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen (command, ordering, empty-output rule); unique."
+  },
+  "system-reminder-dir-sync-bookkeeping-reset-to-user-commit": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen git commands/ordering; protects user uncommitted work; unique."
+  },
+  "system-reminder-dir-sync-bookkeeping-user-commit-not-in-history": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen git commands/ordering; data-loss guard; unique."
+  },
+  "system-reminder-dir-sync-carried-commits-many-sync-snapshots": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique 'leave those' instruction."
+  },
+  "system-reminder-dir-sync-carried-commits-one-sync-snapshot": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique 'leave it' instruction."
+  },
+  "system-reminder-dir-sync-head-on-sync-snapshot-commit": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique state clause; frozen."
+  },
+  "system-reminder-dir-sync-stopped-reason-commit-not-held": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "system-reminder-dir-sync-stopped-reason-machine-stopped": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Minimal clause."
+  },
+  "system-reminder-directory-sync-attached-machine-guidance": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique mechanics for attached-mid-session sync (timing, exclusions, stop conditions); every sentence frozen."
+  },
+  "system-reminder-directory-sync-snapshot-commit-reset": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; paths refs/claude/…, ordering, never — frozen."
+  },
+  "system-reminder-directory-sync-stopped-checkout-kept": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique state/next-step contract; frozen sentences."
+  },
+  "system-reminder-prefetched-artifact-type-read-url-once": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "system-reminder-prefetched-artifact-type-two-steps-url-read": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique clause; frozen (Bash tool name)."
+  },
+  "system-reminder-project-command-check-changed-since-last-serve": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique security/behaviour contract (check not run, each command asks)."
+  },
+  "system-reminder-project-command-checks-read-only-sandbox": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique one-line fact."
+  },
+  "system-reminder-remote-machine-branch-raw-diff-command": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Exact command the model must reproduce; frozen."
+  },
+  "system-reminder-remote-machine-branch-transfer-review": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Security/ordering contract for moving code from an untrusted copy; all content unique and frozen."
+  },
+  "system-reminder-remote-machine-separate-project-copies": {
+    "verdict": "trim",
+    "version": "2.1.277",
+    "why": "Two frozen sentences are wholly carried by co-rendered lines of the same notice; delete them verbatim, keep the unique same-repository check and the report-which-copy rule. Note: remaining text loses its leading '- ' bullet marker (cosmetic)."
+  },
+  "system-reminder-served-project-command-check-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen enum map (asked/context/stderr) and output relay."
+  },
+  "system-reminder-still-running-tool-call": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique frozen contract (never, tool_use_id, tag slot)."
+  },
+  "system-reminder-tool-hosts-agent-obeyed-config-files-list": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Structural fragment; wiping breaks the enclosing sentence."
+  },
+  "system-reminder-tool-hosts-header-separate-copy": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Load-bearing header; frozen verbatim-or-delete, and delete would lose the argument instruction."
+  },
+  "system-reminder-tool-hosts-here-primary-copy": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Structural host-list entry with enumeration; frozen."
+  },
+  "system-reminder-tool-hosts-machine-separate-copy-lives-there": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen, unique content; no partial cut possible."
+  },
+  "system-reminder-tool-hosts-project-separate-copy": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Host description fragment; frozen."
+  },
+  "system-reminder-tool-hosts-separate-copy-file-tools-this-checkout": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen tool-name enumeration; opens with slot (machine label), no detector on rendered text."
+  },
+  "system-reminder-tool-hosts-separate-copy-machine-arg-file-tools": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen (file_path parameter, absolute paths, arg name); unique mechanics."
+  },
+  "tool-description-artifact-docs-connector-start-from-docs-type-variant": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique replacement clause; mid-sentence fragment, cannot be wiped."
+  },
+  "tool-description-artifact-emailed-deck-not-file-format": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique routing rule; enumeration (.pptx or PDF) frozen."
+  },
+  "tool-description-fetchinboxmessage-project-thread-wake-envelope": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique trust-boundary contract (only the triggering human element is the user's request) plus attachment-reading mechanics; frozen."
+  },
+  "tool-description-suggestplugininstall-proactive-offer": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique tool contract (pluginId/pluginName mapping, ordering 'First call'); frozen."
+  },
+  "tool-description-webfetch-artifact-links-use-artifact-tool": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique routing bullet; frozen."
+  },
+  "tool-description-webfetch-claude-ai-artifact-links-exception": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique routing rule for artifact links when no Artifact tool; frozen."
+  },
+  "tool-parameter-artifact-list-type-query": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Keeps relevance-ranking semantics and omit-by-default guard; implicit overlap is not coverage."
+  },
+  "tool-parameter-artifact-list-types-type-query": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Schema parameter text for the split-action Artifact schema; frozen (only, case-insensitive, omit-unless rule)."
+  },
+  "tool-result-artifact-ask-rule-covers-this-url-suffix": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Reworded successor of tool-result-artifact-consent-ask-rule-covers-this-url-3, whose override was byte-identical to its old pristine; the new body applies as pristine. Tool-result mechanics, frozen, no co-rendered duplicate."
+  },
+  "tool-result-artifact-asset-copy-approval-scope-until-comment": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen consent-scope contract; unique."
+  },
+  "tool-result-artifact-asset-copy-approval-scope-until-comment-with-source-reads": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen consent-scope contract incl. source reads; unique."
+  },
+  "tool-result-artifact-asset-copy-permission-ask": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Reworded successor of tool-result-artifact-copy-from-permission-ask, whose override was byte-identical to its old pristine; the new body applies as pristine. Tool-result mechanics, frozen, no co-rendered duplicate."
+  },
+  "tool-result-artifact-copy-from-covers-uploads-copies-and-source-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique scope statement; frozen."
+  },
+  "tool-result-artifact-copy-source-public-other-org-label": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Minimal label."
+  },
+  "tool-result-artifact-copy-source-shared-other-org-label": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Minimal label."
+  },
+  "tool-result-artifact-copy-source-yours-cowritten-label": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Consent-ask ownership disclosure; unique."
+  },
+  "tool-result-artifact-copy-source-yours-from-type-label": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short ownership label; keep."
+  },
+  "tool-result-artifact-created-from-type-already-created-files-published-clause": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-artifact-created-from-type-files-listing-and-next-steps": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Structural tool-result tail; unique file-layout facts (add under `project/`)."
+  },
+  "tool-result-artifact-db-relay-busy-after-retry": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen write-may-have-applied/read-back-before-retry ordering contract."
+  },
+  "tool-result-artifact-db-relay-not-carried": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen error tag store_unavailable and nothing-ran contract."
+  },
+  "tool-result-artifact-list-types-narrowed-by-query": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; param name type_query; frozen."
+  },
+  "tool-result-artifact-publish-also-removes-files": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Consent-ask disclosure fragment; wiping breaks the joined sentence."
+  },
+  "tool-result-artifact-publish-also-uploads-supporting-files": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Minimal consent clause."
+  },
+  "tool-result-artifact-publish-contract-rollout-retry": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique retry/do-not-pin contract with a time threshold; frozen."
+  },
+  "tool-result-artifact-publish-copies-files-from-source": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Consent-ask clause; keep."
+  },
+  "tool-result-artifact-publish-copies-files-from-sources": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Consent disclosure; unique."
+  },
+  "tool-result-artifact-publish-cowork-approval-reason": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Safety-check reason naming the target; unique."
+  },
+  "tool-result-artifact-publish-files-artifact-source-not-accepted": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; parameter names frozen."
+  },
+  "tool-result-artifact-publish-from-type-page-by-publisher-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique in its ask; frozen."
+  },
+  "tool-result-artifact-publish-rate-limited-already-retried-once": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; frozen (once)."
+  },
+  "tool-result-artifact-publish-rate-limited-nothing-published": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique opener."
+  },
+  "tool-result-artifact-publish-rate-limited-refused-step-copy-preflight": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-artifact-publish-rate-limited-refused-step-copy-staging": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique fragment."
+  },
+  "tool-result-artifact-publish-rate-limited-reserved-slug-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Tells model to reuse the reserved artifact to avoid another reservation; unique mechanic."
+  },
+  "tool-result-artifact-publish-rate-limited-wait-seconds-tail": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-artifact-publish-replacing-current-page": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-artifact-publish-replacing-named-page": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-artifact-publish-supporting-files-scratchpad-root-breakdown": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-artifact-publish-to-typed-artifact-page-unchanged-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Consent disclosure; unique in its emission."
+  },
+  "tool-result-artifact-upload-asset-covers-uploads-and-copies-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen consent-scope contract; unique."
+  },
+  "tool-result-bash-coordinator-dynamic-path-argument": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique refusal with enumerated forms; frozen."
+  },
+  "tool-result-bash-coordinator-glob-too-wide": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Refusal + remedy contract; unique."
+  },
+  "tool-result-bash-coordinator-no-worker-transcript-read": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Refusal + routing contract; unique."
+  },
+  "tool-result-bash-dangerous-op-unset-var-bind-positional-suggestion": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Safety remedy; frozen."
+  },
+  "tool-result-bash-dangerous-op-unset-var-decision-reason": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Decision-reason template; unique."
+  },
+  "tool-result-bash-dangerous-op-unset-var-guard-rewrite-suggestion": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique ${VAR:?} guard mechanic; frozen."
+  },
+  "tool-result-bash-dangerous-op-unset-var-reparsed-reason-suggestion": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Minimal; frozen."
+  },
+  "tool-result-bash-dangerous-op-unset-var-reparsed-suggestion": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique reason why a guard does not protect; frozen."
+  },
+  "tool-result-bash-dangerous-op-unset-var-unverifiable-reason-suggestion": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Safety remedy; unique."
+  },
+  "tool-result-bash-dangerous-op-unset-var-unverifiable-suggestion": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Safety-refusal remedy; frozen."
+  },
+  "tool-result-bash-dangerous-op-unset-variable-reason-normally-set": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Safety-refusal remedy; frozen."
+  },
+  "tool-result-bash-dangerous-op-unset-variable-remedy-normally-set": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Safety-refusal remedy; frozen."
+  },
+  "tool-result-cloud-session-command-check-changed-since-last-serve": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique permission-ask reason with approval semantics; frozen."
+  },
+  "tool-result-cloud-session-command-check-stopped-after-repeated-asks": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen threshold (three), path, env var, enumeration."
+  },
+  "tool-result-fetch-inbox-message-attachments-not-downloaded": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen bracketed marker with count; unique."
+  },
+  "tool-result-grep-ripgrep-spawn-advice-process-limit": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique EAGAIN advice."
+  },
+  "tool-result-grep-ripgrep-spawn-advice-short-of-memory": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique ENOMEM advice."
+  },
+  "tool-result-grep-ripgrep-spawn-advice-too-many-files-open": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique ENFILE advice."
+  },
+  "tool-result-pdf-rendered-pages-move-failed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-plugin-card-none-verified": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique contract (never, tool names, ordering); frozen."
+  },
+  "tool-result-plugin-card-skill-ids-redirect": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Routing redirect to skills-suggestion tool; unique."
+  },
+  "tool-result-plugin-card-unchecked-ids-left-off": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-plugin-card-unknown-ids-dropped": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique; frozen."
+  },
+  "tool-result-project-command-check-blocked-command": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Deny reason contract; unique."
+  },
+  "tool-result-project-command-check-changed-since-attach": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Permission ask; unique."
+  },
+  "tool-result-project-command-check-could-not-finish": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique ask."
+  },
+  "tool-result-project-command-check-rewrite-refused-cloud-session": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique ask."
+  },
+  "tool-result-project-command-check-wants-confirmation": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Short tool/command output or clause: frozen mechanics, unique."
+  },
+  "tool-result-remote-host-permission-check-threw": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Unique refusal."
+  },
+  "tool-result-remote-host-separate-copy-file-missing-hint": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Error-suffix redirect; frozen."
+  },
+  "tool-result-write-path-is-directory": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen parameter name file_path; opens with slot (path), no detector."
+  },
+  "tool-result-write-path-not-regular-file": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Frozen enumeration and file_path semantics; opens with slot (path), no detector."
   }
 }

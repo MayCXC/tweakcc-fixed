@@ -139,11 +139,6 @@
     "version": "2.1.276",
     "why": "module 319 chunk-c7pgjrkn.js, i() console.log '[self-hosted-runner]': Runner startup notice logged with i=(msg)=>console.log(`[self-hosted-runner] ${msg}`). Operator stderr/stdout, not a model prompt."
   },
-  "data-structured-usage-rate-limit-rows-field": {
-    "verdict": "not-model-facing",
-    "version": "2.1.276",
-    "why": "module 119 chunk-n55wtmpy.js, wnr.rate_limits.limits .describe(): Describes the usage-endpoint limits[] rows on structured SDK usage/rate-limit JSON for host rendering. Not a tool schema and not in the settings oracle."
-  },
   "data-thin-client-diff-dialog-schema": {
     "verdict": "not-model-facing",
     "version": "2.1.276",
