@@ -39,6 +39,73 @@ export function findRepoPromptsDir(): string | null {
 }
 
 /**
+ * Pick the newest version among a set of prompts filenames. Matches the repo's
+ * prompts-file idiom (`prompts-X.Y.Z.json`), keeps each captured version, and
+ * orders them with a numeric-aware locale compare so 2.1.10 sorts after 2.1.9
+ * (a plain lexicographic sort would put 2.1.9 last).
+ *
+ * @param fileNames - Directory entry names to scan (order irrelevant)
+ * @returns The newest "X.Y.Z" version, or null when none match
+ */
+export function latestPromptsVersion(fileNames: string[]): string | null {
+  const versions = fileNames
+    .map(name => /^prompts-(\d+\.\d+\.\d+)\.json$/.exec(name)?.[1])
+    .filter((v): v is string => v !== undefined)
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+  return versions.at(-1) ?? null;
+}
+
+/**
+ * The newest Claude Code version the prompt data on disk covers, or null when
+ * there is no data/prompts to read (a published npm install, whose tarball
+ * ships none).
+ *
+ * This is the same resolution the repo's own tools use for their default
+ * version argument (`arg('--json') ?? newestPromptsJson()` in
+ * checkOutputContracts, and the equivalent in auditMisbinds,
+ * auditCallSlots and checkEscaperWrappers): read the directory, keep the
+ * `prompts-X.Y.Z.json` entries, take the numerically newest.
+ */
+export function newestLocalPromptsVersion(): string | null {
+  const repoDir = findRepoPromptsDir();
+  if (!repoDir) return null;
+  try {
+    return latestPromptsVersion(fsSync.readdirSync(repoDir));
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Which Claude Code version to fetch prompts for, in order of what each source
+ * actually knows.
+ *
+ * An explicit argument is the caller's own decision and settles it.
+ *
+ * Otherwise the release's declared version wins, because the question a caller
+ * asks with no argument is which Claude Code this build can patch, and that is
+ * a fact about the patch code. Prompt data cannot answer it: the data and the
+ * code move independently, a prompts commit landing before the release able to
+ * patch what it describes, so the newest file on disk can name a version whose
+ * shape this build does not match. Getting that wrong in the generous
+ * direction is the costly one, since it installs a Claude Code that `--apply`
+ * then fails on, while the cautious answer merely installs an older one that
+ * works.
+ *
+ * The prompt data answers only when no declaration exists, which is a checkout
+ * from before the field. A published install has neither and passes a version.
+ *
+ * @param localNewest Deferred, so the directory is read only when reached.
+ */
+export function resolveFetchVersion(
+  requested: string | undefined,
+  declared: string | undefined,
+  localNewest: () => string | null
+): string | null {
+  return requested ?? declared ?? localNewest();
+}
+
+/**
  * Downloads the strings file for a given CC version from GitHub.
  *
  * Resolution order: repo-local data/prompts/ (when running from a checkout)
