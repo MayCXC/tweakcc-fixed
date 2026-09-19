@@ -42931,5 +42931,15 @@
     "verdict": "pristine-keep",
     "version": "2.1.277",
     "why": "Frozen enumeration and file_path semantics; opens with slot (path), no detector."
+  },
+  "agent-prompt-general-task-agent": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "Its opening is the full text of agent-prompt-general-purpose-short, whose override already rewrites that prefix at this site. What remains is the report contract (concise report, relayed by the caller), which no other prompt carries. Editing it here would also make both ids own one site."
+  },
+  "system-reminder-mcp-servers-connecting-without-toolsearch": {
+    "verdict": "pristine-keep",
+    "version": "2.1.277",
+    "why": "The no-ToolSearch branch of mcp-servers-connecting: lists the pending servers, says their tools are announced once they connect, and forbids reporting the capability as unavailable meanwhile. Every sentence carries mechanics; unlike the sibling it promises nothing that can fail, since the announcement is conditional on connecting."
   }
 }
