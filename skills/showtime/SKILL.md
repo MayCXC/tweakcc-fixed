@@ -434,9 +434,10 @@ git -C <overrides-repo> add system-prompts-<model>/ && git -C <overrides-repo> c
 ### Phase 9: publish to npm (if your fork is distributed as an npm package)
 
 The local `--apply` in Phase 6 is the pre-publish gate — publish only after the
-four zeros. Push main FIRST: npm installs of the package ship no `data/`, they
-fetch `prompts-X.Y.Z.json` from your repo's `main` branch at runtime, so an
-unpushed JSON 404s for every consumer.
+four zeros. npm installs of the package ship no `data/`: at runtime they fetch
+`prompts-X.Y.Z.json` from the release tag `v<version>` of your repo, so the JSON
+has to be in the commit the tag points at (`checkReleaseMeta` holds the release
+to that by requiring `supportedClaudeCode` to name the newest prompts file).
 
 ```bash
 # bump "version" and "supportedClaudeCode" in package.json in the release commit

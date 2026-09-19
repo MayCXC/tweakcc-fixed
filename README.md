@@ -37,7 +37,7 @@ npx -y tweakcc-fixed@latest --restore  # revert from the backup
 npx -y tweakcc-fixed@latest --validate-system-prompts  # dry-run the apply preflight over your overrides
 ```
 
-Nothing to clone or build. Prompt data is pulled from this repo at runtime, so a new Claude Code release works the moment its version bump lands here. Updating Claude Code overwrites the patches, so you just re-run `--apply` — your configuration in `~/.tweakcc/config.json` is untouched either way.
+Nothing to clone or build. Prompt data is pulled at runtime from the release tag of the version you are running, so a new Claude Code release works once a tweakcc-fixed release carries its prompts. Updating Claude Code overwrites the patches, so you just re-run `--apply` — your configuration in `~/.tweakcc/config.json` is untouched either way.
 
 > Versions ≤ 1.0.5 on npm came from a different, unmaintained fork. 2.0.0 onward is this one.
 

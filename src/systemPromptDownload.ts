@@ -4,6 +4,7 @@ import * as path from 'path';
 import { fileURLToPath } from 'node:url';
 import type { StringsFile } from './systemPromptSync';
 import { PROMPT_CACHE_DIR } from './config';
+import { TWEAKCC_VERSION } from './packageMeta';
 import { readResponseTextCapped } from './utils';
 
 // Cap the prompts-JSON fetch so a hung / blackholed connection (captive portal,
@@ -109,10 +110,10 @@ export function resolveFetchVersion(
  * Downloads the strings file for a given CC version from GitHub.
  *
  * Resolution order: repo-local data/prompts/ (when running from a checkout)
- * → user cache → network. Repo-local wins because a fork's locally-extracted
- * JSON is more authoritative than whatever was network-fetched into cache on
- * a previous run (which may be upstream's published version, not the fork's).
- * For npm-installed runs (no repo dir), order is cache → network.
+ * → user cache → network. Repo-local wins because a checkout's own JSON is
+ * what its patch code was written against, while the cache holds whatever a
+ * published release served. For npm-installed runs (no repo dir), the order is
+ * cache → network.
  *
  * @param version - Version string in format "X.Y.Z" (e.g., "2.0.30")
  * @returns Promise that resolves to the parsed JSON content
@@ -134,14 +135,13 @@ export async function downloadStringsFile(
     }
   }
 
-  // User cache (npm-installed runs that have no repo dir). The cache key is
-  // version-only, so a blind cache-first read would mask an in-place correction
-  // to an already-released prompts JSON (the same version is re-published with
-  // fixed maps) — serving a stale map forever. So prefer the network for
-  // freshness below and fall back to this cache only when the network is
-  // unreachable / rate-limited, which keeps offline applies working without
-  // ever serving a known-stale map.
-  const cacheFilePath = path.join(PROMPT_CACHE_DIR, `prompts-${version}.json`);
+  // User cache (npm-installed runs that have no repo dir), keyed by the package
+  // version as well as the Claude Code one. Two releases can carry different
+  // data for the same Claude Code version, so a key naming only that version
+  // would let one release read what another cached. A directory per release
+  // keeps them apart.
+  const cacheDir = path.join(PROMPT_CACHE_DIR, `v${TWEAKCC_VERSION}`);
+  const cacheFilePath = path.join(cacheDir, `prompts-${version}.json`);
   const readCache = async (): Promise<StringsFile | null> => {
     try {
       return JSON.parse(
@@ -152,11 +152,22 @@ export async function downloadStringsFile(
     }
   };
 
+  // The cache answers before the network. This release addresses its own tag,
+  // whose bytes are fixed once published, so a cached file is the file a fetch
+  // would return and the download buys nothing.
+  const cached = await readCache();
+  if (cached) return cached;
+
   // Construct the GitHub raw URL. This MUST point at the fork's own repo: the
   // npm tarball ships no data/, so npx installs resolve prompts JSONs from
   // here — upstream's JSONs use different naming conventions and would
   // silently mis-pair with this fork's overrides.
-  const url = `https://raw.githubusercontent.com/skrabe/tweakcc-fixed/refs/heads/main/data/prompts/prompts-${version}.json`;
+  //
+  // The ref is this build's own release tag, so an npm install reads the bytes
+  // committed when it was published — the same ones a clone at that tag reads
+  // from disk above. `package.json` already names the release; addressing the
+  // tag is what carries that to the data.
+  const url = `https://raw.githubusercontent.com/skrabe/tweakcc-fixed/refs/tags/v${TWEAKCC_VERSION}/data/prompts/prompts-${version}.json`;
 
   try {
     // Fetch the file from GitHub
@@ -165,18 +176,13 @@ export async function downloadStringsFile(
     });
 
     if (!response.ok) {
-      // Network reachable but no usable body — serve the cache if we have one
-      // (e.g. a transient 429/5xx shouldn't break an apply that has a cache).
-      const cached = await readCache();
-      if (cached) return cached;
-
       // Provide specific error messages for common HTTP errors
       let errorMessage: string;
       if (response.status === 429) {
         errorMessage =
           'Rate limit exceeded. GitHub has temporarily blocked requests. Please wait a few minutes and try again.';
       } else if (response.status === 404) {
-        errorMessage = `Prompts file not found for Claude Code v${version}. The fork's version-bump pipeline hasn't published prompts for this release yet — check https://github.com/skrabe/tweakcc-fixed for status.`;
+        errorMessage = `Prompts file not found for Claude Code v${version} in tweakcc-fixed v${TWEAKCC_VERSION}. That release carries the prompts published with it — check https://github.com/skrabe/tweakcc-fixed for a release covering this Claude Code.`;
       } else if (response.status >= 500) {
         errorMessage = `GitHub server error (${response.status}). Please try again later.`;
       } else {
@@ -193,9 +199,20 @@ export async function downloadStringsFile(
       await readResponseTextCapped(response)
     ) as StringsFile;
 
-    // Save to cache
+    // Save to cache, and drop what other releases left behind: each release
+    // reads only its own directory, so theirs can never be read again and the
+    // cache would otherwise grow by one copy of the data per upgrade. This also
+    // clears the loose `prompts-*.json` files written before the key carried a
+    // release.
     try {
-      await fs.mkdir(PROMPT_CACHE_DIR, { recursive: true });
+      await fs.mkdir(cacheDir, { recursive: true });
+      for (const entry of await fs.readdir(PROMPT_CACHE_DIR)) {
+        if (entry === `v${TWEAKCC_VERSION}`) continue;
+        await fs.rm(path.join(PROMPT_CACHE_DIR, entry), {
+          recursive: true,
+          force: true,
+        });
+      }
       await fs.writeFile(
         cacheFilePath,
         JSON.stringify(jsonData, null, 2),
@@ -209,11 +226,6 @@ export async function downloadStringsFile(
 
     return jsonData;
   } catch (error) {
-    // Network unreachable (DNS / offline / timeout): the cache is the resilient
-    // fallback. (HTTP-status errors already tried the cache above; if we reach
-    // here from one of those, there was no cache and this read returns null.)
-    const cached = await readCache();
-    if (cached) return cached;
     if (error instanceof Error) {
       // If it's already our custom error with the message displayed, re-throw it
       if (
