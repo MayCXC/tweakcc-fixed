@@ -2845,6 +2845,27 @@ const NEW_PROMPT_ASSIGNMENTS = [
     description:
       'Requires confirmation for irreversible or outward-facing actions, checking targets before destructive edits, and truthful reporting of outcomes',
   },
+  // The two strings the coverage gate reports missing on 2.1.276, both reaching
+  // the model. Named after the ids upstream (Piebald) uses, so the gate and the
+  // reference catalogue agree on what to call them.
+  {
+    matcher: t =>
+      t.startsWith('You are an agent for Claude Code, Anthropic') &&
+      t.includes('When you complete the task, respond with a concise report') &&
+      !t.includes('Your strengths') &&
+      t.trimEnd().endsWith('so it only needs the essentials.'),
+    name: 'Agent Prompt: General task agent',
+    id: 'agent-prompt-general-task-agent',
+    description:
+      "Instructs a Claude Code task agent to complete the user's request fully and report the essential outcome",
+  },
+  {
+    matcher: t => t.includes('will be announced here once they connect'),
+    name: 'System Reminder: MCP servers connecting without ToolSearch',
+    id: 'system-reminder-mcp-servers-connecting-without-toolsearch',
+    description:
+      'Lists MCP servers still connecting when ToolSearch is absent and tells the agent to await tool announcements rather than report the capability unavailable',
+  },
 ];
 
 // Overlay a NEW_PROMPT_ASSIGNMENTS identifierMap onto a carried/generated one,
@@ -3428,21 +3449,25 @@ function isHardExcluded(text) {
     )
   )
     return true;
-  // Two general-purpose-agent fragments with no working override target
-  // (nested/clobbered spans — see the inline notes in validateInput's history).
+  // A general-purpose-agent fragment with no working override target (a
+  // nested/clobbered span; see the inline notes in validateInput's history).
   if (
     text.startsWith(
       'Your strengths:\n- Searching for code, configurations, and patterns across large codebases'
     )
   )
     return true;
+  // The standalone general-task agent prompt. Upstream catalogues it and the
+  // coverage gate flags it, so a curated NEW_PROMPT_ASSIGNMENTS entry names it;
+  // this rule yields to that entry and otherwise keeps the fragment dropped.
   if (
     text.startsWith('You are an agent for Claude Code, Anthropic') &&
     text.includes(
       'When you complete the task, respond with a concise report'
     ) &&
     !text.includes('Your strengths') &&
-    text.trimEnd().endsWith('so it only needs the essentials.')
+    text.trimEnd().endsWith('so it only needs the essentials.') &&
+    !lookupNewPromptAssignment(text)
   )
     return true;
   // Anything that interpolates the inline ${{ISSUES_EXPLAINER, ..., GIT_SHA,
