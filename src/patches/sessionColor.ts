@@ -42,39 +42,23 @@ export const writeSessionColor = (oldFile: string): string | null => {
   const nameVar = oldFile.match(NAME_SPREAD)?.[1] ?? null;
   const INJECTION = injectionFor(nameVar);
 
-  const patterns = [
-    /,activeOverlays:new Set,fastMode:[$\w]+\([$\w]+\)/,
-    /,activeOverlays:new Set,fastMode:!1\}/,
-  ];
-
-  let result = oldFile;
-  let patched = false;
-
-  for (const pattern of patterns) {
-    const match = result.match(pattern);
-    if (!match || match.index === undefined) continue;
-
-    const prePatch = result;
-    const replacement = INJECTION + match[0];
-    result =
-      prePatch.slice(0, match.index) +
-      replacement +
-      prePatch.slice(match.index + match[0].length);
-
-    showDiff(
-      prePatch,
-      result,
-      INJECTION,
-      match.index,
-      match.index + match[0].length
-    );
-    patched = true;
-  }
-
-  if (!patched) {
-    debug('patch: sessionColor: failed to find app state init patterns');
+  const pattern = /,activeOverlays:new Set,fastMode:[$\w]+\([$\w]+\)/;
+  const match = oldFile.match(pattern);
+  if (!match || match.index === undefined) {
+    console.error('patch: sessionColor: failed to find the app state init');
     return null;
   }
+
+  const result =
+    oldFile.slice(0, match.index) + INJECTION + oldFile.slice(match.index);
+
+  showDiff(
+    oldFile,
+    result,
+    INJECTION,
+    match.index,
+    match.index + match[0].length
+  );
 
   // Remembering the color across sessions is a second, independent anchor, and
   // the color does not depend on it. The injection reaches the store through
@@ -102,28 +86,15 @@ export const patchSaveAgentColor = (oldFile: string): string | null => {
     '\\(([$\\w]+),([$\\w]+),([$\\w]+)(?:,[$\\w]+)?\\)' +
     '\\{let [$\\w]+=\\6\\?\\?[$\\w]+\\(\\4\\);';
 
-  const patterns = [
-    new RegExp(
-      prefix +
-        'if\\((?:await )?[$\\w]+\\([$\\w]+,' +
-        '\\{type:"agent-color",agentColor:\\5,sessionId:\\4\\}(?:,[$\\w]+)?\\),' +
-        '\\4===([$\\w]+)\\(\\)\\))'
-    ),
-    new RegExp(
-      prefix +
-        'try\\{await [$\\w]+\\([$\\w]+,' +
-        '\\{type:"agent-color",agentColor:\\5,sessionId:\\4\\}(?:,[$\\w]+)?\\)\\}' +
-        'catch\\([$\\w]+\\)\\{[\\s\\S]*?\\}' +
-        'if\\(\\4===([$\\w]+)\\(\\)\\))'
-    ),
-  ];
+  const pattern = new RegExp(
+    prefix +
+      'try\\{await [$\\w]+\\([$\\w]+,' +
+      '\\{type:"agent-color",agentColor:\\5,sessionId:\\4\\}(?:,[$\\w]+)?\\)\\}' +
+      'catch\\([$\\w]+\\)\\{[\\s\\S]*?\\}' +
+      'if\\(\\4===([$\\w]+)\\(\\)\\))'
+  );
 
-  let match: RegExpMatchArray | null = null;
-  for (const pattern of patterns) {
-    match = oldFile.match(pattern);
-    if (match && match.index !== undefined) break;
-    match = null;
-  }
+  const match = oldFile.match(pattern);
   if (!match || match.index === undefined) {
     return null;
   }
