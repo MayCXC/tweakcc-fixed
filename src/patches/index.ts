@@ -115,6 +115,7 @@ import { writeFablePlan } from './fablePlan';
 import { writeVoiceMode } from './voiceMode';
 import { writeChannelsMode } from './channelsMode';
 import { writeClearScreen } from './clearScreen';
+import { writeSessionColor } from './sessionColor';
 import { writeReadDefaultLines } from './readDefaultLines';
 import { writeSwapRipgrepForFff } from './swapRipgrepForFff';
 import { ensureRgFffWrapper } from '../ripgrepFff';
@@ -408,6 +409,13 @@ const PATCH_DEFINITIONS = [
     name: 'Suppress rate limit warning',
     group: PatchGroup.MISC_CONFIGURABLE,
     description: 'Rate limit warning banners in the status bar will be hidden',
+  },
+  {
+    id: 'session-color',
+    name: 'Session color from env',
+    group: PatchGroup.MISC_CONFIGURABLE,
+    description:
+      'Session prompt bar color is read from the TWEAKCC_SESSION_COLOR env var at each launch',
   },
   {
     id: 'token-count-rounding',
@@ -1185,6 +1193,10 @@ export const applyCustomization = async (
       fn: c => writeSuppressRateLimitWarning(c),
       condition: !!config.settings.misc?.suppressRateLimitWarning,
     },
+    'session-color': {
+      fn: c => writeSessionColor(c),
+      condition: !!config.settings.misc?.sessionColor,
+    },
     'token-count-rounding': {
       fn: c =>
         writeTokenCountRounding(c, config.settings.misc!.tokenCountRounding!),
@@ -1280,6 +1292,7 @@ export const applyCustomization = async (
           c,
           config.settings.toolsets!,
           config.settings.defaultToolset,
+          config.settings.acceptEditsToolset,
           config.settings.planModeToolset
         ),
       condition: !!(

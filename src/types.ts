@@ -125,6 +125,7 @@ export interface MiscConfig {
   suppressLineNumbers: boolean;
   suppressRateLimitOptions: boolean;
   suppressRateLimitWarning: boolean;
+  sessionColor: boolean;
   mcpConnectionNonBlocking: boolean;
   mcpServerBatchSize: number | null;
   statuslineThrottleMs: number | null;
@@ -250,6 +251,7 @@ export interface Settings {
   misc: MiscConfig;
   toolsets: Toolset[];
   defaultToolset: string | null;
+  acceptEditsToolset: string | null;
   planModeToolset: string | null;
   subagentModels: SubagentModelsConfig;
   // Non-optional like subagentModels (its analog): DEFAULT_SETTINGS always

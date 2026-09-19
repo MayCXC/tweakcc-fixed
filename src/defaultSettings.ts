@@ -722,6 +722,7 @@ export const DEFAULT_SETTINGS: Settings = {
     suppressLineNumbers: false,
     suppressRateLimitOptions: false,
     suppressRateLimitWarning: false,
+    sessionColor: false,
     mcpConnectionNonBlocking: true,
     mcpServerBatchSize: null,
     statuslineThrottleMs: null,
@@ -755,6 +756,7 @@ export const DEFAULT_SETTINGS: Settings = {
   },
   toolsets: [],
   defaultToolset: null,
+  acceptEditsToolset: null,
   planModeToolset: null,
   subagentModels: {
     plan: null,
