@@ -122,6 +122,20 @@ const COORDINATOR_MODE_2_1_257_MAP = {
 };
 
 const CURATED_IDENTIFIER_MAPS = {
+  'system-reminder-prefetched-artifact-type-instruction-files': [
+    {
+      // CC 2.1.277 turned slot 1 from the planned-read boolean into the
+      // resolved sentence about reading the artifact's url. Upstream's map is
+      // from 2.1.275 and still names the boolean.
+      identifiers: [0, 1, 2, 3],
+      identifierMap: {
+        0: 'PREFETCHED_ARTIFACT_TYPE_FILES',
+        1: 'ARTIFACT_URL_READ_NOTE',
+        2: 'ARTIFACT_READ_INCLUDES_TYPE_SKILL',
+        3: 'TYPE_REFERENCE_PAGE_READ_COMMANDS',
+      },
+    },
+  ],
   'system-prompt-harness-instructions': [
     {
       // CC 2.1.274 hoisted the intro ternary into a local, so slot 0 is its
