@@ -28,6 +28,7 @@ import { writeContextLimit } from './contextLimit';
 import { writeOpusplan1m } from './opusplan1m';
 import { writeThinkingBlockStyling } from './thinkingBlockStyling';
 import { writeFixLspSupport } from './fixLspSupport';
+import { writeNoGlobalCacheScope } from './globalCacheScope';
 import { writeFixSummarizeFromHere } from './fixSummarizeFromHere';
 import { writeFixRewindSummaryHeader } from './fixRewindSummaryHeader';
 import { writeStatuslineUpdateThrottle } from './statuslineUpdateThrottle';
@@ -335,6 +336,16 @@ const INVOCATIONS: Record<PatchId, (src: string) => string | null> = {
   opusplan1m: c => writeOpusplan1m(c),
   'thinking-block-styling': c => writeThinkingBlockStyling(c),
   'fix-lsp-support': c => writeFixLspSupport(c),
+  // The patch acts only once an identity line differs from stock, so one is
+  // replaced here to exercise both of its anchors against the real bundle.
+  'no-global-cache-scope': c =>
+    writeNoGlobalCacheScope(
+      c.replace(
+        `"You are a Claude agent, built on Anthropic's Claude Agent SDK."`,
+        '"You are an overridden identity."'
+      ),
+      c
+    ),
   'fix-summarize-from-here': c => writeFixSummarizeFromHere(c),
   'fix-rewind-summary-header': c => writeFixRewindSummaryHeader(c),
   'statusline-update-throttle': c =>

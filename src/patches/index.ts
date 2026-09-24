@@ -79,6 +79,7 @@ import {
   runSystemPromptPreflight,
 } from '../systemPromptPreflight';
 import { writeFixLspSupport } from './fixLspSupport';
+import { writeNoGlobalCacheScope } from './globalCacheScope';
 import { writeFixSummarizeFromHere } from './fixSummarizeFromHere';
 import { writeFixRewindSummaryHeader } from './fixRewindSummaryHeader';
 import { writeToolsets } from './toolsets';
@@ -224,6 +225,13 @@ const PATCH_DEFINITIONS = [
     name: 'Fix LSP support',
     group: PatchGroup.ALWAYS_APPLIED,
     description: 'Enable/fix nascent LSP support',
+  },
+  {
+    id: 'no-global-cache-scope',
+    name: 'Keep a replaced identity line out of the global prompt cache',
+    group: PatchGroup.ALWAYS_APPLIED,
+    description:
+      'Against Anthropic\'s first-party API, Claude Code marks the static part of its system prompt with the "global" cache scope, which Anthropic accepts only when the line before it is one of Claude Code\'s own identity lines: with an identity line replaced or removed by a prompt override, every request is refused with a 400. When an identity line differs from stock, this makes the client cache that block at organization scope for the same TTL, as it does behind a custom base URL; while the identity lines are stock it changes nothing',
   },
   {
     id: 'fix-summarize-from-here',
@@ -1035,6 +1043,9 @@ export const applyCustomization = async (
     },
     'fix-lsp-support': {
       fn: c => writeFixLspSupport(c),
+    },
+    'no-global-cache-scope': {
+      fn: c => writeNoGlobalCacheScope(c, pristineContent),
     },
     'fix-summarize-from-here': {
       fn: c => writeFixSummarizeFromHere(c),
