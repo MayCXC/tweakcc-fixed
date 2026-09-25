@@ -10,6 +10,11 @@
 //
 // Gated behind TWEAKCC_PRISTINE_PATCHES=1 (see `pnpm test:pristine`) because it
 // needs a ~21 MB pristine cli.js on disk and spawns Bun to parse each output.
+//
+// The result belongs to the CC version of that bundle. A patch can no-op on one
+// release and apply on the next (unlock-responsive-mode finds nothing in 2.1.278
+// and applies from 2.1.280), so run it against the current release before
+// adding an entry to EXPECTED_NOOP, or the entry hides a dead anchor there.
 
 import { describe, it, expect, beforeAll } from 'vitest';
 import * as fs from 'node:fs';
@@ -28,6 +33,7 @@ import { writeContextLimit } from './contextLimit';
 import { writeOpusplan1m } from './opusplan1m';
 import { writeThinkingBlockStyling } from './thinkingBlockStyling';
 import { writeFixLspSupport } from './fixLspSupport';
+import { writeNoGlobalCacheScope } from './globalCacheScope';
 import { writeFixSummarizeFromHere } from './fixSummarizeFromHere';
 import { writeFixRewindSummaryHeader } from './fixRewindSummaryHeader';
 import { writeStatuslineUpdateThrottle } from './statuslineUpdateThrottle';
@@ -335,6 +341,16 @@ const INVOCATIONS: Record<PatchId, (src: string) => string | null> = {
   opusplan1m: c => writeOpusplan1m(c),
   'thinking-block-styling': c => writeThinkingBlockStyling(c),
   'fix-lsp-support': c => writeFixLspSupport(c),
+  // The patch acts only once an identity line differs from stock, so one is
+  // replaced here to exercise both of its anchors against the real bundle.
+  'no-global-cache-scope': c =>
+    writeNoGlobalCacheScope(
+      c.replace(
+        `"You are a Claude agent, built on Anthropic's Claude Agent SDK."`,
+        '"You are an overridden identity."'
+      ),
+      c
+    ),
   'fix-summarize-from-here': c => writeFixSummarizeFromHere(c),
   'fix-rewind-summary-header': c => writeFixRewindSummaryHeader(c),
   'statusline-update-throttle': c =>
@@ -644,6 +660,20 @@ describe.skipIf(skipReason !== null)('every patch vs. pristine cli.js', () => {
     expect(
       oracle.check(result!, 'patched-user-message-display-sweep')
     ).toBeNull();
+  });
+
+  it('agents-md rewrites both memory-walk sites', () => {
+    const source = pristine!.source;
+    const result = writeAgentsMd(
+      source,
+      DEFAULT_SETTINGS.claudeMdAltNames ?? []
+    );
+    expect(result).not.toBeNull();
+    const walkReroutes = /if\(found\.length\)return found/g;
+    expect(
+      (result!.match(walkReroutes) ?? []).length -
+        (source.match(walkReroutes) ?? []).length
+    ).toBe(2);
   });
 });
 

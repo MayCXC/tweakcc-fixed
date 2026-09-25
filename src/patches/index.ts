@@ -4,27 +4,12 @@ import * as fsSync from 'node:fs';
 import * as os from 'node:os';
 import * as path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { createRequire } from 'node:module';
-
-// package.json sits two levels up from src/patches/ but one level up from the
-// bundled dist/*.mjs chunks, so try both — keeps the reported version pinned
-// to the published one instead of a hardcoded literal that drifts.
-const _require = createRequire(import.meta.url);
-interface PackageMeta {
-  version: string;
-  supportedClaudeCode: string;
-}
-const PACKAGE_META: PackageMeta = (() => {
-  try {
-    return _require('../package.json') as PackageMeta;
-  } catch {
-    return _require('../../package.json') as PackageMeta;
-  }
-})();
-export const TWEAKCC_VERSION: string = PACKAGE_META.version;
-// Newest Claude Code version this release was verified against; the release
-// workflows refuse a tag where it lags data/prompts.
-export const TWEAKCC_SUPPORTED_CC: string = PACKAGE_META.supportedClaudeCode;
+// Re-exported so the many existing importers keep their path. The values are
+// read in `../packageMeta`, which imports nothing but a node builtin:
+// `systemPromptDownload` needs the version to address the release tag, and it
+// is reached from here through `../systemPromptSync`.
+import { TWEAKCC_VERSION, TWEAKCC_SUPPORTED_CC } from '../packageMeta';
+export { TWEAKCC_VERSION, TWEAKCC_SUPPORTED_CC };
 
 import {
   CONFIG_DIR,
@@ -79,6 +64,7 @@ import {
   runSystemPromptPreflight,
 } from '../systemPromptPreflight';
 import { writeFixLspSupport } from './fixLspSupport';
+import { writeNoGlobalCacheScope } from './globalCacheScope';
 import { writeFixSummarizeFromHere } from './fixSummarizeFromHere';
 import { writeFixRewindSummaryHeader } from './fixRewindSummaryHeader';
 import { writeToolsets } from './toolsets';
@@ -224,6 +210,13 @@ const PATCH_DEFINITIONS = [
     name: 'Fix LSP support',
     group: PatchGroup.ALWAYS_APPLIED,
     description: 'Enable/fix nascent LSP support',
+  },
+  {
+    id: 'no-global-cache-scope',
+    name: 'Keep a replaced identity line out of the global prompt cache',
+    group: PatchGroup.ALWAYS_APPLIED,
+    description:
+      'When a prompt override replaces one of Claude Code\'s identity lines, turn off the "global" cache scope that the first-party API rejects after a non-stock identity, so the prompt caches at organization scope instead. Does nothing while the identity lines are stock.',
   },
   {
     id: 'fix-summarize-from-here',
@@ -689,8 +682,14 @@ const applyPatchImplementations = (
   for (const def of PATCH_DEFINITIONS) {
     const impl = implementations[def.id];
 
-    // Skip patches not in the filter (if filter is provided)
-    if (patchFilter && !patchFilter.includes(def.id)) {
+    // Skip patches not in the filter (if filter is provided). The cache-scope
+    // guard is exempt: a filter naming an identity prompt would otherwise apply
+    // the override without it, and every first-party request would 400.
+    if (
+      patchFilter &&
+      !patchFilter.includes(def.id) &&
+      def.id !== 'no-global-cache-scope'
+    ) {
       results.push({
         id: def.id,
         name: def.name,
@@ -968,6 +967,15 @@ export const applyCustomization = async (
     pristineContent
   );
   content = systemPromptsResult.newContent;
+  const identityOverrideApplied = systemPromptsResult.results.some(
+    r =>
+      r.applied &&
+      [
+        'system-prompt-identity',
+        'system-prompt-cli-identity-agent-sdk',
+        'system-prompt-claude-agent-identity-sdk',
+      ].includes(r.id)
+  );
 
   const sortedSystemPromptResults = [...systemPromptsResult.results].sort(
     (a, b) => a.name.localeCompare(b.name)
@@ -1035,6 +1043,10 @@ export const applyCustomization = async (
     },
     'fix-lsp-support': {
       fn: c => writeFixLspSupport(c),
+    },
+    'no-global-cache-scope': {
+      fn: c =>
+        writeNoGlobalCacheScope(c, pristineContent, identityOverrideApplied),
     },
     'fix-summarize-from-here': {
       fn: c => writeFixSummarizeFromHere(c),

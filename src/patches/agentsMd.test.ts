@@ -142,4 +142,122 @@ describe('agentsMd', () => {
       );
     });
   });
+
+  describe('writeAgentsMd async backend shape (CC 2.1.276)', () => {
+    // The reader as 2.1.276 ships it: a storage-backend read whose switch
+    // returns on its own for absent and error, a plain-path read that stats
+    // first (so a missing file throws into the catch), and the null branch
+    // reached only by the skipped cases.
+    const backendReader =
+      'async function x7e(e,n,r,s){try{let g,h=!1;if(s){let y=await Uwo(s);switch(y.kind){' +
+      'case"absent":return{info:null,includePaths:[]};' +
+      'case"error":return Xtn(y.code,e),{info:null,includePaths:[]};' +
+      'case"skipped":h=y.isDirectory,g=null;break;case"content":g=y.content;break}}' +
+      'else{let y=le();g=await uA(y,e,rxe,(w)=>{h=w.isDirectory()})}' +
+      'if(g===null){t(`[CLAUDE.md] skipping ${e}: not a regular file or exceeds ${rxe} byte limit`);let y=T7e();if(!y.skip&&!h)y.skip=!0,f("context_claude_md_load","file_skipped_special_or_oversize");return{info:null,includePaths:[]}}' +
+      'return Gtn(g,e,n,r)}catch(g){return Bwo(g,e),{info:null,includePaths:[]}}}';
+
+    it('reroutes at the backend absent arm', () => {
+      const result = writeAgentsMd(backendReader, altNames)!;
+      expect(result).not.toBeNull();
+      expect(result).toContain('async function x7e(e,n,r,s,didReroute)');
+      expect(result).toContain(
+        'case"absent":{if(!didReroute&&(e.endsWith("/CLAUDE.md")'
+      );
+      expect(result).toContain(
+        'return{info:null,includePaths:[]}};case"error"'
+      );
+    });
+
+    it('reroutes at the backend error arm only for a missing path, and keeps the handler', () => {
+      const result = writeAgentsMd(backendReader, altNames)!;
+      expect(result).toContain(
+        'case"error":{if(!didReroute&&(y.code==="ENOENT"||y.code==="ENOTDIR")){'
+      );
+      expect(result).toContain(
+        'return Xtn(y.code,e),{info:null,includePaths:[]}};case"skipped"'
+      );
+    });
+
+    it('reroutes from the catch when the plain-path stat threw ENOENT', () => {
+      const result = writeAgentsMd(backendReader, altNames)!;
+      expect(result).toContain(
+        'catch(g){if(!didReroute&&g&&(g.code==="ENOENT"||g.code==="ENOTDIR")){'
+      );
+      expect(result).toContain('return Bwo(g,e),{info:null,includePaths:[]}}}');
+    });
+
+    it('recurses through the plain-path branch with didReroute=true, and keeps the null branch', () => {
+      const result = writeAgentsMd(backendReader, altNames)!;
+      expect(result).toContain(
+        'let rerouteResult=await x7e(altPath,n,r,void 0,true)'
+      );
+      expect(result).toContain('if(g===null){if(!didReroute');
+      expect(result).toContain(
+        't(`[CLAUDE.md] skipping ${e}: not a regular file or exceeds ${rxe} byte limit`)'
+      );
+      expect(result).toContain('return Gtn(g,e,n,r)');
+    });
+
+    it('leaves a build without the 2.1.278 walk untouched beyond the reader', () => {
+      const result = writeAgentsMd(backendReader, altNames)!;
+      expect(result).not.toContain('found.length');
+    });
+  });
+
+  describe('writeAgentsMd walk pre-check (CC >=2.1.278)', () => {
+    // The memory walk as 2.1.278 ships it: candidate paths that an lstat walk
+    // found missing sit in `Ot`, and both sites route such a path to `WRt`
+    // (mark processed, return nothing) without calling the loader `k4`.
+    const backendReader =
+      'async function x7e(e,n,r,s){try{let g,h=!1;if(s){let y=await Uwo(s);switch(y.kind){' +
+      'case"absent":return{info:null,includePaths:[]};' +
+      'case"error":return Xtn(y.code,e),{info:null,includePaths:[]};' +
+      'case"skipped":h=y.isDirectory,g=null;break;case"content":g=y.content;break}}' +
+      'else{let y=le();g=await uA(y,e,rxe,(w)=>{h=w.isDirectory()})}' +
+      'if(g===null){t(`[CLAUDE.md] skipping ${e}: not a regular file or exceeds ${rxe} byte limit`);return{info:null,includePaths:[]}}' +
+      'return Gtn(g,e,n,r)}catch(g){return Bwo(g,e),{info:null,includePaths:[]}}}';
+    const walk =
+      'V$t=async(bn,Nn)=>Ot.has(bn)?WRt(bn,Nn,B,_e):k4(bn,Nn,B,he,0,void 0,void 0,_e);' +
+      'L.push(...await V$t(ve,"Managed"));' +
+      'if(Ie){if(L.push(...Ot.has(Oe)?WRt(Oe,"User",B,_e):await k4(Oe,"User",B,!0,0,void 0,g!==void 0?{backend:g,key:Ae.state("user-memory")}:void 0,_e)),!Ot.has(Fe))L.push(...await zTe({rulesDir:Fe}))}';
+    const file = backendReader + ';' + walk;
+
+    it('tries the alternative names through the loader before marking a missing project file', () => {
+      const result = writeAgentsMd(file, altNames)!;
+      expect(result).toContain(
+        'V$t=async(bn,Nn)=>{if(Ot.has(bn)){if(bn.endsWith("/CLAUDE.md")||bn.endsWith("\\\\CLAUDE.md")){'
+      );
+      expect(result).toContain(
+        'let found=await k4(altPath,Nn,B,he,0,void 0,void 0,_e);if(found.length)return found'
+      );
+      expect(result).toContain('return WRt(bn,Nn,B,_e)}');
+      expect(result).toContain('return k4(bn,Nn,B,he,0,void 0,void 0,_e)}');
+    });
+
+    it('tries the alternative names for the user file without the storage descriptor', () => {
+      const result = writeAgentsMd(file, altNames)!;
+      expect(result).toContain('Ot.has(Oe)?await(async()=>{');
+      expect(result).toContain(
+        'let found=await k4(altPath,"User",B,!0,0,void 0,void 0,_e);if(found.length)return found'
+      );
+      expect(result).toContain('return WRt(Oe,"User",B,_e)})()');
+      expect(result).toContain(
+        ':await k4(Oe,"User",B,!0,0,void 0,g!==void 0?{backend:g,key:Ae.state("user-memory")}:void 0,_e)'
+      );
+    });
+
+    it('still patches the reader beside the walk', () => {
+      const result = writeAgentsMd(file, altNames)!;
+      expect(result).toContain('async function x7e(e,n,r,s,didReroute)');
+      expect(result).toContain('case"absent":{if(!didReroute');
+    });
+
+    it.each([
+      walk.slice(0, walk.indexOf(';') + 1),
+      walk.slice(walk.indexOf(';') + 1),
+    ])('returns null when only one walk site is present', site => {
+      expect(writeAgentsMd(backendReader + ';' + site, altNames)).toBeNull();
+    });
+  });
 });
