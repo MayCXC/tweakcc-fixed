@@ -26,6 +26,45 @@ describe('resolvePatchFilter', () => {
     if (!r.ok) expect(r.error).toContain('nonexistent-xyz');
   });
 
+  it("accepts a system prompt ID of the version's loaded prompts", () => {
+    const promptIds = ['system-prompt-claude-agent-identity-sdk'];
+    expect(
+      resolvePatchFilter('system-prompt-claude-agent-identity-sdk', promptIds)
+    ).toEqual({
+      ok: true,
+      filter: ['system-prompt-claude-agent-identity-sdk'],
+    });
+    expect(
+      resolvePatchFilter(
+        'verbose-property,system-prompt-claude-agent-identity-sdk',
+        promptIds
+      )
+    ).toEqual({
+      ok: true,
+      filter: ['verbose-property', 'system-prompt-claude-agent-identity-sdk'],
+    });
+  });
+
+  it('rejects a system prompt ID an override shadows', () => {
+    const r = resolvePatchFilter(
+      'system-prompt-claude-agent-identity-sdk',
+      ['system-prompt-claude-agent-identity-sdk'],
+      new Set(['system-prompt-claude-agent-identity-sdk'])
+    );
+    expect(r.ok).toBe(false);
+    if (!r.ok) {
+      expect(r.error).toContain('shadowed');
+      expect(r.error).toContain('system-prompt-claude-agent-identity-sdk');
+    }
+  });
+
+  it('rejects a system prompt ID when no prompts are loaded', () => {
+    const r = resolvePatchFilter('system-prompt-claude-agent-identity-sdk');
+    expect(r.ok).toBe(false);
+    if (!r.ok)
+      expect(r.error).toContain('system-prompt-claude-agent-identity-sdk');
+  });
+
   it('rejects a filter that contains no usable IDs', () => {
     const r = resolvePatchFilter(' , , ');
     expect(r.ok).toBe(false);

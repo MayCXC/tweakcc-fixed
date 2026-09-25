@@ -27,6 +27,7 @@ import {
 import {
   preloadStringsFile,
   getSystemPromptDefinitions,
+  loadShadowSet,
 } from './systemPromptSync';
 import {
   newestLocalPromptsVersion,
@@ -332,22 +333,10 @@ const main = async () => {
 
       // Handle --apply flag for non-interactive mode
       if (options.apply) {
-        // Parse + validate the patch filter up-front so a typo'd ID fails fast
-        // instead of silently matching nothing (the apply path filters by
-        // inclusion, so an unknown ID would just skip the patch it meant).
-        const filterResult = resolvePatchFilter(
-          options.patches as string | undefined
+        await handleApplyMode(
+          options.patches as string | undefined,
+          options.configUrl
         );
-        if (!filterResult.ok) {
-          console.error(chalk.red(`Error: ${filterResult.error}`));
-          console.error(
-            chalk.gray(
-              `Run "${getInvocationCommand()} --list-patches" to see valid IDs.`
-            )
-          );
-          process.exit(1);
-        }
-        await handleApplyMode(filterResult.filter, options.configUrl);
         return;
       }
 
@@ -452,11 +441,12 @@ const main = async () => {
 /**
  * Handles the --apply flag for non-interactive mode.
  * All errors in detection will throw with detailed messages.
- * @param patchFilter - Optional list of patch IDs to apply (if null, apply all)
+ * @param patchesArg - The raw --patches value: comma-separated patch and system
+ *   prompt IDs to apply (absent or empty applies all)
  * @param configUrl - Optional URL to fetch configuration from
  */
 async function handleApplyMode(
-  patchFilter: string[] | null,
+  patchesArg: string | undefined,
   configUrl?: string
 ): Promise<void> {
   console.log('Applying saved customizations to Claude Code...');
@@ -518,6 +508,34 @@ async function handleApplyMode(
         )
       );
     }
+
+    // --patches takes system prompt IDs as well as patch IDs, and the prompt
+    // IDs belong to the version found above, so the filter is validated once
+    // its prompts are loaded. That is still before anything is applied: the
+    // apply path filters by inclusion, so an unknown ID would otherwise skip
+    // the patch or prompt it meant without a word.
+    const filterResult = resolvePatchFilter(
+      patchesArg,
+      getSystemPromptDefinitions()?.map(prompt => prompt.id) ?? [],
+      await loadShadowSet()
+    );
+    if (!filterResult.ok) {
+      console.error(chalk.red(`Error: ${filterResult.error}`));
+      if (!preloadResult.success) {
+        console.error(
+          chalk.gray(
+            `The system prompts for ${ccInstInfo.version} could not be loaded, so only patch IDs are known.`
+          )
+        );
+      }
+      console.error(
+        chalk.gray(
+          `Run "${getInvocationCommand()} --list-patches" or "${getInvocationCommand()} --list-system-prompts ${ccInstInfo.version}" to see valid IDs.`
+        )
+      );
+      process.exit(1);
+    }
+    const patchFilter = filterResult.filter;
 
     // Apply the customizations
     console.log('Applying customizations...');
