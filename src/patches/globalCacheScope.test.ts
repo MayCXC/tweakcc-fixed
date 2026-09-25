@@ -67,9 +67,10 @@ describe('writeNoGlobalCacheScope', () => {
     );
   });
 
-  it('takes the predicate by its global-scope caller, not its name', () => {
+  it('takes the predicate from the system-prompt split, not its name', () => {
     const renamed = stock
       .replace('function $Ie(', 'function qZ9(')
+      .replace('let r=$Ie()', 'let r=qZ9()')
       .replace('scope:$Ie()', 'scope:qZ9()');
     const out = writeNoGlobalCacheScope(
       withIdentity(renamed, '"You are Echo."'),
@@ -89,14 +90,14 @@ describe('writeNoGlobalCacheScope', () => {
     expect(out).toContain('function $Ie(){return!1}');
   });
 
-  it('fails loud when no caller names a predicate', () => {
+  it('works when the side query has no global-scope caller', () => {
     const pristine = bundle(IDENTITY_MODULE, PREDICATE, SPLIT);
     expect(
       writeNoGlobalCacheScope(
         withIdentity(pristine, '"You are Echo."'),
         pristine
       )
-    ).toBeNull();
+    ).toContain('function $Ie(){return!1}');
   });
 
   it('fails loud when callers name different predicates', () => {
@@ -130,9 +131,34 @@ describe('writeNoGlobalCacheScope', () => {
     ).toBeNull();
   });
 
-  it('fails loud when the identity set cannot be found', () => {
+  it('leaves stock identities alone when the identity set cannot be found', () => {
     const pristine = bundle(IDENTITY_MODULE, PREDICATE, CALLER);
-    expect(writeNoGlobalCacheScope(pristine, pristine)).toBeNull();
+    expect(writeNoGlobalCacheScope(pristine, pristine)).toBe(pristine);
+  });
+
+  it('leaves an unrecognized pristine bundle alone without overrides', () => {
+    const pristine = bundle(PREDICATE, CALLER);
+    expect(writeNoGlobalCacheScope(pristine, pristine)).toBe(pristine);
+    const current = `${pristine}var unrelated=1`;
+    expect(writeNoGlobalCacheScope(current, pristine, false)).toBe(current);
+  });
+
+  it('leaves stock identities alone when only the current split is missing', () => {
+    const current = stock.replace(
+      '"tengu_sysprompt_using_tool_based_cache"',
+      '"other_telemetry"'
+    );
+    expect(writeNoGlobalCacheScope(current, stock)).toBe(current);
+  });
+
+  it('fails when an identity changed and the split anchor is missing', () => {
+    const pristine = bundle(IDENTITY_MODULE, PREDICATE, CALLER);
+    expect(
+      writeNoGlobalCacheScope(
+        withIdentity(pristine, '"You are Echo."'),
+        pristine
+      )
+    ).toBeNull();
   });
 
   it('is idempotent: a second run is a no-op', () => {

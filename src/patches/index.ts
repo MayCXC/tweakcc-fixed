@@ -231,7 +231,7 @@ const PATCH_DEFINITIONS = [
     name: 'Keep a replaced identity line out of the global prompt cache',
     group: PatchGroup.ALWAYS_APPLIED,
     description:
-      'Against Anthropic\'s first-party API, Claude Code marks the static part of its system prompt with the "global" cache scope, which Anthropic accepts only when the line before it is one of Claude Code\'s own identity lines: with an identity line replaced or removed by a prompt override, every request is refused with a 400. When an identity line differs from stock, this makes the client cache that block at organization scope for the same TTL, as it does behind a custom base URL; while the identity lines are stock it changes nothing',
+      'When a prompt override replaces one of Claude Code\'s identity lines, turn off the "global" cache scope that the first-party API rejects after a non-stock identity, so the prompt caches at organization scope instead. Does nothing while the identity lines are stock.',
   },
   {
     id: 'fix-summarize-from-here',
@@ -976,6 +976,15 @@ export const applyCustomization = async (
     pristineContent
   );
   content = systemPromptsResult.newContent;
+  const identityOverrideApplied = systemPromptsResult.results.some(
+    r =>
+      r.applied &&
+      [
+        'system-prompt-identity',
+        'system-prompt-cli-identity-agent-sdk',
+        'system-prompt-claude-agent-identity-sdk',
+      ].includes(r.id)
+  );
 
   const sortedSystemPromptResults = [...systemPromptsResult.results].sort(
     (a, b) => a.name.localeCompare(b.name)
@@ -1045,7 +1054,8 @@ export const applyCustomization = async (
       fn: c => writeFixLspSupport(c),
     },
     'no-global-cache-scope': {
-      fn: c => writeNoGlobalCacheScope(c, pristineContent),
+      fn: c =>
+        writeNoGlobalCacheScope(c, pristineContent, identityOverrideApplied),
     },
     'fix-summarize-from-here': {
       fn: c => writeFixSummarizeFromHere(c),

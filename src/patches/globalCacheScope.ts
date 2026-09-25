@@ -7,8 +7,7 @@
 // replaced, or removed, every request is refused before any model runs:
 //
 //     400 `cache_control.scope: "global"` is only valid when every preceding
-//     block is also globally scoped. A block with `scope: "global"` was found
-//     after content with a narrower cache scope.
+//     block is also globally scoped. ...
 //
 // The identity line is all it checks: a replaced tool description, a different
 // tool set, and edited text inside the marked block are accepted.
@@ -23,16 +22,16 @@
 // unless two feature checks pass, and otherwise answers whether the API
 // provider is first-party or Anthropic on AWS.
 //
-// Its readers are the system prompt's split into a global and an organization
-// block, the cache-scope request beta, and the one side query that builds its
-// own marker from a call to it inside a `scope:` conditional. Answering false
-// takes the path Claude Code takes behind a custom base URL: the same blocks
-// cache for the same TTL at organization scope.
+// The system prompt's split reads the predicate, as does a side query that
+// builds its own marker from a call to it inside a `scope:` conditional.
+// Answering false gives the identity line an organization-scoped breakpoint
+// and merges the static and dynamic prompt parts into one organization-scoped
+// block. The TTL and cache-scope request beta header stay the same.
 //
 // Names churn and repeat across modules, so the predicate is taken by its shape
-// AND by being the function called in `scope:X()?"global"`, and the identity
-// set by being the one checked right after the split reports
-// "tengu_sysprompt_using_tool_based_cache".
+// and by being the first function called in the split that reports
+// "tengu_sysprompt_using_tool_based_cache". The side query cross-checks it
+// when present; the identity set is the one checked after that telemetry call.
 
 import { debug } from '../utils';
 import { showDiff } from './index';
@@ -41,6 +40,13 @@ const PREDICATE =
   /function ([$\w]+)\(\)\{if\(!([$\w]+)\(\)\)return!1;if\(!([$\w]+)\(\)\)return!1;let ([$\w]+)=([$\w]+)\(\);return \4==="firstParty"\|\|\4==="anthropicAws"\}/g;
 const GLOBAL_SCOPE_CALLER = /scope:([$\w]+)\(\)\?"global"/g;
 const SPLIT_TELEMETRY = '"tengu_sysprompt_using_tool_based_cache"';
+const SPLIT_PREDICATE =
+  /function [$\w]+\([$\w]+,[$\w]+\)\{let [$\w]+=([$\w]+)\(\),[$\w]+=[$\w]+\.findIndex\(/g;
+const STOCK_IDENTITY_TEXTS = [
+  "You are Claude Code, Anthropic's official CLI for Claude.",
+  "You are Claude Code, Anthropic's official CLI for Claude, running within the Claude Agent SDK.",
+  "You are a Claude agent, built on Anthropic's Claude Agent SDK.",
+];
 const STRING_LITERAL = /"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`/
   .source;
 
@@ -83,36 +89,48 @@ export const identityLiterals = (file: string): string[] | null => {
 
 export const writeNoGlobalCacheScope = (
   oldFile: string,
-  pristineFile: string
+  pristineFile: string,
+  identityOverrideApplied?: boolean
 ): string | null => {
   const stock = identityLiterals(pristineFile);
   const current = identityLiterals(oldFile);
-  if (!stock || !current) {
-    console.error(
-      'patch: noGlobalCacheScope: failed to find the identity lines Claude Code checks'
-    );
-    return null;
-  }
-  if (
-    stock.length === current.length &&
-    stock.every((literal, i) => literal === current[i])
-  ) {
+  const identityIsStock =
+    stock && current
+      ? stock.length === current.length &&
+        stock.every((literal, i) => literal === current[i])
+      : oldFile === pristineFile ||
+        (STOCK_IDENTITY_TEXTS.every(text => pristineFile.includes(text))
+          ? STOCK_IDENTITY_TEXTS.every(text => oldFile.includes(text))
+          : identityOverrideApplied !== true);
+  if (identityIsStock) {
     debug(
       'patch: noGlobalCacheScope: identity lines are stock; the global cache scope stays'
     );
     return oldFile;
   }
 
-  const callers = new Set(
-    [...oldFile.matchAll(GLOBAL_SCOPE_CALLER)].map(m => m[1])
-  );
-  if (callers.size !== 1) {
+  const split = oldFile.indexOf(SPLIT_TELEMETRY);
+  const splitStart = Math.max(0, split - 500);
+  const splitMatches =
+    split === -1
+      ? []
+      : [...oldFile.slice(splitStart, split).matchAll(SPLIT_PREDICATE)];
+  if (splitMatches.length !== 1) {
     console.error(
-      `patch: noGlobalCacheScope: expected one function named in scope:X()?"global", found ${callers.size}`
+      'patch: noGlobalCacheScope: failed to find the system-prompt split predicate'
     );
     return null;
   }
-  const [name] = callers;
+  const name = splitMatches[0][1];
+  const callers = new Set(
+    [...oldFile.matchAll(GLOBAL_SCOPE_CALLER)].map(m => m[1])
+  );
+  if (callers.size > 0 && (callers.size !== 1 || !callers.has(name))) {
+    console.error(
+      `patch: noGlobalCacheScope: scope:X()?"global" does not name the system-prompt split predicate ${name}`
+    );
+    return null;
+  }
 
   const matches = [...oldFile.matchAll(PREDICATE)].filter(m => m[1] === name);
   if (matches.length === 0) {
