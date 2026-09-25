@@ -7,6 +7,7 @@ import App from './ui/App';
 import {
   CONFIG_FILE,
   readConfigFile,
+  readConfigFileForDetection,
   updateConfigFile,
   fetchConfigFromUrl,
 } from './config';
@@ -36,12 +37,15 @@ import { migrateConfigIfNeeded } from './migration';
 import { completeStartupCheck, startupCheck } from './startup';
 import {
   formatNotFoundError,
+  findClaudeCodeInstallation,
+  getPendingCandidates,
   InstallationDetectionError,
   selectAndSaveInstallation,
 } from './installationDetection';
 import { InstallationPicker } from './ui/components/InstallationPicker';
 import {
   InstallationCandidate,
+  ClaudeCodeInstallationInfo,
   StartupCheckInfo,
   TweakccConfig,
 } from './types';
@@ -54,6 +58,7 @@ import {
 import { clearAllAppliedHashes } from './systemPromptHashIndex';
 import {
   formatPreflightFinding,
+  loadShadowDeclarations,
   runSystemPromptPreflight,
 } from './systemPromptPreflight';
 import {
@@ -217,7 +222,7 @@ const main = async () => {
     )
     .option(
       '--patches <ids>',
-      'comma-separated list of patch IDs to apply (use with --apply)'
+      'comma-separated list of patch or system prompt IDs to apply (use with --apply)'
     )
     .option('--list-patches', 'list all available patches with their IDs')
     .option(
@@ -257,7 +262,10 @@ const main = async () => {
       }
 
       // Migrate old ccInstallationDir config to ccInstallationPath if needed
-      const configMigrated = await migrateConfigIfNeeded();
+      const configMigrated =
+        options.apply && options.patches
+          ? false
+          : await migrateConfigIfNeeded();
 
       // Check for conflicting flags
       if (options.apply && (options.restore || options.revert)) {
@@ -332,22 +340,10 @@ const main = async () => {
 
       // Handle --apply flag for non-interactive mode
       if (options.apply) {
-        // Parse + validate the patch filter up-front so a typo'd ID fails fast
-        // instead of silently matching nothing (the apply path filters by
-        // inclusion, so an unknown ID would just skip the patch it meant).
-        const filterResult = resolvePatchFilter(
-          options.patches as string | undefined
+        await handleApplyMode(
+          options.patches as string | undefined,
+          options.configUrl
         );
-        if (!filterResult.ok) {
-          console.error(chalk.red(`Error: ${filterResult.error}`));
-          console.error(
-            chalk.gray(
-              `Run "${getInvocationCommand()} --list-patches" to see valid IDs.`
-            )
-          );
-          process.exit(1);
-        }
-        await handleApplyMode(filterResult.filter, options.configUrl);
         return;
       }
 
@@ -449,20 +445,94 @@ const main = async () => {
   program.parse();
 };
 
+function exitInvalidPatchFilter(
+  error: string,
+  version?: string,
+  promptsAvailable = true
+): never {
+  console.error(chalk.red(`Error: ${error}`));
+  if (version && !promptsAvailable) {
+    console.error(
+      chalk.gray(
+        `The system prompts for ${version} could not be loaded, so only patch IDs are known.`
+      )
+    );
+  }
+  const promptList = version
+    ? ` --list-system-prompts ${version}`
+    : ' --list-system-prompts [version]';
+  console.error(
+    chalk.gray(
+      `Run "${getInvocationCommand()} --list-patches" or "${getInvocationCommand()}${promptList}" to see valid IDs.`
+    )
+  );
+  process.exit(1);
+}
+
+async function preflightPatchFilter(
+  patchesArg: string,
+  urlConfig?: TweakccConfig
+): Promise<{
+  filter: string[];
+  ccInstInfo?: ClaudeCodeInstallationInfo;
+  preloadResult?: { success: boolean; errorMessage?: string };
+}> {
+  const patchOnly = resolvePatchFilter(patchesArg);
+  if (patchOnly.ok) return { filter: patchOnly.filter ?? [] };
+  if (patchesArg.split(',').every(id => !id.trim())) {
+    exitInvalidPatchFilter(patchOnly.error);
+  }
+
+  const detectionConfig = urlConfig ?? (await readConfigFileForDetection());
+  let ccInstInfo: ClaudeCodeInstallationInfo | null;
+  try {
+    ccInstInfo = await findClaudeCodeInstallation(detectionConfig, {
+      interactive: false,
+    });
+  } catch (error) {
+    if (error instanceof InstallationDetectionError) {
+      console.error(chalk.red(`Error: ${error.message}`));
+      process.exit(1);
+    }
+    throw error;
+  }
+  if (!ccInstInfo || getPendingCandidates(ccInstInfo)) {
+    console.error(formatNotFoundError());
+    process.exit(1);
+  }
+  const preloadResult = await preloadStringsFile(ccInstInfo.version);
+  const result = resolvePatchFilter(
+    patchesArg,
+    getSystemPromptDefinitions()?.map(prompt => prompt.id) ?? [],
+    await loadShadowDeclarations()
+  );
+  if (!result.ok) {
+    exitInvalidPatchFilter(
+      result.error,
+      ccInstInfo.version,
+      preloadResult.success
+    );
+  }
+  return { filter: result.filter ?? [], ccInstInfo, preloadResult };
+}
+
 /**
  * Handles the --apply flag for non-interactive mode.
  * All errors in detection will throw with detailed messages.
- * @param patchFilter - Optional list of patch IDs to apply (if null, apply all)
+ * @param patchesArg - The raw --patches value: comma-separated patch and system
+ *   prompt IDs to apply (absent or empty applies all)
  * @param configUrl - Optional URL to fetch configuration from
  */
 async function handleApplyMode(
-  patchFilter: string[] | null,
+  patchesArg: string | undefined,
   configUrl?: string
 ): Promise<void> {
   console.log('Applying saved customizations to Claude Code...');
 
-  // Read the configuration (from URL or local file)
-  let config;
+  // Read the configuration (from URL or local file). The URL fetch writes
+  // nothing, so it runs before the --patches check; the local read can save
+  // config.json, so it waits until the filter is known to be valid.
+  let config: TweakccConfig | undefined;
   if (configUrl) {
     console.log(`Fetching configuration from: ${configUrl}`);
     try {
@@ -473,7 +543,14 @@ async function handleApplyMode(
       console.error(chalk.red(`Error: ${message}`));
       process.exit(1);
     }
-  } else {
+  }
+
+  const preflight = patchesArg
+    ? await preflightPatchFilter(patchesArg, config)
+    : null;
+  if (preflight) await migrateConfigIfNeeded();
+
+  if (!config) {
     console.log(`Configuration saved at: ${CONFIG_FILE}`);
     config = await readConfigFile();
   }
@@ -486,16 +563,18 @@ async function handleApplyMode(
 
   try {
     // Find Claude Code installation (non-interactive mode throws on ambiguity)
-    const result = await startupCheck({ interactive: false }, config);
+    const startupCheckInfo = preflight?.ccInstInfo
+      ? await completeStartupCheck(config, preflight.ccInstInfo)
+      : (await startupCheck({ interactive: false }, config)).startupCheckInfo;
 
-    if (!result.startupCheckInfo || !result.startupCheckInfo.ccInstInfo) {
+    if (!startupCheckInfo || !startupCheckInfo.ccInstInfo) {
       // This shouldn't happen in non-interactive mode (should throw instead),
       // but handle it just in case
       console.error(formatNotFoundError());
       process.exit(1);
     }
 
-    const { ccInstInfo } = result.startupCheckInfo;
+    const { ccInstInfo } = startupCheckInfo;
 
     if (ccInstInfo.nativeInstallationPath) {
       console.log(
@@ -508,7 +587,9 @@ async function handleApplyMode(
 
     // Preload strings file for system prompts
     console.log('Loading system prompts...');
-    const preloadResult = await preloadStringsFile(ccInstInfo.version);
+    const preloadResult =
+      preflight?.preloadResult ??
+      (await preloadStringsFile(ccInstInfo.version));
     if (!preloadResult.success) {
       console.log(chalk.red('\n✖ Error downloading system prompts:'));
       console.log(chalk.red(`  ${preloadResult.errorMessage}`));
@@ -518,6 +599,8 @@ async function handleApplyMode(
         )
       );
     }
+
+    const patchFilter = preflight?.filter ?? null;
 
     // Apply the customizations
     console.log('Applying customizations...');
@@ -897,7 +980,11 @@ async function handleListSystemPrompts(
     )
   );
   console.log();
-  console.log(chalk.gray('  tweakcc --apply --patches "identity,environment"'));
+  console.log(
+    chalk.gray(
+      '  tweakcc --apply --patches "tool-description-read,tool-description-write"'
+    )
+  );
   console.log();
   console.log(chalk.blue.bold(`System prompts for CC ${version}`));
   console.log();

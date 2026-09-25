@@ -376,6 +376,33 @@ export const readConfigFile = async (): Promise<TweakccConfig> => {
   }
 };
 
+export const readConfigFileForDetection = async (): Promise<TweakccConfig> => {
+  const defaultConfig = createDefaultConfig();
+  try {
+    const content = await fs.readFile(CONFIG_FILE, 'utf8');
+    const rawConfig = JSON.parse(content) as Partial<TweakccConfig> & {
+      ccInstallationDir?: string;
+    };
+    return {
+      ...defaultConfig,
+      ...rawConfig,
+      ccInstallationPath:
+        rawConfig.ccInstallationPath ||
+        (rawConfig.ccInstallationDir
+          ? path.join(rawConfig.ccInstallationDir, 'cli.js')
+          : defaultConfig.ccInstallationPath),
+    };
+  } catch (error) {
+    if (
+      (error instanceof Error && 'code' in error && error.code === 'ENOENT') ||
+      error instanceof SyntaxError
+    ) {
+      return defaultConfig;
+    }
+    throw error;
+  }
+};
+
 /**
  * Updates the config file with the changes made by the `updateFn` callback.
  */
