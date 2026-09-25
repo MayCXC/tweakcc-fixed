@@ -218,15 +218,15 @@ describe('agentsMd', () => {
       'if(g===null){t(`[CLAUDE.md] skipping ${e}: not a regular file or exceeds ${rxe} byte limit`);return{info:null,includePaths:[]}}' +
       'return Gtn(g,e,n,r)}catch(g){return Bwo(g,e),{info:null,includePaths:[]}}}';
     const walk =
-      'fn=async(bn,Nn)=>Ot.has(bn)?WRt(bn,Nn,B,_e):k4(bn,Nn,B,he,0,void 0,void 0,_e);' +
-      'L.push(...await fn(ve,"Managed"));' +
+      'V$t=async(bn,Nn)=>Ot.has(bn)?WRt(bn,Nn,B,_e):k4(bn,Nn,B,he,0,void 0,void 0,_e);' +
+      'L.push(...await V$t(ve,"Managed"));' +
       'if(Ie){if(L.push(...Ot.has(Oe)?WRt(Oe,"User",B,_e):await k4(Oe,"User",B,!0,0,void 0,g!==void 0?{backend:g,key:Ae.state("user-memory")}:void 0,_e)),!Ot.has(Fe))L.push(...await zTe({rulesDir:Fe}))}';
     const file = backendReader + ';' + walk;
 
     it('tries the alternative names through the loader before marking a missing project file', () => {
       const result = writeAgentsMd(file, altNames)!;
       expect(result).toContain(
-        'fn=async(bn,Nn)=>{if(Ot.has(bn)){if(bn.endsWith("/CLAUDE.md")||bn.endsWith("\\\\CLAUDE.md")){'
+        'V$t=async(bn,Nn)=>{if(Ot.has(bn)){if(bn.endsWith("/CLAUDE.md")||bn.endsWith("\\\\CLAUDE.md")){'
       );
       expect(result).toContain(
         'let found=await k4(altPath,Nn,B,he,0,void 0,void 0,_e);if(found.length)return found'
@@ -251,6 +251,13 @@ describe('agentsMd', () => {
       const result = writeAgentsMd(file, altNames)!;
       expect(result).toContain('async function x7e(e,n,r,s,didReroute)');
       expect(result).toContain('case"absent":{if(!didReroute');
+    });
+
+    it.each([
+      walk.slice(0, walk.indexOf(';') + 1),
+      walk.slice(walk.indexOf(';') + 1),
+    ])('returns null when only one walk site is present', site => {
+      expect(writeAgentsMd(backendReader + ';' + site, altNames)).toBeNull();
     });
   });
 });

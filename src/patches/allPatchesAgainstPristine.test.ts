@@ -645,6 +645,20 @@ describe.skipIf(skipReason !== null)('every patch vs. pristine cli.js', () => {
       oracle.check(result!, 'patched-user-message-display-sweep')
     ).toBeNull();
   });
+
+  it('agents-md rewrites both memory-walk sites', () => {
+    const source = pristine!.source;
+    const result = writeAgentsMd(
+      source,
+      DEFAULT_SETTINGS.claudeMdAltNames ?? []
+    );
+    expect(result).not.toBeNull();
+    const walkReroutes = /if\(found\.length\)return found/g;
+    expect(
+      (result!.match(walkReroutes) ?? []).length -
+        (source.match(walkReroutes) ?? []).length
+    ).toBe(2);
+  });
 });
 
 // The 35-entry system-reminder registry is a SECOND patch surface that

@@ -3,14 +3,14 @@
 import { showDiff } from './index';
 
 /**
- * Patches the CLAUDE.md file reading function to also check for alternative
- * filenames (e.g., AGENTS.md) when CLAUDE.md doesn't exist.
+ * Tries alternative memory filenames when CLAUDE.md is missing. Patches the
+ * reader and, on newer builds, both project and user memory-walk prechecks.
  *
- * Supports two code patterns across CC versions:
+ * Supports these code patterns across CC versions:
  *
  * CC <=2.1.69 (sync): Function uses readFileSync/existsSync/statSync directly
- * CC >=2.1.83 (async): File reading is split into jh1 (async reader) and XB9 (processor)
- *   The async reader catches ENOENT/EISDIR errors and returns {info:null,includePaths:[]}
+ * CC >=2.1.83 (async): The reader handles missing files before processing.
+ * CC >=2.1.278: The walk filters missing paths before they reach the reader.
  */
 export const writeAgentsMd = (
   file: string,
@@ -31,7 +31,9 @@ export const writeAgentsMd = (
   // called, so the reader's reroute never sees a missing CLAUDE.md there.
   // The walk gets its own reroute; on older versions the sites are absent
   // and the reader's reroute is the whole patch.
-  return writeAgentsMdWalkPrecheck(reader, altNames) ?? reader;
+  const walk = writeAgentsMdWalkPrecheck(reader, altNames);
+  if (walk === false) return null;
+  return walk ?? reader;
 };
 
 const writeAgentsMdReader = (
@@ -62,7 +64,7 @@ const writeAgentsMdReader = (
 // collects the missing ones in a Set (`Ot` below); a path in that Set is
 // handed to a marker that records it as processed and returns nothing, and
 // the reader is never called for it. Two sites consult the Set:
-//   fn=async(bn,Nn)=>Ot.has(bn)?WRt(bn,Nn,B,_e):k4(bn,Nn,B,he,0,void 0,void 0,_e)
+//   V$t=async(bn,Nn)=>Ot.has(bn)?WRt(bn,Nn,B,_e):k4(bn,Nn,B,he,0,void 0,void 0,_e)
 //   Ot.has(Oe)?WRt(Oe,"User",B,_e):await k4(Oe,"User",B,!0,0,void 0,<backend>,_e)
 // At each, a missing CLAUDE.md first tries every alternative name through the
 // same loader (plain-path read, no backend descriptor: that descriptor carries
@@ -72,23 +74,30 @@ const writeAgentsMdReader = (
 const writeAgentsMdWalkPrecheck = (
   file: string,
   altNames: string[]
-): string | null => {
+): string | null | false => {
   const altNamesJson = JSON.stringify(altNames);
 
   const fnSite =
-    /fn=async\(([$\w]+),([$\w]+)\)=>([$\w]+)\.has\(\1\)\?([$\w]+)\(\1,\2,([$\w]+),([$\w]+)\):([$\w]+)\(\1,\2,\5,([$\w]+),0,void 0,void 0,\6\)/;
+    /([,;{(])([$\w]+)=async\(([$\w]+),([$\w]+)\)=>([$\w]+)\.has\(\3\)\?([$\w]+)\(\3,\4,([$\w]+),([$\w]+)\):([$\w]+)\(\3,\4,\7,([$\w]+),0,void 0,void 0,\8\)/;
   const userSite =
     /([$\w]+)\.has\(([$\w]+)\)\?([$\w]+)\(\2,"User",([$\w]+),([$\w]+)\):await ([$\w]+)\(\2,"User",\4,!0,0,void 0,([$\w]+!==void 0\?\{backend:[$\w]+,key:[$\w]+\.state\("user-memory"\)\}:void 0),\5\)/;
 
   const fnMatch = file.match(fnSite);
   const userMatch = file.match(userSite);
-  if (!fnMatch && !userMatch) return null;
+  if (!fnMatch || !userMatch) {
+    const walkShape = /\.has\([$\w]+\)\?[$\w]+\([$\w]+,"User"/.test(file);
+    if (!fnMatch && !userMatch && !walkShape) return null;
+    console.error('patch: agentsMd: incomplete memory-walk precheck');
+    return false;
+  }
 
   let newFile = file;
 
   if (fnMatch && fnMatch.index !== undefined) {
     const [
       whole,
+      punctuation,
+      fnName,
       pathP,
       typeP,
       absentSet,
@@ -99,7 +108,7 @@ const writeAgentsMdWalkPrecheck = (
       includeExternal,
     ] = fnMatch;
     const replacement =
-      `fn=async(${pathP},${typeP})=>{if(${absentSet}.has(${pathP})){` +
+      `${punctuation}${fnName}=async(${pathP},${typeP})=>{if(${absentSet}.has(${pathP})){` +
       `if(${pathP}.endsWith("/CLAUDE.md")||${pathP}.endsWith("\\\\CLAUDE.md")){` +
       `for(let alt of ${altNamesJson}){let altPath=${pathP}.slice(0,-9)+alt;` +
       `let found=await ${loader}(altPath,${typeP},${processed},${includeExternal},0,void 0,void 0,${exclude});if(found.length)return found}}` +
@@ -186,6 +195,9 @@ const writeAgentsMdAsyncBackend = (
 
   const altNamesJson = JSON.stringify(altNames);
 
+  // This reader reroute also answers the built-in AGENTS.md loader's CLAUDE.md
+  // existence probe, suppressing its notice and load event; the walk reroute
+  // loads the file on builds that precheck candidate paths.
   // The reroute, as one block: try each alternative name beside the missing
   // CLAUDE.md, reading it through the plain-path branch (no backend handle) so
   // the recursion cannot loop.
