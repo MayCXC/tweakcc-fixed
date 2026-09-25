@@ -682,8 +682,14 @@ const applyPatchImplementations = (
   for (const def of PATCH_DEFINITIONS) {
     const impl = implementations[def.id];
 
-    // Skip patches not in the filter (if filter is provided)
-    if (patchFilter && !patchFilter.includes(def.id)) {
+    // Skip patches not in the filter (if filter is provided). The cache-scope
+    // guard is exempt: a filter naming an identity prompt would otherwise apply
+    // the override without it, and every first-party request would 400.
+    if (
+      patchFilter &&
+      !patchFilter.includes(def.id) &&
+      def.id !== 'no-global-cache-scope'
+    ) {
       results.push({
         id: def.id,
         name: def.name,

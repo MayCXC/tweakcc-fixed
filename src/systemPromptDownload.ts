@@ -120,6 +120,13 @@ export function resolveFetchVersion(
  * @param version - Version string in format "X.Y.Z" (e.g., "2.0.30")
  * @returns Promise that resolves to the parsed JSON content
  */
+const isStringsFile = (value: unknown): value is StringsFile =>
+  typeof value === 'object' &&
+  value !== null &&
+  !Array.isArray(value) &&
+  'prompts' in value &&
+  Array.isArray(value.prompts);
+
 export async function downloadStringsFile(
   version: string
 ): Promise<StringsFile> {
@@ -158,16 +165,7 @@ export async function downloadStringsFile(
       const parsed: unknown = JSON.parse(
         await fs.readFile(cacheFilePath, 'utf-8')
       );
-      if (
-        typeof parsed === 'object' &&
-        parsed !== null &&
-        !Array.isArray(parsed) &&
-        'prompts' in parsed &&
-        Array.isArray(parsed.prompts)
-      ) {
-        return parsed as StringsFile;
-      }
-      return null;
+      return isStringsFile(parsed) ? parsed : null;
     } catch {
       return null;
     }
@@ -216,9 +214,14 @@ export async function downloadStringsFile(
 
     // Parse JSON (capped read — the prompts JSON is ~2 MB; the 32 MB default is
     // generous while preventing a runaway body from a compromised/transient host).
-    const jsonData = JSON.parse(
+    const jsonData: unknown = JSON.parse(
       await readResponseTextCapped(response)
-    ) as StringsFile;
+    );
+    if (!isStringsFile(jsonData)) {
+      throw new Error(
+        `The prompts file for Claude Code ${version} has no prompts array`
+      );
+    }
 
     // Save to cache, and drop what other releases left behind: each release
     // reads only its own directory, so theirs can never be read again and the

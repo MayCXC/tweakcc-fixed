@@ -10,7 +10,7 @@ import { showDiff } from './index';
  *
  * CC <=2.1.69 (sync): Function uses readFileSync/existsSync/statSync directly
  * CC >=2.1.83 (async): The reader handles missing files before processing.
- * CC >=2.1.278: The walk filters missing paths before they reach the reader.
+ * Newer builds: The walk filters missing paths before they reach the reader.
  */
 export const writeAgentsMd = (
   file: string,
@@ -78,7 +78,7 @@ const writeAgentsMdWalkPrecheck = (
   const altNamesJson = JSON.stringify(altNames);
 
   const fnSite =
-    /([,;{(])([$\w]+)=async\(([$\w]+),([$\w]+)\)=>([$\w]+)\.has\(\3\)\?([$\w]+)\(\3,\4,([$\w]+),([$\w]+)\):([$\w]+)\(\3,\4,\7,([$\w]+),0,void 0,void 0,\8\)/;
+    /(?<![$\w])([$\w]+)=async\(([$\w]+),([$\w]+)\)=>([$\w]+)\.has\(\2\)\?([$\w]+)\(\2,\3,([$\w]+),([$\w]+)\):([$\w]+)\(\2,\3,\6,([$\w]+),0,void 0,void 0,\7\)/;
   const userSite =
     /([$\w]+)\.has\(([$\w]+)\)\?([$\w]+)\(\2,"User",([$\w]+),([$\w]+)\):await ([$\w]+)\(\2,"User",\4,!0,0,void 0,([$\w]+!==void 0\?\{backend:[$\w]+,key:[$\w]+\.state\("user-memory"\)\}:void 0),\5\)/;
 
@@ -96,7 +96,6 @@ const writeAgentsMdWalkPrecheck = (
   if (fnMatch && fnMatch.index !== undefined) {
     const [
       whole,
-      punctuation,
       fnName,
       pathP,
       typeP,
@@ -108,7 +107,7 @@ const writeAgentsMdWalkPrecheck = (
       includeExternal,
     ] = fnMatch;
     const replacement =
-      `${punctuation}${fnName}=async(${pathP},${typeP})=>{if(${absentSet}.has(${pathP})){` +
+      `${fnName}=async(${pathP},${typeP})=>{if(${absentSet}.has(${pathP})){` +
       `if(${pathP}.endsWith("/CLAUDE.md")||${pathP}.endsWith("\\\\CLAUDE.md")){` +
       `for(let alt of ${altNamesJson}){let altPath=${pathP}.slice(0,-9)+alt;` +
       `let found=await ${loader}(altPath,${typeP},${processed},${includeExternal},0,void 0,void 0,${exclude});if(found.length)return found}}` +

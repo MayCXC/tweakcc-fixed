@@ -99,9 +99,9 @@ export const writeNoGlobalCacheScope = (
       ? stock.length === current.length &&
         stock.every((literal, i) => literal === current[i])
       : oldFile === pristineFile ||
-        (STOCK_IDENTITY_TEXTS.every(text => pristineFile.includes(text))
-          ? STOCK_IDENTITY_TEXTS.every(text => oldFile.includes(text))
-          : identityOverrideApplied !== true);
+        (identityOverrideApplied !== true &&
+          (!STOCK_IDENTITY_TEXTS.every(text => pristineFile.includes(text)) ||
+            STOCK_IDENTITY_TEXTS.every(text => oldFile.includes(text))));
   if (identityIsStock) {
     debug(
       'patch: noGlobalCacheScope: identity lines are stock; the global cache scope stays'
@@ -110,6 +110,16 @@ export const writeNoGlobalCacheScope = (
   }
 
   const split = oldFile.indexOf(SPLIT_TELEMETRY);
+  if (
+    split === -1 &&
+    !PREDICATE.test(oldFile) &&
+    !GLOBAL_SCOPE_CALLER.test(oldFile)
+  ) {
+    debug('patch: noGlobalCacheScope: no global cache scope in this build');
+    return oldFile;
+  }
+  PREDICATE.lastIndex = 0;
+  GLOBAL_SCOPE_CALLER.lastIndex = 0;
   const splitStart = Math.max(0, split - 500);
   const splitMatches =
     split === -1
