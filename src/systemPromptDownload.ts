@@ -1,11 +1,13 @@
 import * as fs from 'node:fs/promises';
 import * as fsSync from 'node:fs';
+import { randomUUID } from 'node:crypto';
 import * as path from 'path';
 import { fileURLToPath } from 'node:url';
 import type { StringsFile } from './systemPromptSync';
 import { PROMPT_CACHE_DIR } from './config';
-import { TWEAKCC_VERSION } from './packageMeta';
+import { TWEAKCC_VERSION, TWEAKCC_SUPPORTED_CC } from './packageMeta';
 import { readResponseTextCapped } from './utils';
+import { compareVersions } from './versionCompare';
 
 // Cap the prompts-JSON fetch so a hung / blackholed connection (captive portal,
 // firewall sinkhole) falls back to the cache below instead of stalling --apply
@@ -135,6 +137,15 @@ export async function downloadStringsFile(
     }
   }
 
+  if (
+    TWEAKCC_SUPPORTED_CC &&
+    compareVersions(version, TWEAKCC_SUPPORTED_CC) > 0
+  ) {
+    throw new Error(
+      `tweakcc-fixed ${TWEAKCC_VERSION} carries prompts through Claude Code ${TWEAKCC_SUPPORTED_CC}, and ${version} is newer. Run \`npx -y tweakcc-fixed@latest --apply\` to pick up a release that covers it.`
+    );
+  }
+
   // User cache (npm-installed runs that have no repo dir), keyed by the package
   // version as well as the Claude Code one. Two releases can carry different
   // data for the same Claude Code version, so a key naming only that version
@@ -144,9 +155,19 @@ export async function downloadStringsFile(
   const cacheFilePath = path.join(cacheDir, `prompts-${version}.json`);
   const readCache = async (): Promise<StringsFile | null> => {
     try {
-      return JSON.parse(
+      const parsed: unknown = JSON.parse(
         await fs.readFile(cacheFilePath, 'utf-8')
-      ) as StringsFile;
+      );
+      if (
+        typeof parsed === 'object' &&
+        parsed !== null &&
+        !Array.isArray(parsed) &&
+        'prompts' in parsed &&
+        Array.isArray(parsed.prompts)
+      ) {
+        return parsed as StringsFile;
+      }
+      return null;
     } catch {
       return null;
     }
@@ -204,24 +225,53 @@ export async function downloadStringsFile(
     // cache would otherwise grow by one copy of the data per upgrade. This also
     // clears the loose `prompts-*.json` files written before the key carried a
     // release.
+    const tempFilePath = path.join(
+      cacheDir,
+      `.prompts-${version}.${randomUUID()}.tmp`
+    );
+    let cacheWritten = false;
     try {
       await fs.mkdir(cacheDir, { recursive: true });
-      for (const entry of await fs.readdir(PROMPT_CACHE_DIR)) {
-        if (entry === `v${TWEAKCC_VERSION}`) continue;
-        await fs.rm(path.join(PROMPT_CACHE_DIR, entry), {
-          recursive: true,
-          force: true,
-        });
-      }
       await fs.writeFile(
-        cacheFilePath,
+        tempFilePath,
         JSON.stringify(jsonData, null, 2),
         'utf-8'
       );
+      await fs.rename(tempFilePath, cacheFilePath);
+      cacheWritten = true;
     } catch (cacheError) {
+      await fs.rm(tempFilePath, { force: true }).catch(() => {});
       console.warn(
         `Failed to write to cache to ${cacheFilePath}: ${cacheError}`
       );
+    }
+
+    if (cacheWritten) {
+      try {
+        for (const entry of await fs.readdir(PROMPT_CACHE_DIR, {
+          withFileTypes: true,
+        })) {
+          const oldRelease =
+            entry.isDirectory() &&
+            /^v\d+\.\d+\.\d+(?:[-+][\w.-]+)?$/.test(entry.name) &&
+            entry.name !== `v${TWEAKCC_VERSION}`;
+          const oldLooseFile =
+            entry.isFile() && /^prompts-.+\.json$/.test(entry.name);
+          if (!oldRelease && !oldLooseFile) continue;
+          const entryPath = path.join(PROMPT_CACHE_DIR, entry.name);
+          try {
+            await fs.rm(entryPath, { recursive: oldRelease, force: true });
+          } catch (cacheError) {
+            console.warn(
+              `Failed to remove cache entry ${entryPath}: ${cacheError}`
+            );
+          }
+        }
+      } catch (cacheError) {
+        console.warn(
+          `Failed to sweep cache ${PROMPT_CACHE_DIR}: ${cacheError}`
+        );
+      }
     }
 
     return jsonData;

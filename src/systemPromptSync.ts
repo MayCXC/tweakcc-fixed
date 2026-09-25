@@ -2,7 +2,8 @@ import * as fs from 'node:fs/promises';
 import * as path from 'path';
 import matter from 'gray-matter';
 import { downloadStringsFile } from './systemPromptDownload';
-import { TWEAKCC_VERSION, TWEAKCC_SUPPORTED_CC } from './packageMeta';
+import { compareVersions } from './versionCompare';
+export { compareVersions };
 import {
   storeHashes,
   getPromptHash,
@@ -292,25 +293,6 @@ export const reconstructContentFromPieces = (
   }
 
   return result;
-};
-
-/**
- * Compares two version strings
- * Returns: -1 if v1 < v2, 0 if equal, 1 if v1 > v2
- */
-export const compareVersions = (v1: string, v2: string): number => {
-  const parts1 = v1.split('.').map(Number);
-  const parts2 = v2.split('.').map(Number);
-
-  for (let i = 0; i < Math.max(parts1.length, parts2.length); i++) {
-    const num1 = parts1[i] || 0;
-    const num2 = parts2[i] || 0;
-
-    if (num1 < num2) return -1;
-    if (num1 > num2) return 1;
-  }
-
-  return 0;
 };
 
 /**
@@ -1045,23 +1027,6 @@ let globalCachedVersion: string | null = null;
 export const preloadStringsFile = async (
   version: string
 ): Promise<{ success: boolean; errorMessage?: string }> => {
-  // A release serves prompt data from its own tag, and `checkReleaseMeta` holds
-  // `supportedClaudeCode` equal to the newest file in it, so a Claude Code newer
-  // than that has nothing to fetch and the request is a certain 404. Name the
-  // three versions in play and the command that gets a release covering this
-  // install, instead of spending the download to say less. The caller carries on
-  // into the code patches, as it does for any other download failure.
-  if (
-    TWEAKCC_SUPPORTED_CC &&
-    compareVersions(version, TWEAKCC_SUPPORTED_CC) > 0
-  ) {
-    globalStringsFile = null;
-    globalCachedVersion = null;
-    return {
-      success: false,
-      errorMessage: `tweakcc-fixed ${TWEAKCC_VERSION} carries prompts through Claude Code ${TWEAKCC_SUPPORTED_CC}, and ${version} is installed. Run \`npx -y tweakcc-fixed@latest --apply\` to pick up a release that covers it.`,
-    };
-  }
   try {
     const stringsFile = await downloadStringsFile(version);
     globalStringsFile = stringsFile;

@@ -1,7 +1,7 @@
 import { createRequire } from 'node:module';
 
-// package.json sits two levels up from src/patches/ but one level up from the
-// bundled dist/*.mjs chunks, so try both — keeps the reported version pinned
+// package.json sits one level up from src/ and from the bundled dist/*.mjs
+// chunks, so try both — keeps the reported version pinned
 // to the published one instead of a hardcoded literal that drifts.
 const _require = createRequire(import.meta.url);
 
