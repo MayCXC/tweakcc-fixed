@@ -24,6 +24,20 @@ export const writeAgentsMd = (
     return file;
   }
 
+  const reader = writeAgentsMdReader(file, altNames);
+  if (reader === null) return null;
+
+  // CC >=2.1.278 decides which memory files exist before the reader is
+  // called, so the reader's reroute never sees a missing CLAUDE.md there.
+  // The walk gets its own reroute; on older versions the sites are absent
+  // and the reader's reroute is the whole patch.
+  return writeAgentsMdWalkPrecheck(reader, altNames) ?? reader;
+};
+
+const writeAgentsMdReader = (
+  file: string,
+  altNames: string[]
+): string | null => {
   // Try the storage-backend reader first (CC >=2.1.227)
   const asyncV4 = writeAgentsMdAsyncBackend(file, altNames);
   if (asyncV4) return asyncV4;
@@ -44,6 +58,91 @@ export const writeAgentsMd = (
   return writeAgentsMdSync(file, altNames);
 };
 
+// CC >=2.1.278: the memory walk lstat-walks every candidate path up front and
+// collects the missing ones in a Set (`Ot` below); a path in that Set is
+// handed to a marker that records it as processed and returns nothing, and
+// the reader is never called for it. Two sites consult the Set:
+//   fn=async(bn,Nn)=>Ot.has(bn)?WRt(bn,Nn,B,_e):k4(bn,Nn,B,he,0,void 0,void 0,_e)
+//   Ot.has(Oe)?WRt(Oe,"User",B,_e):await k4(Oe,"User",B,!0,0,void 0,<backend>,_e)
+// At each, a missing CLAUDE.md first tries every alternative name through the
+// same loader (plain-path read, no backend descriptor: that descriptor carries
+// the CLAUDE.md storage key) and falls back to the marker only when none of
+// them yields a file. Returns null when neither site is present, which is how
+// every earlier version reads.
+const writeAgentsMdWalkPrecheck = (
+  file: string,
+  altNames: string[]
+): string | null => {
+  const altNamesJson = JSON.stringify(altNames);
+
+  const fnSite =
+    /fn=async\(([$\w]+),([$\w]+)\)=>([$\w]+)\.has\(\1\)\?([$\w]+)\(\1,\2,([$\w]+),([$\w]+)\):([$\w]+)\(\1,\2,\5,([$\w]+),0,void 0,void 0,\6\)/;
+  const userSite =
+    /([$\w]+)\.has\(([$\w]+)\)\?([$\w]+)\(\2,"User",([$\w]+),([$\w]+)\):await ([$\w]+)\(\2,"User",\4,!0,0,void 0,([$\w]+!==void 0\?\{backend:[$\w]+,key:[$\w]+\.state\("user-memory"\)\}:void 0),\5\)/;
+
+  const fnMatch = file.match(fnSite);
+  const userMatch = file.match(userSite);
+  if (!fnMatch && !userMatch) return null;
+
+  let newFile = file;
+
+  if (fnMatch && fnMatch.index !== undefined) {
+    const [
+      whole,
+      pathP,
+      typeP,
+      absentSet,
+      marker,
+      processed,
+      exclude,
+      loader,
+      includeExternal,
+    ] = fnMatch;
+    const replacement =
+      `fn=async(${pathP},${typeP})=>{if(${absentSet}.has(${pathP})){` +
+      `if(${pathP}.endsWith("/CLAUDE.md")||${pathP}.endsWith("\\\\CLAUDE.md")){` +
+      `for(let alt of ${altNamesJson}){let altPath=${pathP}.slice(0,-9)+alt;` +
+      `let found=await ${loader}(altPath,${typeP},${processed},${includeExternal},0,void 0,void 0,${exclude});if(found.length)return found}}` +
+      `return ${marker}(${pathP},${typeP},${processed},${exclude})}` +
+      `return ${loader}(${pathP},${typeP},${processed},${includeExternal},0,void 0,void 0,${exclude})}`;
+    const start = fnMatch.index;
+    newFile =
+      newFile.slice(0, start) +
+      replacement +
+      newFile.slice(start + whole.length);
+    showDiff(file, newFile, replacement, start, start + whole.length);
+  }
+
+  const userMatch2 = newFile.match(userSite);
+  if (userMatch2 && userMatch2.index !== undefined) {
+    const [
+      whole,
+      absentSet,
+      pathV,
+      marker,
+      processed,
+      exclude,
+      loader,
+      backend,
+    ] = userMatch2;
+    const replacement =
+      `${absentSet}.has(${pathV})?await(async()=>{` +
+      `for(let alt of ${altNamesJson}){let altPath=${pathV}.slice(0,-9)+alt;` +
+      `let found=await ${loader}(altPath,"User",${processed},!0,0,void 0,void 0,${exclude});if(found.length)return found}` +
+      `return ${marker}(${pathV},"User",${processed},${exclude})})()` +
+      `:await ${loader}(${pathV},"User",${processed},!0,0,void 0,${backend},${exclude})`;
+    const start = userMatch2.index;
+    const before = newFile;
+    newFile =
+      newFile.slice(0, start) +
+      replacement +
+      newFile.slice(start + whole.length);
+    showDiff(before, newFile, replacement, start, start + whole.length);
+  }
+
+  return newFile;
+};
+
 // CC >=2.1.227: the reader gained a 4th param carrying a storage backend, and
 // the local read moved into the `else` arm of a backend branch. Shape:
 //   async function XPs(e,t,r,n){try{let o,i=!1;
@@ -53,12 +152,15 @@ export const writeAgentsMd = (
 //     else{let s=gr();o=await XY(s,e,vIo,(a)=>{i=a.isDirectory()})}
 //     if(o===null){…skipping…return{info:null,includePaths:[]}}
 //     return md_(o,e,t,r)}catch(o){return Td_(o,e),{info:null,includePaths:[]}}}
-// The whole backend branch is captured and spliced back verbatim, so only the
-// `o===null` head is touched. The reroute recurses with the backend argument
-// dropped (void 0): the backend descriptor carries a per-file storage KEY, so
-// reusing it for an alternative filename would read the wrong object. Missing
-// files on the backend path return from `case"absent"` before reaching
-// `o===null`, so the local filesystem arm is the one this reroute serves.
+// A missing file leaves this reader by one of three exits, none of them the
+// `o===null` branch: the backend read returns from its own switch, as
+// `absent` or as an `error` whose code is ENOENT/ENOTDIR, and the local read
+// stats the file before reading it, so its ENOENT is thrown into the catch.
+// The reroute is spliced at each of those exits and kept in the `o===null`
+// branch for the skipped cases (a directory or an oversize file named
+// CLAUDE.md). It recurses with the backend argument dropped (void 0): the
+// backend descriptor carries a per-file storage KEY, so reusing it for an
+// alternative filename would read the wrong object.
 const writeAgentsMdAsyncBackend = (
   file: string,
   altNames: string[]
@@ -84,14 +186,43 @@ const writeAgentsMdAsyncBackend = (
 
   const altNamesJson = JSON.stringify(altNames);
 
-  const replacement =
-    `${funcSig},didReroute){try{let ${contentVar},${dirFlag}=!1;${backendBranch}` +
-    `if(${contentVar}===null){` +
+  // The reroute, as one block: try each alternative name beside the missing
+  // CLAUDE.md, reading it through the plain-path branch (no backend handle) so
+  // the recursion cannot loop.
+  const reroute =
     `if(!didReroute&&(${pathParam}.endsWith("/CLAUDE.md")||${pathParam}.endsWith("\\\\CLAUDE.md"))){` +
     `for(let alt of ${altNamesJson}){let altPath=${pathParam}.slice(0,-9)+alt;` +
-    `try{let rerouteResult=await ${funcName}(altPath,${typeParam},${thirdParam},void 0,true);if(rerouteResult.info)return rerouteResult}catch{}}}` +
+    `try{let rerouteResult=await ${funcName}(altPath,${typeParam},${thirdParam},void 0,true);if(rerouteResult.info)return rerouteResult}catch{}}}`;
+
+  // A missing file never reaches the null branch below. The backend read
+  // returns from its own switch, as `absent` or as an `error` whose code is
+  // ENOENT/ENOTDIR, and the plain-path read stats the file first, so its
+  // ENOENT is thrown into the catch. Each of those three exits gets the
+  // reroute; the null branch keeps its own copy for the skipped cases (a
+  // directory or an oversize file named CLAUDE.md).
+  const absentReturn = 'case"absent":return{info:null,includePaths:[]}';
+  const errorReturn =
+    /case"error":return ([$\w]+)\(([$\w]+)\.code,([$\w]+)\),\{info:null,includePaths:\[\]\}/;
+  const backendBranchWithReroute = backendBranch
+    .replace(
+      absentReturn,
+      `case"absent":{${reroute}return{info:null,includePaths:[]}}`
+    )
+    .replace(
+      errorReturn,
+      (_all, handler, result, pathArg) =>
+        `case"error":{if(!didReroute&&(${result}.code==="ENOENT"||${result}.code==="ENOTDIR")){${reroute}}` +
+        `return ${handler}(${result}.code,${pathArg}),{info:null,includePaths:[]}}`
+    );
+
+  const replacement =
+    `${funcSig},didReroute){try{let ${contentVar},${dirFlag}=!1;${backendBranchWithReroute}` +
+    `if(${contentVar}===null){` +
+    reroute +
     `${nullBody}}` +
-    `return ${processor}(${contentVar},${pathParam},${typeParam},${thirdParam})}catch(${catchVar}){return ${errorHandler}(${catchVar},${pathParam}),{info:null,includePaths:[]}}}`;
+    `return ${processor}(${contentVar},${pathParam},${typeParam},${thirdParam})}catch(${catchVar}){` +
+    `if(!didReroute&&${catchVar}&&(${catchVar}.code==="ENOENT"||${catchVar}.code==="ENOTDIR")){${reroute}}` +
+    `return ${errorHandler}(${catchVar},${pathParam}),{info:null,includePaths:[]}}}`;
 
   const startIndex = m.index;
   const endIndex = startIndex + m[0].length;
