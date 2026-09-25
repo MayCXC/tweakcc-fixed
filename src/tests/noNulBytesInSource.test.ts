@@ -57,6 +57,9 @@ describe('source files are text-clean (no literal NUL bytes)', () => {
     expect(files.length).toBeGreaterThan(50);
   });
 
+  // Reads every source file, so the wall time scales with the tree and the disk
+  // beneath it; on a network filesystem under the parallel suite it passes
+  // 5 seconds, which is the runner's default cap.
   it('no source file contains a raw NUL byte (use the \\x00 escape)', () => {
     const offenders: string[] = [];
     for (const f of files) {
@@ -68,5 +71,5 @@ describe('source files are text-clean (no literal NUL bytes)', () => {
       }
     }
     expect(offenders).toEqual([]);
-  });
+  }, 60_000);
 });
