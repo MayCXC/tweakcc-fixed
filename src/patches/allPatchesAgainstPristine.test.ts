@@ -10,6 +10,11 @@
 //
 // Gated behind TWEAKCC_PRISTINE_PATCHES=1 (see `pnpm test:pristine`) because it
 // needs a ~21 MB pristine cli.js on disk and spawns Bun to parse each output.
+//
+// The result belongs to the CC version of that bundle. A patch can no-op on one
+// release and apply on the next (unlock-responsive-mode finds nothing in 2.1.278
+// and applies from 2.1.280), so run it against the current release before
+// adding an entry to EXPECTED_NOOP, or the entry hides a dead anchor there.
 
 import { describe, it, expect, beforeAll } from 'vitest';
 import * as fs from 'node:fs';
