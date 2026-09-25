@@ -87,7 +87,9 @@ export interface PreflightResult {
  * shadowed by someone", which cannot answer "may THIS override overlap THAT
  * one", so the ownership check reads the frontmatter itself.
  */
-const loadShadowDeclarations = async (): Promise<Map<string, Set<string>>> => {
+export const loadShadowDeclarations = async (): Promise<
+  Map<string, Set<string>>
+> => {
   const out = new Map<string, Set<string>>();
   const record = (owner: string, ids: unknown): void => {
     if (!Array.isArray(ids)) return;
