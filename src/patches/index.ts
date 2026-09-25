@@ -64,6 +64,7 @@ import {
   runSystemPromptPreflight,
 } from '../systemPromptPreflight';
 import { writeFixLspSupport } from './fixLspSupport';
+import { writeNoGlobalCacheScope } from './globalCacheScope';
 import { writeFixSummarizeFromHere } from './fixSummarizeFromHere';
 import { writeFixRewindSummaryHeader } from './fixRewindSummaryHeader';
 import { writeToolsets } from './toolsets';
@@ -209,6 +210,13 @@ const PATCH_DEFINITIONS = [
     name: 'Fix LSP support',
     group: PatchGroup.ALWAYS_APPLIED,
     description: 'Enable/fix nascent LSP support',
+  },
+  {
+    id: 'no-global-cache-scope',
+    name: 'Keep a replaced identity line out of the global prompt cache',
+    group: PatchGroup.ALWAYS_APPLIED,
+    description:
+      'When a prompt override replaces one of Claude Code\'s identity lines, turn off the "global" cache scope that the first-party API rejects after a non-stock identity, so the prompt caches at organization scope instead. Does nothing while the identity lines are stock.',
   },
   {
     id: 'fix-summarize-from-here',
@@ -953,6 +961,15 @@ export const applyCustomization = async (
     pristineContent
   );
   content = systemPromptsResult.newContent;
+  const identityOverrideApplied = systemPromptsResult.results.some(
+    r =>
+      r.applied &&
+      [
+        'system-prompt-identity',
+        'system-prompt-cli-identity-agent-sdk',
+        'system-prompt-claude-agent-identity-sdk',
+      ].includes(r.id)
+  );
 
   const sortedSystemPromptResults = [...systemPromptsResult.results].sort(
     (a, b) => a.name.localeCompare(b.name)
@@ -1020,6 +1037,10 @@ export const applyCustomization = async (
     },
     'fix-lsp-support': {
       fn: c => writeFixLspSupport(c),
+    },
+    'no-global-cache-scope': {
+      fn: c =>
+        writeNoGlobalCacheScope(c, pristineContent, identityOverrideApplied),
     },
     'fix-summarize-from-here': {
       fn: c => writeFixSummarizeFromHere(c),
