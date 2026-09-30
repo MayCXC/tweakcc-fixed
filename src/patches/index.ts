@@ -89,6 +89,7 @@ import { writeAgentsMd } from './agentsMd';
 import { writeAutoAcceptPlanMode } from './autoAcceptPlanMode';
 import { writeAllowBypassPermsInSudo } from './allowBypassPermsInSudo';
 import { writeSuppressNativeInstallerWarning } from './suppressNativeInstallerWarning';
+import { writeModelAtEffort } from './modelAtEffort';
 import { writeScrollEscapeSequenceFilter } from './scrollEscapeSequenceFilter';
 import { writeWorktreeMode } from './worktreeMode';
 import { writeResponsiveMode } from './responsiveMode';
@@ -452,6 +453,13 @@ const PATCH_DEFINITIONS = [
     name: 'Suppress native installer warning',
     group: PatchGroup.MISC_CONFIGURABLE,
     description: 'Suppress the native installer warning message at startup',
+  },
+  {
+    id: 'model-at-effort',
+    name: '/model name@effort',
+    group: PatchGroup.MISC_CONFIGURABLE,
+    description:
+      '/model opus@high sets the model and then runs /effort high, in one command',
   },
   {
     id: 'filter-scroll-escape-sequences',
@@ -1263,6 +1271,10 @@ export const applyCustomization = async (
     'suppress-native-installer-warning': {
       fn: c => writeSuppressNativeInstallerWarning(c),
       condition: !!config.settings.misc?.suppressNativeInstallerWarning,
+    },
+    'model-at-effort': {
+      fn: c => writeModelAtEffort(c),
+      condition: !!config.settings.misc?.modelAtEffort,
     },
     'filter-scroll-escape-sequences': {
       fn: c => writeScrollEscapeSequenceFilter(c),
