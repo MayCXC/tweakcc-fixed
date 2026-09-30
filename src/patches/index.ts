@@ -1274,7 +1274,7 @@ export const applyCustomization = async (
     },
     'model-at-effort': {
       fn: c => writeModelAtEffort(c),
-      condition: !!config.settings.misc?.modelAtEffort,
+      condition: config.settings.misc?.modelAtEffort ?? true,
     },
     'filter-scroll-escape-sequences': {
       fn: c => writeScrollEscapeSequenceFilter(c),
