@@ -278,5 +278,10 @@
     "verdict": "not-model-facing",
     "version": "2.1.285",
     "why": "Linux sandbox dependency-check error (EV in rT) pushed with bwrap/socat/ripgrep siblings to the /sandbox and startup warnings, and to the debug log; none of those siblings reach the model."
+  },
+  "data-sdk-initialize-response-sdk-mcp-manifests-parked-field": {
+    "verdict": "not-model-facing",
+    "version": "2.1.286",
+    "why": "sdk_mcp_manifests_parked .describe() on the SDK initialize control-response schema: host-facing control-protocol documentation, never in a model request."
   }
 }

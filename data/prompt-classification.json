@@ -87377,5 +87377,2550 @@
     "id": "slash-command-resume-background-session-running",
     "name": "Slash Command: /resume Background Session Running",
     "desc": "Wrapper telling the model the requested session is already running as a background session, with attach/stop/fork hints interpolated."
-  }
+  },
+  "9a1a15538ccbfc23b42f7de720c9a78f92540a5c": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-explainer-shape-rules",
+    "name": "System Prompt: You should know explainer shape rules",
+    "desc": "Opens the shape rules for the You should know explainer: a bold two-to-six-word title line, a first sentence defining the thing in everyday words with a tiny example, then the start of the before/after lines"
+  },
+  "69828886f0b2a58d9e1121752e239970f02445df": { "facing": "ui" },
+  "5ff675a29934754ecafc0485fedd4b0211a771cf": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-understood-topic-skip-guidance",
+    "name": "System Prompt: You should know understood-topic skip guidance",
+    "desc": "Tells the You should know suggestion agent to skip topics the person plausibly understood in the main session while still allowing consequential details mentioned only in passing"
+  },
+  "a15a57d3182639c285b3bfbbda63ca0976f8dd0c": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-avoid-trivial-topics-lead",
+    "name": "System Prompt: You should know avoid trivial topics lead",
+    "desc": "Opens the bullet telling the You should know observer to avoid non-useful incidental topics"
+  },
+  "2cd417e9736d4daeae1d8fc8c6275b56842e30b7": {
+    "facing": "model",
+    "id": "tool-parameter-artifact-action-share",
+    "name": "Tool Parameter: Artifact action share",
+    "desc": "Artifact tool action parameter clause for share: shares with the whole organization or named people in it, the user confirms on a card, never public"
+  },
+  "76c7510e2ae8e45a0ba7da6f8cd41ded7f6f472d": {
+    "facing": "model",
+    "id": "system-prompt-project-member-session-user-message-provenance",
+    "name": "System Prompt: Project member session user message provenance",
+    "desc": "Defines how marked messages in a shared-project member's own session count as that member's user turns while coordinator relays, bare approvals, and other relayed content stay untrusted"
+  },
+  "933abad7fe23af822ff803497cb2e29f5ad9b192": {
+    "facing": "model",
+    "id": "tool-description-artifact-share-action-reference",
+    "name": "Tool Description: Artifact share action reference",
+    "desc": "Artifact tool description reference for the share action: url, mode, people, access, and user confirmation"
+  },
+  "77714c65fea8e78046c39f4ca5435f69b57f8a7b": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-dismiss-option-goal-fragment",
+    "name": "System Prompt: You should know dismiss option goal fragment",
+    "desc": "Continues the learn-more/dismiss bullet, naming the dismiss option and introducing the goal of every suggestion"
+  },
+  "554b547ad453148245e8ec239d3b2fd4696bde11": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-example-ground-truth-reference-tail",
+    "name": "System Prompt: You should know example ground truth reference tail",
+    "desc": "Closes an example critique by pointing to a concrete ground-truth name (ShareLinkService) for share links"
+  },
+  "bce2e214e44ab54d82b7869468718b18c7c961b8": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-tag-label-format-lead",
+    "name": "System Prompt: You should know tag label format lead",
+    "desc": "Opens the output-format bullet for the tag label: You should know or Heads up"
+  },
+  "4a081913e748870db8d19a02187e0c6c731297ae": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-explainer-actionable-lead",
+    "name": "System Prompt: You should know explainer actionable lead",
+    "desc": "Opens the explainer quality rule that anything the user can act on or keep in mind should be highlighted"
+  },
+  "a2c589454be133b0c610055c020e4fd4a6030043": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-topic-selection-question",
+    "name": "System Prompt: You should know topic selection question",
+    "desc": "Asks what a smart, curious person would want to know about the session and lists likely topic kinds"
+  },
+  "c63eefc94b11b5e19fb6bab1c18af6ac5a7715cf": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-avoid-main-agent-addressed-topics",
+    "name": "System Prompt: You should know avoid main agent addressed topics",
+    "desc": "Tells the observer to skip topics the capable main agent has addressed or will address, suggesting only what was glossed over"
+  },
+  "d211e74611e2794fe391cc1c55be113856291b05": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-avoid-topics-under-discussion",
+    "name": "System Prompt: You should know avoid topics under discussion",
+    "desc": "Tells the observer to skip topics the human is already discussing in the main session"
+  },
+  "3e68587b8ed0f91e4c551dfc26bd5d76b7cae5b3": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-do-not-assume-understanding-lead",
+    "name": "System Prompt: You should know do not assume understanding lead",
+    "desc": "Opens the rule not to over-assume the user understands things they have not demonstrated"
+  },
+  "f90b634e15e0fdd2da8bcf3d052a6be771710d63": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-importance-over-interest",
+    "name": "System Prompt: You should know importance over interest",
+    "desc": "Requires a high consequence of not understanding; mere thoroughness of understanding is not enough to suggest"
+  },
+  "f985e711aab007137e18189c4b2dcb743fed0219": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-explainer-plain-english",
+    "name": "System Prompt: You should know explainer plain english",
+    "desc": "Explainer rule to define every technical term the user has not demonstrated, assuming they remember nothing"
+  },
+  "20f44509745ad64da0db256a18492fd8239409a3": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-title-plain-words",
+    "name": "System Prompt: You should know title plain words",
+    "desc": "Explain-title rule to use only terms the user or learn line already used, no code or flag names"
+  },
+  "cd230f49716240886d937e1e038c018f8cfa33b0": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-explainer-quickly-digestible",
+    "name": "System Prompt: You should know explainer quickly digestible",
+    "desc": "Explainer rule for plain sentences or 3-6 bullets, at most 120 words"
+  },
+  "ccb00ca107e017bb5aa607c3f619fcbb499fca72": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-title-recognizable",
+    "name": "System Prompt: You should know title recognizable",
+    "desc": "Explain-title rule that a returning user should recognize the topic by naming the actual thing"
+  },
+  "7f7e5385db3410eaf093f22987308ba69a178d8d": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-weight-consequence-lead",
+    "name": "System Prompt: You should know weight consequence lead",
+    "desc": "Opens the rule to weight the consequence of the user not understanding a topic"
+  },
+  "391319e88a675f9f1e2b2f13467b4b64180ba1f4": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-explainer-well-formatted",
+    "name": "System Prompt: You should know explainer well formatted",
+    "desc": "Explainer rule to use markdown so a user with no context can digest it at a glance"
+  },
+  "a98518e3cc9c032c6232e0ff27e68a2e471a9971": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-example-plain-share-links-experiment-bullet",
+    "name": "System Prompt: You should know example plain share links experiment bullet",
+    "desc": "Worked-example explainer bullet describing the plain_share_links experiment"
+  },
+  "b0e8216669c8ee96f49eb3c79f8c8025d818596e": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-user-plain-english-readability",
+    "name": "System Prompt: You should know user plain english readability",
+    "desc": "Tells the observer to write plain, readable English that avoids jargon and complex sentences"
+  },
+  "18bb062bb4133fafb62f7fe275ef8ec129405802": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-example-check-experiment-results-bullet",
+    "name": "System Prompt: You should know example check experiment results bullet",
+    "desc": "Worked-example explainer bullet advising checking the experiment results and owner before deciding"
+  },
+  "e94ff6292a537f33c4ae4b4d9d9cb89bce4ffd2a": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-no-jargon-week-later",
+    "name": "System Prompt: You should know no jargon week later",
+    "desc": "Requires every noun to make sense to the user a week later with the conversation forgotten"
+  },
+  "1a6c991604484038cd26e95f8e735804ed84cd5d": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-choose-good-suggestion",
+    "name": "System Prompt: You should know choose good suggestion",
+    "desc": "Warns that the visible placement makes irrelevant suggestions irritating, so choose a very good one"
+  },
+  "391d58a81a73ff46b15c01de07bd72ea69eb8520": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-explain-technical-terms",
+    "name": "System Prompt: You should know explain technical terms",
+    "desc": "Allows necessary technical terms but requires explaining any the user has not used"
+  },
+  "d95eb115190ab5dca75de8b1e1b6e6f506bd4e2c": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-easy-to-read-not-overwhelming",
+    "name": "System Prompt: You should know easy to read not overwhelming",
+    "desc": "Says the suggestion should be easy to read so the busy human is glad to see it, not overwhelmed"
+  },
+  "6ecb4667097aef53a96b1b06ec8b300a78209308": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-avoid-main-agent-jargon",
+    "name": "System Prompt: You should know avoid main agent jargon",
+    "desc": "Forbids using words the main agent coined unless the user uses them too"
+  },
+  "a735f1327b4c2604a6f88e03ce2ed144ac79bc58": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-explain-like-five-lead",
+    "name": "System Prompt: You should know explain like five lead",
+    "desc": "Opens the note that the user can chat in the main session, so explaining very simply is the better approach"
+  },
+  "c8a35c87008618708ea4bb0308e360099cf38944": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-no-clarifying-questions-lead",
+    "name": "System Prompt: You should know no clarifying questions lead",
+    "desc": "Opens the note that the user cannot ask a clarifying question about the suggestion language"
+  },
+  "dfff5a0d0928d1b91e031a92d797c121bbaa1633": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-make-it-compelling",
+    "name": "System Prompt: You should know make it compelling",
+    "desc": "Says the busy user may not care, so the suggestion must be compelling"
+  },
+  "5141d9a26a717ba0ea92a94909111a0bf412e69a": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-learn-more-or-dismiss-lead",
+    "name": "System Prompt: You should know learn more or dismiss lead",
+    "desc": "Opens the bullet describing the learn more and dismiss options shown under the suggestion"
+  },
+  "0a0d54feeb6a3756cc50e72e83fce707144ec6df": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-smart-person-topic-choice-lead",
+    "name": "System Prompt: You should know smart person topic choice lead",
+    "desc": "Opens the rule to pick topics for a smart, curious person while communicating as if they are exhausted"
+  },
+  "61edabcea561865b084249ae745519e23f5a1ff7": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-prime-real-estate-lead",
+    "name": "System Prompt: You should know prime real estate lead",
+    "desc": "Opens the note that the output sits below the session and above the prompt box"
+  },
+  "ac2f6f3e0a8e8c9f8bddfd4c9501be0398b00ff8": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-example-share-link-vague-critique",
+    "name": "System Prompt: You should know example share link vague critique",
+    "desc": "Worked-example critique that a vague term like share link loses the reader and the explainer should ground it"
+  },
+  "23d5eff98f4184876a6dae9cd7fc863fa1241147": {
+    "facing": "model",
+    "id": "tool-description-artifact-sharing-guidance",
+    "name": "Tool Description: Artifact sharing guidance",
+    "desc": "Artifact tool guidance on when to offer to share an artifact with named people or the organization, and how to choose the narrowest audience"
+  },
+  "7d299b824f78d08ebd8bdd4545a2fa2f9b0b445d": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-example-confidence-critique-lead",
+    "name": "System Prompt: You should know example confidence critique lead",
+    "desc": "Opens the worked-example critique that the observer should be really confident a topic is worthwhile to explore"
+  },
+  "02e2d77108c5a94f99a988274145393b88947ab5": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-example-two-clauses-critique",
+    "name": "System Prompt: You should know example two clauses critique",
+    "desc": "Worked-example critique that a learn line should have at most two clauses, saving detail for the explainer"
+  },
+  "49717f0b57a136541a50b76903af644d6ae76fd2": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-example-simpler-learn-line-praise-lead",
+    "name": "System Prompt: You should know example simpler learn line praise lead",
+    "desc": "Opens the worked-example praise that a simpler learn line helps the user grasp the basics"
+  },
+  "ba4c9efe56bb1539f6c2018e681e320e6732f743": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-example-ask-caching-bad-explainer",
+    "name": "System Prompt: You should know example ask caching bad explainer",
+    "desc": "Worked BAD example explainer about adding prompt caching to /ask, written as one dense paragraph"
+  },
+  "4e8bcbd9bed200fcd8f33d7fb31330268ad0b253": { "facing": "ui" },
+  "b8a8a0a11f03c46ccb1b2709a6cd8ec7061133a3": { "facing": "internal" },
+  "74c4f823ed0e83adf0875c3a988c7a5f0d377f57": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-access-unrecognised-denied",
+    "name": "Tool Result: Artifact Share Access Unrecognised",
+    "desc": "checkPermissions deny for an Artifact share whose access tier is not view or comment; nothing was shared"
+  },
+  "245273aca614ea4ea3dde8690e058b88b9dad57d": {
+    "facing": "model",
+    "id": "system-reminder-you-should-know-side-request",
+    "name": "System Reminder: You should know side request",
+    "desc": "Tells the tool-less You should know side agent to answer a one-off side request directly in a single response in the requested format without reproducing secrets"
+  },
+  "2f0a5b441f8f44438f298311bb5a1fdbf23e869d": {
+    "facing": "model",
+    "id": "tool-description-bash-pr-creation-instructions",
+    "name": "Tool Description: Bash (PR creation instructions)",
+    "desc": "Pull request creation workflow for the Bash tool using gh, covering branch state analysis, the PR title and body template, and other common GitHub operations"
+  },
+  "b5cf5094d51d6f0f69845753d8f39780fcc7d711": {
+    "facing": "model",
+    "id": "tool-result-artifact-live-doc-shim-published",
+    "name": "Tool Result: Artifact Live Doc Shim Published",
+    "desc": "Artifact publish tool_result content when the publish went through a live-doc shim, led by the host liveDocShimLine sentence"
+  },
+  "5393d1c63ee101a837ab61e315cb5b3f664947a2": {
+    "facing": "model",
+    "id": "tool-result-remote-control-request-not-actioned-retry-refused",
+    "name": "Tool Result: remote control-request not actioned",
+    "desc": "Text explaining that a control-request sent to an attached/remote target was not actioned, that resending will not help, and instructing Claude to tell the user rather than retry"
+  },
+  "206c738d6ccd705470deec39e90189baedea87a6": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explainer-request",
+    "name": "Agent Prompt: You Should Know Explainer Request",
+    "desc": "Prompt for the You should know side agent to write the plain-language explainer the person said yes to, optionally rewriting a previous version in a requested direction"
+  },
+  "fcbb6b2db7b18f8922f447431a62593f94926c52": {
+    "facing": "model",
+    "id": "tool-result-remote-tool-host-settings-unreadable-refusal",
+    "name": "Tool Result: Remote Tool Host Settings Unreadable",
+    "desc": "Refusal returned to a cloud session when the serving computer could not read its settings to decide whether calls must be sandboxed; nothing ran"
+  },
+  "37e66d85bc6de477a26d1e53fe302d3a5f4038df": {
+    "facing": "model",
+    "id": "tool-result-remote-tool-host-sandbox-required-unavailable-refusal",
+    "name": "Tool Result: Remote Tool Host Sandbox Required But Unavailable",
+    "desc": "Refusal returned to a cloud session when the serving computer only runs calls in a sandbox that is not available; nothing ran"
+  },
+  "8b40bbbc450b07009f280d5b6b65a173d0485dbd": { "facing": "ui" },
+  "1fc3fe1d93ebf84330985bb3d13168df14a1d04d": {
+    "facing": "model",
+    "id": "tool-parameter-artifact-share-mode",
+    "name": "Tool Parameter: Artifact share mode",
+    "desc": "Artifact tool `mode` parameter description for action share: org shares organization-wide, people shares with named members, never public"
+  },
+  "5baf2845bc6f88d1b16d6bace9400475d0cc30ce": {
+    "facing": "model",
+    "id": "slash-command-ultrareview-launched",
+    "name": "Slash Command: /ultrareview Launch Confirmation",
+    "desc": "Confirmation text emitted when /ultrareview launches a cloud review session; injected into the conversation as a local-command-stdout user message alongside a meta follow-up instruction."
+  },
+  "4fbfe004ebfa73fafbb46dcf1d37e382525d9756": { "facing": "ui" },
+  "c2aafe31c4e13da3c1b1a015de43cc31352de32d": { "facing": "ui" },
+  "a2a8f0dc36fdb433261f113a3b5f24c55281fa95": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-mode-required",
+    "name": "Tool Result: Artifact Share Mode Required",
+    "desc": "Validation error when an Artifact share omits mode; explains org vs people and that public or outside-org sharing is only from the Share menu"
+  },
+  "448dcb9076a7beb3211d3a4962885925008b1fa6": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-dont-lose-them-at-outset",
+    "name": "Agent Prompt: You Should Know Offer (Do Not Lose Them At The Outset)",
+    "desc": "Observer prompt fragment: after they engage they can get more detail, so do not lose the person at the outset"
+  },
+  "3f1608e50b665c12f55e58af739db226034189c2": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-non-obvious-fact-greatest-implications",
+    "name": "Agent Prompt: You Should Know Offer (Non-Obvious Fact With Greatest Implications)",
+    "desc": "Observer prompt fragment: a surprising non-obvious fact or edge case; choose the topic with the greatest implications"
+  },
+  "d427dfb9e79c7c711313485be002f7704b61f622": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-smart-curious-thoughtful-but-explain-simply",
+    "name": "Agent Prompt: You Should Know Offer (Smart But Explain Simply)",
+    "desc": "Observer prompt fragment: choose the topic for a smart, curious, thoughtful person but communicate on a simpler assumption"
+  },
+  "3e68d9a2500e1c73dbe503ba2642b397426fea3c": { "facing": "ui" },
+  "21311e70fa4b60a2502abea78579da75ae04b058": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-example-urls-only-if-real",
+    "name": "Agent Prompt: You Should Know Offer (Example URLs Only If Real)",
+    "desc": "Observer prompt fragment closing the note that example URLs are made up and links are allowed only when the exact URL appeared in the session"
+  },
+  "9d0fbc64ea5c08113784dff3e1cba04990cce224": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-must-understand-to-engage",
+    "name": "Agent Prompt: You Should Know Offer (Must Understand To Engage)",
+    "desc": "Observer prompt fragment: explaining simply is better because the person must understand it to engage at all"
+  },
+  "b1adda410a1a55a72bcfb34d76518d171a3ea142": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-example-bad-explain-assumes-memory",
+    "name": "Agent Prompt: You Should Know Offer (Bad Explain Assumes Memory)",
+    "desc": "Observer prompt example of a bad explain that refers to \"the second option\" and \"the first one\" as if the user remembers the session"
+  },
+  "6affcc409a715d0250a93ee293eab19b05ed2413": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-simplify-assume-forgotten-everything",
+    "name": "Agent Prompt: You Should Know Offer (Assume They Forgot Everything)",
+    "desc": "Observer prompt fragment: assume the person is tired and has forgotten everything; simplify more than seems needed"
+  },
+  "517152c388bb911ad972955953704af36bee7a93": {
+    "facing": "model",
+    "id": "tool-result-remote-tool-auto-off-reason-breaker",
+    "name": "Tool Result: Remote Tool Auto Mode Off Reason (Breaker)",
+    "desc": "Reason appended to a served call note when auto mode is turned off for the serving Claude Code process by its breaker; restarting checks again"
+  },
+  "4edfbc887666f65689541623f2ccc9d64770c3f4": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-helper-not-connected",
+    "name": "System Prompt: Claude Test Helper Not Connected",
+    "desc": "Claude Test start failure when Claude Code would not connect its browser helper, with restart and --debug steps"
+  },
+  "909f90220abf73bfce9b361de1152be4001f459a": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-helper-timeout",
+    "name": "System Prompt: Claude Test Helper Timeout",
+    "desc": "Claude Test start failure when its browser helper did not come up, telling the person to rerun /claude-test and check node and /mcp"
+  },
+  "8e02f3bb6a5ac3fc8d8f809d8a9155f5d98bb867": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-helper-switched-off",
+    "name": "System Prompt: Claude Test Helper Switched Off",
+    "desc": "Claude Test start failure when its browser helper is disabled for the project, telling the person to reload plugins and switch it on in /mcp"
+  },
+  "fe0a6d38045f8b1303491fcd53ca614dbd600976": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-tools-already-listed",
+    "name": "System Prompt: Claude Test Tools Already Listed",
+    "desc": "Claude Test start failure when the session already lists browser tools under Claude Test's name from another plugin or MCP server"
+  },
+  "fdc146d934a40f1f4e7e5b373ad54fd807b7a3d7": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-helper-refused-by-setting",
+    "name": "System Prompt: Claude Test Helper Refused By Setting",
+    "desc": "Claude Test start failure when the session does not connect its browser helper because of how it was started or an MCP setting, with --debug steps"
+  },
+  "212d230379248c5929e4b48555bb5f5bfaa4b546": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-consent-ask",
+    "name": "Tool Result: Artifact Share Consent Ask",
+    "desc": "Permission ask shown before Claude shares an Artifact, naming the artifact, audience and access, editable on the card"
+  },
+  "7f31cf711727a1c90f49474ee38736b75449f77e": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-incidental-facts-not-topics",
+    "name": "Agent Prompt: You Should Know Offer (Incidental Facts Are Not Topics)",
+    "desc": "Observer prompt fragment: naming conventions, file contents and unimportant edge cases are not topics"
+  },
+  "3b5586bfdc6d51d859464f1db97d0a7c22e636b2": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-ownership-unconfirmed",
+    "name": "Tool Result: Artifact Share Ownership Unconfirmed",
+    "desc": "checkPermissions deny when the person's ownership of the Artifact could not be confirmed before a share; nothing was shared"
+  },
+  "2dd66cd79f93e6acc27e9b82f985613b489a5488": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-dont-presume-knowledge",
+    "name": "Agent Prompt: You Should Know Offer (Do Not Presume Knowledge)",
+    "desc": "Observer prompt fragment: do not presume the person knows things they have not demonstrated"
+  },
+  "eb58b7dde997115c0dcfe9b77dbee4850fa61146": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-earn-a-yes-from-busiest-user",
+    "name": "Agent Prompt: You Should Know Offer (Earn A Yes From The Busiest User)",
+    "desc": "Observer prompt fragment: each suggestion should earn a yes from the busiest, most discerning user"
+  },
+  "e7a2322794356be9212012b14e284d6d8bc4034d": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-every-suggestion-worth-a-yes",
+    "name": "Agent Prompt: You Should Know Offer (Every Suggestion Worth A Yes)",
+    "desc": "Observer prompt fragment: the goal is for every suggestion to be worth a learn-more yes"
+  },
+  "0d09b8d99e4e47cb27fe31cccce97d3feba5f79b": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-example-critique-hard-to-grok",
+    "name": "Agent Prompt: You Should Know Offer (Example Critique: Hard To Grok)",
+    "desc": "Observer prompt critique of a bad learn line: hard to grok while context switching and not human-sounding"
+  },
+  "7a1b7d1d6d7461219b2121222b0a1aa8c804fcdb": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-product-context-example-intro",
+    "name": "Agent Prompt: You Should Know Offer (Product Context Example Intro)",
+    "desc": "Observer prompt fragment introducing an example of how the suggestion appears in the product"
+  },
+  "ac08b4477c87ce7107f7078a7bba4a920dd01e73": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-example-good-explain-critique",
+    "name": "Agent Prompt: You Should Know Offer (Example Critique: Good Explain)",
+    "desc": "Observer prompt critique of a good explain that names a tradeoff plainly, explains prompt caching and ends with a bolded suggestion"
+  },
+  "1ef7121b8bfae4c448fd340daa6043e3ba9f0ae3": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-incidental-facts-examples",
+    "name": "Agent Prompt: You Should Know Offer (Incidental Facts Examples)",
+    "desc": "Observer prompt fragment listing incidental facts such as how commands or files are registered and folder layout"
+  },
+  "933819573131fba6a0f991cc3cb086394196c637": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-tag-neither-fits-say-none",
+    "name": "Agent Prompt: You Should Know Offer (Tag Neither Fits Say None)",
+    "desc": "Observer prompt fragment: if neither tag reads naturally the topic does not clear the bar, so answer learn: none"
+  },
+  "23345e39d7fa2e0197876b26a6135de724fc2949": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-prime-real-estate-legibility",
+    "name": "Agent Prompt: You Should Know Offer (Prime Real Estate Legibility)",
+    "desc": "Observer prompt fragment: the output sits in prime real estate above the prompt box, so legibility matters"
+  },
+  "b03a5dfae5dcbd84fdd935352205ad5dd814d229": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-intelligent-questions-assume-foundations",
+    "name": "Agent Prompt: You Should Know Offer (Intelligent Questions Assume Foundations)",
+    "desc": "Observer prompt fragment: intelligent questions suggest the person knows the foundations, though wrong ones are worth surfacing"
+  },
+  "46effb4266bef2198e616a4bcb8548606630153e": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-worth-interrupting-attention",
+    "name": "Agent Prompt: You Should Know Offer (Worth Interrupting Attention)",
+    "desc": "Observer prompt fragment: the topic must be worth interrupting the human's attention, which most times nothing is"
+  },
+  "75e60e542f0f2f0ab9a1bb33f59c4e625c321175": {
+    "facing": "model",
+    "id": "slash-command-plugin-npm-source-refused-not-plain-package",
+    "name": "Slash Command: Plugin npm Source Refused (Not A Plain Package)",
+    "desc": "Plugin install refusal when an npm plugin source is neither a registry package name nor a tarball link, pointing git plugins to github, url or git-subdir sources"
+  },
+  "c7d4e1b11890ed95e8e87c41929ddc8a61733c2f": { "facing": "ui" },
+  "c15371a8a5042a36106cdc51b0747bdcdec81286": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-glossed-over-or-missed",
+    "name": "Agent Prompt: You Should Know Offer (Glossed Over Or Missed)",
+    "desc": "Observer prompt fragment: suggest only if the topic will be glossed over or the human clearly did not pick up on it"
+  },
+  "18cac25b4fdd1607ee6e4e33fbb117bb71b45ebd": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-rewrite-example-should-have-been-none",
+    "name": "Agent Prompt: You Should Know Offer (Rewrite Example Should Have Been None)",
+    "desc": "Observer prompt rewriting-example note that the suggestion may well have deserved learn: none"
+  },
+  "6be1e3c733ea656928dd5aa8121efa29aa7fba2e": { "facing": "ui" },
+  "e4f23d4df818f47a2dc6176a8dccf73669ab7f21": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-rewrite-example-save-for-explainer",
+    "name": "Agent Prompt: You Should Know Offer (Rewrite Example Save For Explainer)",
+    "desc": "Observer prompt rewriting-example critique: save detail for the explainer and the quoted phrase does not make sense"
+  },
+  "26b44abc7c08a4dc5e6ead30ce0806181dd8ac62": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-no-clarifying-question-present-plainly",
+    "name": "Agent Prompt: You Should Know Offer (No Clarifying Question Present Plainly)",
+    "desc": "Observer prompt fragment: the user cannot ask a clarifying question, so present the suggestion so they need not"
+  },
+  "3787b95f3ca7172ca3f6c444929e963c9b8a30aa": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-example-bad-learn-line-question",
+    "name": "Agent Prompt: You Should Know Offer (Example Bad Learn Line Question)",
+    "desc": "Observer prompt bad example learn line about /ask multi-turn costs that ends with a question"
+  },
+  "0beb69aeabb0cca5a75846502439173499f7dda6": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-learn-line-length",
+    "name": "Agent Prompt: You Should Know Offer (Learn Line Length)",
+    "desc": "Observer prompt rule: the learn line is 1-2 sentences, about 20 words, ends with a period, at most 2 clauses"
+  },
+  "1d075feadd5cfd922b754b60af6b01ac3f2d3994": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-example-critique-vague-ends-with-question",
+    "name": "Agent Prompt: You Should Know Offer (Example Critique: Vague And Ends With A Question)",
+    "desc": "Observer prompt critique: vague \"one design / the other\" and the line should not end with a question"
+  },
+  "2baa06386ef48d986a50282ed108138da779a11d": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-weight-consequence-fundamental-aspect",
+    "name": "Agent Prompt: You Should Know Offer (Weight Consequence Fundamental Aspect)",
+    "desc": "Observer prompt fragment: weigh the consequence when the person seems not to understand a fundamental aspect of the system"
+  },
+  "c6178469917ec8188820b18a8a9cded92dcfa7e4": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-unengaged-decision-critical-details",
+    "name": "Agent Prompt: You Should Know Offer (Unengaged Decision Critical Details)",
+    "desc": "Observer prompt fragment: a decision the person never engaged with that involves critical details or tradeoffs"
+  },
+  "9942d2fbfdfa5bb58f9e7a97a5422f517fc8d54d": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-write-as-main-agent-first-person",
+    "name": "Agent Prompt: You Should Know Offer (Write As Main Agent First Person)",
+    "desc": "Observer prompt fragment: describe the main agent's decisions in the first person as the main agent"
+  },
+  "da2b2a840d1a9579ed3f0579e8d184d0a83147ea": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-trade-off-user-did-not-understand",
+    "name": "Agent Prompt: You Should Know Offer (Trade Off User Did Not Understand)",
+    "desc": "Observer prompt fragment: a trade off the user may not have understood is a likely topic"
+  },
+  "f722051b58fbb936169cd7b6b4785c8d458ec588": { "facing": "internal" },
+  "a4b23cb3f5a35bbaa44662e750132a32e8afe0d9": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-explain-actionable-highlight",
+    "name": "Agent Prompt: You Should Know Offer (Explain Actionable Highlight)",
+    "desc": "Observer prompt explain rule: highlight anything consequential the user can do or keep in mind, when there is something"
+  },
+  "226c703db77505c503aee0f4ba64cacc8cb3b19a": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-people-required",
+    "name": "Tool Result: Artifact Share People Required",
+    "desc": "Validation error when an Artifact share uses mode people without naming any organization members"
+  },
+  "9975ca9a6be82dc3028261151164292b3f864dca": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-offer-learn-more-to-busy-human",
+    "name": "Agent Prompt: You Should Know Offer (Learn More To Busy Human)",
+    "desc": "Observer prompt fragment: a learn-more yes from the very busy human, when you do suggest"
+  },
+  "5dbf8f9d3fac61c06d62d9e9cbafd9b6648cf4a6": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-no-people-confirmed",
+    "name": "Tool result: Artifact share no people confirmed",
+    "desc": "Artifact share refusal when no people were confirmed on the approval card, so nothing was shared; tells the model to have the person pick them on the card or use the Share menu."
+  },
+  "3cd8228474f04e35bc8bafd2679c7d71eed920b0": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-people-unresolved",
+    "name": "Tool result: Artifact share people unresolved",
+    "desc": "Error thrown by the Artifact share call when a people-mode grant resolved to no organization members; tells the model not to guess identifiers or retry with different names."
+  },
+  "5d3aba0773d4a5754188b8869f4d5c7885bbaf68": { "facing": "ui" },
+  "062b26c439a29df614eadee043ea24754513bfe9": { "facing": "ui" },
+  "fc0726b97a5c85fd30b9141b1ac8ce643c820ea6": { "facing": "internal" },
+  "aa09f8ec537f66485fe03811287c3fae50e18795": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-weight-consequence-unengaged-decision",
+    "name": "Agent Prompt: You Should Know Weight Consequence Unengaged Decision",
+    "desc": "Fragment of the You-should-know side agent's prompt (Weight the consequence bullet) that opens the case where the user hasn't engaged with a decision the agent made."
+  },
+  "b1ba983cff4b30dbc05070b19a649b43bb7a5520": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-ask-proposed-note",
+    "name": "Tool result: Artifact share ask proposed note",
+    "desc": "Note added to the Artifact share permission ask, giving the proposed audience and access and saying the card lets the person change it."
+  },
+  "c736e65c1ccf961b7881fb35f6bf104ea9728fb5": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-conclusion-mindful-attention-lead",
+    "name": "Agent Prompt: You Should Know Conclusion Mindful Attention Lead",
+    "desc": "Opening piece of the You-should-know side agent prompt's Conclusion, reminding it to be mindful of the human's attention before the ONLY-suggest-if criteria."
+  },
+  "aeb12db9977e45f0f7c66f2b2308448fc29780f5": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-simpler-words-direction",
+    "name": "Agent Prompt: You Should Know Explain Simpler Words Direction",
+    "desc": "Length and style direction for the You-should-know explainer rewrite when the user asks for simpler words: the same content said more plainly, at most 100 words."
+  },
+  "cb0d8d895f8783d87fe4110bf731b66393e02f17": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-rewrite-example-good-critique-mid",
+    "name": "Agent Prompt: You Should Know Rewrite Example Good Critique Mid",
+    "desc": "Middle piece of the You-should-know prompt's critique of the good rewritten learn line: it shows the consequences and makes it natural to decide whether to learn more."
+  },
+  "ccf9a6b58690a7b28d4860221cf14cb3c66554d4": { "facing": "internal" },
+  "5e6bf10f3b126608a66c7d3eabff891a9988dca2": {
+    "facing": "model",
+    "id": "tool-parameter-artifact-share-access",
+    "name": "Tool Parameter: Artifact share access",
+    "desc": "Artifact tool input-schema description of the share action's access parameter: view or comment (the default) for people shares, never edit, omitted for org shares."
+  },
+  "c748ad77f0a03a89bb4b0843e7baf5424401641a": {
+    "facing": "model",
+    "id": "tool-parameter-artifact-share-people",
+    "name": "Tool Parameter: Artifact share people",
+    "desc": "Artifact tool input-schema description of the share action's people parameter: names or work emails as hints (1-${_7t} entries), which the host resolves and the user confirms on the card."
+  },
+  "245a5077373b6f4c279f36395a6aa9a94f88cd8a": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-people-shared",
+    "name": "Tool result: Artifact share people shared",
+    "desc": "Success tool result for an Artifact shared with named people: how many the person confirmed and what access they got, that each gets an invite email, and that the card decided who they are."
+  },
+  "1064957b4521a1b927fb42230a825ba77e2e1033": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-unavailable-cloud-session",
+    "name": "Tool result: Artifact share unavailable in cloud session",
+    "desc": "Artifact share refusal saying sharing from this cloud session isn't available yet, so nothing changed and the model should not retry; the person can share from the Share menu."
+  },
+  "f46b19978156c3ec9806b71fc04d756ef664d107": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-people-not-assignable",
+    "name": "Tool result: Artifact share people not assignable",
+    "desc": "Artifact share refusal when the person's plan does not allow sharing this artifact with named people; nothing was changed."
+  },
+  "2114aa536b0d27d27c7f7cb2408d6ce9fa54a329": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-org-not-assignable",
+    "name": "Tool result: Artifact share org not assignable",
+    "desc": "Artifact share refusal when the person's plan does not allow sharing this artifact with the whole organization; suggests sharing with named people instead."
+  },
+  "0cee9f09d61c412808c758b04e5749a663acd67d": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-conclusion-mindful-attention-tail",
+    "name": "Agent Prompt: You Should Know Conclusion Mindful Attention Tail",
+    "desc": "Closing piece of the You-should-know side agent prompt: suggest only what the main session doesn't cover and that is compelling, relevant and consequential, and say learn: none when in doubt."
+  },
+  "d492e1f778f580d6424a75323a5ac3678946325d": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-weight-consequence-fundamental-tail",
+    "name": "Agent Prompt: You Should Know Weight Consequence Fundamental Tail",
+    "desc": "Fragment of the You-should-know prompt's Weight the consequence bullet that ends the case where the user doesn't understand a fundamental part of the system and that would hurt their work."
+  },
+  "4b5b156839f13cae253f540de21a00c67bcacc62": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-bad-teases-tradeoff-critique",
+    "name": "Agent Prompt: You Should Know Example Bad Teases Tradeoff Critique",
+    "desc": "Critique of a BAD Trendline privacy explainer example in the You-should-know prompt: it teases the tradeoff, ends with busywork, and isn't the answer."
+  },
+  "ec9fb751b660eb66e15b81ea7c6f84f53ba0d611": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-rewrite-example-ground-truth-critique-mid",
+    "name": "Agent Prompt: You Should Know Rewrite Example Ground Truth Critique Mid",
+    "desc": "Middle piece of the You-should-know prompt's critique that 'Share link' is vague and the explainer should reference ground truth such as ShareLinkService."
+  },
+  "1dc0dbf377ca3a5622616979164030e15efb18ca": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-settings-malformed",
+    "name": "Tool result: Artifact share settings malformed",
+    "desc": "Artifact share error when the artifact's sharing settings come back in a shape this build doesn't understand; nothing was changed."
+  },
+  "a4ac365078156077e7820e26f361ce2aafcc4884": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-bad-assumes-session-memory-critique",
+    "name": "Agent Prompt: You Should Know Example Bad Assumes Session Memory Critique",
+    "desc": "Critique of a BAD Orders DB encryption explainer in the You-should-know prompt: it assumes the user remembers the session and pushes back without giving facts."
+  },
+  "897c8dc80d8eb8108709f10d15f2b1fd2ac1f1e2": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-gateway-unapproved",
+    "name": "Tool result: Artifact share gateway unapproved",
+    "desc": "Artifact share error when the cloud session's gateway did not accept the share as approved by the person; tells the model to retry once so the card shows again."
+  },
+  "fccc341f10cea9aa2550c59ed3b110ddc7cb45f0": { "facing": "internal" },
+  "ae80016e1b9ffed47ba165be660f91a578a7d4b1": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-feature-flag-good-critique",
+    "name": "Agent Prompt: You Should Know Example Feature Flag Good Critique",
+    "desc": "Critique of the GOOD multi-turn /ask feature-flag example in the You-should-know prompt, including the note to link only URLs that appeared in the session."
+  },
+  "6a9178d872b837ab011d47c16a8e3efd651f2198": {
+    "facing": "model",
+    "id": "data-memory-sync-file-not-saved-stays-local",
+    "name": "Data: Memory sync file not saved stays local",
+    "desc": "Memory-sync notice that shared memory refused a memory file, so it stays local only; tells the model to tell the user it is not persisted."
+  },
+  "df8d4377158c2540ef5e5770a4e83aaed8371623": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-permission-check-failed",
+    "name": "Tool result: Artifact share permission check failed",
+    "desc": "Fail-closed deny message for an Artifact share whose permission check failed before the confirmation could be shown, telling the model nothing was shared."
+  },
+  "58e31604e191359ed34ef173e8e0bc6ddbd55d40": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-not-permitted",
+    "name": "Tool result: Artifact share not permitted",
+    "desc": "Artifact share error on HTTP 403: the person isn't allowed to change this artifact's sharing from here (with optional detail), and only its owner can."
+  },
+  "7a730e2046a6c13c77678c2adca7c5b42fb3196c": { "facing": "ui" },
+  "1537f17cf1310548ed88682547c89d90bd396b40": { "facing": "ui" },
+  "18eb90114113dfa36310459f82dd0bd6eac145c3": { "facing": "internal" },
+  "a8931b34b377364a19176bf12741e333eefd304b": {
+    "facing": "model",
+    "id": "tool-result-webfetch-domain-check-rate-limited",
+    "name": "Tool result: WebFetch domain check rate-limited",
+    "desc": "WebFetch error when the domain safety check is rate-limited: do not retry in a loop or sleep, continue without the page and report it; one later attempt is fine."
+  },
+  "3cad5270b04d8b5afdcce6b67cc9a684ac2916b3": {
+    "facing": "model",
+    "id": "data-you-should-know-artifact-press-consent",
+    "name": "Data: You Should Know Artifact Press Consent",
+    "desc": "Consent statement that the user pressed '2: Yes, make an artifact' on a You-should-know offer for a given topic, explaining that this asks Claude Code to write and privately publish a learning page."
+  },
+  "34cb8a93411a4dc7c4ded5b5ccc647b6a40fa0e1": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-overview-role",
+    "name": "Agent Prompt: You Should Know Overview Role",
+    "desc": "Overview piece of the You-should-know side agent prompt: suggest and explain only when helpful and consequential, acting as a wise guide for the human."
+  },
+  "d4f414fffd1f0b15b09ac3abdb1c82ffb37db0d4": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-recent-suggestions-skip-header",
+    "name": "Agent Prompt: You Should Know Recent Suggestions Skip Header",
+    "desc": "Header in the You-should-know side agent prompt that introduces the list of suggestions already offered to the user, which it should skip."
+  },
+  "18ccdf1c419de07f7db4f629bc293069b296ce5e": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-do-not-overassume-balance-mid",
+    "name": "Agent Prompt: You Should Know Do Not Overassume Balance Mid",
+    "desc": "Fragment of the You-should-know prompt's 'Do not overly assume they understand' bullet, introducing the balance when the human asks intelligent questions."
+  },
+  "6452a27198b8b3f3a08ae1cebf17fe0add65e10c": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-rewrite-example-confidence-critique-mid",
+    "name": "Agent Prompt: You Should Know Rewrite Example Confidence Critique Mid",
+    "desc": "Middle piece of the You-should-know prompt's rewriting critique: be really confident the topic is worth exploring and that the main session isn't already doing it."
+  },
+  "ed67b951810cd12225ff8656db333231055ce92c": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-mode-unrecognised",
+    "name": "Tool result: Artifact share mode unrecognised",
+    "desc": "Artifact share refusal when the artifact is shared in a mode this build doesn't recognise, so nothing was changed rather than rewrite an audience it can't read."
+  },
+  "109ff157a01b173d824c2d45c5e0cdb26ef9eaec": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-audience-frozen",
+    "name": "Tool result: Artifact share audience frozen",
+    "desc": "Artifact share refusal when the artifact's audience can't be changed from here (read mode frozen); nothing was shared."
+  },
+  "7d7e0d27a2da376ffd70312694e459f1ff0c58a1": {
+    "facing": "model",
+    "id": "tool-result-remote-tool-auto-off-reason-consent-unknown",
+    "name": "Tool result: Remote tool auto-off reason consent unknown",
+    "desc": "Reason appended to the auto-mode-refused-here note when this computer could not read its saved answer about unattended commands from cloud sessions, with how to set it again."
+  },
+  "bd6583e75cdc5763bd67aa6b0764dc45a93ddfb4": { "facing": "ui" },
+  "2307acf59dcd6f6553836e6dc2d587a6339a7c51": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-privacy-good-critique",
+    "name": "Agent Prompt: You Should Know Example Privacy Good Critique",
+    "desc": "Critique of the GOOD Trendline privacy explainer example in the You-should-know prompt: it fills a gap the user's questions reveal and flags a future design constraint."
+  },
+  "17da6fd0a5aae1eb1b077cede6d9643be5544802": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-url-not-shareable",
+    "name": "Tool result: Artifact share URL not shareable",
+    "desc": "Deny message for an Artifact share whose url isn't a shareable Artifact url; tells the model to use the claude.ai link from the publish result or the list action."
+  },
+  "1b12b03774d54c0e3326d9d592e3213f8e84b7e6": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-context-example-intro-tail",
+    "name": "Agent Prompt: You Should Know Context Example Intro Tail",
+    "desc": "Tail of the You-should-know prompt's High-level context intro: the example shows the product UI, not the output format, and the tail sets the scenario."
+  },
+  "982d47cc6e8faaca8734cb1c14fb97c79fab221f": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-record-unreadable",
+    "name": "Tool result: Artifact share record unreadable",
+    "desc": "Share tool result when the share record fails validation: whether the audience changed is unknown, and the read action shows who can open it now."
+  },
+  "9f006c397b5ae248206c2c3219d451c32742b0ef": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-no-clarifying-question-tail",
+    "name": "Agent Prompt: You Should Know No Clarifying Question Tail",
+    "desc": "Tail of the You-should-know prompt bullet saying the user can't ask a clarifying question, so the suggestion must be quick to understand without assumed context."
+  },
+  "ac9024a93902bd02449724e3050a07881b39d118": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-avoid-trivia-tail",
+    "name": "Agent Prompt: You Should Know Avoid Trivia Tail",
+    "desc": "Tail of the You-should-know prompt's avoid-non-useful-topics bullet: incidental facts are not topics, and anything a senior person would call trivia does not clear the bar."
+  },
+  "cfc9a0ea234a7bc52fd500e4248842b2ff9c7d73": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-weight-consequence-tradeoffs-mid",
+    "name": "Agent Prompt: You Should Know Weight Consequence Tradeoffs Mid",
+    "desc": "Fragment of the You-should-know prompt's Weight the consequence bullet about tradeoffs the user would want to know, leading into non-obvious facts or edge cases."
+  },
+  "fb2cc0054c0fd76f993654fe62947e802e35e2ff": { "facing": "ui" },
+  "8ea1420fb926bae8df538bd8871d1f591a9090ff": {
+    "facing": "model",
+    "id": "data-task-notification-ultrareview-stopped",
+    "name": "Data: Task Notification Ultrareview Stopped",
+    "desc": "Task notification queued when an ultrareview session is stopped, telling the model a new /ultrareview uses a free review or bills as usage credits."
+  },
+  "02893452acd208279e9e8f6ebccb855e5cdcf51c": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-first-person-lead",
+    "name": "Agent Prompt: You Should Know First Person Lead",
+    "desc": "Opening piece of the You-should-know prompt's instruction to use 'I' for the main agent's decisions, writing as the main agent."
+  },
+  "2e2d634b4d968782e42cbd766d5be6c4109bfb42": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-org-view-only-unavailable",
+    "name": "Tool result: Artifact share org view-only unavailable",
+    "desc": "Artifact share refusal when view-only access for the whole organization is requested from chat; suggests sharing with the org without access, or the Share menu."
+  },
+  "8ebb8a2907045b0f6e2529292e57eae50e3d5564": { "facing": "internal" },
+  "a2a4991b4d71e30946ee768f25f625682f6ceeeb": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-topic-finder-novel-work-clause",
+    "name": "Agent Prompt: You should know topic finder novel-work clause",
+    "desc": "Clause in the You-should-know side agent's topic-suggestion guidance: when the main agent did something novel, complex, difficult or made a trade-off the user may not understand, that is a topic candidate"
+  },
+  "e640bd868948f3ef975de193506419acee35bc01": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explainer-audience",
+    "name": "Agent Prompt: You should know explainer audience",
+    "desc": "Opening of the You-should-know explainer-writing instructions: write for a smart, context-switching reader who remembers no term or detail, one idea only, followed by the per-direction length/style rule"
+  },
+  "2972e121cf9870faa9a7c13ad5d5e08970b263c3": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-topic-finder",
+    "name": "Agent Prompt: You should know topic finder",
+    "desc": "Opening of the You-should-know side agent prompt: reflect on the session and suggest at most one topic the human very likely does not understand, explained in plain English, only when worth interrupting their attention"
+  },
+  "73aa91cf9a469febbc1a51c89893a760b450d6ed": { "facing": "ui" },
+  "86d5b29fd58945fc5df703061b80842a0cc6b15e": { "facing": "ui" },
+  "0102ab6f78dad551dbdec0232c4b77e992210e7f": { "facing": "ui" },
+  "ca11930d170ffea71986d77ac03c46780fb2d00e": { "facing": "ui" },
+  "919368dfcf430ea9c203d771f0fee84a9ad1037f": { "facing": "internal" },
+  "56f6491bcdaaa9ef9c323c500d198e19eac19d6d": { "facing": "ui" },
+  "ab98efc8dde8c73adef0bc0b390a5a6cb8371f9e": { "facing": "ui" },
+  "95b4d882b826661a093f4c68e76d1fe75ee86ac6": { "facing": "internal" },
+  "02b98d5ef2845071e597123aeddc924aef635438": { "facing": "internal" },
+  "b39449f35f9b79c4d270c8ddfff8d9e4deccf895": { "facing": "internal" },
+  "1c297ad20092aa4fe6eff6eddbd02519321b9329": { "facing": "internal" },
+  "a5bedee460d8b13865dcb926dda592af1c363be5": { "facing": "internal" },
+  "66872c8180bd87ae9b9ab3e07e6683909933542a": { "facing": "internal" },
+  "0fc0caa13a319cd2a13a1b8dcbdfe1ac71b2bf22": { "facing": "internal" },
+  "6ed44c73c7ee1904c86e4d27f92ccf0e4aa5c79e": { "facing": "internal" },
+  "3d483bf529b23eb47fe8d13847f8720b3e90126b": { "facing": "internal" },
+  "67f7e0d71b06c9b0343f9a7679f07d8199d3f5dd": { "facing": "internal" },
+  "28a568d3bddcd3713e1781a43388985145ce783e": { "facing": "internal" },
+  "4ea84b941bea320c4fb1805ab5e547be24999fee": { "facing": "internal" },
+  "a0b89fd3f3171752a350cd4d8acef098d5dfc8a5": { "facing": "ui" },
+  "c24956b3f8515ec8ec54916f95a866f6331e5259": { "facing": "ui" },
+  "a25f6a7fe9855b0267f32021828d66a990a3ad77": { "facing": "internal" },
+  "431ec7ba240ea2096b124a99bc532439ba1f358f": { "facing": "internal" },
+  "9f1b7a814ea06a8040a5a92c4dc3337230f7f24f": { "facing": "internal" },
+  "488137d3ec0f75ced8951355a60caf9311d900a6": { "facing": "internal" },
+  "67b9d37f545bb9f0e0b019a18a9f1d34a130ca8c": { "facing": "ui" },
+  "9887c0739bdfb77fcd50f19829a2cd1a49cfff57": { "facing": "ui" },
+  "6ed0013fdf2ae59b80677bd7680f29dbee90165b": { "facing": "ui" },
+  "e563dc6ab25c4356c900db4cc04c3930146d7d6f": {
+    "facing": "model",
+    "id": "tool-result-remote-tool-auto-off-reason-consent-unset",
+    "name": "Tool Result: Remote tool auto-off reason (consent unset)",
+    "desc": "Reason appended to the served-call permission-ask note when this computer has no recorded answer allowing unattended commands from cloud sessions, telling where to change the setting"
+  },
+  "2cf937e10489f2071de744d78d8750eaf1cd3078": {
+    "facing": "model",
+    "id": "tool-result-remote-tool-auto-off-reason-consent-declined",
+    "name": "Tool Result: Remote tool auto-off reason (consent declined)",
+    "desc": "Reason appended to the served-call permission-ask note when unattended commands from cloud sessions are set to Not allowed on this computer, telling where to change it"
+  },
+  "03abe12381a842595e0000058fde53fbd4728aa2": {
+    "facing": "model",
+    "id": "tool-result-remote-tool-auto-off-reason-consent-forced-off",
+    "name": "Tool Result: Remote tool auto-off reason (forced off by settings)",
+    "desc": "Reason appended to the served-call permission-ask note when this computer's remoteTools.allowUnattendedServing setting turns off unattended commands from cloud sessions"
+  },
+  "88dbd5b27b898fad2d8331c8cc033146ee7cf3a4": { "facing": "ui" },
+  "2116c645f1c5d59da045c19f7f5cf6be0bf3f7af": { "facing": "ui" },
+  "067e05b3bb1bb2a2921915010a532785ed1509b4": {
+    "facing": "model",
+    "id": "data-coordinator-timeline-relayed-by-coordinator",
+    "name": "Data: Coordinator timeline message relayed by coordinator",
+    "desc": "Provenance marker closing a verified user message that the coordinator session relayed, naming when it was written, where it was said (timeline or another thread) and its author"
+  },
+  "cfbc8bed85af3a2f99ca0b2ac4e51bfc69dcf34d": {
+    "facing": "model",
+    "id": "data-coordinator-timeline-location-another-thread",
+    "name": "Data: Coordinator timeline location in another thread",
+    "desc": "Location clause for a relayed verified user message said in another thread of the project, telling the model it was not on the timeline nor a reply in this thread"
+  },
+  "d400b81513c9113a23f3b1ab5ca350f166e6b4a3": {
+    "facing": "model",
+    "id": "data-coordinator-member-relay-location-project-thread",
+    "name": "Data: Coordinator member relay location in project thread",
+    "desc": "Location clause for a verified user message relayed into a member session when it was said in a project thread, not in this session"
+  },
+  "a66fd34084b6ff1b75bea4f30960ff3d92e0b153": {
+    "facing": "model",
+    "id": "data-coordinator-member-relay-location-project-timeline",
+    "name": "Data: Coordinator member relay location on project timeline",
+    "desc": "Location clause for a verified user message relayed into a member session when it was said on the project timeline, not in this session"
+  },
+  "4f92ff223276d3e13b6c39e2d80ec43f1a8b73d4": {
+    "facing": "model",
+    "id": "data-coordinator-timeline-relayed-into-member-session",
+    "name": "Data: Coordinator timeline message relayed into member session",
+    "desc": "Provenance marker closing a verified user message that the coordinator session relayed into a member session, with time, location and author"
+  },
+  "eaa234256165ebd2ef7d5ef0a0323d0f2d70867c": {
+    "facing": "model",
+    "id": "data-coordinator-timeline-attached-as-answered",
+    "name": "Data: Coordinator timeline message attached as answered",
+    "desc": "Provenance marker for a verified user message the server attached to the coordinator's relay as the message being answered, noting the coordinator did not pick it and the words are the user's own"
+  },
+  "bfc928e013529965dcac0b804f9dc12228e97820": { "facing": "internal" },
+  "90c8a2a6465427d89c4ce84f644cbecdc052c14e": { "facing": "internal" },
+  "0aef33643e5ff64de99c653da2b0b424d9c6be95": { "facing": "ui" },
+  "8fdd5f8b9dac00d7404077231db945e6ef05bfee": { "facing": "ui" },
+  "4d97c6f1492dc77bf0ee94aecbb6223a4235d90c": { "facing": "ui" },
+  "f0e3949e7863f49a4297c7ebf1a47c13a6664e64": { "facing": "internal" },
+  "f5be77cae3bf08c1d1e1014a042046349601d3f8": {
+    "facing": "model",
+    "id": "tool-result-non-text-content-truncation-notice",
+    "name": "Tool Result: Non-text tool result truncation notice",
+    "desc": "Notice appended when a tool_result whose content is a non-string object is serialized to text and cut at the size limit, telling the model how many characters of that tool result were not shown"
+  },
+  "f4b4a30e7c5047ff6b48cdfc8b311ecac58565ba": { "facing": "internal" },
+  "6b6dc0a3957c0feae1a259a6b5ed7d94d93d077c": { "facing": "internal" },
+  "2d9ac1b272dc09a73b0ab8774ba7023d9c95cf7b": { "facing": "internal" },
+  "649d38fc9dd1af8c7d5e3bff7029b7945eda5bc0": { "facing": "internal" },
+  "1987c91a4e50e16c9df27901ebdba652af1e982a": {
+    "facing": "model",
+    "id": "data-pre-ship-checks-before-commit-suggestion",
+    "name": "Data: Pre-ship checks before commit suggestion",
+    "desc": "Sentence telling the model to always run the available verify, simplify and code-review commands right before committing, never for docs or tests"
+  },
+  "58a95f6f21b3a6ac76e611b6a20a8d618b123dd5": { "facing": "ui" },
+  "6d731e305dedbe5a7b0f2053fbfdf5efbd1cb90b": { "facing": "ui" },
+  "aaeeb16b5dffb38ddb66d7c14ae43bfcafeb3ed1": { "facing": "internal" },
+  "42800414fbe474a07f9f3e83606289e9b6ddd2b4": { "facing": "internal" },
+  "1b95d05cc9d8a249fc17e017ce9ba0e5b07c0a0e": {
+    "facing": "model",
+    "id": "tool-result-tool-input-earlier-option-unavailable",
+    "name": "Tool Result: Tool input earlier option unavailable",
+    "desc": "Appended to a tool InputValidationError when parameters or enum values the model used were offered earlier in the conversation but are not available in this session, telling it to continue without them"
+  },
+  "a7ca8e538df9ff5da5720a8ae1520da55cdfae39": { "facing": "ui" },
+  "760676417bb6f9e02612298edfea28e30951c396": { "facing": "internal" },
+  "96a6b2a80b4eb210ff69920a3d6de2e672c71950": { "facing": "internal" },
+  "778cc6119bb958e457b26299d29d2cccc574f181": { "facing": "internal" },
+  "5374fc8f22a7f165732c8bb8f942d3f576cd653a": { "facing": "internal" },
+  "b6815fc04775ebe91dd861874c36e6dbb88db6f2": { "facing": "internal" },
+  "b8d751726c22c39b554a20c3ce2959372f58f916": { "facing": "internal" },
+  "6e48abc98672ed8c02f2c6c7ec326d57e4d47ba5": { "facing": "ui" },
+  "7244a3096e87c844dd7c1267e3a42ff1bc38d225": { "facing": "internal" },
+  "acd34925ea508f85b4b54969bb9f679abea5877b": { "facing": "internal" },
+  "bf79d642aa46d5301725a2fd0b6c4808a5468ffa": { "facing": "internal" },
+  "dc6d29c8e63f5d942a7de9b39fd807737d375f23": { "facing": "ui" },
+  "453d3ff31f39188455729ebb19b3e1c6ca8d0b5e": {
+    "facing": "model",
+    "id": "data-plugin-npm-download-url-unsafe-characters",
+    "name": "Plugin npm download URL: unsafe characters",
+    "desc": "Refusal reason fragment spliced into the npm plugin install refusal when a tarball download URL contains a \"#\", whitespace, a backslash or a control character."
+  },
+  "0805b15138351c2b05d74f5362b58765f57fbc1b": {
+    "facing": "model",
+    "id": "data-plugin-npm-download-url-git-host",
+    "name": "Plugin npm download URL: git host",
+    "desc": "Refusal reason fragment for an npm plugin download URL on GitHub, GitLab, Bitbucket or SourceHut, where npm may fetch it as a git repository and run its setup script."
+  },
+  "655018628f09956aca3c3c7d175db7c82b28bb02": {
+    "facing": "model",
+    "id": "data-plugin-npm-download-url-unencrypted-http",
+    "name": "Plugin npm download URL: unencrypted http",
+    "desc": "Refusal reason fragment for an npm plugin download URL over plain http on a host other than the npm registry, which could leak the saved registry token."
+  },
+  "426b7bc67c9297910fc652670936bab2c568b93c": {
+    "facing": "model",
+    "id": "slash-command-plugin-npm-tarball-url-refused-registry-moved",
+    "name": "Slash Command: /plugin npm tarball URL refused (registry move)",
+    "desc": "Install refusal explaining npm may move the package's download address onto the marketplace's npm registry, where it fails a safety check; the marketplace owner can fix it."
+  },
+  "17627006688cd693ad555bcc94601be4e1c78202": {
+    "facing": "model",
+    "id": "slash-command-plugin-npm-tarball-url-refused-publisher",
+    "name": "Slash Command: /plugin npm tarball URL refused (publisher)",
+    "desc": "Install refusal explaining the package's registry lists a download address that fails a safety check; the package's publisher can fix it."
+  },
+  "7cdf2fb8c3a2c83ca720197318fd55df51172d12": {
+    "facing": "model",
+    "id": "slash-command-plugin-npm-link-refused-registry-moved",
+    "name": "Slash Command: /plugin npm link refused (registry move)",
+    "desc": "Install refusal for an npm plugin source link that npm may move onto the marketplace's npm registry, where it fails a safety check; the marketplace owner can fix it."
+  },
+  "66c43c76e5fd2f12d3698524ab1121715231ab91": { "facing": "ui" },
+  "d838170108608c5cea505515ff9331391d40bb6d": { "facing": "ui" },
+  "a9aa95730a22a34f1ca1dc9098c621d82e7307d1": { "facing": "ui" },
+  "3358e9a91d118bf23ecf5bb240288c866bd77701": { "facing": "internal" },
+  "be9513a92d39aa0100ee86d98fa730ec3fe36bb7": { "facing": "ui" },
+  "9b3a4d3d53bf1d1744b1d8473c4abd95b7281f60": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-refused-not-human-owned",
+    "name": "Artifact Share Refused: Not Human-Owned",
+    "desc": "Artifact share tool error when the artifact has no personal owner (made by a channel or pipeline), so its sharing is not managed this way and nothing changed."
+  },
+  "a49ffefec1741d519c142b3075a5f6fc65745113": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-refused-org-already-public",
+    "name": "Artifact Share Refused: Org Share Of Public Artifact",
+    "desc": "Artifact share tool error when asked to share a public artifact with the organization: that would only narrow access, so nothing changed and Claude should give the person the link."
+  },
+  "96ff241b9e6bdd7ede61a6a3372a8ee547934a2b": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-refused-only-owner-or-editors",
+    "name": "Artifact Share Refused: Only Owner Or Editors",
+    "desc": "Artifact share tool error when everyone confirmed on the approval card already owns or edits the artifact; tells Claude to tell the person they already have access."
+  },
+  "ab36ac9b9ff5edb3b12b0d13590c5a9ee258d62d": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-refused-view-tier-unavailable",
+    "name": "Artifact Share Refused: View Tier Unavailable",
+    "desc": "Artifact share tool error when view-only sharing with named people isn't available for the artifact, pointing Claude to access \"comment\" instead."
+  },
+  "1ed4b707a818b3b49a98fef988d1b65eb82f9c2f": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-refused-people-already-public",
+    "name": "Artifact Share Refused: People Share Of Public Artifact",
+    "desc": "Artifact share tool error when sharing a public artifact with named people: they can already open it, so nothing changed and Claude should give the person the link to send."
+  },
+  "3fc470607b834af9f73487530783f84be1f3dddc": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-not-found",
+    "name": "Artifact Share: Not Found",
+    "desc": "Artifact share tool error for HTTP 404: no artifact at that url whose sharing the person can change (gone, not theirs, or not visible); nothing changed."
+  },
+  "b6298a0aa86345311fda5fd9b94f4cb81de28b0f": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-changed-meanwhile",
+    "name": "Artifact Share: Changed Meanwhile",
+    "desc": "Artifact share tool error for HTTP 412: sharing changed while the approval was open, so nothing was applied; retry once to re-read current settings."
+  },
+  "53d60b1759a919258f9fa59fed6907f1ce7d7cf3": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-service-refused",
+    "name": "Artifact Share: Service Refused",
+    "desc": "Artifact share tool error for HTTP 400/409/422: the artifact service refused the sharing change or read, with its detail or status; nothing changed."
+  },
+  "7e95aa961300b8ff60aea108852e48eef4185550": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-http-failed-retry",
+    "name": "Artifact Share: HTTP Failure (Retry)",
+    "desc": "Artifact share tool error for an HTTP 5xx while reading or applying a share, telling Claude to retry once."
+  },
+  "e7491cc5b92d6d41399806acc7a61e2543fccf88": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-http-failed",
+    "name": "Artifact Share: HTTP Failure",
+    "desc": "Artifact share tool error for a non-5xx HTTP failure while reading or applying a share, without a retry hint."
+  },
+  "ad4c4a3b91ecf9e9162b370e843c5dd8ce84bdbf": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-read-network-error",
+    "name": "Artifact Share: Read Network Error",
+    "desc": "Artifact share tool error when reading the artifact's sharing settings fails with a network error; nothing changed."
+  },
+  "5a8e987d7f81c106ac7a26640b5b009f098e869d": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-read-relay-failed",
+    "name": "Artifact Share: Read Relay Failed",
+    "desc": "Artifact share tool error when the cloud relay fails with an HTTP status while reading sharing settings; nothing changed."
+  },
+  "3f7e7d5ff8d0062231f9ec84b6765fc7501b1626": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-read-foreign-answer",
+    "name": "Artifact Share: Read Foreign Answer",
+    "desc": "Artifact share tool error when the relay's answer to the sharing read was not the artifact service's own; nothing changed, retry once."
+  },
+  "c3003ea60d31344d20a265483dfd30e3171f314b": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-write-relay-no-answer",
+    "name": "Artifact Share: Write Relay No Answer",
+    "desc": "Artifact share tool error when the cloud relay gave no answer to the share write; it may have gone through, so Claude must read the artifact before telling the person or retrying."
+  },
+  "95742263c40cbadc40de222bda7a2b1b63946f38": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-write-network-error",
+    "name": "Artifact Share: Write Network Error",
+    "desc": "Artifact share tool error when applying the share fails with a direct network error; nothing was confirmed changed."
+  },
+  "dcfec7c4bc96f475fb4ffb45086bbadc0b62a666": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-write-relay-failed",
+    "name": "Artifact Share: Write Relay Failed",
+    "desc": "Artifact share tool error when the cloud relay failed with an HTTP status on the share write; it may have gone through, so Claude must read the artifact first."
+  },
+  "62d466f9f80c2b3e93bb481eed8741f24c8638ac": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-write-foreign-answer",
+    "name": "Artifact Share: Write Foreign Answer",
+    "desc": "Artifact share tool error when the relay's answer to the share write was not the artifact service's own; Claude must read the artifact before saying it is shared."
+  },
+  "9f933dbde0ee9521d7f676e0bb07374daabb5436": {
+    "facing": "model",
+    "id": "tool-parameter-artifact-mode-run-script-query-mutation",
+    "name": "Artifact Tool Parameter: mode (run_script query/mutation)",
+    "desc": "Prefix of the Artifact tool's mode parameter description, explaining that run_script \"query\" runs read verbs without approval on your own artifact while \"mutation\" also registers write verbs and asks once per artifact."
+  },
+  "6769472a660c4021622c8a42c41aaa85ba964342": {
+    "facing": "model",
+    "id": "slash-command-plugin-update-command-source-skipped-background",
+    "name": "Plugin update: command-source skipped by background update",
+    "desc": "Explains that a command-installed plugin is not updated by the background marketplace update, and points to /plugin update or automatic per-session re-resolve instead."
+  },
+  "f5c3cbbb36fbf60d65f0218c52e69b16d30fddf7": {
+    "facing": "model",
+    "id": "slash-command-plugin-update-command-source-disabled",
+    "name": "Plugin update: command source disabled",
+    "desc": "Explains that a command-installed plugin's install command was not run because the plugin is disabled, and tells the user to enable it first."
+  },
+  "fba639bd26ef77416bc667287ae1665fe9d19266": { "facing": "internal" },
+  "904a1b52466de349b5faa3dc5542fe1ac00364b5": { "facing": "ui" },
+  "b0781b01daca628f7caa1f2be9ebe8f9457ef4a4": { "facing": "internal" },
+  "ed1f68d95bc210727d21dc5c13f5b937ca224a3c": { "facing": "internal" },
+  "febd58acc67317e6b7d431710de107d6255c4203": {
+    "facing": "model",
+    "id": "tool-result-artifact-access-change-permission-ask",
+    "name": "Artifact Access-Change Permission Ask",
+    "desc": "checkPermissions ask when Claude wants to change who can open or comment on an Artifact."
+  },
+  "d138187d9166c18a9b696e95f0e35de918b08d67": { "facing": "internal" },
+  "de089afde4a3254cc0e39871874d1632ee9b5711": { "facing": "ui" },
+  "37c3e4cbf4d93494cb27446fec566d218a83fcde": {
+    "facing": "model",
+    "id": "system-reminder-review-launched-acknowledge",
+    "name": "Code-review launched acknowledgement instruction",
+    "desc": "Meta-message injected into the model's context after an ultra code review launches, instructing it to briefly acknowledge the visible output without repeating the target or billing note."
+  },
+  "246ee81c3a4fe807ebc18042e515829a19c1d7fe": {
+    "facing": "model",
+    "id": "tool-result-device-tool-serve-refused-sandbox-weakened",
+    "name": "Device tool refused: sandbox weakened",
+    "desc": "Refusal message for a served device-tool call explaining the device's sandbox is configured with a setting that weakens its isolation, so the device serves no device tools; tell the user, do not retry in a loop."
+  },
+  "08ce729410413eeef31ab0fb5ad9a2b15e03c9cb": {
+    "facing": "model",
+    "id": "tool-result-device-tool-serve-refused-sandbox-seccomp-unavailable",
+    "name": "Device tool refused: sandbox seccomp unavailable",
+    "desc": "Refusal message for a served device-tool call explaining the sandbox found no runnable seccomp filter helper to block Unix-socket connections, so the device serves no device tools; ask the user to check /sandbox and restart."
+  },
+  "ee34d83896181fca44933a93b1391ae401175caf": {
+    "facing": "model",
+    "id": "tool-result-permission-ask-unresolved-shell-write",
+    "name": "Permission ask: unresolved shell write",
+    "desc": "Shared lead of the ask-permission message explaining Claude Code could not work out everything a shell command writes, so it cannot rule out a change to its own settings files."
+  },
+  "9ce56a0802661ed92b45e54ff642c4811bfa6f5e": {
+    "facing": "model",
+    "id": "tool-result-permission-ask-unresolved-shell-write-person-approval",
+    "name": "Permission ask: unresolved shell write approval",
+    "desc": "Ask-permission message for an unresolved shell write: the shared unresolved-write lead followed by the note that a person needs to approve it in this session."
+  },
+  "c3a341f487f611f9f12c014c15440f69ad87bea7": {
+    "facing": "model",
+    "id": "tool-result-permission-ask-unreadable-shell-line",
+    "name": "Permission ask: unreadable shell line",
+    "desc": "Ask-permission message for an unreadable shell line: the shared unresolved-write lead followed by the note that the command needs approval in this session."
+  },
+  "5fe47d319e54c897c60c347cfbd9648ce6fc1dc8": { "facing": "internal" },
+  "e50374563d739b3974bff4bc802f96c2f4f6bcdb": { "facing": "ui" },
+  "29170bb4a91ed128d04756baa8d1aeac712e7dbe": { "facing": "internal" },
+  "cce31f2319c06774ccd92aa0fb53871c422574af": {
+    "facing": "model",
+    "id": "tool-result-mcp-authenticate-sign-in-already-in-progress",
+    "name": "Tool Result: MCP Authenticate Sign-In Already In Progress",
+    "desc": "MCP authenticate tool result lead when an earlier sign-in is still in progress, so the link shown is that sign-in's; if the user saw an error page, ask them to sign in via /mcp instead."
+  },
+  "e1018d0b7cd552723d0252320434349d27929002": {
+    "facing": "model",
+    "id": "tool-result-mcp-authenticate-auth-url",
+    "name": "MCP authenticate: auth URL result",
+    "desc": "McpAuth tool result telling the model to have the user open the OAuth URL to authorize the MCP server, prefixed by an in-progress-sign-in note when reused."
+  },
+  "acadd7d6143d80e703aedd271bced0dac67222f2": { "facing": "internal" },
+  "a7f63da2c6de7e962853576c73485299aa509ad8": { "facing": "internal" },
+  "aab132a705fe43406565f2732e87ae5ee67f6d58": { "facing": "internal" },
+  "45159439ec45519db01117a66e361b72f4dbc36f": { "facing": "internal" },
+  "d97bd9c4d31b4099c3c483318fb882a85a0e8726": { "facing": "internal" },
+  "80eff4f804e53d4ad715b7568e934302a1e13b21": { "facing": "internal" },
+  "191fa0e967d90be3d68fe20d120aa74a847d6aa4": { "facing": "internal" },
+  "1ca9b864edf43c2a754c0bd2d06c3604c443d81c": { "facing": "internal" },
+  "8c565954eeb0f8c4a0aeea27af246a67ede88c75": {
+    "facing": "model",
+    "id": "data-task-notification-message-files-missing",
+    "name": "Task notification: message files missing",
+    "desc": "Queued task-notification (wrapped in <message-files-missing>) telling the model which file paths named in a user message were not written because their attachments could not be fetched."
+  },
+  "e6e34a942cd9243c103cc17197d48f0a9ace4107": { "facing": "internal" },
+  "ff85d1456c30a9153b144ad06643ef1a295fcaa3": { "facing": "internal" },
+  "ec3840a48530d09acd878bb528b1237ec397d777": { "facing": "internal" },
+  "3ead13b467171f8397e963eb85f8db7760a9d50a": { "facing": "ui" },
+  "909478e7addd038b419899cdbe56711ccb826052": { "facing": "ui" },
+  "143746abecdef866d7525b0358d3582af0863340": { "facing": "ui" },
+  "276ea053d4f2ac5490309f06924ed96105ca152c": { "facing": "ui" },
+  "0278d5fc4f8f6e5ef2436b94762c977625b2b57c": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-missing-mode",
+    "name": "Artifact share: missing mode",
+    "desc": "Artifact share tool error when the confirmed share names no recognised mode, so nothing was shared."
+  },
+  "e2fdcd283ac0dba271c1f3fc5eef796d5aaf9243": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-bad-access",
+    "name": "Artifact share: unrecognised access",
+    "desc": "Artifact share tool error when the confirmed share carries an access tier this build does not recognise."
+  },
+  "de6e25afbd7bebaea3d0697d163a03b3a56a4acf": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-missing-access",
+    "name": "Artifact share: missing access tier",
+    "desc": "Artifact share tool error when a confirmed people share carries no access tier."
+  },
+  "ed9ff69915835f9ebe19173df9850dba479831c8": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-people-invalid",
+    "name": "Artifact share: person not an account id",
+    "desc": "Artifact share tool error when the host confirmed a person in a form that is not an account id."
+  },
+  "a85447d1c3e2894cb619f8a53957f251a964aef0": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-people-too-many",
+    "name": "Artifact share: too many people",
+    "desc": "Artifact share tool error when the card confirmed more people than one share can name."
+  },
+  "5033263719bef4c73d919c40a2f208c1bdc5e470": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-plan-mode-denied",
+    "name": "Artifact share: plan mode denial",
+    "desc": "Artifact share permission denial in plan mode, telling the model not to retry while planning."
+  },
+  "f91879aac7f4bec781407a7d9e9361679d8db4a2": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-no-confirmation-surface",
+    "name": "Artifact share: no confirmation surface",
+    "desc": "Artifact share permission denial when no one can answer the confirmation card in this session."
+  },
+  "bff7421488260cc9cb8f7a4145205d8ff4cdc578": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-agent-scoped-denied",
+    "name": "Artifact share: channel-owned artifact",
+    "desc": "Artifact share permission denial for an artifact owned by a channel's Claude rather than a person."
+  },
+  "1df57941ed445e86c319aa512c2ee1e1411ed1a0": {
+    "facing": "model",
+    "id": "tool-result-artifact-permission-check-not-found",
+    "name": "Tool Result: Artifact permission check not found",
+    "desc": "Permission-check denial when the probed Artifact URL returns not found: deleted, wrong link, or not visible to the person"
+  },
+  "7fa661f0f44e9fab93619c09520cfb2d13ff5ed9": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-not-owner",
+    "name": "Artifact share: not the owner",
+    "desc": "Artifact share permission denial when the person can access but does not own the artifact; tells the model to have them ask the owner."
+  },
+  "0a75f4745a703cac0a7757b9d33226b1f7b55ff0": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-not-owner-writer-suffix",
+    "name": "Artifact share: not-owner writer suffix",
+    "desc": "Clause appended to the not-owner share denial for editors, pointing to the claude.ai Share menu."
+  },
+  "0b088820655743e7949b78b5452024a863599d17": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-already-public",
+    "name": "Artifact share: already public",
+    "desc": "Artifact share permission denial when the artifact is already public, telling the model to give the person the link."
+  },
+  "4eb7e31c94db515b0f280823be40847cef6e041d": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-unexpected-fields",
+    "name": "Artifact share: unexpected fields",
+    "desc": "Artifact share validation error listing fields the share action does not take."
+  },
+  "f79d870328a40e391a6764eede85d9872d3fe842": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-user-uuids-hint",
+    "name": "Artifact share: user_uuids hint",
+    "desc": "Suffix on the share unexpected-fields error when user_uuids was passed, explaining people are named in `people`."
+  },
+  "e762c9d137ea6707348705f2c461fb2c4ef0c471": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-url-required",
+    "name": "Artifact share: url required",
+    "desc": "Artifact share validation error when url is missing."
+  },
+  "f1adefa2c1d38707c1b5ebf47e63bcdc8459f6bb": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-access-invalid",
+    "name": "Artifact share: invalid access value",
+    "desc": "Artifact share validation error when access is not view or comment."
+  },
+  "7afe5fddc68b17bec1c907f9cb0c96b39dfeedf7": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-org-takes-no-people",
+    "name": "Artifact share: org mode takes no people",
+    "desc": "Artifact share validation error when mode org is given people."
+  },
+  "2f7c8f28b081f935ae2e4632c0a68751413aa516": {
+    "facing": "model",
+    "id": "data-artifact-share-auto-classifier-input",
+    "name": "Artifact Share Auto Classifier Input",
+    "desc": "toAutoClassifierInput line describing an artifact share for the auto-permission classifier."
+  },
+  "aa5c308b1e2655b0dde694cf940df66dff4447fa": {
+    "facing": "model",
+    "id": "tool-description-artifact-share-dynamic",
+    "name": "Artifact share action description",
+    "desc": "Per-call description for action \"share\": share an artifact with the organization or named people after the person confirms; never public."
+  },
+  "ef138669fe349e31220fc11e2c209a92f2bba930": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-consent-gone",
+    "name": "Artifact share: consent surface gone",
+    "desc": "Artifact share call error when the session can no longer ask for confirmation; tells the model not to retry."
+  },
+  "4aea76172faf27f4f1150dd71628528437ac4739": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-target-changed",
+    "name": "Artifact share: target changed",
+    "desc": "Artifact share call error when url no longer names the artifact whose share was confirmed."
+  },
+  "515fbb8dcccc4e5b9d16349f494101017783b764": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-unconfirmed",
+    "name": "Artifact share: not confirmed",
+    "desc": "Artifact share call error when the person did not confirm the share."
+  },
+  "e874370d5bd3e664a77f532beb715ceb713e50ad": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-not-person",
+    "name": "Artifact share: answered by hook or rule",
+    "desc": "Artifact share call error when the share was approved by a hook or rule instead of the person."
+  },
+  "3ae738ca8efb7d4563197f8285d2dce50927898e": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-editors-left-note",
+    "name": "Artifact share: existing editors note",
+    "desc": "Clause in the share result noting how many named people already edit the artifact and were left unchanged."
+  },
+  "6c00e622e78b21fcefc5ebe968937d6a417d5d0c": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-org-already-shared",
+    "name": "Artifact share: org already shared",
+    "desc": "Share tool result when the artifact was already open to the organization."
+  },
+  "008a1145c8dde1c2b4c0a913170e6cff7a4426ce": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-org-shared",
+    "name": "Artifact share: org shared",
+    "desc": "Share tool result after sharing the artifact with the organization; nobody is notified, give the person the link."
+  },
+  "2b4476e423dc53b745ae4a9a4dc38dd2b3ac670a": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-also-open-to-org-note",
+    "name": "Artifact share: also open to org note",
+    "desc": "Clause in the people-share result noting the artifact stays open to the organization."
+  },
+  "fe7a6f5dd02599e789e059fbfe19d3b2f2fbb0a7": {
+    "facing": "model",
+    "id": "tool-result-artifact-share-people-already-shared",
+    "name": "Artifact share: people already shared",
+    "desc": "Share tool result when the confirmed people could already open the artifact with that access."
+  },
+  "bdc84938fb1a8609e351c68ca140b59d4a85f731": {
+    "facing": "model",
+    "id": "data-cross-machine-send-no-policy-allows-reason",
+    "name": "Cross-machine send: no allowing policy reason",
+    "desc": "Fallback policy reason spliced into the SendMessage/SendFile cross-machine-unavailable tool results when no organization policy allows sends to that session kind."
+  },
+  "eab26a66a0926000a9515efe7929c546c9de57b9": {
+    "facing": "model",
+    "id": "tool-result-sendmessage-cross-machine-unavailable-policy",
+    "name": "Tool Result: Cross-machine messaging blocked by policy",
+    "desc": "SendMessage tool result when an organization policy blocks reaching a bridge/cloud-session recipient, with the policy reason."
+  },
+  "da418397b4df649bc3961840cd2e9ce8afea31b6": { "facing": "ui" },
+  "b690443381d3e3830aa2ca7d82e124e1dfacb176": { "facing": "ui" },
+  "199947d9f7b82a9fbcb4fd7708944fb83d9879fa": { "facing": "ui" },
+  "d12e0a3c0a26346701aa9269b5dd99bf153e4b58": { "facing": "ui" },
+  "eede0ad46afdf8c6284bcc79d5e90106fa7fa256": { "facing": "ui" },
+  "6e7a249d4971e300d09cc69a8479fca3c807b563": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explainer-shape-example-tail",
+    "name": "You should know explainer: shape example tail",
+    "desc": "Fragment of the You-should-know explainer prompt finishing the before/after example and introducing the optional ASCII sketch rule."
+  },
+  "67897b2081741b69bb8954be40b84be3c0780a22": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explainer-sketch-and-style-rules",
+    "name": "You should know explainer: sketch and style rules",
+    "desc": "Fragment of the You-should-know explainer prompt: sketch limits, consequence-and-choice step, and style rules (no analogy, no coined terms, short words)."
+  },
+  "b0ddadf97140af65edbde24d4fd74b181f65d20a": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explainer-length-first",
+    "name": "You should know explainer: first-pass length",
+    "desc": "Length limit for the first You-should-know explanation."
+  },
+  "14bf5694cc8cd9b23e71e08631b7a9a8b80bf894": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explainer-less-detail",
+    "name": "You should know explainer: less detail",
+    "desc": "Rewrite instruction for the You-should-know explanation when the user asks for less detail."
+  },
+  "162255b670d3d823fb28d68927b04c37bdac690c": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explainer-more-detail",
+    "name": "You should know explainer: more detail",
+    "desc": "Rewrite instruction for the You-should-know explanation when the user asks for more detail, naming the real config keys and files."
+  },
+  "09a48a5dec16bc090dfc0c1e687b288914c782d5": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explainer-rewrite-previous",
+    "name": "You should know explainer: rewrite previous",
+    "desc": "Block in the You-should-know explainer prompt quoting the previous explanation and asking for a rewrite in the requested direction."
+  },
+  "ef9b5b824e71a0d0ce060762bae2d172c7df05db": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-heads-up-lead",
+    "name": "You should know: example heads-up lead",
+    "desc": "Opening half of the example Heads up card in the You-should-know suggestion agent's system prompt."
+  },
+  "bbf29ad6553f740ead492dc5dff68939ff3f2060": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-heads-up-tail",
+    "name": "You should know: example heads-up tail",
+    "desc": "Closing half of the example Heads up card in the You-should-know suggestion agent's system prompt."
+  },
+  "104567aa7736b6cfd7a1ecfc4c49ea29a8b6ced1": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-heads-up-ask-caching",
+    "name": "Agent Prompt: You should know — example Heads up line",
+    "desc": "Part of the You should know observer side-agent prompt (ln): example Heads up offer line about /ask prompt caching."
+  },
+  "5703ab8aea2a81559a4867dfd746b13fda5a17b7": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-learn-more-intro",
+    "name": "Agent Prompt: You should know — example Learn more intro",
+    "desc": "Part of the You should know observer side-agent prompt (ln): example lead-in to what the user sees after choosing 1: Learn more."
+  },
+  "20e18fa598386c04fb29592694f63fd53a1949f4": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-ask-side-question-bullet",
+    "name": "Agent Prompt: You should know — example /ask bullet",
+    "desc": "Part of the You should know observer side-agent prompt (ln): example explainer bullet defining /ask."
+  },
+  "e07a8c0a32ab21f74657765f922c03b264b22c60": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-prompt-caching-bullet",
+    "name": "Agent Prompt: You should know — example prompt caching bullet",
+    "desc": "Part of the You should know observer side-agent prompt (ln): example explainer bullet on prompt caching pricing."
+  },
+  "90f81ea6cad9343eb09be5100ae836df5b719b3e": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-ask-one-off-before-bullet",
+    "name": "Agent Prompt: You should know — example one-off /ask bullet",
+    "desc": "Part of the You should know observer side-agent prompt (ln): example bullet saying /ask used to be one-off, so caching was not worth it."
+  },
+  "a9ae1b79f5e84df4fe563add493f9d39e456aefa": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-follow-up-cheaper-bullet-part-2",
+    "name": "Agent Prompt: You should know — example follow-up bullet part 2",
+    "desc": "Part of the You should know observer side-agent prompt (ln): tail fragment of the example bullet on follow-ups getting the cached price."
+  },
+  "7c3b109d9be895beebdf9f59f3e6578b8f2d9d82": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-follow-up-cheaper-bullet",
+    "name": "Agent Prompt: You should know — example follow-up bullet",
+    "desc": "Part of the You should know observer side-agent prompt (ln): example bullet that follow-up questions get the cached price."
+  },
+  "4d328d09d68ba2a32866ad9276dd6998b980dc45": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-one-off-costs-more-bullet",
+    "name": "Agent Prompt: You should know — example one-off costs more bullet",
+    "desc": "Part of the You should know observer side-agent prompt (ln): example bullet that one-off questions spend 25% more."
+  },
+  "13242ea13ac1d789be257baeacb882d3c6ee395f": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-explainer-prompt-caching-monitor-bullet",
+    "name": "Agent Prompt: You should know example explainer prompt caching monitor bullet",
+    "desc": "Closing bullet of the worked prompt-caching explainer example, advising monitoring follow-up usage before shipping"
+  },
+  "8c3b7ccd0abfaf2c16962ef565577ca26da0a4ac": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-output-structure-intro",
+    "name": "Agent Prompt: You should know — output structure intro",
+    "desc": "Introduces the two allowed output shapes (learn: none, or learn/tag/explain) for the suggestion agent."
+  },
+  "6479539ea881020f2b2aef82a799a9c25ba45fe3": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-output-structure-learn-line",
+    "name": "Agent Prompt: You should know — output structure learn line",
+    "desc": "Template learn: line (with trailing spaces) in the output-structure skeleton."
+  },
+  "2c3206d3c20621e53ad89031c4d832dca456fefe": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-suggest-topic-learn-line",
+    "name": "Agent Prompt: You should know — suggest topic learn line",
+    "desc": "Template learn: line at the start of the How to suggest a topic section."
+  },
+  "7e0eafbab5e21339db1b617b487f32278e045b2b": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-first-person-voice-guidance-lead",
+    "name": "Agent Prompt: You should know — first person voice guidance lead",
+    "desc": "Tells the agent to write in the first person as the main agent when describing its decisions (opening half)."
+  },
+  "85bbfd1430a4acb16837bb601140f768e703fd37": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-context-matters-guidance",
+    "name": "Agent Prompt: You should know — context matters guidance",
+    "desc": "Requires the suggested topic to matter significantly to the user's work, with a downside if not understood."
+  },
+  "cf20b76c20e662af00e65b1ad3a4a57a850d84b3": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-calibrate-knowledge-guidance-part-2",
+    "name": "Agent Prompt: You should know — calibrate knowledge guidance part 2",
+    "desc": "Second concatenated fragment of the calibrate-to-demonstrated-knowledge guidance."
+  },
+  "09097f4b1444c9f3d2ca6fb27f1ceae37ecb64da": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-calibrate-knowledge-guidance-part-3",
+    "name": "Agent Prompt: You should know — calibrate knowledge guidance part 3",
+    "desc": "Third concatenated fragment of the calibrate-to-demonstrated-knowledge guidance."
+  },
+  "f15a2659fff5428aace943bd1043197e4c2b4d3d": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-calibrate-knowledge-guidance-part-4",
+    "name": "Agent Prompt: You should know — calibrate knowledge guidance part 4",
+    "desc": "Fourth concatenated fragment of the calibrate-to-demonstrated-knowledge guidance."
+  },
+  "66ee5b2efe913c029ea76488d78fe36a798acbed": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-calibrate-knowledge-guidance-part-5",
+    "name": "Agent Prompt: You should know — calibrate knowledge guidance part 5",
+    "desc": "Closing fragment forbidding suggestions the user already understands."
+  },
+  "4e31056362d76501c48404d7875900619781b98d": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-calibrate-knowledge-guidance",
+    "name": "Agent Prompt: You should know — calibrate knowledge guidance",
+    "desc": "Tells the agent to calibrate suggestions to the user's demonstrated knowledge and never suggest what they already understand."
+  },
+  "d2dcf8e743be99faa5ffeba5eff5386e8c0b3146": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-calibrate-knowledge-guidance-parts-1-to-4",
+    "name": "Agent Prompt: You should know — calibrate knowledge guidance parts 1 to 4",
+    "desc": "Calibrate-to-demonstrated-knowledge guidance without its closing never-suggest sentence."
+  },
+  "d3edbb30f9fc8e9390d7f8fb8596c32f161ac694": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-calibrate-knowledge-guidance-parts-1-to-3",
+    "name": "Agent Prompt: You should know — calibrate knowledge guidance parts 1 to 3",
+    "desc": "Opening three fragments of the calibrate-to-demonstrated-knowledge guidance."
+  },
+  "3da44d76fe797fd093f721b1d4a830136e6acb52": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-calibrate-knowledge-guidance-parts-1-to-2",
+    "name": "Agent Prompt: You should know — calibrate knowledge guidance parts 1 to 2",
+    "desc": "Opening two fragments of the calibrate-to-demonstrated-knowledge guidance."
+  },
+  "347ceaecda08772d3d6d7c2e12c6bdbb0d5a3397": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-do-not-overassume-guidance-parts-1-to-3",
+    "name": "Agent Prompt: You should know — do not overassume guidance parts 1 to 3",
+    "desc": "Opening of the guidance not to presume the user knows things they have not demonstrated."
+  },
+  "6a2ef36bce78bddd94bcdc71a10540940e1d6011": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-do-not-overassume-guidance-parts-1-to-2",
+    "name": "Agent Prompt: You should know — do not overassume guidance parts 1 to 2",
+    "desc": "Opening two fragments of the do-not-overly-assume-understanding guidance."
+  },
+  "63c84c20480e7a5923fef979e70c28bd80a1021f": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-weigh-consequence-guidance-lead",
+    "name": "Agent Prompt: You should know — weigh consequence guidance lead",
+    "desc": "Opening of the guidance to weigh the consequence of the user not understanding a fundamental aspect."
+  },
+  "a6d8373ce0e842e666c91fed1801c3a73064b35e": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-important-to-user-guidance-part-2",
+    "name": "Agent Prompt: You should know — important to user guidance part 2",
+    "desc": "Middle fragment of the understand-what-is-important-to-the-user guidance."
+  },
+  "f2410a3909857bc1eebaf1b332ae56b5ad5b6191": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-important-to-user-guidance-part-3",
+    "name": "Agent Prompt: You should know — important to user guidance part 3",
+    "desc": "Closing fragment telling the agent to avoid rabbit holes into fetched docs and focus on real consequences."
+  },
+  "b32c3ff137e7d505e680844b92eddee28257d50e": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-important-to-user-guidance",
+    "name": "Agent Prompt: You should know — important to user guidance",
+    "desc": "Tells the agent to consider the user's goals, avoid rabbit holes into fetched docs, and focus on consequential topics."
+  },
+  "e62f17576bb88f8992046f31048347e7d271271f": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-important-to-user-guidance-parts-1-to-2",
+    "name": "Agent Prompt: You should know — important to user guidance parts 1 to 2",
+    "desc": "Opening two fragments of the understand-what-is-important-to-the-user guidance."
+  },
+  "1fc03464f4de170b9946860dbaf5f54c3898e51d": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-default-to-learn-none-guidance",
+    "name": "Agent Prompt: You should know — default to learn none guidance",
+    "desc": "Sets a very high bar for suggestions and defaults to learn: none when in doubt."
+  },
+  "e82580592c68355684f55d75dfa2345afc79d53e": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-already-understood-topics-header",
+    "name": "Agent Prompt: You should know — already understood topics header",
+    "desc": "Header introducing the interpolated list of topics the person said they already understood, which must be avoided."
+  },
+  "86d067a92e07551dfe3835472d7023f2650d5d96": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-suggesting-nothing-guidance-part-1",
+    "name": "Agent Prompt: You should know — suggesting nothing guidance part 1",
+    "desc": "First fragment of the suggesting-nothing guidance."
+  },
+  "9925164302f26ca46d2c55d7f50d6a0cd95171e2": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-suggesting-nothing-guidance-part-2",
+    "name": "Agent Prompt: You should know — suggesting nothing guidance part 2",
+    "desc": "Second fragment of the suggesting-nothing guidance."
+  },
+  "9327275db9bab3e5920915e4e9cb4b16766189ee": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-suggesting-nothing-guidance-part-3",
+    "name": "Agent Prompt: You should know — suggesting nothing guidance part 3",
+    "desc": "Closing fragment introducing the bare learn: none reply."
+  },
+  "3a6dc77d085d89d551929409068c95cc9b10c158": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-suggesting-nothing-guidance",
+    "name": "Agent Prompt: You should know — suggesting nothing guidance",
+    "desc": "Tells the agent to pick the most important topic or, if nothing clears the bar, reply learn: none."
+  },
+  "66a97cdc224f5ef314997a8bb366db535a8a9894": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-suggesting-nothing-guidance-parts-1-to-2",
+    "name": "Agent Prompt: You should know — suggesting nothing guidance parts 1 to 2",
+    "desc": "Opening two fragments of the suggesting-nothing guidance."
+  },
+  "7dfb60261aa5dee371d5b6a09e9891969d8f940f": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-none-bare-reply-note",
+    "name": "Agent Prompt: You should know — learn none bare reply note",
+    "desc": "Requires the learn: none reply to carry no title or explainer."
+  },
+  "1a2cd9e150dd095905020e8e1ea835550aac116a": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-tag-line-intro",
+    "name": "Agent Prompt: You should know — tag line intro",
+    "desc": "Introduces the tag: line as the next line of the suggestion output."
+  },
+  "fa87bd3211f5a6a3e3912452a1f5c413c18d1c1c": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-tag-choice-guidance-part-2",
+    "name": "Agent Prompt: You should know — tag choice guidance part 2",
+    "desc": "Closing fragment asking the agent to pick whichever tag reads more naturally."
+  },
+  "1251b9517ea801e285e76121317bae1caca0e036": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-tag-choice-guidance",
+    "name": "Agent Prompt: You should know — tag choice guidance",
+    "desc": "Restricts the tag to You should know or Heads up and asks for the more natural one."
+  },
+  "c1d6f10405bd7a15bd2422a97131f0beb40a4ef3": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-tag-you-should-know-definition",
+    "name": "Agent Prompt: You should know — You should know tag definition",
+    "desc": "Defines the default You should know tag for topics about how something works that matter to the user's work."
+  },
+  "9da625f328f93fed9e4d44ffae6f45f444081be8": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-tag-heads-up-definition",
+    "name": "Agent Prompt: You should know — Heads up tag definition",
+    "desc": "Defines the Heads up tag for session-specific decisions, unhighlighted actions or possibly-off results that carry an immediate cost."
+  },
+  "4e2f66210e83ac9e246bc92decf818ca69a0e806": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-title-states-takeaway",
+    "name": "Agent Prompt: You should know — explain title states takeaway",
+    "desc": "Explain-title rule: state the single takeaway so the point lands without reading further."
+  },
+  "9d78e0ad11d358331e5e63ea57ef9906f7befda0": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-title-avoid-overconfidence",
+    "name": "Agent Prompt: You should know — explain title avoid overconfidence",
+    "desc": "Explain-title rule: do not state as fact what the learn line hedges with may."
+  },
+  "241cea850ae2bcb98f6eee61e75a7b55c301b899": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-title-statement-not-pitch",
+    "name": "Agent Prompt: You should know — explain title statement not pitch",
+    "desc": "Explain-title rule: write a statement with no questions, teasers, emoji or trailing punctuation."
+  },
+  "95226a9f6dd1e4dcc23406934928fb36105629d5": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-title-bold-own-line",
+    "name": "Agent Prompt: You should know — explain title bold own line",
+    "desc": "Explain-title rule: bold the whole title and put it on its own line."
+  },
+  "8fb9631204525018ad4876d930a93f4b80caf0c0": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explainer-root-in-ground-truth",
+    "name": "Agent Prompt: You should know — explainer root in ground truth",
+    "desc": "Explainer-text rule: use core technical terms and proper nouns that ground the human in what is happening."
+  },
+  "f1384d9def1d1eb7e28c5aafe9a41856abcc7a0e": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-user-context-switching-note",
+    "name": "Agent Prompt: You should know — user context switching note",
+    "desc": "Reminds the agent that the user is busy, context switching, and may not remember what is going on."
+  },
+  "5d5cd8daabc65cf0c122717967d7ff0331429826": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-user-no-context-reminder",
+    "name": "Agent Prompt: You should know — user no context reminder",
+    "desc": "Reminds the agent to assume the user has no context and is worn out from context switching."
+  },
+  "9479e55a274bebb7f49a573a020841384f39e403": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-choose-smart-explain-simply-lead",
+    "name": "Agent Prompt: You should know — choose smart explain simply lead",
+    "desc": "Opening of the guidance to choose topics for a smart user but explain as if they have forgotten everything."
+  },
+  "9dea3233537bead4079eeed61163b744768bb3ad": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-initial-insight-guidance",
+    "name": "Agent Prompt: You should know — initial insight guidance",
+    "desc": "Requires the suggestion to recap the decision or entity enough for a zero-context reader to judge its value."
+  },
+  "ae7903efd9bf08c4e56b70798f0c476dd7801d6d": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-err-on-not-suggesting",
+    "name": "Agent Prompt: You should know — err on not suggesting",
+    "desc": "Tells the agent to err on the side of not suggesting anything."
+  },
+  "acfe6b07fc7a1afc98fa43422a2c4a2626227734": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-formatting-no-topic-reply-part-1",
+    "name": "Agent Prompt: You should know — formatting no topic reply part 1",
+    "desc": "First fragment of the instruction to reply learn: none when there is no topic."
+  },
+  "a05093e535c7e819880b810ad242cc6f492f00c7": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-formatting-no-topic-reply-part-2",
+    "name": "Agent Prompt: You should know — formatting no topic reply part 2",
+    "desc": "Middle fragment of the no-topic learn: none reply instruction."
+  },
+  "0e9a7530ebb861c8beafeee151c56b55b6473fff": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-formatting-no-topic-reply",
+    "name": "Agent Prompt: You should know — formatting no topic reply",
+    "desc": "Tells the agent to reply learn: none and suggest nothing at all when it has nothing good."
+  },
+  "97ee299aa7b773f64f567989b695285654867f5c": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-formatting-no-topic-reply-parts-1-to-2",
+    "name": "Agent Prompt: You should know — formatting no topic reply parts 1 to 2",
+    "desc": "Opening two fragments of the no-topic learn: none reply instruction."
+  },
+  "91856fecda10aa909be1ce462a5cfaaa97822da2": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-formatting-labels-intro",
+    "name": "Agent Prompt: You should know — formatting labels intro",
+    "desc": "Introduces the learn/tag/explain labels, each on its own line, for when there is a topic to suggest."
+  },
+  "7e6ed7b8d78e4f6550edc90f6dbe22cdcaa1d25a": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-formatting-learn-label-lead",
+    "name": "Agent Prompt: You should know — formatting learn label lead",
+    "desc": "Opening fragment of the learn: label description in the formatting section."
+  },
+  "9eb8fc659e9a3b82662abac28afc87b68cedc707": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-formatting-learn-label",
+    "name": "Agent Prompt: You should know — formatting learn label",
+    "desc": "Describes the learn: label as the suggestion with its context and why it is important."
+  },
+  "3e89ab088c6454d4020c4291406c3ef0ab65a4f1": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-formatting-learn-label-options-note",
+    "name": "Agent Prompt: You should know — formatting learn label options note",
+    "desc": "Notes that the Learn more or Dismiss options should naturally follow the learn line."
+  },
+  "dbab89b0bf78118f4c19163738abce0f287d3218": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-label-part-2",
+    "name": "You should know: explain label part 2",
+    "desc": "Second string half of the output-format bullet defining the explain: label in the You should know side-agent prompt."
+  },
+  "2e675132618341db1bc56f6232dede0df7365455": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-label",
+    "name": "You should know: explain label",
+    "desc": "Output-format bullet defining the explain: label as a plain-English explanation for a no-context reader in the You should know side-agent prompt."
+  },
+  "3bd90eaa1123ea2df796aac1e456b17cdbfacb24": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-scenario-long-running-agent",
+    "name": "You should know: long-running agent scenario",
+    "desc": "Example scenario heading (the main agent works for a long time with little human input) in the You should know side-agent prompt."
+  },
+  "c01647ccd7f6fee195c635f69d18a8adad71f93b": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-prompt-caching-good",
+    "name": "You should know: prompt-caching learn example",
+    "desc": "Good learn: example about adding prompt caching to multi-turn /ask in the You should know side-agent prompt."
+  },
+  "8024b53b003868d49d613162a4d6bf0cd9bcc79e": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-prompt-caching-good-rationale",
+    "name": "You should know: prompt-caching learn rationale",
+    "desc": "Explains why the prompt-caching learn: line is a good suggestion in the You should know side-agent prompt."
+  },
+  "633deb0304554c9f667d25d1b58f0eca50b265db": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-scenario-unstated-decision-part-2",
+    "name": "You should know: unstated-decision scenario part 2",
+    "desc": "Middle string piece of the unstated-decision example scenario heading in the You should know side-agent prompt."
+  },
+  "e7d59617a5e3096432a7ce4a853f340a3c61f63e": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-scenario-unstated-decision",
+    "name": "You should know: unstated-decision scenario",
+    "desc": "Example scenario heading (the agent made a small unstated decision that might trip the user up) in the You should know side-agent prompt."
+  },
+  "5f4ab6e6372c2dde4e825eab3219e6fdef84caab": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-scenario-unstated-decision-lead",
+    "name": "You should know: unstated-decision scenario lead",
+    "desc": "Leading string pieces of the unstated-decision example scenario heading in the You should know side-agent prompt."
+  },
+  "d52dfd7e5640e87403713d7d4a0a455261a06d2b": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-feature-flag-good",
+    "name": "You should know: feature-flag learn example",
+    "desc": "Good learn: example about putting multi-turn /ask behind a default-off feature flag in the You should know side-agent prompt."
+  },
+  "3f3eada5248f92317cb483fedc649a352c37f281": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-feature-flag-good-rationale",
+    "name": "You should know: feature-flag learn rationale",
+    "desc": "Explains why the feature-flag learn: line is a good suggestion in the You should know side-agent prompt."
+  },
+  "15e6a46d8bc700b235c34a5fe629d6218c115452": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-feature-flag-bad",
+    "name": "You should know: insider-shorthand flag learn example",
+    "desc": "Bad insider-shorthand learn: example about gating the flag at 0% rollout in the You should know side-agent prompt."
+  },
+  "e558a8589a47d4dbb5d725811d39f0181deb2ad8": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-feature-flag-bad-rationale-part-2",
+    "name": "You should know: flag bad-example rationale part 2",
+    "desc": "Second template-literal half of the critique of the insider-shorthand flag learn: line in the You should know side-agent prompt."
+  },
+  "16e15cc910d66eb820f2206ac80f8236465d1231": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-feature-flag-bad-rationale",
+    "name": "You should know: flag bad-example rationale",
+    "desc": "Explains why the insider-shorthand flag learn: line is bad in the You should know side-agent prompt."
+  },
+  "7be1ec3ae9e5f61821f70d0d1bed8ef3fb1fcb9f": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-scenario-human-decision",
+    "name": "You should know: human-decision scenario",
+    "desc": "Example scenario heading (the human made a decision the agent is executing) in the You should know side-agent prompt."
+  },
+  "5c75d377c4785f3ca35fd3baba67f9d2841ebe09": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-orders-db-encryption-good",
+    "name": "You should know: Orders DB encryption learn example",
+    "desc": "Good learn: example about the performance cost of Orders DB at-rest encryption in the You should know side-agent prompt."
+  },
+  "4a552f31707410d3f5158dad668d0606c2993d61": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-orders-db-encryption-good-rationale-part-1",
+    "name": "You should know: Orders DB learn rationale part 1",
+    "desc": "First string half of the rationale for the Orders DB encryption learn: line in the You should know side-agent prompt."
+  },
+  "98cd656cb3926456d31f6dc238e72e0aa595ad8c": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-orders-db-encryption-good-rationale-part-2",
+    "name": "You should know: Orders DB learn rationale part 2",
+    "desc": "Second string half of the rationale for the Orders DB encryption learn: line in the You should know side-agent prompt."
+  },
+  "5ca3aa9b7376764294c13d6ec21bcc84217faf57": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-orders-db-encryption-good-rationale",
+    "name": "You should know: Orders DB learn rationale",
+    "desc": "Explains why the Orders DB encryption learn: line is a good suggestion in the You should know side-agent prompt."
+  },
+  "9f8745a62038666ba38afb26ce33295b5cb6b55d": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-orders-db-encryption-bad-jargon",
+    "name": "You should know: jargon encryption learn example",
+    "desc": "Bad jargon-dense learn: example about envelope encryption and KMS in the You should know side-agent prompt."
+  },
+  "2acc699454de248d9801c931008c31d46a7bcd12": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-orders-db-encryption-bad-jargon-rationale",
+    "name": "You should know: jargon encryption rationale",
+    "desc": "Explains why the jargon-dense encryption learn: line is bad in the You should know side-agent prompt."
+  },
+  "bbf1591fffb6c986e6fcc0c8cfbdba0f865034cf": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-orders-db-encryption-bad-repeat",
+    "name": "You should know: restating learn example",
+    "desc": "Bad learn: example that only restates the human's encryption decision in the You should know side-agent prompt."
+  },
+  "96e62f343918796164663f6875709ce504e68e7d": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-orders-db-encryption-bad-repeat-rationale",
+    "name": "You should know: restating learn rationale",
+    "desc": "Explains why restating the human's decision is a bad suggestion in the You should know side-agent prompt."
+  },
+  "88a0e8fecee44ed4b2578f746146a9418f83dbdc": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-scenario-trendline-knowledge-gap-part-2",
+    "name": "You should know: Trendline gap scenario part 2",
+    "desc": "Second string half of the Trendline knowledge-gap example scenario heading in the You should know side-agent prompt."
+  },
+  "d5fc3336437e69520df1b2037cfe7f2b18df52b2": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-scenario-trendline-knowledge-gap",
+    "name": "You should know: Trendline gap scenario",
+    "desc": "Example scenario heading (the human's questions show they do not understand an aspect of Trendline) in the You should know side-agent prompt."
+  },
+  "a7c3b751ed8dc9c17e1e0c1ce5b7ee2e54a2bfa5": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-trendline-privacy-good-part-1",
+    "name": "You should know: Trendline learn example part 1",
+    "desc": "First string half of the Trendline transcript-privacy learn: example in the You should know side-agent prompt."
+  },
+  "7bd2bfaeae1bd30940aa69a0d7b5c193294e38e0": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-trendline-privacy-good-part-2",
+    "name": "You should know: Trendline learn example part 2",
+    "desc": "Second string half of the Trendline transcript-privacy learn: example in the You should know side-agent prompt."
+  },
+  "b1023c48da10d7fc81ab701dec4fde7711205f67": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-trendline-privacy-good",
+    "name": "You should know: Trendline learn example",
+    "desc": "Good learn: example about Trendline exporting transcripts without S3 storage for privacy in the You should know side-agent prompt."
+  },
+  "c08e1de47ea44e62731f29b60d573e45132e2c2f": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-trendline-privacy-good-rationale",
+    "name": "You should know: Trendline learn rationale",
+    "desc": "Explains why the Trendline privacy learn: line is a good suggestion in the You should know side-agent prompt."
+  },
+  "2c34d6aaa940ca35edfd85ed708b117b2ea471a7": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-trendline-vague-bad-rationale",
+    "name": "You should know: vague Trendline rationale",
+    "desc": "Explains why the vague Trendline learn: question is bad in the You should know side-agent prompt."
+  },
+  "6d4497c5c7be5d976314b657ed3d5a592f594527": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-scenario-routine-change",
+    "name": "You should know: routine-change scenario",
+    "desc": "Example scenario heading (a small routine change with no surprises) in the You should know side-agent prompt."
+  },
+  "2bdc7e77417363dd71ee381189e8dd832f21410d": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-renamed-flag-bad",
+    "name": "You should know: renamed-flag learn example",
+    "desc": "Bad plumbing-trivia learn: example about a renamed flag in the You should know side-agent prompt."
+  },
+  "d5c4ce1e7e50b1c9963e50854aa01e6ed3e410d1": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-renamed-flag-bad-rationale",
+    "name": "You should know: renamed-flag rationale",
+    "desc": "Explains why the renamed-flag learn: line is boring trivia in the You should know side-agent prompt."
+  },
+  "409fc9ca90c3185ad65f5c80ed8504251a5ba239": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-scenario-cache-finder-debate",
+    "name": "You should know: finder-caching debate scenario",
+    "desc": "Example scenario heading (the human and agent are already debating caching finder results) in the You should know side-agent prompt."
+  },
+  "056c6a84e6b66763e6806a4037fb52556225bdce": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-cache-finder-bad",
+    "name": "You should know: finder-caching learn example",
+    "desc": "Bad learn: example that repeats the finder-caching debate in the You should know side-agent prompt."
+  },
+  "d00d4ff3b5ec6a75f7a3091f6dcf067bc59bf188": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-cache-finder-bad-rationale",
+    "name": "You should know: finder-caching rationale",
+    "desc": "Explains why repeating an in-session debate is a bad suggestion in the You should know side-agent prompt."
+  },
+  "b3ae212090f68e8e63d7d7860cf4977970bd93f4": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-scenario-yaml-quirk",
+    "name": "You should know: YAML quirk scenario",
+    "desc": "Example scenario heading (a batch job hits a well-known YAML library quirk) in the You should know side-agent prompt."
+  },
+  "1647214c7b7dff22a945172110be868596d2bcc1": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-yaml-quirk-bad",
+    "name": "You should know: YAML quirk learn example",
+    "desc": "Bad learn: example about YAML reading 'no' as false in the You should know side-agent prompt."
+  },
+  "379e4a7a4e8885c35a67854f3150c09a516c191c": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-learn-example-yaml-quirk-bad-rationale",
+    "name": "You should know: YAML quirk rationale",
+    "desc": "Explains that an interesting quirk with no stakes is not worth suggesting in the You should know side-agent prompt."
+  },
+  "fbe100fa26ea7ccadeb437bd2a17d46756981e76": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-tag-examples-intro",
+    "name": "You should know: tag examples intro",
+    "desc": "Intro line for the tag: examples section in the You should know side-agent prompt."
+  },
+  "b43fa80913ca371581169db7e2665b7f3bc81df3": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-learn-line-prompt-caching",
+    "name": "You should know: prompt-caching learn line (hard break)",
+    "desc": "Prompt-caching learn: line ending in a markdown hard break, repeated across the tag and explain examples of the You should know side-agent prompt."
+  },
+  "87d3adfd9c7209ee0e6dd13432ed13a70fdcdf46": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-learn-line-feature-flag",
+    "name": "You should know: feature-flag learn line (hard break)",
+    "desc": "Feature-flag learn: line ending in a markdown hard break, repeated across the tag and explain examples of the You should know side-agent prompt."
+  },
+  "e0d0062a79ff5fa78b5b5e061722eb179dd3c113": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-tag-example-heads-up-rationale",
+    "name": "You should know: Heads up tag rationale",
+    "desc": "Explains that the Heads up tag examples flag decisions Claude made, in the You should know side-agent prompt."
+  },
+  "536e8ae552b36e8aba65fe192ad705eea2556434": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-learn-line-orders-db-encryption",
+    "name": "You should know: Orders DB learn line (hard break)",
+    "desc": "Orders DB encryption learn: line ending in a markdown hard break, repeated across the tag and explain examples of the You should know side-agent prompt."
+  },
+  "54b296aa1534e59bd69b983e57314e72f1c4d80b": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-learn-line-trendline-privacy-part-2",
+    "name": "You should know: Trendline learn line (hard break) part 2",
+    "desc": "Second string half of the Trendline privacy learn: line ending in a markdown hard break, in the You should know side-agent prompt."
+  },
+  "eb80257c436f802d2099deba04e553e93c734831": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-learn-line-trendline-privacy",
+    "name": "You should know: Trendline learn line (hard break)",
+    "desc": "Trendline privacy learn: line ending in a markdown hard break, in the tag examples of the You should know side-agent prompt."
+  },
+  "b3ebc8bf6f131a3e2e27e38f0ea1204b1d3200ad": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-tag-example-you-should-know-rationale",
+    "name": "You should know: You should know tag rationale",
+    "desc": "Explains that the You should know tag examples are educational rather than urgent, in the You should know side-agent prompt."
+  },
+  "cfd78e051810714900797971a4bb7f1ef946e0b3": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-examples-intro",
+    "name": "You should know: explain examples intro",
+    "desc": "Intro line for the explain: examples section in the You should know side-agent prompt."
+  },
+  "60906d63e8ae524a37ae23ad104a717ce31f3635": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-title-example-good-rationale",
+    "name": "You should know: good title rationale",
+    "desc": "Explains why the good explain titles work, in the You should know side-agent prompt."
+  },
+  "4288af030a0d41238586dec2fd0a76943b4f64c0": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-title-example-topic-only-bad-rationale",
+    "name": "You should know: topic-only title rationale",
+    "desc": "Explains why an explain title that names only the topic is bad, in the You should know side-agent prompt."
+  },
+  "18ca512f460320f9a8103f68f1a3de482b42605f": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-title-example-code-name-bad-rationale",
+    "name": "You should know: code-name title rationale",
+    "desc": "Explains why a code-name explain title is bad, in the You should know side-agent prompt."
+  },
+  "3b3870516e423629b91cc972337843ab0085739b": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-title-example-overstated-bad-rationale",
+    "name": "You should know: overstated title rationale",
+    "desc": "Explains why an overconfident explain title is bad, in the You should know side-agent prompt."
+  },
+  "6eaf54986f4fdddafe57385f1e96919ced067798": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-title-example-overlong-bad-rationale",
+    "name": "You should know: overlong title rationale",
+    "desc": "Explains why an overlong explain title is bad, in the You should know side-agent prompt."
+  },
+  "ee859eeb202522d58c6d7aa36dafd75f6279abee": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-example-prompt-caching-jargon-bullet",
+    "name": "You should know: jargon explainer bullet",
+    "desc": "Jargon bullet from the bad prompt-caching explainer example in the You should know side-agent prompt."
+  },
+  "168c372b1819534ece8a7328cdf4a988871befb8": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-example-prompt-caching-jargon-bad-rationale",
+    "name": "You should know: jargon explainer rationale",
+    "desc": "Explains why the jargon-filled prompt-caching explainer is bad, in the You should know side-agent prompt."
+  },
+  "6156f2f5220dbefc7d096faa1d7abb63cdc1da5a": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-example-prompt-caching-run-on-bad-rationale",
+    "name": "You should know: run-on explainer rationale",
+    "desc": "Explains why the run-on prompt-caching explainer is bad, in the You should know side-agent prompt."
+  },
+  "e55f73b27e691c7603514b4174b90bd10497d79b": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-example-feature-flag-good-definition",
+    "name": "You should know: feature-flag explainer definition",
+    "desc": "Sentence from the good feature-flag explainer that defines the flag and states that it is off, in the You should know side-agent prompt."
+  },
+  "2473bf66f2f42016f928710265818fb39bcf7a51": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-example-feature-flag-good-action",
+    "name": "You should know: feature-flag explainer action",
+    "desc": "Action line with a sample flag URL from the good feature-flag explainer, in the You should know side-agent prompt."
+  },
+  "4d40f6343e4b0597b4375306f1d02ae82f2dfd1c": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-example-feature-flag-fragment-bullet",
+    "name": "You should know: fragment explainer bullet",
+    "desc": "Fragment bullet from the bad feature-flag explainer example in the You should know side-agent prompt."
+  },
+  "1a788c277cdde92c6de613d9e29e894e7f070bc9": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-example-feature-flag-fragment-bad-rationale",
+    "name": "You should know: fragment explainer rationale",
+    "desc": "Explains why the fragment-bullet feature-flag explainer is bad, in the You should know side-agent prompt."
+  },
+  "18e1c48424fa3971fe924da0b55a2812aacb8a4c": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-explain-example-orders-db-encryption-at-rest-bullet",
+    "name": "You should know: encryption-at-rest explainer bullet",
+    "desc": "Bullet from the good Orders DB explainer that defines encryption at rest, in the You should know side-agent prompt."
+  },
+  "656cc687cd7f83545e41e9d0b8d7fbb139a2ae3c": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-orders-db-cpu-catch",
+    "name": "You should know example: Orders DB encryption CPU catch",
+    "desc": "GOOD-example bullet explaining that decrypting on every read costs CPU"
+  },
+  "220279aab09945a54d840070aa8c2bf3356cf9e2": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-orders-db-many-small-reads-delay",
+    "name": "You should know example: Orders DB small-read delay",
+    "desc": "GOOD-example bullet explaining that frequent small reads multiply the decryption delay"
+  },
+  "e27566e298dc11529fc3a125fc0bb2b9fd0f0692": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-orders-db-check-cpu-headroom",
+    "name": "You should know example: Orders DB CPU check",
+    "desc": "GOOD-example bullet recommending a check that Orders DB servers have enough CPU"
+  },
+  "2e68cf280e44e73cfbf2ceb1d1487efb9d6f54cd": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-orders-db-cpu-short-fixes",
+    "name": "You should know example: Orders DB CPU fixes",
+    "desc": "GOOD-example bullet offering caching or field-level encryption if CPU runs short"
+  },
+  "afae184a5cf301be0f807fdc7e5f1ce307aff109": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-orders-db-good-rationale",
+    "name": "You should know example: Orders DB good rationale",
+    "desc": "Rationale line explaining why the Orders DB explainer is a good example"
+  },
+  "b437aa9d612d71c3e8dd57fbebfbf63fea50cdc2": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-trendline-scenario-heading-tail",
+    "name": "You should know example: Trendline scenario heading tail",
+    "desc": "Second concatenated half of the Trendline privacy scenario heading"
+  },
+  "b21603835ba1eac3b0da57113f4f8dff07b70e98": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-trendline-scenario-heading",
+    "name": "You should know example: Trendline privacy scenario heading",
+    "desc": "Scenario heading where the user misunderstands a Trendline privacy design but has the agent proceed"
+  },
+  "b210280a74fc3ed082e0c22713c07e69dd4f2776": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-trendline-learn-line",
+    "name": "You should know example: Trendline learn line",
+    "desc": "learn: line for the Trendline transcript-privacy example"
+  },
+  "1761895744643377e1a73a8fcd54ea6ad166aee6": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-trendline-finds-patterns",
+    "name": "You should know example: Trendline finds patterns",
+    "desc": "GOOD-example bullet describing what Trendline does without reading chats"
+  },
+  "c1da2562fe9600b1728ccf45cdd381dab5d8fd62": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-trendline-exports-in-memory",
+    "name": "You should know example: Trendline in-memory exports",
+    "desc": "GOOD-example bullet saying Trendline exports stay in memory and never reach S3"
+  },
+  "95a0372d97523049321c634ef966f8d072b2e212": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-trendline-no-saved-copy",
+    "name": "You should know example: Trendline no saved copy",
+    "desc": "GOOD-example bullet explaining there is no saved copy to open or leak"
+  },
+  "243454f128d2a635a1ff53cf85f38e289d947686": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-trendline-crash-restart-tradeoff",
+    "name": "You should know example: Trendline restart tradeoff",
+    "desc": "GOOD-example bullet on the tradeoff that a crashed export starts over"
+  },
+  "3df134adf1faa929499b1868b128b52f6fca1d41": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-trendline-careful-saving-transcripts",
+    "name": "You should know example: Trendline saving caution",
+    "desc": "GOOD-example bullet warning that saving transcripts for retries would threaten privacy"
+  },
+  "fb7bc7e8d056aeb799f2f80a566f361f3bcb35fe": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-shared-folders-bad-learn-line",
+    "name": "You should know example: shared folders bad learn line",
+    "desc": "BAD learn: line about the June shared-folder change skewing the 16-week trend"
+  },
+  "04de0adb79fad21ba42e214cbcbc5d88028f2752": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-shared-folders-be-confident-critique",
+    "name": "You should know example: be-confident critique",
+    "desc": "First two concatenated pieces of the critique telling the side agent to be confident the topic is worthwhile and not covered by the main session"
+  },
+  "c1197b6f123ba58fceb313e5279fbed0e94e9800": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-shared-folders-setup-step-change",
+    "name": "You should know example: v4.2 setup step change",
+    "desc": "Bullet describing the v4.2 mid-June removal of the group setup step before sharing a folder"
+  },
+  "e1c7a2c4da4a2a1b00238cb53b17c33dea25b6ca": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-shared-folders-trend-spans-change",
+    "name": "You should know example: trend spans the change",
+    "desc": "Bullet noting the 16-week trend covers weeks before and after the change"
+  },
+  "15b44450ae6d3b10d1bb85ea446bfc4d965c0640": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-shared-folders-usage-may-rise",
+    "name": "You should know example: usage may rise",
+    "desc": "Bullet noting usage could rise from the removed setup step without more demand"
+  },
+  "251e6f4834821759924fa85d1174539b9ecb8018": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-shared-folders-groups-count-meaning",
+    "name": "You should know example: groups count meaning",
+    "desc": "Bullet explaining the groups count tracks folders after the change"
+  },
+  "dd8f2afb070d72b3ab1cfdd5108a95a602f8ace9": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-shared-folders-compare-after-mid-june",
+    "name": "You should know example: compare after mid-June",
+    "desc": "Bullet recommending comparing only post-mid-June weeks for the deprecation decision"
+  },
+  "b56d4a7ae7bcbe68f5e66e3c32f87511684e1cd5": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-shared-folders-good-learn-line",
+    "name": "You should know example: shared folders good learn line",
+    "desc": "GOOD learn: line about the June folder-sharing change bumping usage metrics"
+  },
+  "7d245d59ad9ccad9d91652826051a24331cfdb1d": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-shared-folders-simpler-critique",
+    "name": "You should know example: simpler critique",
+    "desc": "First two concatenated pieces of the critique praising the simpler GOOD rewrite"
+  },
+  "5c89de1ce24c4882c71d39871e0db6ce49ea0dad": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-shared-folders-setup-step-change-create-group",
+    "name": "You should know example: v4.2 setup step change with createGroup",
+    "desc": "Variant bullet describing the v4.2 setup-step removal that names createGroup"
+  },
+  "9a324c387e1b8c0aff881e6126d48942cd6a57e3": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-experiment-bad-learn-line",
+    "name": "You should know example: experiment bad learn line",
+    "desc": "BAD learn: line about a running experiment swapping shared folders for share links"
+  },
+  "e9ac57970d086325e6dc140327feab798ee1b2a4": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-experiment-hard-to-grok-critique-second-piece",
+    "name": "You should know example: hard-to-grok critique second piece",
+    "desc": "Second of four concatenated pieces of the hard-to-grok critique"
+  },
+  "9ff7ddb1995e745c3404d4312167bbbb59e0ef94": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-experiment-hard-to-grok-critique-third-piece",
+    "name": "You should know example: hard-to-grok critique third piece",
+    "desc": "Third of four concatenated pieces of the hard-to-grok critique"
+  },
+  "dc0a848e142fd716565dfc7de7413e43f9049d53": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-experiment-hard-to-grok-critique",
+    "name": "You should know example: hard-to-grok critique",
+    "desc": "Full critique that the experiment learn line is hard to grok without rollout metrics"
+  },
+  "2b03e0863b63f6e16c930a7c6dd98bb0d26e26ca": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-experiment-hard-to-grok-critique-pieces-1-3",
+    "name": "You should know example: hard-to-grok critique pieces 1-3",
+    "desc": "First three concatenated pieces of the hard-to-grok critique, through 'the experiment'"
+  },
+  "78fe3941175fae8f093325dd586e064d0beb27d0": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-experiment-hard-to-grok-critique-pieces-1-2",
+    "name": "You should know example: hard-to-grok critique pieces 1-2",
+    "desc": "First two concatenated pieces of the hard-to-grok critique, through 'means here'"
+  },
+  "209535fd8716f9e94b9fe9f5a5c5290537c8086d": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-experiment-creates-shared-folder",
+    "name": "You should know example: experiment creates shared folder",
+    "desc": "Bullet describing when the app creates a shared folder for outside users"
+  },
+  "89fe4cdb4ed63554431f21902404763b27aa9e95": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-experiment-close-to-deprecation",
+    "name": "You should know example: experiment close to deprecation",
+    "desc": "Bullet saying the experiment approximates deprecating shared folders"
+  },
+  "b36882689bcd6188edb86e6fdcdb2b948a619d31": {
+    "facing": "model",
+    "id": "agent-prompt-you-should-know-example-experiment-count-misses-users",
+    "name": "You should know example: count misses users",
+    "desc": "Bullet noting the ~12k count misses experiment-group users"
+  },
+  "ac92a9fd1a8ffe60e9defed46170ef94c71fb7d8": {
+    "facing": "model",
+    "id": "data-you-should-know-side-agent-note-prefill",
+    "name": "You should know: side-agent note prefill",
+    "desc": "Lead-in wrapping a quoted You-should-know explainer that is filled into the prompt box for the main session"
+  },
+  "2cb08ba416bd5a9dd418d59d163447cf4e7a9247": { "facing": "ui" },
+  "2a0d6bfe2152396099d046ff1e35eafd383ed51d": {
+    "facing": "model",
+    "id": "skill-claude-test-needs-terminal",
+    "name": "Skill Claude Test Needs Terminal",
+    "desc": "Claude Test skill/command failure telling the model to relay that the browser helper only starts from an interactive terminal session."
+  },
+  "aba8a922f79706809afa6bd9608f1bbcf142704f": {
+    "facing": "model",
+    "id": "skill-claude-test-helper-not-loaded",
+    "name": "Skill Claude Test Helper Not Loaded",
+    "desc": "Claude Test failure that this session did not load the built-in browser-helper module, usually because another claude-test plugin is installed."
+  },
+  "29a396da9c9613fdc9f3d27f2b0bdb6bc7854319": {
+    "facing": "model",
+    "id": "skill-claude-test-duplicate-plugin-loads-first",
+    "name": "Skill: claude-test duplicate plugin loads first",
+    "desc": "Claude Test failure text returned as the skill prompt when another enabled plugin also named claude-test loads first, telling the user to disable it in /plugin and restart."
+  },
+  "a26f723fecc970f0623c9becff24e96a3c22fdb5": {
+    "facing": "model",
+    "id": "skill-claude-test-helper-not-started",
+    "name": "Skill Claude Test Helper Not Started",
+    "desc": "Claude Test failure that the browser helper is not running and the user must type /claude-test to start it."
+  },
+  "c70d87be658dc0963b5ba6d63185e9ce73c9d026": {
+    "facing": "model",
+    "id": "skill-claude-test-helper-tools-not-listed",
+    "name": "Claude Test: helper tools not listed",
+    "desc": "Relayed when the Claude Test browser helper connected but its tools did not appear within the wait window"
+  },
+  "a99b16591f9f5865fd0c45e2206d695d3e7b942e": {
+    "facing": "model",
+    "id": "skill-claude-test-other-mcp-server-runs-helper",
+    "name": "Claude Test: other MCP server runs helper",
+    "desc": "Relayed when another MCP server already runs the Claude Test browser helper"
+  },
+  "96a0d8c15688138b72a37bad61a8281a685b7412": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-helper-file-differs",
+    "name": "System Prompt: Claude Test Helper File Differs",
+    "desc": "Claude Test skill/command prompt when a helper file does not match what this Claude Code version ships."
+  },
+  "00500b5f18435637041a6a5c7de57776458965b1": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-helper-symlink",
+    "name": "System Prompt: Claude Test Helper Symlink",
+    "desc": "Claude Test skill/command prompt when the helper path is a symlink rather than a real folder."
+  },
+  "7e6ec66266e3fa049346eb2c9f7159252e04c52d": {
+    "facing": "model",
+    "id": "system-prompt-claude-test-helper-unwritable",
+    "name": "System Prompt: Claude Test Helper Unwritable",
+    "desc": "Claude Test skill/command prompt when the helper directory cannot be written."
+  },
+  "2cef00f7f10c9cae67559235fc8c6cc072c22a7d": {
+    "facing": "model",
+    "id": "skill-claude-test-load-mark",
+    "name": "Claude Test: load mark line",
+    "desc": "First line prefixed to the run skill body carrying a load id, telling the model the line needs no action"
+  },
+  "39be6ff28370b4b3b52e1c4fea2a669d7a0261e9": {
+    "facing": "model",
+    "id": "skill-claude-test-load-spent",
+    "name": "Claude Test: load spent",
+    "desc": "Relayed when a Claude Test run skill load mark is stale or unknown, telling the person to run /claude-test"
+  },
+  "3f94f9802ac4122811cfac6641238aac3f6f8120": { "facing": "internal" },
+  "46d8a8ccbb2509ca1cb27be780bf6a9f559123c5": { "facing": "internal" },
+  "15d344c8298d4d084ea61aab3f2884308d2619dd": { "facing": "internal" },
+  "ae5a48733e8092cd99fcdfea8a6a0e9ac3dd8802": {
+    "facing": "model",
+    "id": "tool-result-plugin-tool-check-deny-rules-unchecked-refused",
+    "name": "Plugin tool check: deny rules unchecked",
+    "desc": "Deny reason when the security-default plugin cannot check settings deny rules for a tool call"
+  },
+  "5765193821848c8665c32a2ac137dd47c84bfbe2": { "facing": "ui" },
+  "152b79cb2bb8e8d8dad8f347cf68284f42cab943": { "facing": "ui" },
+  "4bd81e6b1bf8b6eb71f72381c1334f536777bab9": { "facing": "internal" },
+  "d1d8a35a9c905d4e3198eb95a5b6883e3ce8d97a": { "facing": "internal" },
+  "e06f9464748fd387705cfcf2700d3f202a5ad37b": { "facing": "internal" },
+  "29c41dba9de137b0053ad709526b380ca31fdb4b": { "facing": "internal" },
+  "244f0e1d1ad0574e627c85ffa18b3240a7a8b733": { "facing": "internal" },
+  "71b7a1f8dc5bf7b611995f680bad5ac534cb93b4": { "facing": "internal" },
+  "836006559d98d33e01544dc25440947ad342df45": { "facing": "internal" },
+  "ca3aa0f7e1624fbb40e349b68ae52f645152f83e": { "facing": "internal" },
+  "a3e5c7abd98ef969061612f3fc2fdaea9233d14b": { "facing": "internal" },
+  "28810eff7a669eef230f16f11b2174fab8a6350d": { "facing": "ui" },
+  "6db7a33e4d39391d2f0316782e56a6fcc724e88c": { "facing": "ui" },
+  "06a63e102b69c719ce3dc9579ea2e3d3d5974c17": { "facing": "ui" },
+  "7e304cbe575f00334965c7da420429e738fda389": { "facing": "ui" },
+  "920165ccc5c4e1283540fdb7c7571e91aee2b27d": { "facing": "ui" },
+  "c9c52ce377ad6e3bf840b13ba4fccbb6ad3ad6c7": { "facing": "ui" },
+  "4432544bc99ddc52c51a49c3ddeaf4a035c41490": { "facing": "ui" },
+  "babe91f837860c6b20b2628d43509bd5eaac0b8f": { "facing": "ui" },
+  "fffb45d083ae6c2220aee869ebe998ddc5f39a18": { "facing": "ui" },
+  "e199cb0757f96206b838ce33217ba6fedc6a7881": { "facing": "ui" },
+  "f2234cba0ed5020028243a22fd7a8f1d899d96a0": { "facing": "ui" },
+  "a1e3e6d89ed767626322303206d21b32f3704c16": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-learn-more-dismiss-options-lead",
+    "name": "System Prompt: You should know learn more dismiss options lead",
+    "desc": "Opens the bullet naming the Learn more and Dismiss options of a You should know offer"
+  },
+  "8ee1e407463f412e90325dc4fab017cb9eb249f2": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-explain-field-format-lead",
+    "name": "System Prompt: You should know explain field format lead",
+    "desc": "Opens the output-format bullet for the explain field: a plain-English explanation"
+  },
+  "a42826cdc3fb4e15e6ef262d3876356b53c2d497": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-calibrate-to-demonstrated-knowledge-lead",
+    "name": "System Prompt: You should know calibrate to demonstrated knowledge lead",
+    "desc": "Opens the rule to calibrate a suggestion to the user's demonstrated level of knowledge"
+  },
+  "f86039f70e80caaeb9d6927d4af59bb6091adf86": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-understand-what-matters-to-user-lead",
+    "name": "System Prompt: You should know understand what matters to user lead",
+    "desc": "Opens the rule to understand what is important to the user before choosing a topic"
+  },
+  "6942ecfc9e9850e01fe4222a61695e6a3bdef4db": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-follow-up-questions-example-lead",
+    "name": "System Prompt: You should know follow up questions example lead",
+    "desc": "Opens a worked example about adding follow-up questions"
+  },
+  "f9ef2dcc517a025e09aaa6116637cc7122bb41c9": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-hard-to-parse-example-critique-lead",
+    "name": "System Prompt: You should know hard to parse example critique lead",
+    "desc": "Opens an example critique of a hard-to-parse offer line about removing shared folders"
+  },
+  "a312bc64cb70f02d03e6b474366e0053647d7ad7": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-scenario-human-questions-lead",
+    "name": "System Prompt: You should know scenario human questions lead",
+    "desc": "Opens the scenario heading where the human asked questions suggesting they do not understand something"
+  },
+  "d68470a18aaa556f6c3aca94523e2605a2aeb61d": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-scenario-small-decision-lead",
+    "name": "System Prompt: You should know scenario small decision lead",
+    "desc": "Opens the scenario heading where the main agent just made a small decision the user should know about"
+  },
+  "f079c29480bde381762a33c5d530eccd518baf64": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-tag-label-allowed-values-lead",
+    "name": "System Prompt: You should know tag label allowed values lead",
+    "desc": "Opens the rule that the tag is always either You should know or Heads up"
+  },
+  "955fe9435adca4f69e21a563a6375639f8d6661d": {
+    "facing": "model",
+    "id": "system-prompt-you-should-know-insider-shorthand-example-critique-lead",
+    "name": "System Prompt: You should know insider shorthand example critique lead",
+    "desc": "Opens an example critique of an offer line that uses insider shorthand such as gated"
+  },
+  "3bd3dbeddb9714bea6d342fd7cf4856e18ac599e": { "facing": "ui" },
+  "1e514e096d4c1bf3376a1c849b1123544e504943": { "facing": "ui" }
 }
