@@ -1665,6 +1665,24 @@ This is how Claude Code surfaces messages the user sends mid-turn — within the
     // mid-turn … Address the message above as you continue this turn." (the em-dash
     // is emitted as the literal `—` escape in the template source). Both are
     // matched via a trailing alternation (new first) so older CC builds still bind.
+    // 2.1.286 hoisted the wrapper into its own function, which the human case
+    // and the plugin asUser path both call: `function F(e){return`${INTRO}${e}
+    // \n\nThis is how…`}`. Patch the function so both callers stay consistent.
+    const fnShape =
+      /(function [$\w]+\(([$\w]+)\)\{)return`\$\{[$\w]+\}\$\{\2\}\n\nThis is how Claude Code surfaces messages the user sends mid-turn \\u2014 within the running turn, often alongside the next tool result, rather than as a separate conversation turn\. Address the message above as you continue this turn\.`\}/;
+    if (fnShape.test(content)) {
+      return findAndReplace(
+        content,
+        fnShape,
+        m => {
+          const [, head, hParam] = m;
+          if (isSuppressed) return `${head}return\`\${${hParam}}\`}`;
+          const bodyForBuild = body.replace(/\$\{H\}/g, `\${${hParam}}`);
+          return `${head}return\`${bodyForBuild}\`}`;
+        },
+        'user-sent-new-message'
+      );
+    }
     return findAndReplace(
       content,
       /((?:case"auto-continuation":)?case"human":case void 0:(?:default:)?)return`(?:The user sent a new message while you were working:\n|\$\{[$\w]+\})\$\{([$\w]+)\}\n\n(?:This is how Claude Code surfaces messages the user sends mid-turn \\u2014 within the running turn, often alongside the next tool result, rather than as a separate conversation turn\. Address the message above as you continue this turn\.|IMPORTANT: After completing your current task, you MUST address the user's message above\. Do not ignore it\.)`/,
