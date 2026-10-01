@@ -1938,5 +1938,43 @@
     "desc": "Tail of the project_read truncation notice telling the model project_search still covers the whole document.",
     "reason": "tells the model a capability it still has after truncation",
     "verdict": "catalogue"
+  },
+  "ae1a22b78cd2114c": {
+    "promptId": "tool-result-artifact-share-not-owner",
+    "label": "TOOL_RESULT_ARTIFACT_SHARE_NOT_OWNER_VAR_0",
+    "id": "tool-result-artifact-share-nothing-shared",
+    "name": "Tool Result: Artifact share — nothing shared",
+    "desc": "Closing clause on an Artifact share denial telling the model that no sharing change was made.",
+    "reason": "states the consequence of the denial, like the catalogued Nothing was published.",
+    "verdict": "catalogue",
+    "text": "Nothing was shared."
+  },
+  "5c05e00f3d7b728b": {
+    "promptId": "tool-result-artifact-share-org-shared",
+    "label": "TOOL_RESULT_ARTIFACT_SHARE_ORG_SHARED_VAR_2",
+    "reason": "labels the organization name the slot interpolates",
+    "verdict": "glue",
+    "text": "everyone at "
+  },
+  "d89d8b8c2593393c": {
+    "promptId": "tool-result-artifact-share-org-shared",
+    "label": "TOOL_RESULT_ARTIFACT_SHARE_ORG_SHARED_VAR_3",
+    "reason": "renders the view access value of the share",
+    "verdict": "glue",
+    "text": "can open it (view only)"
+  },
+  "863acc93f3a27575": {
+    "promptId": "tool-result-artifact-share-org-shared",
+    "label": "TOOL_RESULT_ARTIFACT_SHARE_ORG_SHARED_VAR_3",
+    "reason": "renders the comment access value of the share",
+    "verdict": "glue",
+    "text": "can open and comment on it"
+  },
+  "5ce05c3f55f39515": {
+    "promptId": "tool-result-artifact-share-people-already-shared",
+    "label": "TOOL_RESULT_ARTIFACT_SHARE_PEOPLE_ALREADY_SHARED_VAR_0",
+    "reason": "labels who confirmed; joins the interpolated people list",
+    "verdict": "glue",
+    "text": " the person confirmed on the card"
   }
 }

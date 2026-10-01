@@ -48931,5 +48931,1720 @@
     "verdict": "pristine-keep",
     "version": "2.1.285",
     "why": "It names a tool method (project_search), so it is frozen. It is the only text that tells the model a truncated doc still has a recovery path. Without it the model may treat the cut-off tail as lost or re-read the file in chunks. It renders only on a truncated project-doc read and costs zero otherwise. It is not narration-suppressing or anti-laziness text. Both served models under-read and stop early, so an explicit recovery path is a keep. No coveredBy, since nothing is cut."
+  },
+  "agent-prompt-you-should-know-already-understood-topics-header": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This header is the only thing telling the fork what the interpolated pt(t) list means: topics the person already understood and must not be offered again. Without it the list sits in the prompt unexplained. It contains 'avoid offering them' about a list, so it is mechanics."
+  },
+  "agent-prompt-you-should-know-avoid-trivia-tail": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 trim reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "agent-prompt-you-should-know-calibrate-knowledge-guidance-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A mid-sentence fragment whose lead (system-prompt-you-should-know-calibrate-to-demonstrated-knowledge-lead) and tail (-part-3, 'basics of git.') both survive. Cutting it would break the joined sentence, and the calibration rule appears nowhere else."
+  },
+  "agent-prompt-you-should-know-calibrate-knowledge-guidance-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This middle piece of the calibrate bullet carries a unique example. Its neighbours (part-2 lead, part-4 tail) survive, and the joined sentence needs it to stay grammatical."
+  },
+  "agent-prompt-you-should-know-calibrate-knowledge-guidance-part-4": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a tail whose sibling lead (part-3, deployed verbatim) survives. Wiping it would leave the joined sentence ending mid-clause at 'based on '. It is also a calibration example in a taste prompt."
+  },
+  "agent-prompt-you-should-know-calibrate-knowledge-guidance-part-5": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the generalization of the calibrate bullet and covers implicitly demonstrated understanding, which no sibling does. It also ends the bullet cleanly."
+  },
+  "agent-prompt-you-should-know-conclusion-mindful-attention-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the lead half of a split sentence whose tail survives, so the rule against wiping it applies. It is frozen text (ONLY) and the criteria it introduces appear only here."
+  },
+  "agent-prompt-you-should-know-conclusion-mindful-attention-tail": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 trim reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "agent-prompt-you-should-know-context-example-intro-tail": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the tail of a split sentence whose lead survives, and it guards the output-format contract against the UI mock being copied."
+  },
+  "agent-prompt-you-should-know-context-matters-guidance": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 wipe-merge reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "agent-prompt-you-should-know-default-to-learn-none-guidance": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Keep this as the single canonical statement of the default-to-none rule. It holds a sentinel and is the anchor in the rule list. Cut the later restatements (err-on-not-suggesting, the conclusion's 'when in doubt'), not this one."
+  },
+  "agent-prompt-you-should-know-do-not-overassume-balance-mid": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Both neighbouring halves survive, so cutting this piece would break the joined sentence. The content is unique calibration guidance for the observer's taste prompt."
+  },
+  "agent-prompt-you-should-know-err-on-not-suggesting": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 wipe-merge reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "agent-prompt-you-should-know-example-ask-one-off-before-bullet": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The bullet is load-bearing in a TASTE example (§12). The GOOD critique praises this explainer's step-by-step plain-English tradeoff. Cutting it would break the before/after logic in both co-rendered examples."
+  },
+  "agent-prompt-you-should-know-example-ask-side-question-bullet": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This bullet is part of a worked example, and §12 keeps worked examples in a taste prompt. The two-site repetition can't be cut per site."
+  },
+  "agent-prompt-you-should-know-example-bad-assumes-session-memory-critique": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This critique belongs to a good/bad example pair in a taste prompt and carries one unique lesson: don't argue with a decision the user already made unless you give them the facts. Wiping it would leave the BAD example with no explanation in the joined text."
+  },
+  "agent-prompt-you-should-know-example-bad-teases-tradeoff-critique": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a worked-example critique in a taste prompt (§12), and the paired BAD example would be pointless without it. It is unique, and the deployed body matches pristine."
+  },
+  "agent-prompt-you-should-know-example-experiment-bad-learn-line": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Per §12, the worked examples in a taste prompt are the signal, and the critique that follows depends on this line."
+  },
+  "agent-prompt-you-should-know-example-experiment-close-to-deprecation": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This bullet is the speculative core of the worked example that teaches 'learn: none'. Removing it weakens the critique that follows, and worked examples are the signal in a taste prompt."
+  },
+  "agent-prompt-you-should-know-example-experiment-count-misses-users": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is part of the body of a worked example. Removing it would change the example being critiqued, which is the taste signal. It is frozen text (contains a number)."
+  },
+  "agent-prompt-you-should-know-example-experiment-creates-shared-folder": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a TASTE prompt, so its worked examples are the signal (section 12). The bullet is unique, and removing it would leave a hole in the example the critique grades. The prompt is conditional (forked observer), so it costs nothing on ordinary turns."
+  },
+  "agent-prompt-you-should-know-example-experiment-hard-to-grok-critique-second-piece": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a mid-sentence fragment of a worked-example critique. Removing it would break the joined sentence, and the critique is unique taste signal (§12)."
+  },
+  "agent-prompt-you-should-know-example-experiment-hard-to-grok-critique-third-piece": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Its lead and tail siblings survive, so removing this piece would break the critique sentence. The critique is the taste signal for the BAD example (§12: the worked examples are the signal)."
+  },
+  "agent-prompt-you-should-know-example-explainer-prompt-caching-monitor-bullet": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It completes a GOOD worked example, and cutting it would leave the example without its actionable takeaway."
+  },
+  "agent-prompt-you-should-know-example-feature-flag-good-critique": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The critique of a GOOD/BAD pair is the signal in this taste prompt. The URL-reality rule is a unique anti-fabrication contract, and the fragment's mid-sentence end must still join to the surviving tail."
+  },
+  "agent-prompt-you-should-know-example-follow-up-cheaper-bullet-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the tail of a split bullet whose lead survives, inside the worked examples that make up this taste prompt's signal."
+  },
+  "agent-prompt-you-should-know-example-heads-up-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A lead whose tail survives, inside a worked example of a taste prompt. The example shows the output format, tag plus learn line, as the product renders it."
+  },
+  "agent-prompt-you-should-know-example-heads-up-tail": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The lead half (agent-prompt-you-should-know-example-heads-up-lead) survives, and the rule forbids wiping a tail whose sibling half survives. The card shows the product surface the model writes for."
+  },
+  "agent-prompt-you-should-know-example-learn-line-feature-flag": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The id covers 3 sites in the tag and explain examples. Each site is the learn half of a worked output example, and the output is parsed for the learn line, so these lines show the output contract."
+  },
+  "agent-prompt-you-should-know-example-learn-line-orders-db-encryption": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the worked-example signal in a taste prompt, and it is part of the output-format demonstration the fork learns its reply shape from. Deleting it would drop the learn: line out of three example output blocks while their tag:/explain: lines stayed. Keep verbatim, including the trailing two spaces."
+  },
+  "agent-prompt-you-should-know-example-learn-line-prompt-caching": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This line is the learn half of worked output examples at 4 sites. A wipe would leave orphaned tag lines in those examples."
+  },
+  "agent-prompt-you-should-know-example-learn-line-trendline-privacy-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the tail of a string whose lead ('learn: Trendline’s method of exporting transcripts is designed for ') survives, so the rule against wiping a tail while its lead remains applies. It completes the learn line of the GOOD tag-example pair."
+  },
+  "agent-prompt-you-should-know-example-learn-more-intro": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This line ties the product mock to the example explainer that follows it. Removing it would leave the worked example (the core signal of a TASTE prompt) with no framing. It is unique and frozen."
+  },
+  "agent-prompt-you-should-know-example-one-off-costs-more-bullet": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the stake bullet of the worked example: the concrete consequence the explainer exists to surface. It is frozen and load-bearing."
+  },
+  "agent-prompt-you-should-know-example-orders-db-check-cpu-headroom": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This bullet is part of a worked GOOD explain: example in a taste prompt (§12). The critique that follows names exactly this check, so removing it would make that critique describe text that is gone. All neighbouring fragments are deployed as pristine."
+  },
+  "agent-prompt-you-should-know-example-orders-db-cpu-catch": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the core point of the GOOD worked explain example; cutting it leaves the title and the following bullets without their premise. Worked examples are the signal in this taste prompt."
+  },
+  "agent-prompt-you-should-know-example-orders-db-cpu-short-fixes": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Removing it would make the following GOOD critique describe content that is no longer there. The worked example is the signal."
+  },
+  "agent-prompt-you-should-know-example-orders-db-good-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It sits in the cli.js array straight after the GOOD Orders DB example and before **BAD**. In a taste prompt the worked examples and their critiques carry the signal (§12), and this line is the only critique of that example. Wiping it would leave the good example unexplained."
+  },
+  "agent-prompt-you-should-know-example-orders-db-many-small-reads-delay": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A worked GOOD example in a taste prompt, and the critique depends on this bullet. Cutting it would leave the critique's 'says when the cost would matter' with nothing to point at."
+  },
+  "agent-prompt-you-should-know-example-privacy-good-critique": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "In a taste prompt the critiques of the worked examples are the signal (§12). This one explains why the GOOD example is good, and nothing else in the corpus says it. It is a whole array element, so keeping it leaves the neighbouring lines as they are."
+  },
+  "agent-prompt-you-should-know-example-prompt-caching-bullet": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Frozen numeric content inside the good-example explainer that its neighbouring bullets reason from. A worked example in a taste prompt is the signal."
+  },
+  "agent-prompt-you-should-know-example-shared-folders-bad-learn-line": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The critique depends on this worked BAD example. Wiping it would leave the critique pointing at nothing."
+  },
+  "agent-prompt-you-should-know-example-shared-folders-compare-after-mid-june": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Worked example pairs are the signal in this taste prompt (§12). The bullet is the actionable recommendation of the example, and the example reads incomplete without it."
+  },
+  "agent-prompt-you-should-know-example-shared-folders-good-learn-line": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "In a taste prompt the worked examples are the signal. Without this line, the BAD learn line and the critique of it have no answer."
+  },
+  "agent-prompt-you-should-know-example-shared-folders-groups-count-meaning": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is example content of a good/bad pair whose critiques refer to it. The comparison needs both versions intact."
+  },
+  "agent-prompt-you-should-know-example-shared-folders-setup-step-change": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the BAD half of a worked rewrite pair in a taste prompt. Removing it leaves the critique pointing at nothing and loses the before/after contrast that shows what 'more precise' means."
+  },
+  "agent-prompt-you-should-know-example-shared-folders-setup-step-change-create-group": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The variant bullet is the worked-example evidence for its critique. Without it the good/bad contrast breaks."
+  },
+  "agent-prompt-you-should-know-example-shared-folders-trend-spans-change": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the frozen, load-bearing middle step of a worked example that a co-rendered critique points to."
+  },
+  "agent-prompt-you-should-know-example-shared-folders-usage-may-rise": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Cutting it removes the core 'usage could rise without more demand' consequence from both example explains, and the 'first bullet is too hand-wavy' critique and the GOOD rewrite both rely on those explains being complete. The worked examples are the signal in this prompt, so it stays."
+  },
+  "agent-prompt-you-should-know-example-trendline-careful-saving-transcripts": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a worked example in a taste prompt, and the critique that follows names it. It is unique and needed."
+  },
+  "agent-prompt-you-should-know-example-trendline-crash-restart-tradeoff": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This bullet is part of a GOOD/BAD example pair, and the pair is the signal of this taste prompt. The BAD critique only makes sense if the GOOD side states the tradeoff concretely. It is unique."
+  },
+  "agent-prompt-you-should-know-example-trendline-exports-in-memory": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This bullet is the concrete content of the GOOD explainer example. Cutting it hollows out the good/bad pair the critique relies on."
+  },
+  "agent-prompt-you-should-know-example-trendline-finds-patterns": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a unique piece of the GOOD/BAD example pair that teaches explain style, and section 12 says to keep a taste prompt's worked examples."
+  },
+  "agent-prompt-you-should-know-example-trendline-learn-line": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It shows the output contract (learn/tag/explain) and anchors both halves of the example pair. Cutting it would break both examples."
+  },
+  "agent-prompt-you-should-know-example-trendline-no-saved-copy": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Part of a worked example in a taste prompt. The examples are the signal (§12). Removing this bullet would break the GOOD example's cause→consequence→tradeoff chain that its critique praises."
+  },
+  "agent-prompt-you-should-know-example-trendline-scenario-heading-tail": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Tail of a concatenated heading whose lead ('#### Assume that the human asked questions that suggest they don’t ') survives. A wipe would leave the heading dangling, and the heading frames the Trendline explain example."
+  },
+  "agent-prompt-you-should-know-explain-example-feature-flag-fragment-bad-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Per §12, the GOOD/BAD pairs and their critiques are the signal in a taste prompt. Without this critique, the BAD five-bullet example is left without its reason, and the plain-sentences-vs-bullets contrast it points back to is lost."
+  },
+  "agent-prompt-you-should-know-explain-example-feature-flag-fragment-bullet": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "First of the five BAD bullets, and the critique says 'stretched into five fragment bullets' (a frozen number). Removing a bullet would falsify the critique and weaken the contrast example, which is the signal in this taste prompt."
+  },
+  "agent-prompt-you-should-know-explain-example-feature-flag-good-action": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Part of the GOOD worked example, and the critique's sentence count and URL caveat depend on it. It contains a URL and a count dependency, so it is frozen."
+  },
+  "agent-prompt-you-should-know-explain-example-feature-flag-good-definition": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is part of a worked GOOD explainer in a taste prompt, and the critique that follows depends on it, so it stays. In cli.js it sits between the title line and 'Turn the flag on…', and removing it would empty the example."
+  },
+  "agent-prompt-you-should-know-explain-example-orders-db-encryption-at-rest-bullet": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the core of the GOOD explain worked example, which the critique depends on."
+  },
+  "agent-prompt-you-should-know-explain-example-prompt-caching-jargon-bad-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the critique half of a good/bad explain pair. The focus says to keep these. It carries the unique lesson that leaving out the one actionable item is a defect."
+  },
+  "agent-prompt-you-should-know-explain-example-prompt-caching-jargon-bullet": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the first of three jargon bullets that make up the bad example the critique talks about. Removing it would weaken the contrast the taste prompt is built on."
+  },
+  "agent-prompt-you-should-know-explain-example-prompt-caching-run-on-bad-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the critique of a worked BAD example in a taste prompt and the only place this failure mode is named."
+  },
+  "agent-prompt-you-should-know-explain-examples-intro": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is not a restatement. It tells the side model that the explain examples build on the learn GOOD examples it has just seen. At a dozen tokens in a conditional prompt there is nothing worth saving by cutting it."
+  },
+  "agent-prompt-you-should-know-explain-label-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is part of the output-format contract for the explain field, and its lead half is still deployed, so it must stay verbatim."
+  },
+  "agent-prompt-you-should-know-explain-simpler-words-direction": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Runtime rewrite direction for one explainer mode. It is the only copy of its rules and its 100-word limit is frozen."
+  },
+  "agent-prompt-you-should-know-explain-title-avoid-overconfidence": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the only rule that carries the learn line's uncertainty into the explain title. It is unique, and it is a whole array element."
+  },
+  "agent-prompt-you-should-know-explain-title-bold-own-line": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is an output-format contract for the explain field the fork's reply is parsed into: a bolded title on its own line. Output contracts stay verbatim."
+  },
+  "agent-prompt-you-should-know-explain-title-example-code-name-bad-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the critique for the BAD title '`feature_multi_turn_ask` is at 0%'. Taste examples with their critiques are the signal, and wiping this one would leave a BAD example with no explanation."
+  },
+  "agent-prompt-you-should-know-explain-title-example-good-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a short critique inside a GOOD/BAD title example set in a taste prompt. It anchors the GOOD four-title block that the BAD critiques are set against. The overlap with the rule list is a summary-by-example, not padding, and cutting it saves about 13 tokens while leaving the GOOD block as the only one with no critique."
+  },
+  "agent-prompt-you-should-know-explain-title-example-overlong-bad-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the critique for the BAD title '**One-off /ask questions cost 25% more because cache writes bill at 1.25x with no later read**' and teaches that the reason goes in the bullets, not the title. Without it the BAD example has no stated lesson."
+  },
+  "agent-prompt-you-should-know-explain-title-example-overstated-bad-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Per the focus guidance, good/bad example pairs and their critiques stay. Without it this BAD title would be the only one with no explanation."
+  },
+  "agent-prompt-you-should-know-explain-title-example-topic-only-bad-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the critique half of a BAD/critique pair in a taste prompt, and it is what makes the BAD example teach something."
+  },
+  "agent-prompt-you-should-know-explain-title-statement-not-pitch": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a unique formatting contract for the title field of the explain output."
+  },
+  "agent-prompt-you-should-know-explain-title-states-takeaway": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a unique quality criterion for the title the fork outputs, with no restatement elsewhere."
+  },
+  "agent-prompt-you-should-know-explainer-audience": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the only audience framing in the explain request. The '+e' length rule is concatenated right after it, so the trailing space must be kept."
+  },
+  "agent-prompt-you-should-know-explainer-length-first": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The numeric threshold (100 words) is frozen mechanics and the only length cap for the first explanation."
+  },
+  "agent-prompt-you-should-know-explainer-less-detail": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the only instruction and word cap for the 'less detail' rewrite. The other arms are alternatives, not coverage. Unique mechanics."
+  },
+  "agent-prompt-you-should-know-explainer-more-detail": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the only text that defines the 'more detail' rewrite direction and its length cap. All of it is frozen mechanics, and the deployed copy equals pristine."
+  },
+  "agent-prompt-you-should-know-explainer-request": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the assembly frame of the explainer fork: slot, no-think and no-tool contract, and the quoted target that fn() concatenates with the rewrite block and pn. It is short and load-bearing, and the deployed copy equals pristine."
+  },
+  "agent-prompt-you-should-know-explainer-rewrite-previous": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is runtime mechanics: two slots, delimiters and an ordering/rewrite instruction. It is frozen and load-bearing."
+  },
+  "agent-prompt-you-should-know-explainer-root-in-ground-truth": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the only counterbalance to the no-jargon pressure in the explainer-text feature list, and it is frozen."
+  },
+  "agent-prompt-you-should-know-explainer-shape-example-tail": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Both neighbouring halves survive, so cutting this fragment would break the joined sentence. The content is a concrete example plus a conditional gate."
+  },
+  "agent-prompt-you-should-know-explainer-sketch-and-style-rules": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This text sets the explainer's output shape and its limits. It is all frozen, unique, and continues a lead fragment ('If, and only if, a small ASCII sketch ') that stays in place."
+  },
+  "agent-prompt-you-should-know-first-person-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It opens a three-piece sentence whose continuation survives, and it carries a unique voice contract for the learn line."
+  },
+  "agent-prompt-you-should-know-formatting-labels-intro": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "An output-format contract for the parsed learn/tag/explain lines. It contains 'each', so it is frozen and kept verbatim. Wiping it would leave the label bullets without their introduction."
+  },
+  "agent-prompt-you-should-know-formatting-learn-label-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is an output contract: the fork's reply is parsed for the learn line. It is also a lead whose tail survives, so it must stay verbatim."
+  },
+  "agent-prompt-you-should-know-formatting-no-topic-reply-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the output contract the fork parser relies on. The fragment is split mid-sentinel, so it must stay verbatim with its part-2 sibling."
+  },
+  "agent-prompt-you-should-know-formatting-no-topic-reply-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It holds part of the 'learn: none' output sentinel that the fork reply is parsed for, and it joins two surviving neighbours."
+  },
+  "agent-prompt-you-should-know-important-to-user-guidance-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This mid-fragment carries a unique steer, and both neighbours survive. A wipe would produce 'Consider the to docs or pages…'."
+  },
+  "agent-prompt-you-should-know-important-to-user-guidance-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This tail completes a sentence whose lead (part-2 'Avoid rabbit holes ') is still deployed, so wiping it would leave a broken sentence. The guidance is unique taste content."
+  },
+  "agent-prompt-you-should-know-initial-insight-guidance": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a distinct requirement on the learn line's content (a self-contained recap for deciding value), it is frozen through 'for example', and nothing else says it."
+  },
+  "agent-prompt-you-should-know-learn-example-cache-finder-bad": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This BAD example anchors a worked example pair together with its GOOD 'learn: none' and its critique. Removing it orphans the critique."
+  },
+  "agent-prompt-you-should-know-learn-example-cache-finder-bad-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It explains why the cache-finder BAD example is bad. Its neighbours in cli.js are the BAD learn line and the YAML scenario heading, and the example would make no sense without its rationale."
+  },
+  "agent-prompt-you-should-know-learn-example-feature-flag-bad": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The critique that follows quotes this example's own words, so it is load-bearing for that critique. It is a worked example in a taste prompt."
+  },
+  "agent-prompt-you-should-know-learn-example-feature-flag-bad-rationale-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This tail completes a critique whose lead survives, so it is never wiped. The good/bad pair and its critique are the signal in this taste prompt."
+  },
+  "agent-prompt-you-should-know-learn-example-feature-flag-good": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A worked good/bad example pair is the signal in a taste prompt (§12). The repeats in other sections illustrate tag: and explain:, not learn:."
+  },
+  "agent-prompt-you-should-know-learn-example-feature-flag-good-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the only GOOD-side rationale for the feature-flag learn example, and it shows the stake test the prompt wants applied. Keep it."
+  },
+  "agent-prompt-you-should-know-learn-example-orders-db-encryption-bad-jargon": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the BAD half of a good/bad pair in a taste prompt, and the critique that follows refers to it."
+  },
+  "agent-prompt-you-should-know-learn-example-orders-db-encryption-bad-jargon-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Example critiques are what teach the taste judgment (§12). Cutting it would leave the BAD example without its explanation."
+  },
+  "agent-prompt-you-should-know-learn-example-orders-db-encryption-bad-repeat": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a distinct failure mode (echoing the user's choice back), and its critique depends on it."
+  },
+  "agent-prompt-you-should-know-learn-example-orders-db-encryption-bad-repeat-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "In this taste prompt the critiques of the worked examples are the signal (§12). This one teaches a failure mode no other critique covers, and its example half survives."
+  },
+  "agent-prompt-you-should-know-learn-example-orders-db-encryption-good": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the first site of the GOOD example that the later tag/explain sections reference. Cutting it orphans its critique and breaks the 'Taking the good examples from learn:' reuse."
+  },
+  "agent-prompt-you-should-know-learn-example-orders-db-encryption-good-rationale-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Lead half of a critique whose tail survives; wiping it would orphan part-2. The critique is the taste signal for the example."
+  },
+  "agent-prompt-you-should-know-learn-example-orders-db-encryption-good-rationale-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the tail of a critique whose lead (rationale-part-1) survives, and it is the explanation half of a good/bad example pair."
+  },
+  "agent-prompt-you-should-know-learn-example-prompt-caching-good": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The good/bad pairs with their critiques are this taste prompt's signal. Removing the GOOD line orphans its rationale and the BAD contrast."
+  },
+  "agent-prompt-you-should-know-learn-example-prompt-caching-good-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Each example in this taste prompt needs its paired critique. The near-identical sentence elsewhere critiques a different example, so it is not coverage."
+  },
+  "agent-prompt-you-should-know-learn-example-renamed-flag-bad": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Per the taste-prompt rule, the worked good/bad examples are the signal. This one calibrates the 'trivia' bar and pairs with a surviving critique."
+  },
+  "agent-prompt-you-should-know-learn-example-renamed-flag-bad-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "In a taste prompt the example critiques carry the signal. Wiping it would leave a BAD example with no reason given."
+  },
+  "agent-prompt-you-should-know-learn-example-trendline-privacy-good-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This lead's sibling tail survives, so wiping or trimming it would leave a sentence fragment in two examples. It is also worked-example and output-format signal. Keep verbatim, including the trailing space."
+  },
+  "agent-prompt-you-should-know-learn-example-trendline-privacy-good-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This tail must not be wiped while its lead half survives: the learn: example would end mid-sentence on 'designed for'."
+  },
+  "agent-prompt-you-should-know-learn-example-trendline-privacy-good-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A GOOD-example critique in a taste prompt. The critiques are the signal, and this one is short and specific."
+  },
+  "agent-prompt-you-should-know-learn-example-trendline-vague-bad-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A BAD-example critique carrying unique taste signal, with no restatement to cut."
+  },
+  "agent-prompt-you-should-know-learn-example-yaml-quirk-bad": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the only worked case of a surprising fact with no stake, which teaches learn: none for trivia. That is the core taste signal, so keep it per section 12."
+  },
+  "agent-prompt-you-should-know-learn-example-yaml-quirk-bad-rationale": {
+    "verdict": "trim",
+    "version": "2.1.286",
+    "why": "Keep the worked-example critique, which is the taste signal. Cut only the slogan, which repeats a co-rendered rule verbatim."
+  },
+  "agent-prompt-you-should-know-learn-none-bare-reply-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It completes an output contract: the learn: none sentinel must be sent alone. It is also the tail half of a sentence whose lead survives, so wiping it would leave the joined text incomplete."
+  },
+  "agent-prompt-you-should-know-no-clarifying-question-tail": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 trim reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "agent-prompt-you-should-know-offer-dont-lose-them-at-outset": {
+    "verdict": "trim",
+    "version": "2.1.286",
+    "why": "Keep the frozen clause that completes the 'but' of the surviving lead. Delete only the trailing exclamation, which restates the neighbour's 'they must understand it to engage in the first place'."
+  },
+  "agent-prompt-you-should-know-offer-dont-presume-knowledge": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the core clause of a two-sided calibration rule. Removing it leaves the neighbours ungrammatical and drops the rule."
+  },
+  "agent-prompt-you-should-know-offer-earn-a-yes-from-busiest-user": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 trim reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "agent-prompt-you-should-know-offer-every-suggestion-worth-a-yes": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This fragment is the middle of a sentence whose neighbours survive. Wiping it would break the joined sentence, and it carries the core relevance bar."
+  },
+  "agent-prompt-you-should-know-offer-example-bad-explain-assumes-memory": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the BAD half of an example pair whose critique quotes it word for word. Wiping it would leave the critique pointing at nothing."
+  },
+  "agent-prompt-you-should-know-offer-example-bad-learn-line-question": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the BAD half of the first good/bad pair and teaches an output-format rule: a learn line must not end with a question."
+  },
+  "agent-prompt-you-should-know-offer-example-critique-hard-to-grok": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a lead whose tail survives, so a wipe or trim would break the joined sentence. It is also a worked-example critique in a taste prompt. Keep verbatim, including the trailing space."
+  },
+  "agent-prompt-you-should-know-offer-example-critique-vague-ends-with-question": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The tail of a surviving lead, carrying a unique learn-line format rule. Cutting it would break the sentence and lose the rule."
+  },
+  "agent-prompt-you-should-know-offer-example-good-explain-critique": {
+    "verdict": "trim",
+    "version": "2.1.286",
+    "why": "Cut the restated first sentence and keep the explain-specific critique, which teaches defining terms and ending with a bolded suggestion. The fragment is a standalone array element, so the remaining two sentences read as a complete critique."
+  },
+  "agent-prompt-you-should-know-offer-example-urls-only-if-real": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Its lead half survives, so the tail can't be wiped. It also carries a unique anti-fabrication contract for URLs."
+  },
+  "agent-prompt-you-should-know-offer-explain-actionable-highlight": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The tail completes a lead that survives, and the content is unique explainer guidance. Never wipe a tail whose lead survives."
+  },
+  "agent-prompt-you-should-know-offer-glossed-over-or-missed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a tail fragment whose lead survives in the deployed set. Wiping it would leave '…glossed over**, or ' dangling, and it carries the second arm of the suggest condition."
+  },
+  "agent-prompt-you-should-know-offer-incidental-facts-examples": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a frozen enumeration fragment between surviving neighbours, and it gives concrete examples of non-topics."
+  },
+  "agent-prompt-you-should-know-offer-incidental-facts-not-topics": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This mid-fragment sits inside a frozen enumeration whose lead and tail both survive. The list of non-topics is unique calibration for the observer."
+  },
+  "agent-prompt-you-should-know-offer-intelligent-questions-assume-foundations": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This fragment finishes a sentence whose lead survives, and it holds the unique 'could be wrong though → surface it' exception."
+  },
+  "agent-prompt-you-should-know-offer-learn-line-length": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the output-format contract for the parsed learn: line."
+  },
+  "agent-prompt-you-should-know-offer-learn-more-to-busy-human": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Both neighbours survive, so wiping this middle piece would leave an ungrammatical sentence. The sentence defines the bar: every suggestion should be worth a 'learn more'."
+  },
+  "agent-prompt-you-should-know-offer-must-understand-to-engage": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a mid-sentence fragment whose neighbours ('…the much better ' / 'after they engage…') survive. Wiping it breaks the grammar and drops the reason for the explain-simply rule."
+  },
+  "agent-prompt-you-should-know-offer-no-clarifying-question-present-plainly": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Wiping or editing this mid piece would break the joined sentence against the surviving lead and tail. The constraint that the user cannot ask a clarifying question is unique."
+  },
+  "agent-prompt-you-should-know-offer-non-obvious-fact-greatest-implications": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the tail of a lead whose sibling survives, so wiping it would leave 'Perhaps there’s' dangling. It also carries the unique rule for ranking topics."
+  },
+  "agent-prompt-you-should-know-offer-prime-real-estate-legibility": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 trim reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "agent-prompt-you-should-know-offer-product-context-example-intro": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A lead whose sibling tail survives must not be wiped. Dropping 'NOTE: ' would leave '...working in. this is what shows...', which is ungrammatical. It also separates the product-render sample from the output format, so the sample is not copied as output."
+  },
+  "agent-prompt-you-should-know-offer-rewrite-example-save-for-explainer": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Both neighbours survive, so this piece is needed for grammar. It is part of a worked-example critique."
+  },
+  "agent-prompt-you-should-know-offer-rewrite-example-should-have-been-none": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This tail closes the lead's italic markup and sentence, so it cannot be cut without breaking the joined text. 'learn: none' is the output sentinel and must stay verbatim."
+  },
+  "agent-prompt-you-should-know-offer-simplify-assume-forgotten-everything": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the tail of the bullet whose lead ('* You should choose the topic based on the person being smart, curious, and thoughtful, but—IMPORTANT—communicate and explain on the ') survives, so wiping it would leave the lead dangling mid-sentence. It also carries the unique simplification bar."
+  },
+  "agent-prompt-you-should-know-offer-smart-curious-thoughtful-but-explain-simply": {
+    "verdict": "trim",
+    "version": "2.1.286",
+    "why": "Keep the clause for grammar and the smart-topic / simple-delivery contrast. Drop only the CAPS emphasis marker, which over-triggers on current models."
+  },
+  "agent-prompt-you-should-know-offer-tag-neither-fits-say-none": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It carries a unique decision rule and the output-contract sentinel 'learn: none', which the fork's reply parser reads, so it stays verbatim."
+  },
+  "agent-prompt-you-should-know-offer-trade-off-user-did-not-understand": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a tail whose lead sibling survives, and wiping it would leave the lead sentence ending in 'had to'. The content is a unique topic-selection signal."
+  },
+  "agent-prompt-you-should-know-offer-unengaged-decision-critical-details": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Its lead ('...a decision you have ') and tail ('tradeoffs that they would likely want to know') both survive. Wiping it would break the sentence, and it carries a unique topic-selection criterion."
+  },
+  "agent-prompt-you-should-know-offer-weight-consequence-fundamental-aspect": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a mid-sentence fragment whose surrounding pieces survive. Removing it would make the joined bullet ungrammatical, and the content is unique."
+  },
+  "agent-prompt-you-should-know-offer-worth-interrupting-attention": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Its lead (topic-finder, ending 'worthy of ') and its tail both survive. Removing it leaves 'worthy of no topic worth interrupting for', which is broken grammar."
+  },
+  "agent-prompt-you-should-know-offer-write-as-main-agent-first-person": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Its lead and tail both survive, so the joined sentence needs this piece. It is a unique output-voice contract for the learn line."
+  },
+  "agent-prompt-you-should-know-output-structure-intro": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the lead-in to the output-format contract that the fork's parser depends on (learn/tag/explain or learn: none). Without it, the two templates under the heading lose their framing."
+  },
+  "agent-prompt-you-should-know-output-structure-learn-line": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is an output-format contract. The fork's reply is parsed for the learn:/tag:/explain: lines, and this line is the first line of the canonical skeleton. Under the tripwire it is frozen and verbatim, so keep it, including the trailing two spaces."
+  },
+  "agent-prompt-you-should-know-overview-role": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 wipe-merge reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "agent-prompt-you-should-know-recent-suggestions-skip-header": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the only label for the runtime-injected list of previous suggestions. Without it the list renders with no meaning attached."
+  },
+  "agent-prompt-you-should-know-rewrite-example-confidence-critique-mid": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It holds a unique decision criterion. A wipe would cut a sentence in half between a surviving lead and a surviving tail, which breaks the grammar."
+  },
+  "agent-prompt-you-should-know-rewrite-example-good-critique-mid": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It joins surviving neighbours and carries the explanation of why the GOOD rewrite works."
+  },
+  "agent-prompt-you-should-know-rewrite-example-ground-truth-critique-mid": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a mid fragment with both neighbours present, so it must survive for the sentence to parse. It also ties the general rule to the example."
+  },
+  "agent-prompt-you-should-know-scenario-cache-finder-debate": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It sets up the one worked example for the 'already covered in the main session' rule, which is the signal in a taste prompt."
+  },
+  "agent-prompt-you-should-know-scenario-human-decision": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The heading sets the premise that the GOOD/BAD Orders DB examples (and the You should know vs Heads up tag choice) are judged against. The examples are the signal in this taste prompt, and they lose their premise without it."
+  },
+  "agent-prompt-you-should-know-scenario-long-running-agent": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The heading sets the situation that decides whether the GOOD/BAD verdict applies. In a taste prompt the scenario framing is part of the example, so keep it."
+  },
+  "agent-prompt-you-should-know-scenario-routine-change": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It frames the only example showing that a routine change with no surprises yields learn: none. That backs the high bar and 'Default to learn: none' with a concrete case."
+  },
+  "agent-prompt-you-should-know-scenario-trendline-knowledge-gap-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a tail whose lead survives, so cutting it would leave a broken heading. The heading frames the knowledge-gap GOOD/BAD learn examples, which are the signal in this taste prompt. Keep verbatim, including the trailing space."
+  },
+  "agent-prompt-you-should-know-scenario-unstated-decision-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It sits mid-sentence inside a heading at 2 sites, with live neighbours on both sides that stay pristine in the bundle. Cutting it would break the grammar of both headings."
+  },
+  "agent-prompt-you-should-know-scenario-yaml-quirk": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It sets up the YAML 'interesting is not important' BAD example. Without the heading, that example's GOOD 'learn: none' and BAD line would have no context."
+  },
+  "agent-prompt-you-should-know-suggest-topic-learn-line": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The learn line is a parsed output contract and has to stay verbatim. Its lead-in ('The first line of your output will be  ') survives, so wiping it would leave that sentence without its object. The repeat is structural, not bloat."
+  },
+  "agent-prompt-you-should-know-suggesting-nothing-guidance-part-1": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Never wipe a lead whose sibling half survives. The joined sentence introduces the abstain output contract."
+  },
+  "agent-prompt-you-should-know-suggesting-nothing-guidance-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a middle fragment with both siblings surviving, and its text is frozen. Neither a wipe nor a rewrite keeps the joined text grammatical, and the block it belongs to introduces the 'learn: none' output contract."
+  },
+  "agent-prompt-you-should-know-suggesting-nothing-guidance-part-3": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Part of the output contract: it introduces the exact 'learn: none' sentinel that the fork's parser reads, and it completes a surviving lead."
+  },
+  "agent-prompt-you-should-know-tag-choice-guidance-part-2": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the output contract: 'Heads up' is one of the two tag values the fork's reply is parsed for, so it is frozen. It is also the tail of a surviving lead, so wiping or rewording it would break the tag enumeration sentence."
+  },
+  "agent-prompt-you-should-know-tag-example-heads-up-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A taste prompt's example critique (§12): it shows why each example got the tag it did. The overlap with the definition is the intended example-to-rule link, not padding."
+  },
+  "agent-prompt-you-should-know-tag-example-you-should-know-rationale": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the worked-example critique that teaches the tag choice for the 'You should know' pair. Example critiques are the signal in this taste prompt, and the tag line is parsed output."
+  },
+  "agent-prompt-you-should-know-tag-examples-intro": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is cheap, unique framing for the tag: examples block, and the tag line is an output contract."
+  },
+  "agent-prompt-you-should-know-tag-heads-up-definition": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the definition of an enum value the fork's tag line depends on."
+  },
+  "agent-prompt-you-should-know-tag-line-intro": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This belongs to the output contract (tag line ordering after learn:), so it stays verbatim."
+  },
+  "agent-prompt-you-should-know-tag-you-should-know-definition": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "An output contract. It defines one of the two allowed values of the 'tag:' line that the fork's reply is parsed for, so it stays verbatim."
+  },
+  "agent-prompt-you-should-know-topic-finder": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It opens the fork's prompt and defines the job. It is a lead whose tail survives, and it contains frozen quantifier text."
+  },
+  "agent-prompt-you-should-know-topic-finder-novel-work-clause": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the lead of a surviving tail and adds unique topic-selection criteria beyond the 'Likely:' list before it."
+  },
+  "agent-prompt-you-should-know-user-context-switching-note": {
+    "verdict": "wipe-merge",
+    "version": "2.1.286",
+    "why": "This is a genuine restatement, not a worked example. It is a standalone array element ('* …'), so removing it leaves the bullet list and the section grammatical. The section header 'Understanding the user…' still introduces the following 'They are busy and might not care…' bullet, whose referent stays clear. Wiping it does not touch any output-format instruction."
+  },
+  "agent-prompt-you-should-know-user-no-context-reminder": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 wipe-merge reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "agent-prompt-you-should-know-weight-consequence-fundamental-tail": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Its sibling lead survives, so cutting this tail would leave the sentence ungrammatical. The content is a substantive criterion."
+  },
+  "agent-prompt-you-should-know-weight-consequence-tradeoffs-mid": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This mid-fragment links two surviving halves of the 'Weight the consequence' bullet and carries the unengaged-decision tradeoff criterion."
+  },
+  "agent-prompt-you-should-know-weight-consequence-unengaged-decision": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a unique topic-selection criterion in a taste prompt, and wiping it would leave its continuation 'made (the approach...' dangling."
+  },
+  "data-artifact-share-auto-classifier-input": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a security contract for the permission classifier: scope, the confirmation card, and the slot-built target. It is frozen and conditional."
+  },
+  "data-coordinator-member-relay-location-project-thread": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a provenance/security contract: it tells the member session where a verified user message was said. Blanking it would corrupt the bracketed verified-message header."
+  },
+  "data-coordinator-member-relay-location-project-timeline": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is part of the trusted-message provenance label that tells a member session where a relayed user message came from, so it is a provenance contract."
+  },
+  "data-coordinator-timeline-location-another-thread": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the only text that tells the model where a relayed verified user message was said. It is a provenance/security contract and conditional data that costs nothing when the feature is off."
+  },
+  "data-coordinator-timeline-relayed-into-member-session": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a security/provenance contract that marks a relayed verified user message with time, location and author. It opens with a slot (the `l` prefix tag), and its siblings are mutually exclusive arms, so nothing else covers it."
+  },
+  "data-cross-machine-send-no-policy-allows-reason": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a runtime error-reason contract. It tells the model the send was policy-blocked rather than failed, and nothing else covers it."
+  },
+  "data-plugin-npm-download-url-git-host": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A security refusal reason (npm may fetch the URL as a git repo and run its setup script). It is unique and frozen."
+  },
+  "data-plugin-npm-download-url-unencrypted-http": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a security/error contract: it explains why an http tarball URL is refused, using a tool-name slot. It is conditional, so it costs nothing when unused."
+  },
+  "data-plugin-npm-download-url-unsafe-characters": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is an error/validation contract that tells the model exactly why an npm tarball URL was refused. It only renders when that refusal happens."
+  },
+  "data-pre-ship-checks-before-commit-suggestion": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is now the only carrier of the pre-commit skill gate. It is a compact ordering contract with a variable slot. Nothing is redundant to cut."
+  },
+  "data-task-notification-message-files-missing": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a unique error contract that tells the model which named paths do not exist on disk. There is nothing to cut."
+  },
+  "data-task-notification-ultrareview-stopped": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A conditional task notification (zero cost when off). It is the only source of the stop state and the billing caveat the model should relay before re-running."
+  },
+  "data-you-should-know-artifact-press-consent": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This authorization relay is what lets Claude Code publish the artifact. Removing or rewording it would drop the user's recorded consent. Its quoted option label is frozen."
+  },
+  "data-you-should-know-side-agent-note-prefill": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It tells the main session that the quoted block comes from a side agent and is not the user's own words. That provenance framing matters, and the text is short."
+  },
+  "skill-claude-test-helper-tools-not-listed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a conditional error relay and the only copy of its diagnosis and recovery step. It costs nothing until the error occurs."
+  },
+  "skill-claude-test-load-mark": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a predicate needle: the bundle matches it with startsWith and reads the load id by its length. It is FROZEN verbatim and must not change."
+  },
+  "skill-claude-test-load-spent": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is an exact relay string, an output contract that names the /claude-test command. It is conditional and unique."
+  },
+  "skill-claude-test-other-mcp-server-runs-helper": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A unique, actionable error string with exact names. It loads only when this failure happens."
+  },
+  "slash-command-plugin-npm-link-refused-registry-moved": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is an error/refusal contract with a slot and an actionable owner hint. It is unique to its path."
+  },
+  "slash-command-plugin-npm-source-refused-not-plain-package": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a conditional error message carrying enum names and a format contract, and it is unique. The set file is already pristine with the correct slot name."
+  },
+  "slash-command-plugin-npm-tarball-url-refused-publisher": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It completes a rendered refusal sentence around the reason slot. A wipe would leave '...was not installed: ' with no cause."
+  },
+  "slash-command-plugin-npm-tarball-url-refused-registry-moved": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is an exact install-refusal error string that names the cause and who can fix it (the marketplace owner). It is the only copy on its path, so keep it as pristine."
+  },
+  "system-prompt-claude-test-helper-not-connected": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "These are unique error-recovery instructions for a distinct failure mode, and they are conditional."
+  },
+  "system-prompt-claude-test-helper-refused-by-setting": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the only arm for a helper refused by a setting. Its diagnostic steps and org-admin contract are unique error mechanics."
+  },
+  "system-prompt-claude-test-helper-switched-off": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A unique error and recovery contract with an ordered command sequence and slots. It is conditional, so it costs nothing when off."
+  },
+  "system-prompt-project-member-session-user-message-provenance": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a security and classifier contract: marker provenance, block-clearing bar, Rule 6 scope, permission laundering leading to BLOCK, and the outer-framing rule. The sentences are dense with frozen tokens (marker slots, 'only', 'never', enums, CLAUDE.md), and nothing covers them when this arm renders. The deployed override matches pristine except for the slot names, which correctly map 0 to VERIFIED_PROJECT_OWNER_MESSAGE_MARKER and 1 to COORDINATOR_SESSION_RELAY_MARKER."
+  },
+  "system-prompt-you-should-know-avoid-main-agent-addressed-topics": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The content is unique, and the frozen 'only' sentence continues into a surviving tail, so it cannot be cut."
+  },
+  "system-prompt-you-should-know-avoid-main-agent-jargon": {
+    "verdict": "trim",
+    "version": "2.1.286",
+    "why": "The mechanic is unique, so keep it: don't echo terms the main agent coined. The only bloat is the CAPS emphasis, which tends to make Opus 5.5 and Fable 5.1 overapply a rule, so lowercase it. The bullet stays a standalone array element, so the joined text keeps its grammar."
+  },
+  "system-prompt-you-should-know-avoid-topics-under-discussion": {
+    "verdict": "trim",
+    "version": "2.1.286",
+    "why": "The rule is unique, so it stays. One sentence restates the heading inside the same bullet, so it is genuine restatement and safe to cut. The remaining text stays grammatical within the bullet, and the neighbours are separate array lines."
+  },
+  "system-prompt-you-should-know-avoid-trivial-topics-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A lead whose tail survives. It carries the unique trivia-exclusion rule."
+  },
+  "system-prompt-you-should-know-calibrate-to-demonstrated-knowledge-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Wiping a lead whose tail survives would leave a dangling 'clear that they are technical…'. The rule is unique."
+  },
+  "system-prompt-you-should-know-choose-good-suggestion": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 wipe-merge reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "system-prompt-you-should-know-dismiss-option-goal-fragment": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This mid fragment joins two surviving halves and carries the product-UI fact. A wipe would make the sentence ungrammatical."
+  },
+  "system-prompt-you-should-know-do-not-assume-understanding-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the lead of a surviving bullet. Wiping it would orphan the tail's grammar and remove the bullet heading."
+  },
+  "system-prompt-you-should-know-easy-to-read-not-overwhelming": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 wipe-merge reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "system-prompt-you-should-know-example-ask-caching-bad-explainer": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the BAD half of a worked pair whose critique survives. A taste prompt's examples are the signal (§12)."
+  },
+  "system-prompt-you-should-know-example-check-experiment-results-bullet": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Worked examples are the signal in this taste prompt (§12). Removing one bullet would distort the example its critique refers to."
+  },
+  "system-prompt-you-should-know-example-confidence-critique-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The lead of a surviving tail, inside a worked-example critique. It must stay so the joined sentence reads correctly."
+  },
+  "system-prompt-you-should-know-example-ground-truth-reference-tail": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the tail of a split critique whose leads survive, and it also closes the italics. Removing it would leave a dangling sentence and unbalanced emphasis."
+  },
+  "system-prompt-you-should-know-example-plain-share-links-experiment-bullet": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the concrete text the following critique dissects. Removing it leaves the critique pointing at nothing."
+  },
+  "system-prompt-you-should-know-example-share-link-vague-critique": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a unique critique teaching when ground-truth names become appropriate. It is a lead whose tail survives, so wiping it would break the sentence."
+  },
+  "system-prompt-you-should-know-example-simpler-learn-line-praise-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The lead of a surviving tail, inside a worked-example pair that carries the signal of a taste prompt."
+  },
+  "system-prompt-you-should-know-example-two-clauses-critique": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the critique half of a good/bad worked example in a taste prompt, its tail sibling survives, and its numbers freeze it."
+  },
+  "system-prompt-you-should-know-explain-field-format-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "An output contract carrying the parsed 'explain:' sentinel, and the lead of a surviving tail. It is frozen verbatim."
+  },
+  "system-prompt-you-should-know-explain-like-five-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This lead and its surviving tail form one sentence. It carries a unique product fact: the main session is the follow-up channel, so start simple."
+  },
+  "system-prompt-you-should-know-explain-technical-terms": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It holds a unique carve-out and condition that resolves the tension with NO JARGON. Frozen text that is still needed."
+  },
+  "system-prompt-you-should-know-explainer-actionable-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a lead whose sibling tail survives. Wiping it would leave the bullet as an ungrammatical 'mind (...)'."
+  },
+  "system-prompt-you-should-know-explainer-plain-english": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 trim reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "system-prompt-you-should-know-explainer-quickly-digestible": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "These are the observer's explain-field length limits and the sentences-vs-bullets choice. They are frozen numbers and unique."
+  },
+  "system-prompt-you-should-know-explainer-shape-rules": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is an output-format contract (bold title line, first-sentence definition) for the explainer. It is frozen, unique, and its trailing lead must join the surviving tail."
+  },
+  "system-prompt-you-should-know-explainer-well-formatted": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the only instruction that the explain body uses markdown. It shapes the parsed explain field."
+  },
+  "system-prompt-you-should-know-follow-up-questions-example-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A lead whose tail survives, inside the core worked example of a taste prompt. Wiping it breaks the sentence at both sites."
+  },
+  "system-prompt-you-should-know-hard-to-parse-example-critique-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Lead of a lead+tail pair whose tail survives, so a wipe would leave 'to grok...' dangling. It is also a BAD-example critique in a taste prompt."
+  },
+  "system-prompt-you-should-know-importance-over-interest": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the only statement of what counts as a high enough consequence to suggest anything. That is unique selection logic for the fork, and both the BAD example critique and the threshold depend on it."
+  },
+  "system-prompt-you-should-know-insider-shorthand-example-critique-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Never wipe a lead whose tail survives. The lead also opens the critique that makes the BAD example teach something."
+  },
+  "system-prompt-you-should-know-learn-more-dismiss-options-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This part of the output-format contract is verbatim by rule, and its tail is still present. It tells the model the learn line must lead naturally into the two options."
+  },
+  "system-prompt-you-should-know-learn-more-or-dismiss-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Its sibling tail survives, so a wipe would break the sentence. It is a unique product-surface fact."
+  },
+  "system-prompt-you-should-know-make-it-compelling": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 wipe-merge reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "system-prompt-you-should-know-no-clarifying-questions-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Its sibling tail survives, so wiping the lead would orphan that sentence. It also carries a unique constraint that drives the legibility rules."
+  },
+  "system-prompt-you-should-know-no-jargon-week-later": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 trim reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "system-prompt-you-should-know-prime-real-estate-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The placement context is unique, the next bullet depends on it, and its sibling tail survives."
+  },
+  "system-prompt-you-should-know-scenario-human-questions-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It heads worked-example scenarios, which are the core signal of this taste prompt, and its sibling tails survive. A wipe would orphan the tail text and the scenario framing."
+  },
+  "system-prompt-you-should-know-scenario-small-decision-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This lead completes headings whose tails survive at both sites. Each heading frames a distinct worked example."
+  },
+  "system-prompt-you-should-know-smart-person-topic-choice-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the one topic-selection criterion here. The tail sibling survives, so wiping the lead would leave the sentence starting with 'and thoughtful, but—IMPORTANT—…'."
+  },
+  "system-prompt-you-should-know-tag-label-allowed-values-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It states which values the parsed tag line may take, so it is an output contract. Its tail survives."
+  },
+  "system-prompt-you-should-know-tag-label-format-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is an output contract and sentinel enum. It is also a lead whose tail survives."
+  },
+  "system-prompt-you-should-know-title-plain-words": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a unique, title-scoped restriction that the general jargon rules do not imply. It is a whole array element, so keeping it leaves the neighbouring lines intact."
+  },
+  "system-prompt-you-should-know-title-recognizable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a unique title-quality rule in a taste prompt, and it is frozen."
+  },
+  "system-prompt-you-should-know-topic-selection-question": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The only topic-kind heuristic in the prompt, and a lead whose tail survives, so it can't be wiped. It is frozen text."
+  },
+  "system-prompt-you-should-know-understand-what-matters-to-user-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Its sibling tail survives, so this lead cannot be wiped. It names a selection criterion."
+  },
+  "system-prompt-you-should-know-understood-topic-skip-guidance": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Carries a unique calibration that both widens and narrows the skip rule. Deleting the overlapping sentence would orphan the 'However' exception, and the frozen enumeration rules out partial edits."
+  },
+  "system-prompt-you-should-know-user-plain-english-readability": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Stage-1 wipe-merge reverted to pristine: a cited carrier was itself cut in the same batch, so the claim would have had no live carrier."
+  },
+  "system-prompt-you-should-know-weight-consequence-lead": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This lead opens a bullet whose body survives, and the bullet's content is unique topic-selection guidance."
+  },
+  "system-reminder-you-should-know-side-request": {
+    "verdict": "trim",
+    "version": "2.1.286",
+    "why": "Exactly one bullet is redundant inside the same body. Everything else is a format contract, a security contract or a fork-behaviour constraint, and since those bullets are frozen they must stay verbatim."
+  },
+  "tool-description-artifact-share-action-reference": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "I followed the delete/pin family precedent: the bullet stays verbatim because it carries unique consent and approval mechanics. Only the parameter half is redundant, and that half cannot be removed without the label."
+  },
+  "tool-description-artifact-share-dynamic": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a security contract (the person confirms, never public) inside complex positional slots. It is already minimal, and the delete/pin per-call descriptions set the precedent of keeping it."
+  },
+  "tool-description-artifact-sharing-guidance": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the only place the offer/consent policy and audience-narrowing for the new share action is stated, and it has no slop. The partial overlap with the co-rendered share bullet is embedded in frozen sentences, so it cannot be cut without rewriting. Same treatment as the pin/delete family precedent."
+  },
+  "tool-description-bash-pr-creation-instructions": {
+    "verdict": "trim",
+    "version": "2.1.286",
+    "why": "Trim realigned from the curated 2.1.285 PR-section trim; stage 3 restored the gh-for-all-GitHub rule and the create-branch step, which nothing co-rendered carries (WebFetch is deferred)."
+  },
+  "tool-parameter-artifact-action-share": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The focus says to treat it like the delete/pin families, which keep their action-param clauses at pristine. It also carries the unique exclusivity rule and is all frozen mechanics."
+  },
+  "tool-parameter-artifact-mode-run-script-query-mutation": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the only definition of the run_script mode enum and its approval behaviour, and every part of it is mechanics."
+  },
+  "tool-parameter-artifact-share-access": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the parameter's own schema description. It contains frozen enum and default mechanics plus the unique pre-call guard against edit access."
+  },
+  "tool-parameter-artifact-share-mode": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Enum values (\"org\", \"people\"), the parameter name `people`, and a never-guard on a limit are frozen mechanics. The leading slot must be kept to preserve run_script's mode documentation. Following the delete/pin precedent, this stays pristine."
+  },
+  "tool-parameter-artifact-share-people": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "Schema-local mechanics: the limit is a runtime cap. The overlapping clause is frozen, and the family precedent is pristine."
+  },
+  "tool-result-artifact-permission-check-not-found": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the only text the model sees when a share target 404s at the permission check. It follows the same pattern as the delete not-found result, which the set keeps."
+  },
+  "tool-result-artifact-share-access-invalid": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is an error contract with an enum and default. It is conditional, so it costs nothing until it fires, and when it fires it is the only explanation the model gets."
+  },
+  "tool-result-artifact-share-access-unrecognised-denied": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A tool result contract: parameter name `access`, the enum values \"view\"/\"comment\", the error outcome and recovery path. It matches the delete/pin precedent, where error results are kept pristine."
+  },
+  "tool-result-artifact-share-agent-scoped-denied": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is an error/permission contract: it is the only message telling the model why the share was denied and what to do next (slot bo). That matches the precedent of keeping the artifact delete/pin tool results pristine."
+  },
+  "tool-result-artifact-share-already-public": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a unique error contract carrying the artifact url slot and the next-step instruction."
+  },
+  "tool-result-artifact-share-also-open-to-org-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the only signal, in the rendered sentence, that the org audience survives a people share. Removing it would leave the model unaware of the wider audience."
+  },
+  "tool-result-artifact-share-ask-proposed-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the consent-surface note on the auto-mode path that carries the proposed share scope. It is a permission-gate artifact with live slots and nothing to cut."
+  },
+  "tool-result-artifact-share-audience-frozen": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the only copy of this refusal's state, and it carries the instruction for the model to relay."
+  },
+  "tool-result-artifact-share-bad-access": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A unique validation-gate message with an enum and a retry contract. This matches the precedent of the delete/pin error families, which are kept verbatim."
+  },
+  "tool-result-artifact-share-changed-meanwhile": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A unique error contract (outcome plus retry-once) that loads only on this failure. It follows the artifact delete/pin precedent."
+  },
+  "tool-result-artifact-share-consent-ask": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A consent and security contract with 7 slots. It matches the delete/pin consent-ask precedent, which is kept verbatim."
+  },
+  "tool-result-artifact-share-consent-gone": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The consent-gate error contract for share: nothing shared, no retry, then the slot carries the self-serve fallback. The deployed delete precedent keeps its twin verbatim, and the slot contract stays intact."
+  },
+  "tool-result-artifact-share-editors-left-note": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It reports a state change the model cannot infer: N of the named people already have edit access and were left unchanged. Precedent: the artifact delete/pin tool results are kept pristine."
+  },
+  "tool-result-artifact-share-gateway-unapproved": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This conditional tool result is the only copy of this error's recovery path ('Retry once', 'if it still fails'), which is frozen mechanics."
+  },
+  "tool-result-artifact-share-http-failed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is an error contract carrying the HTTP status. The missing retry is meaningful because it differs from the retry arm."
+  },
+  "tool-result-artifact-share-http-failed-retry": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "The retry-once bound is a mechanic, and it is unique to the 5xx branch."
+  },
+  "tool-result-artifact-share-missing-access": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It carries the access enum ('view' or 'comment'), the fact that nothing was shared, and the instruction to retry so the card is shown again. That is an error and ordering contract; keep it verbatim, as with the delete/pin precedents."
+  },
+  "tool-result-artifact-share-missing-mode": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A unique fail-closed error contract with enum values. It is conditional, so it costs nothing when off."
+  },
+  "tool-result-artifact-share-mode-required": {
+    "verdict": "trim",
+    "version": "2.1.286",
+    "why": "Keep the validation sentence verbatim. Delete the whole frozen second sentence, because a co-rendering sibling already conveys it."
+  },
+  "tool-result-artifact-share-mode-unrecognised": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a conditional tool result and the only copy of this refusal's reason and remedy. The safety contract says nothing changed."
+  },
+  "tool-result-artifact-share-no-confirmation-surface": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a conditional tool result carrying a unique retry-guard contract."
+  },
+  "tool-result-artifact-share-no-people-confirmed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "An error and recovery contract for a distinct branch, consistent with the kept delete/pin tool-result precedent."
+  },
+  "tool-result-artifact-share-not-found": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is an error and outcome contract, and the only text the model gets on a 404 from the share endpoint."
+  },
+  "tool-result-artifact-share-not-owner": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It maps role values to verbs (writer/commenter/reader), states that only the owner can share from here, appends the bo slot, and gives writer-specific next-step guidance (the claude.ai Share menu). All of these are mechanics."
+  },
+  "tool-result-artifact-share-not-permitted": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "An error contract for HTTP 403 (reason not_permitted). It carries unique permission mechanics and a self-serve fallback, and it follows the delete-not-owner precedent."
+  },
+  "tool-result-artifact-share-not-person": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a security/error contract: only a human approves a share, and the model must not retry. It contains 'Only' and 'do not retry', so it is frozen. Keep."
+  },
+  "tool-result-artifact-share-nothing-shared": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A shared constant that code transforms and reuses (it strips the trailing period), and the only statement in those denials that no sharing happened. Frozen."
+  },
+  "tool-result-artifact-share-org-already-shared": {
+    "verdict": "trim",
+    "version": "2.1.286",
+    "why": "The 'Already shared… so nothing changed.' sentence is unique and stays verbatim. The 'Nobody is notified…' sentence is fully covered by the co-rendered Sharing paragraph."
+  },
+  "tool-result-artifact-share-org-not-assignable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A unique refusal and fallback for the org-mode branch."
+  },
+  "tool-result-artifact-share-org-shared": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A tool result costs nothing until it fires, and this one carries the only no-notification/give-the-link instruction for a fresh org share. It follows the artifact-family keep precedent."
+  },
+  "tool-result-artifact-share-org-takes-no-people": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A conditional validation error with frozen enum and parameter names that tells the model how to fix the call."
+  },
+  "tool-result-artifact-share-org-view-only-unavailable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A unique refusal contract with a parameter-level workaround."
+  },
+  "tool-result-artifact-share-ownership-unconfirmed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a security/error contract (nothing shared, retry once) and follows the delete family precedent."
+  },
+  "tool-result-artifact-share-people-already-shared": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It reports a unique outcome, and its slot positions must stay as they are. This matches the delete/pin pristine precedents."
+  },
+  "tool-result-artifact-share-people-invalid": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a unique share-validation error with a fail-closed guarantee and a recovery route. Like the other artifact share and delete error results, it is kept pristine."
+  },
+  "tool-result-artifact-share-people-not-assignable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the only text for this plan-limit refusal and states that nothing changed."
+  },
+  "tool-result-artifact-share-people-required": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "An error contract with parameter and enum names. It follows the artifact-family precedent of keeping all tool results pristine."
+  },
+  "tool-result-artifact-share-people-shared": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A conditional tool result that costs nothing until shared. It carries the security/truthfulness contract (the card, not Claude's hints, decided the recipients) and the undo path. This matches the kept pristine delete/pin result precedents."
+  },
+  "tool-result-artifact-share-people-too-many": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the only statement of the people cap and its recovery path, in a conditional error result."
+  },
+  "tool-result-artifact-share-people-unresolved": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is an error contract with a never/do-not guard against fabricating identifiers, which is security mechanics and therefore frozen. Nothing in the same arm covers it."
+  },
+  "tool-result-artifact-share-permission-check-failed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a security/error contract telling the model nothing was shared and when to retry. It matches the delete and room_send family precedent of a pristine keep."
+  },
+  "tool-result-artifact-share-plan-mode-denied": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A plan-mode gate and no-retry contract, following the precedent of the delete and room_send families, which are kept verbatim."
+  },
+  "tool-result-artifact-share-read-foreign-answer": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A conditional error carrying a unique outcome and retry contract."
+  },
+  "tool-result-artifact-share-read-network-error": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a unique error result. The 'nothing was changed' guarantee is a safety contract that tells the model the share never happened."
+  },
+  "tool-result-artifact-share-read-relay-failed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is an error/state contract ('nothing was changed') and matches the family precedent."
+  },
+  "tool-result-artifact-share-record-unreadable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A unique recovery contract for a share result that fails validation. It follows the precedent of the delete and pin record-unreadable messages."
+  },
+  "tool-result-artifact-share-refused-not-human-owned": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a unique error contract for the new share action. It follows the pristine-kept artifact delete and pin tool-result precedent."
+  },
+  "tool-result-artifact-share-refused-only-owner-or-editors": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a distinct refusal state with a specific instruction: tell the person they already have access, rather than retry. That makes it an error contract."
+  },
+  "tool-result-artifact-share-refused-org-already-public": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A conditional error result with a unique reason and next action ('Give the person the link')."
+  },
+  "tool-result-artifact-share-refused-people-already-public": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the already_wider refusal for a people share: nothing was changed, plus the next action. Mode-specific error contracts like this are kept pristine, as with the delete/pin precedents."
+  },
+  "tool-result-artifact-share-refused-view-tier-unavailable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a unique error contract with frozen enum text (`access: \"comment\"`), matching the delete/pin precedent of keeping short error results."
+  },
+  "tool-result-artifact-share-service-refused": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is an error contract stating no side effect occurred, with slot mechanics. It is unique and conditional."
+  },
+  "tool-result-artifact-share-settings-malformed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is an error/outcome contract (nothing changed, plus a fallback path), already minimal, and matches the precedent of keeping artifact error results."
+  },
+  "tool-result-artifact-share-target-changed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is an error/ordering contract, and it matches the delete precedent kept verbatim."
+  },
+  "tool-result-artifact-share-unavailable-cloud-session": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A unique gate and no-retry contract, and urt is reused by code as an error constant. This matches the pin and delete precedent."
+  },
+  "tool-result-artifact-share-unconfirmed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the consent-gate failure contract, unique to this branch and matching the delete precedent."
+  },
+  "tool-result-artifact-share-unexpected-fields": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A schema contract with exact parameter names. Removing it would make the model send invalid calls repeatedly."
+  },
+  "tool-result-artifact-share-url-not-shareable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is a deny message carrying the recovery path (the publish result link, or action \"list\"). It names the tool action, so it is frozen. Precedent from the delete/pin families: keep."
+  },
+  "tool-result-artifact-share-url-required": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "An error contract for the share action with a parameter name and a recovery hint. It follows the delete/pin requires-url precedent."
+  },
+  "tool-result-artifact-share-write-foreign-answer": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is an ordering/verification contract ('read the artifact before telling the person it is shared') that prevents a false success claim. It contains 'before', so it is frozen. It is unique to this arm, so keep."
+  },
+  "tool-result-artifact-share-write-network-error": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is an error contract that tells the model the state is uncertain, and it is kept per the family precedent."
+  },
+  "tool-result-artifact-share-write-relay-failed": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It carries a unique ordering and safety contract for this failure branch. This matches the pin/delete relay precedents."
+  },
+  "tool-result-artifact-share-write-relay-no-answer": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a distinct error branch of the new share action, and it carries a read-before-retry contract that guards against double-sharing. This follows the kept artifact pin/delete precedent."
+  },
+  "tool-result-device-tool-serve-refused-sandbox-seccomp-unavailable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A conditional refusal that is the only source of the seccomp-specific fix path and its retry gate. Frozen text."
+  },
+  "tool-result-mcp-authenticate-sign-in-already-in-progress": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a unique runtime-state explanation plus a recovery instruction (the /mcp fallback), on a conditional tool result that costs nothing when unused."
+  },
+  "tool-result-non-text-content-truncation-notice": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It opens with a slot that holds the truncated content itself (re(n,fM)). The bracketed count tells the model how much of the output is missing. Wiping it would drop the tool output."
+  },
+  "tool-result-permission-ask-unreadable-shell-line": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the only text for the unreadable_shell_line ask and it carries the approval requirement. It is tiny and unique, and its alternative arms are not coverage."
+  },
+  "tool-result-permission-ask-unresolved-shell-write-person-approval": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This sentence is the only statement on the unresolved_shell_write path that a human must approve in-session, and it completes the slot's reason sentence. It is a permission-gate contract."
+  },
+  "tool-result-plugin-tool-check-deny-rules-unchecked-refused": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a security/error contract with no overlap."
+  },
+  "tool-result-remote-tool-auto-off-reason-breaker": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the only reason text for this state, and the only place that gives the restart as the recovery."
+  },
+  "tool-result-remote-tool-auto-off-reason-consent-declined": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "A conditional reason string with a frozen path and enum value ('Not allowed', /config). Unique to its state."
+  },
+  "tool-result-remote-tool-auto-off-reason-consent-forced-off": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the only place the model learns which settings key forced auto mode off for served calls. It is a conditional tool result with no slop."
+  },
+  "tool-result-remote-tool-auto-off-reason-consent-unknown": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a unique state explanation inside the auto-off note, and its siblings are alternative arms, not coverage. There is no bloat."
+  },
+  "tool-result-remote-tool-auto-off-reason-consent-unset": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "This is the only text that tells the model why commands need approval in the unset state, and where the user can change that. The path is frozen."
+  },
+  "tool-result-remote-tool-host-sandbox-required-unavailable-refusal": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is a unique security and error refusal contract."
+  },
+  "tool-result-remote-tool-host-settings-unreadable-refusal": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It sets the model's retry and escalation order for this refusal and says nothing ran. It also opens with a slot naming the host. All of this is unique mechanics."
+  },
+  "tool-result-sendmessage-cross-machine-unavailable-policy": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It carries the policy reason and the fact that local messaging still works. This error contract has no other carrier."
+  },
+  "tool-result-tool-input-earlier-option-unavailable": {
+    "verdict": "pristine-keep",
+    "version": "2.1.286",
+    "why": "It is the only instruction to continue without stale parameters or enum values. The leading slot renders backticked key names from the bundle (K list), and no detector matches against it."
   }
 }

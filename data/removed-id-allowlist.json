@@ -2926,5 +2926,45 @@
     "verdict": "archived",
     "version": "2.1.285",
     "why": "directory-sync subsystem removed in 2.1.285 (its tengu_dir_sync_* flags are gone); distinctive text absent from bundle and catalogue"
+  },
+  "system-prompt-auto-mode-classifier-blocked-actions-list-candidate": {
+    "verdict": "archived",
+    "version": "2.1.286",
+    "why": "removed in 2.1.286: distinctive text absent from bundle and catalogue"
+  },
+  "system-prompt-auto-mode-classifier-external-system-writes-bullet-baseline": {
+    "verdict": "archived",
+    "version": "2.1.286",
+    "why": "removed in 2.1.286: distinctive text absent from bundle and catalogue"
+  },
+  "system-prompt-auto-mode-classifier-external-system-writes-bullet-candidate": {
+    "verdict": "archived",
+    "version": "2.1.286",
+    "why": "removed in 2.1.286: distinctive text absent from bundle and catalogue"
+  },
+  "system-prompt-auto-mode-classifier-external-system-writes-scope-baseline": {
+    "verdict": "archived",
+    "version": "2.1.286",
+    "why": "removed in 2.1.286: distinctive text absent from bundle and catalogue"
+  },
+  "system-prompt-auto-mode-classifier-external-system-writes-scope-candidate": {
+    "verdict": "archived",
+    "version": "2.1.286",
+    "why": "removed in 2.1.286: distinctive text absent from bundle and catalogue"
+  },
+  "system-prompt-auto-mode-classifier-remote-service-tool-scope-candidate": {
+    "verdict": "archived",
+    "version": "2.1.286",
+    "why": "removed in 2.1.286: distinctive text absent from bundle and catalogue"
+  },
+  "system-prompt-claude-test-starting-reload-plugins": {
+    "verdict": "archived",
+    "version": "2.1.286",
+    "why": "removed in 2.1.286: distinctive text absent from bundle and catalogue"
+  },
+  "tool-result-fetch-inbox-message-attachments-not-downloaded": {
+    "verdict": "archived",
+    "version": "2.1.286",
+    "why": "removed in 2.1.286: distinctive text absent from bundle and catalogue"
   }
 }
